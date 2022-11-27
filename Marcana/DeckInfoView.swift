@@ -18,6 +18,7 @@ struct DeckInfoView: View {
                     .scaledToFit()
                     .frame(height: 90.0)
                     .cornerRadius(8)
+                    .shadow(radius: 3)
 
                 Spacer().frame(width: 16)
 
@@ -27,17 +28,19 @@ struct DeckInfoView: View {
                         .lineLimit(2)
                         .minimumScaleFactor(0.75)
                     Spacer().frame(height: 8)
-                    Text(card.suite)
+                    Text(card.suite.capitalized)
                         .font(.subheadline)
                         .foregroundColor(.secondary)
                 }
             }
-        }.navigationBarTitle("The Cards")
+            .navigationBarTitle("The Cards")
+        }
     }
 }
 
 struct DeckInfoView_Previews: PreviewProvider {
     static var previews: some View {
         DeckInfoView()
+            .environmentObject(Deck())
     }
 }

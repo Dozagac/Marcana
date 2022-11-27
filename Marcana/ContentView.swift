@@ -17,7 +17,7 @@ struct startButton {
 
     static let example = startButton(
         title: "Read 1 card",
-        subtitle: "Seek answers to a question",
+        subtitle: "seek answers to a question",
         imageName: "threeReader")
 }
 
