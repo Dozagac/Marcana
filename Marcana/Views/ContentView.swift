@@ -24,21 +24,30 @@ struct startButton {
 
 struct ContentView: View {
     var body: some View {
+        
+        
+        
             VStack {
-                startChoiceCard(buttonInfo: startButton(
-                    title: "Read 1 card",
-                    subtitle: "Read the vibe of the day",
-                    imageName: "threeReader"))
                 
+                NavigationLink(destination: SingleReaderView(), label: {
+                    startChoiceCard(buttonInfo: startButton(
+                        title: "Read 1 card",
+                        subtitle: "Read the vibe of the day",
+                        imageName: "threeReader"))
+                })
+
                 
                 Spacer().frame(height: 24)
                 
-                startChoiceCard(buttonInfo: startButton(
-                    title: "Read 3 cards",
-                    subtitle: "Seek answers to a question",
-                    imageName: "singleReader"))
+                
+                NavigationLink(destination: ThreeReaderView(), label: {
+                    startChoiceCard(buttonInfo: startButton(
+                        title: "Read 3 cards",
+                        subtitle: "Seek answers to a question",
+                        imageName: "singleReader"))
+                })
             }
-            .navigationTitle("Start Screen")
+            .navigationBarTitle("Start Screen")
     }
 }
 
