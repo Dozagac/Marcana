@@ -8,10 +8,31 @@
 import SwiftUI
 
 struct DeckInfoView: View {
-//    @EnvironmentObject var deck: Deck
+    @EnvironmentObject var deck: Deck
     
     var body: some View {
-        Text("Hello, World!")
+        List(deck.allCards, id: \.name) { card in
+            HStack {
+                Image(card.image)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height: 90.0)
+                    .cornerRadius(8)
+
+                Spacer().frame(width: 16)
+
+                VStack(alignment: .leading) {
+                    Text(card.name)
+                        .fontWeight(.semibold)
+                        .lineLimit(2)
+                        .minimumScaleFactor(0.75)
+                    Spacer().frame(height: 8)
+                    Text(card.suite)
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
+                }
+            }
+        }.navigationBarTitle("The Cards")
     }
 }
 

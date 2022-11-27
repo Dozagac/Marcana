@@ -10,7 +10,7 @@ import SwiftUI
 @main
 struct MarcanaApp: App {
     
-//    @StateObject var deck = Deck()
+    @StateObject var deck = Deck()
     
     var body: some Scene {
         WindowGroup {
@@ -30,7 +30,7 @@ struct MarcanaApp: App {
                     Text("Deck")
                 }
             }
-//            .environmentObject(deck)
+            .environmentObject(deck)
         }
     }
 }
