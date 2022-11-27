@@ -33,7 +33,7 @@ struct DeckInfoView: View {
                         .foregroundColor(.secondary)
                 }
             }
-            .navigationBarTitle("The Cards")
+            .navigationTitle("The Cards")
         }
     }
 }

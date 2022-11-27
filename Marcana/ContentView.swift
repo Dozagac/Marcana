@@ -38,7 +38,7 @@ struct ContentView: View {
                     subtitle: "Seek answers to a question",
                     imageName: "singleReader"))
             }
-            .navigationBarTitle("Start Screen")
+            .navigationTitle("Start Screen")
     }
 }
 
