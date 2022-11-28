@@ -10,14 +10,38 @@ import SwiftUI
 struct DeckInfoView: View {
     @EnvironmentObject var deck: Deck
 
+
     var body: some View {
-        List(deck.allCards, id: \.name) { card in
-            NavigationLink(destination: CardDetailView(card: card), label: {
-                ListItem(card: card)
-            })
+        List{
+            Section("Major Arcana"){
+                ForEach(deck.majorCards, id: \.name) { card in
+                    NavigationLink(destination: CardDetailView(card: card), label: {
+                        ListItem(card: card)
+                    })
+            }
+        }
+            Section("Minor Arcana"){
+                ForEach(deck.minorCards, id: \.name) { card in
+                    NavigationLink(destination: CardDetailView(card: card), label: {
+                        ListItem(card: card)
+                    })
+            }
+        }
         }
     }
 }
+
+//struct DeckInfoView: View {
+//    @EnvironmentObject var deck: Deck
+//
+//    var body: some View {
+//        List(deck.allCards, id: \.name) { card in
+//            NavigationLink(destination: CardDetailView(card: card), label: {
+//                ListItem(card: card)
+//            })
+//        }
+//    }
+//}
 
 
 struct ListItem: View {
@@ -40,12 +64,13 @@ struct ListItem: View {
                     .lineLimit(2)
                     .minimumScaleFactor(0.75)
                 Spacer().frame(height: 8)
-                Text(card.suite.capitalized)
+                Text(card.suite.name.capitalized)
                     .font(.subheadline)
                     .foregroundColor(.secondary)
             }
         }
-        .navigationBarTitle("Cards", displayMode: .large)
+            .navigationTitle("Cards")
+            .navigationBarTitleDisplayMode(.large)
     }
 }
 

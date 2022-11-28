@@ -9,9 +9,23 @@ import Foundation
 
 struct Card: Decodable {
     let name: String
-    let suite: String
+    let suite: Suite
     let image: String
     let description: String
     let interpretation: String
+    
+    enum Suite: String, Decodable {
+        case major
+        case wands
+        case pentacles
+        case swords
+        case cups
+        
+        var name: String {
+            return rawValue
+        }
+    }
 }
+
+
 

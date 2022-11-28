@@ -12,10 +12,8 @@ struct CardDetailView: View {
     
     var body: some View {
         ScrollView {
-            Image(card.image)
-                .resizable()
-                .scaledToFill()
-                .frame(width: 300)
+            CardDisplayImageView(image: card.image)
+                .padding()
 
             Text(card.interpretation)
                 .font(.footnote)
@@ -34,5 +32,16 @@ struct CardDetailView: View {
 struct CardDetailView_Previews: PreviewProvider {
     static var previews: some View {
         CardDetailView(card: Deck().allCards[0])
+    }
+}
+
+struct CardDisplayImageView: View {
+    var image: String
+    
+    var body: some View {
+        Image(image)
+            .resizable()
+            .scaledToFill()
+            .frame(width: 200, height: 300)
     }
 }
