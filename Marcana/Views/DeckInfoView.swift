@@ -9,39 +9,34 @@ import SwiftUI
 
 struct DeckInfoView: View {
     @EnvironmentObject var deck: Deck
-
+    @State private var showingSheet = false
+    @State var sheetCard: Card? = nil
 
     var body: some View {
-        List{
-            Section("Major Arcana"){
-                ForEach(deck.majorCards, id: \.name) { card in
-                    NavigationLink(destination: CardDetailView(card: card), label: {
-                        ListItem(card: card)
-                    })
+        List {
+            Section("Major Arcana") {
+                ForEach(deck.majorCards) { card in
+                    ListItem(card: card)
+                        .onTapGesture {
+                        self.sheetCard = card
+                        self.showingSheet.toggle()
+                    }
+                }
             }
-        }
-            Section("Minor Arcana"){
+            Section("Minor Arcana") {
                 ForEach(deck.minorCards, id: \.name) { card in
                     NavigationLink(destination: CardDetailView(card: card), label: {
                         ListItem(card: card)
                     })
+                }
             }
         }
+            .sheet(item: self.$sheetCard) {item in
+                CardDetailView(card: item)
         }
     }
 }
 
-//struct DeckInfoView: View {
-//    @EnvironmentObject var deck: Deck
-//
-//    var body: some View {
-//        List(deck.allCards, id: \.name) { card in
-//            NavigationLink(destination: CardDetailView(card: card), label: {
-//                ListItem(card: card)
-//            })
-//        }
-//    }
-//}
 
 
 struct ListItem: View {

@@ -1,5 +1,6 @@
 [
     {
+        "id": 0,
         "name": "The Fool",
         "suite": "major",
         "image": "maj_00",
@@ -7,6 +8,7 @@
         "interpretation": "Folly, mania, extravagance, intoxication, delirium, frenzy, bewrayment. \nReversed: Negligence, absence, distribution, carelessness, apathy, nullity, vanity."
     },
     {
+        "id": 1,
         "name": "The Magician",
         "suite": "major",
         "image": "maj_01",
@@ -14,6 +16,7 @@
         "interpretation": "Skill, diplomacy, address, subtlety; sickness, pain, loss, disaster, snares of enemies; self-confidence, will; the Querent, if male. \nReversed: Physician, Magus, mental disease, disgrace, disquiet."
     },
     {
+        "id": 2,
         "name": "High Priestess",
         "suite": "major",
         "image": "maj_02",
@@ -21,6 +24,7 @@
         "interpretation": "Secrets, mystery, the future as yet unrevealed; the woman who interests the Querent, if male; the Querent herself, if female; silence, tenacity; mystery, wisdom, science. \nReversed: Passion, moral or physical ardour, conceit, surface knowledge."
     },
     {
+        "id": 3,
         "name": "Empress",
         "suite": "major",
         "image": "maj_03",
@@ -28,6 +32,7 @@
         "interpretation": "Fruitfulness, action, initiative, length of days; the unknown, clandestine; also difficulty, doubt, ignorance. \nReversed: Light, truth, the unravelling of involved matters, public rejoicings; according to another reading, vacillation."
     },
     {
+        "id": 4,
         "name": "Emperor",
         "suite": "major",
         "image": "maj_04",
@@ -35,6 +40,7 @@
         "interpretation": "Stability, power, protection, realization; a great person; aid, reason, conviction; also authority and will. \nReversed: Benevolence, compassion, credit; also confusion to enemies, obstruction, immaturity."
     },
     {
+        "id": 5,
         "name": "Hierophant",
         "suite": "major",
         "image": "maj_05",
@@ -42,6 +48,7 @@
         "interpretation": "Marriage, alliance, captivity, servitude; by another account, mercy and goodness; inspiration; the man to whom the Querent has recourse. \nReversed: Society, good understanding, concord, overkindness, weakness."
     },
     {
+        "id": 6,
         "name": "The Lovers",
         "suite": "major",
         "image": "maj_06",
@@ -49,6 +56,7 @@
         "interpretation": "Attraction, love, beauty, trials overcome. \nReversed: Failure, foolish designs. Another account speaks of marriage frustrated and contrarieties of all kinds."
     },
     {
+        "id": 7,
         "name": "Chariot",
         "suite": "major",
         "image": "maj_07",
@@ -56,6 +64,7 @@
         "interpretation": "Succour, providence also war, triumph, presumption, vengeance, trouble. \nReversed: Riot, quarrel, dispute, litigation, defeat."
     },
     {
+        "id": 8,
         "name": "Strength",
         "suite": "major",
         "image": "maj_08",
@@ -63,6 +72,7 @@
         "interpretation": "Power, energy, action, courage, magnanimity; also complete success and honours. \nReversed: Despotism, abuse if power, weakness, discord, sometimes even disgrace."
     },
     {
+        "id": 9,
         "name": "Hermit",
         "suite": "major",
         "image": "maj_09",
@@ -70,6 +80,7 @@
         "interpretation": "Prudence, circumspection; also and especially treason, dissimulation, roguery, corruption. \nReversed: Concealment, disguise, policy, fear, unreasoned caution."
     },
     {
+        "id": 10,
         "name": "Wheel of Fortune",
         "suite": "major",
         "image": "maj_10",
@@ -77,6 +88,7 @@
         "interpretation": "Destiny, fortune, success, elevation, luck, felicity. \nReversed: Increase, abundance, superfluity."
     },
     {
+        "id": 11,
         "name": "Justice",
         "suite": "major",
         "image": "maj_11",
@@ -84,6 +96,7 @@
         "interpretation": "Equity, rightness, probity, executive; triumph of the deserving side in law. \nReversed: Law in all its departments, legal complications, bigotry, bias, excessive severity."
     },
     {
+        "id": 12,
         "name": "Hanged Man",
         "suite": "major",
         "image": "maj_12",
@@ -91,6 +104,7 @@
         "interpretation": "Wisdom, circumspection, discernment, trials, sacrifice, intuition, divination, prophecy. \nReversed: Selfishness, the crowd, body politic."
     },
     {
+        "id": 13,
         "name": "Death",
         "suite": "major",
         "image": "maj_13",
@@ -98,6 +112,7 @@
         "interpretation": "End, mortality, destruction, corruption also, for a man, the loss of a benefactor for a woman, many contrarieties; for a maid, failure of marriage projects. \nReversed: Inertia, sleep, lethargy, petrifaction, somnambulism; hope destroyed."
     },
     {
+        "id": 14,
         "name": "Temperance",
         "suite": "major",
         "image": "maj_14",
@@ -105,6 +120,7 @@
         "interpretation": "Economy, moderation, frugality, management, accommodation. \nReversed: Things connected with churches, religions, sects, the priesthood, sometimes even the priest who will marry the Querent; also disunion, unfortunate combinations, competing interests."
     },
     {
+        "id": 15,
         "name": "Devil",
         "suite": "major",
         "image": "maj_15",
@@ -112,6 +128,7 @@
         "interpretation": "Ravage, violence, vehemence, extraordinary efforts, force, fatality; that which is predestined but is not for this reason evil. \nReversed: Evil fatality, weakness, pettiness, blindness."
     },
     {
+        "id": 16,
         "name": "Tower",
         "suite": "major",
         "image": "maj_16",
@@ -119,6 +136,7 @@
         "interpretation": "Misery, distress, indigence, adversity, calamity, disgrace, deception, ruin. It is a card in particular of unforeseen catastrophe. \nReversed: According to one account, the same in a lesser degree also oppression, imprisonment, tyranny."
     },
     {
+        "id": 17,
         "name": "Star",
         "suite": "major",
         "image": "maj_17",
@@ -126,6 +144,7 @@
         "interpretation": "Loss, theft, privation, abandonment; another reading says-hope and bright prospects, \nReversed: Arrogance, haughtiness, impotence."
     },
     {
+        "id": 18,
         "name": "Moon",
         "suite": "major",
         "image": "maj_18",
@@ -133,6 +152,7 @@
         "interpretation": "Hidden enemies, danger, calumny, darkness, terror, deception, occult forces, error. \nReversed: Instability, inconstancy, silence, lesser degrees of deception and error."
     },
     {
+        "id": 19,
         "name": "Sun",
         "suite": "major",
         "image": "maj_19",
@@ -140,6 +160,7 @@
         "interpretation": "Material happiness, fortunate marriage, contentment. \nReversed: The same in a lesser sense."
     },
     {
+        "id": 20,
         "name": "Judgement",
         "suite": "major",
         "image": "maj_20",
@@ -147,6 +168,7 @@
         "interpretation": "Change of position, renewal, outcome. Another account specifies total loss though lawsuit. \nReversed: Weakness, pusillanimity, simplicity; also deliberation, decision, sentence."
     },
     {
+        "id": 21,
         "name": "World",
         "suite": "major",
         "image": "maj_20",
@@ -154,6 +176,7 @@
         "interpretation": "Assured success, recompense, voyage, route, emigration, flight, change of place. \nReversed: Inertia, fixity, stagnation, permanence."
     },
     {
+        "id": 22,
         "name": "King of Wands",
         "suite": "wands",
         "image": "min_w_ki",
@@ -161,6 +184,7 @@
         "interpretation": "Dark man, friendly, countryman, generally married, honest and conscientious. The card always signifies honesty, and may mean news concerning an unexpected heritage to fall in before very long. \nReversed: Good, but severe; austere, yet tolerant."
     },
     {
+        "id": 23,
         "name": "Queen of Wands",
         "suite": "wands",
         "image": "min_w_qu",
@@ -168,6 +192,7 @@
         "interpretation": "A dark woman, countrywoman, friendly, chaste, loving, honourable. If the card beside her signifies a man, she is well disposed towards him; if a woman, she is interested in the Querent. Also, love of money, or a certain success in business. \nReversed: Good, economical, obliging, serviceable. Signifies also--but in certain positions and in the neighbourhood of other cards tending in such directions--opposition, jealousy, even deceit and infidelity."
     },
     {
+        "id": 24,
         "name": "Knight of Wands",
         "suite": "wands",
         "image": "min_w_kn",
@@ -175,6 +200,7 @@
         "interpretation": "Departure, absence, flight, emigration. A dark young man, friendly. Change of residence. \nReversed: Rupture, division, interruption, discord."
     },
     {
+        "id": 25,
         "name": "Page of Wands",
         "suite": "wands",
         "image": "min_w_pa",
@@ -182,6 +208,7 @@
         "interpretation": "Dark young man, faithful, a lover, an envoy, a postman. Beside a man, he will bear favourable testimony concerning him. A dangerous rival, if followed by the Page of Cups. Has the chief qualities of his suit. He may signify family intelligence. \nReversed: Anecdotes, announcements, evil news. Also indecision and the instability which accompanies it."
     },
     {
+        "id": 26,
         "name": "Ten of Wands",
         "suite": "wands",
         "image": "min_w_10",
@@ -189,6 +216,7 @@
         "interpretation": "A card of many significances, and some of the readings cannot be harmonized. I set aside that which connects it with honour and good faith. The chief meaning is oppression simply, but it is also fortune, gain, any kind of success, and then it is the oppression of these things. It is also a card of false-seeming, disguise, perfidy. The place which the figure is approaching may suffer from the rods that he carries. Success is stultified if the Nine of Swords follows, and if it is a question of a lawsuit, there will be certain loss. \nReversed: Contrarieties, difficulties, intrigues, and their analogies."
     },
     {
+        "id": 27,
         "name": "Nine of Wands",
         "suite": "wands",
         "image": "min_w_09",
@@ -196,6 +224,7 @@
         "interpretation": "The card signifies strength in opposition. If attacked, the person will meet an onslaught boldly; and his build shews, that he may prove a formidable antagonist. With this main significance there are all its possible adjuncts--delay, suspension, adjournment. \nReversed: Obstacles, adversity, calamity."
     },
     {
+        "id": 28,
         "name": "Eight of Wands",
         "suite": "wands",
         "image": "min_w_08",
@@ -203,6 +232,7 @@
         "interpretation": " Activity in undertakings, the path of such activity, swiftness, as that of an express messenger; great haste, great hope, speed towards an end which promises assured felicity; generally, that which is on the move; also the arrows of love. \nReversed: Arrows of jealousy, internal dispute, stingings of conscience, quarrels; and domestic disputes for persons who are married."
     },
     {
+        "id": 29,
         "name": "Seven of Wands",
         "suite": "wands",
         "image": "min_w_07",
@@ -210,6 +240,7 @@
         "interpretation": "It is a card of valour, for, on the surface, six are attacking one, who has, however, the vantage position. On the intellectual plane, it signifies discussion, wordy strife; in business--negotiations, war of trade, barter, competition. It is further a card of success, for the combatant is on the top and his enemies may be unable to reach him. \nReversed: Perplexity, embarrassments, anxiety. It is also a caution against indecision."
     },
     {
+        "id": 30,
         "name": "Six of Wands",
         "suite": "wands",
         "image": "min_w_06",
@@ -217,6 +248,7 @@
         "interpretation": "The card has been so designed that it can cover several significations; on the surface, it is a victor triumphing, but it is also great news, such as might be carried in state by the King's courier; it is expectation crowned with its own desire, the crown of hope, and so forth. \nReversed: Apprehension, fear, as of a victorious enemy at the gate; treachery, disloyalty, as of gates being opened to the enemy; also indefinite delay."
     },
     {
+        "id": 31,
         "name": "Five of Wands",
         "suite": "wands",
         "image": "min_w_05",
@@ -224,6 +256,7 @@
         "interpretation": "Imitation, as, for example, sham fight, but also the strenuous competition and struggle of the search after riches and fortune. In this sense it connects with the battle of life. Hence some attributions say that it is a card of gold, gain, opulence. \nReversed: Litigation, disputes, trickery, contradiction."
     },
     {
+        "id": 32,
         "name": "Four of Wands",
         "suite": "wands",
         "image": "min_w_04",
@@ -231,6 +264,7 @@
         "interpretation": "They are for once almost on the surface--country life, haven of refuge, a species of domestic harvest-home, repose, concord, harmony, prosperity, peace, and the perfected work of these. \nReversed: The meaning remains unaltered; it is prosperity, increase, felicity, beauty, embellishment."
     },
     {
+        "id": 33,
         "name": "Three of Wands",
         "suite": "wands",
         "image": "min_w_03",
@@ -238,6 +272,7 @@
         "interpretation": "He symbolizes established strength, enterprise, effort, trade, commerce, discovery; those are his ships, bearing his merchandise, which are sailing over the sea. The card also signifies able co-operation in business, as if the successful merchant prince were looking from his side towards yours with a view to help you. \nReversed: The end of troubles, suspension or cessation of adversity, toil and disappointment."
     },
     {
+        "id": 34,
         "name": "Two of Wands",
         "suite": "wands",
         "image": "min_w_02",
@@ -245,6 +280,7 @@
         "interpretation": "Between the alternative readings there is no marriage possible; on the one hand, riches, fortune, magnificence; on the other, physical suffering, disease, chagrin, sadness, mortification. The design gives one suggestion; here is a lord overlooking his dominion and alternately contemplating a globe; it looks like the malady, the mortification, the sadness of Alexander amidst the grandeur of this world's wealth. \nReversed: Surprise, wonder, enchantment, emotion, trouble, fear."
     },
     {
+        "id": 35,
         "name": "Ace of Wands",
         "suite": "wands",
         "image": "min_w_ac",
@@ -252,6 +288,7 @@
         "interpretation": " Creation, invention, enterprise, the powers which result in these; principle, beginning, source; birth, family, origin, and in a sense the virility which is behind them; the starting point of enterprises; according to another account, money, fortune, inheritance. \nReversed: Fall, decadence, ruin, perdition, to perish also a certain clouded joy."
     },
     {
+        "id": 36,
         "name": "King of Cups",
         "suite": "cups",
         "image": "min_c_ki",
@@ -259,6 +296,7 @@
         "interpretation": "Fair man, man of business, law, or divinity; responsible, disposed to oblige the Querent; also equity, art and science, including those who profess science, law and art; creative intelligence. \nReversed: Dishonest, double-dealing man; roguery, exaction, injustice, vice, scandal, pillage, considerable loss."
     },
     {
+        "id": 37,
         "name": "Queen of Cups",
         "suite": "cups",
         "image": "min_c_qu",
@@ -266,6 +304,7 @@
         "interpretation": "Good, fair woman; honest, devoted woman, who will do service to the Querent; loving intelligence, and hence the gift of vision; success, happiness, pleasure; also wisdom, virtue; a perfect spouse and a good mother. \nReversed: The accounts vary; good woman; otherwise, distinguished woman but one not to be trusted; perverse woman; vice, dishonour, depravity."
     },
     {
+        "id": 38,
         "name": "Knight of Cups",
         "suite": "cups",
         "image": "min_c_kn",
@@ -273,6 +312,7 @@
         "interpretation": "Arrival, approach--sometimes that of a messenger; advances, proposition, demeanour, invitation, incitement. \nReversed: Trickery, artifice, subtlety, swindling, duplicity, fraud."
     },
     {
+        "id": 39,
         "name": "Page of Cups",
         "suite": "cups",
         "image": "min_c_pa",
@@ -280,6 +320,7 @@
         "interpretation": "Fair young man, one impelled to render service and with whom the Querent will be connected; a studious youth; news, message; application, reflection, meditation; also these things directed to business. \nReversed: Taste, inclination, attachment, seduction, deception, artifice."
     },
     {
+        "id": 40,
         "name": "Ten of Cups",
         "suite": "cups",
         "image": "min_c_10",
@@ -287,6 +328,7 @@
         "interpretation": "Contentment, repose of the entire heart; the perfection of that state; also perfection of human love and friendship; if with several picture-cards, a person who is taking charge of the Querent's interests; also the town, village or country inhabited by the Querent. \nReversed: Repose of the false heart, indignation, violence."
     },
     {
+        "id": 41,
         "name": "Nine of Cups",
         "suite": "cups",
         "image": "min_c_09",
@@ -294,6 +336,7 @@
         "interpretation": "Concord, contentment, physical bien-etre; also victory, success, advantage; satisfaction for the Querent or person for whom the consultation is made. \nReversed: Truth, loyalty, liberty; but the readings vary and include mistakes, imperfections, etc."
     },
     {
+        "id": 42,
         "name": "Eight of Cups",
         "suite": "cups",
         "image": "min_c_08",
@@ -301,6 +344,7 @@
         "interpretation": "The card speaks for itself on the surface, but other readings are entirely antithetical--giving joy, mildness, timidity, honour, modesty. In practice, it is usually found that the card shews the decline of a matter, or that a matter which has been thought to be important is really of slight consequence--either for good or evil. \nReversed: Great joy, happiness, feasting."
     },
     {
+        "id": 43,
         "name": "Seven of Cups",
         "suite": "cups",
         "image": "min_c_07",
@@ -308,6 +352,7 @@
         "interpretation": "Fairy favours, images of reflection, sentiment, imagination, things seen in the glass of contemplation; some attainment in these degrees, but nothing permanent or substantial is suggested. \nReversed: Desire, will, determination, project."
     },
     {
+        "id": 44,
         "name": "Six of Cups",
         "suite": "cups",
         "image": "min_c_06",
@@ -315,6 +360,7 @@
         "interpretation": "A card of the past and of memories, looking back, as--for example--on childhood; happiness, enjoyment, but coming rather from the past; things that have vanished. Another reading reverses this, giving new relations, new knowledge, new environment, and then the children are disporting in an unfamiliar precinct. \nReversed: The future, renewal, that which will come to pass presently."
     },
     {
+        "id": 45,
         "name": "Five of Cups",
         "suite": "cups",
         "image": "min_c_05",
@@ -322,6 +368,7 @@
         "interpretation": "It is a card of loss, but something remains over; three have been taken, but two are left; it is a card of inheritance, patrimony, transmission, but not corresponding to expectations; with some interpreters it is a card of marriage, but not without bitterness or frustration. \nReversed: News, alliances, affinity, consanguinity, ancestry, return, false projects."
     },
     {
+        "id": 46,
         "name": "Four of Cups",
         "suite": "cups",
         "image": "min_c_04",
@@ -329,6 +376,7 @@
         "interpretation": "Weariness, disgust, aversion, imaginary vexations, as if the wine of this world had caused satiety only; another wine, as if a fairy gift, is now offered the wastrel, but he sees no consolation therein. This is also a card of blended pleasure. \nReversed: Novelty, presage, new instruction, new relations."
     },
     {
+        "id": 47,
         "name": "Three of Cups",
         "suite": "cups",
         "image": "min_c_03",
@@ -336,6 +384,7 @@
         "interpretation": "The conclusion of any matter in plenty, perfection and merriment; happy issue, victory, fulfilment, solace, healing, \nReversed: Expedition, dispatch, achievement, end. It signifies also the side of excess in physical enjoyment, and the pleasures of the senses."
     },
     {
+        "id": 48,
         "name": "Two of Cups",
         "suite": "cups",
         "image": "min_c_02",
@@ -343,6 +392,7 @@
         "interpretation": "Love, passion, friendship, affinity, union, concord, sympathy, the interrelation of the sexes, and--as a suggestion apart from all offices of divination--that desire which is not in Nature, but by which Nature is sanctified."
     },
     {
+        "id": 49,
         "name": "Ace of Cups",
         "suite": "cups",
         "image": "min_c_ac",
@@ -350,6 +400,7 @@
         "interpretation": "House of the true heart, joy, content, abode, nourishment, abundance, fertility; Holy Table, felicity hereof. \nReversed: House of the false heart, mutation, instability, revolution."
     },
     {
+        "id": 50,
         "name": "King of Swords",
         "suite": "swords",
         "image": "min_s_ki",
@@ -357,6 +408,7 @@
         "interpretation": "Whatsoever arises out of the idea of judgment and all its connexions-power, command, authority, militant intelligence, law, offices of the crown, and so forth. \nReversed: Cruelty, perversity, barbarity, perfidy, evil intention."
     },
     {
+        "id": 51,
         "name": "Queen of Swords",
         "suite": "swords",
         "image": "min_s_qu",
@@ -364,6 +416,7 @@
         "interpretation": "Widowhood, female sadness and embarrassment, absence, sterility, mourning, privation, separation. \nReversed: Malice, bigotry, artifice, prudery, bale, deceit."
     },
     {
+        "id": 52,
         "name": "Knight of Swords",
         "suite": "swords",
         "image": "min_s_kn",
@@ -371,6 +424,7 @@
         "interpretation": "Skill, bravery, capacity, defence, address, enmity, wrath, war, destruction, opposition, resistance, ruin. There is therefore a sense in which the card signifies death, but it carries this meaning only in its proximity to other cards of fatality. \nReversed: Imprudence, incapacity, extravagance."
     },
     {
+        "id": 53,
         "name": "Page of Swords",
         "suite": "swords",
         "image": "min_s_pa",
@@ -378,6 +432,7 @@
         "interpretation": "Authority, overseeing, secret service, vigilance, spying, examination, and the qualities thereto belonging. \nReversed: More evil side of these qualities; what is unforeseen, unprepared state; sickness is also intimated."
     },
     {
+        "id": 54,
         "name": "Ten of Swords",
         "suite": "swords",
         "image": "min_s_10",
@@ -385,6 +440,7 @@
         "interpretation": "Whatsoever is intimated by the design; also pain, affliction, tears, sadness, desolation. It is not especially a card of violent death. \nReversed: Advantage, profit, success, favour, but none of these are permanent; also power and authority."
     },
     {
+        "id": 55,
         "name": "Nine of Swords",
         "suite": "swords",
         "image": "min_s_09",
@@ -392,6 +448,7 @@
         "interpretation": "Death, failure, miscarriage, delay, deception, disappointment, despair. \nReversed: Imprisonment, suspicion, doubt, reasonable fear, shame."
     },
     {
+        "id": 56,
         "name": "Eight of Swords",
         "suite": "swords",
         "image": "min_s_08",
@@ -399,6 +456,7 @@
         "interpretation": "Bad news, violent chagrin, crisis, censure, power in trammels, conflict, calumny; also sickness. \nReversed: Disquiet, difficulty, opposition, accident, treachery; what is unforeseen; fatality."
     },
     {
+        "id": 57,
         "name": "Seven of Swords",
         "suite": "swords",
         "image": "min_s_07",
@@ -406,6 +464,7 @@
         "interpretation": "Design, attempt, wish, hope, confidence; also quarrelling, a plan that may fail, annoyance. The design is uncertain in its import, because the significations are widely at variance with each other. \nReversed: Good advice, counsel, instruction, slander, babbling."
     },
     {
+        "id": 58,
         "name": "Six of Swords",
         "suite": "swords",
         "image": "min_s_06",
@@ -413,6 +472,7 @@
         "interpretation": "journey by water, route, way, envoy, commissionary, expedient. \nReversed: Declaration, confession, publicity; one account says that it is a proposal of love."
     },
     {
+        "id": 59,
         "name": "Five of Swords",
         "suite": "swords",
         "image": "min_s_05",
@@ -420,6 +480,7 @@
         "interpretation": "Degradation, destruction, revocation, infamy, dishonour, loss, with the variants and analogues of these. \nReversed: The same; burial and obsequies."
     },
     {
+        "id": 60,
         "name": "Four of Swords",
         "suite": "swords",
         "image": "min_s_04",
@@ -427,6 +488,7 @@
         "interpretation": "Vigilance, retreat, solitude, hermit's repose, exile, tomb and coffin. It is these last that have suggested the design. \nReversed: Wise administration, circumspection, economy, avarice, precaution, testament."
     },
     {
+        "id": 61,
         "name": "Three of Swords",
         "suite": "swords",
         "image": "min_s_03",
@@ -434,6 +496,7 @@
         "interpretation": "Removal, absence, delay, division, rupture, dispersion, and all that the design signifies naturally, being too simple and obvious to call for specific enumeration. \nReversed: Mental alienation, error, loss, distraction, disorder, confusion."
     },
     {
+        "id": 62,
         "name": "Two of Swords",
         "suite": "swords",
         "image": "min_s_02",
@@ -441,6 +504,7 @@
         "interpretation": "Conformity and the equipoise which it suggests, courage, friendship, concord in a state of arms; another reading gives tenderness, affection, intimacy. The suggestion of harmony and other favourable readings must be considered in a qualified manner, as Swords generally are not symbolical of beneficent forces in human affairs. \nReversed: Imposture, falsehood, duplicity, disloyalty."
     },
     {
+        "id": 63,
         "name": "Ace of Swords",
         "suite": "swords",
         "image": "min_s_ac",
@@ -448,6 +512,7 @@
         "interpretation": "Triumph, the excessive degree in everything, conquest, triumph of force. It is a card of great force, in love as well as in hatred. The crown may carry a much higher significance than comes usually within the sphere of fortune-telling. \nReversed: The same, but the results are disastrous; another account says--conception, childbirth, augmentation, multiplicity."
     },
     {
+        "id": 64,
         "name": "King of Pentacles",
         "suite": "pentacles",
         "image": "min_p_ki",
@@ -455,6 +520,7 @@
         "interpretation": "Valour, realizing intelligence, business and normal intellectual aptitude, sometimes mathematical gifts and attainments of this kind; success in these paths. \nReversed: Vice, weakness, ugliness, perversity, corruption, peril."
     },
     {
+        "id": 65,
         "name": "Queen of Pentacles",
         "suite": "pentacles",
         "image": "min_p_qu",
@@ -462,6 +528,7 @@
         "interpretation": "Opulence, generosity, magnificence, security, liberty. \nReversed: Evil, suspicion, suspense, fear, mistrust."
     },
     {
+        "id": 66,
         "name": "Knight of Pentacles",
         "suite": "pentacles",
         "image": "min_p_kn",
@@ -469,6 +536,7 @@
         "interpretation": "Utility, serviceableness, interest, responsibility, rectitude-all on the normal and external plane. \nReversed: inertia, idleness, repose of that kind, stagnation; also placidity, discouragement, carelessness."
     },
     {
+        "id": 67,
         "name": "Page of Pentacles",
         "suite": "pentacles",
         "image": "min_p_pa",
@@ -476,6 +544,7 @@
         "interpretation": "Application, study, scholarship, reflection another reading says news, messages and the bringer thereof; also rule, management. \nReversed: Prodigality, dissipation, liberality, luxury; unfavourable news."
     },
     {
+        "id": 68,
         "name": "Ten of Pentacles",
         "suite": "pentacles",
         "image": "min_p_10",
@@ -483,6 +552,7 @@
         "interpretation": "Gain, riches; family matters, archives, extraction, the abode of a family. \nReversed: Chance, fatality, loss, robbery, games of hazard; sometimes gift, dowry, pension."
     },
     {
+        "id": 69,
         "name": "Nine of Pentacles",
         "suite": "pentacles",
         "image": "min_p_09",
@@ -490,6 +560,7 @@
         "interpretation": "Prudence, safety, success, accomplishment, certitude, discernment. \nReversed: Roguery, deception, voided project, bad faith."
     },
     {
+        "id": 70,
         "name": "Eight of Pentacles",
         "suite": "pentacles",
         "image": "min_p_08",
@@ -497,6 +568,7 @@
         "interpretation": "Work, employment, commission, craftsmanship, skill in craft and business, perhaps in the preparatory stage. \nReversed: Voided ambition, vanity, cupidity, exaction, usury. It may also signify the possession of skill, in the sense of the ingenious mind turned to cunning and intrigue."
     },
     {
+        "id": 71,
         "name": "Seven of Pentacles",
         "suite": "pentacles",
         "image": "min_p_07",
@@ -504,6 +576,7 @@
         "interpretation": "These are exceedingly contradictory; in the main, it is a card of money, business, barter; but one reading gives altercation, quarrels--and another innocence, ingenuity, purgation. \nReversed: Cause for anxiety regarding money which it may be proposed to lend."
     },
     {
+        "id": 72,
         "name": "Six of Pentacles",
         "suite": "pentacles",
         "image": "min_p_06",
@@ -511,6 +584,7 @@
         "interpretation": "Presents, gifts, gratification another account says attention, vigilance now is the accepted time, present prosperity, etc. \nReversed: Desire, cupidity, envy, jealousy, illusion."
     },
     {
+        "id": 73,
         "name": "Five of Pentacles",
         "suite": "pentacles",
         "image": "min_p_05",
@@ -518,6 +592,7 @@
         "interpretation": "The card foretells material trouble above all, whether in the form illustrated--that is, destitution--or otherwise. For some cartomancists, it is a card of love and lovers-wife, husband, friend, mistress; also concordance, affinities. These alternatives cannot be harmonized. \nReversed: Disorder, chaos, ruin, discord, profligacy."
     },
     {
+        "id": 74,
         "name": "Four of Pentacles",
         "suite": "pentacles",
         "image": "min_p_04",
@@ -525,6 +600,7 @@
         "interpretation": "The surety of possessions, cleaving to that which one has, gift, legacy, inheritance. \nReversed: Suspense, delay, opposition."
     },
     {
+        "id": 75,
         "name": "Three of Pentacles",
         "suite": "pentacles",
         "image": "min_p_03",
@@ -532,6 +608,7 @@
         "interpretation": "Metier, trade, skilled labour; usually, however, regarded as a card of nobility, aristocracy, renown, glory. \nReversed: Mediocrity, in work and otherwise, puerility, pettiness, weakness."
     },
     {
+        "id": 76,
         "name": "Two of Pentacles",
         "suite": "pentacles",
         "image": "min_p_02",
@@ -539,6 +616,7 @@
         "interpretation": "On the one hand it is represented as a card of gaiety, recreation and its connexions, which is the subject of the design; but it is read also as news and messages in writing, as obstacles, agitation, trouble, embroilment. \nReversed: Enforced gaiety, simulated enjoyment, literal sense, handwriting, composition, letters of exchange."
     },
     {
+        "id": 77,
         "name": "Ace of Pentacles",
         "suite": "pentacles",
         "image": "min_p_ac",

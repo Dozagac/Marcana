@@ -29,11 +29,6 @@ struct CardDetailView: View {
     }
 }
 
-struct CardDetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        CardDetailView(card: Deck().allCards[0])
-    }
-}
 
 struct CardDisplayImageView: View {
     var image: String
@@ -43,5 +38,11 @@ struct CardDisplayImageView: View {
             .resizable()
             .scaledToFill()
             .frame(width: 200, height: 300)
+    }
+}
+
+struct CardDetailView_Previews: PreviewProvider {
+    static var previews: some View {
+        CardDetailView(card: Deck().allCards[0])
     }
 }
