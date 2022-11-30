@@ -13,24 +13,27 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            NavigationLink(destination: SingleReaderView(), label: {
-                ChooseReaderButtonView(buttonInfo: startButton(
-                    title: "Read 1 card",
-                    subtitle: "Read the vibe of the day",
-                    imageName: "threeReader"))
-            })
+            VStack {
+                NavigationLink(destination: SingleReaderView(), label: {
+                    ChooseReaderButtonView(buttonInfo: startButton(
+                        title: "Read 1 card",
+                        subtitle: "Read the vibe of the day",
+                        imageName: "threeReader"))
+                })
 
-            Spacer().frame(height: 24)
+                Spacer().frame(height: 24)
 
-            NavigationLink(destination: ThreeReaderView(), label: {
-                ChooseReaderButtonView(buttonInfo: startButton(
-                    title: "Read 3 cards",
-                    subtitle: "Seek answers to a question",
-                    imageName: "singleReader"))
-            })
-        }
-            .navigationBarTitle("Start Screen")
+                NavigationLink(destination: ThreeReaderView(), label: {
+                    ChooseReaderButtonView(buttonInfo: startButton(
+                        title: "Read 3 cards",
+                        subtitle: "Seek answers to a question",
+                        imageName: "singleReader"))
+                })
+            }
+                .navigationTitle("Start Screen")
+                .frame(maxWidth: .infinity)
+                .background(Color.background)
+
     }
 }
 
@@ -51,19 +54,22 @@ struct ChooseReaderButtonView: View {
     let buttonInfo: startButton
 
     var body: some View {
-        VStack(alignment: .leading) {
+        HStack() {
             Image(buttonInfo.imageName)
                 .resizable()
-                .frame(width: 200, height: 200)
-                .scaledToFit()
-
+                .scaledToFill()
+                .frame(width: 100, height: 140)
+            Spacer()
             cardText
                 .padding(.horizontal, 8)
+            
         }
-            .frame(width: 200)
+            .frame(width: 300, height: 140)
             .background()
             .clipShape(RoundedRectangle(cornerRadius: 24.0))
-            .shadow(color: .cyan, radius: 8)
+            .shadow(color: .icon, radius: 8)
+            .padding(40)
+            
     }
 
     var cardText: some View {
@@ -78,7 +84,8 @@ struct ChooseReaderButtonView: View {
                 .foregroundColor(.secondary)
                 .lineLimit(1)
                 .minimumScaleFactor(0.5)
-        }.padding(.bottom, 12)
+        }
+            .padding(.bottom, 12)
     }
 }
 

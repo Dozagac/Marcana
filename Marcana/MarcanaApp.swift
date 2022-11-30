@@ -18,6 +18,7 @@ struct MarcanaApp: App {
                 NavigationView {
                     ContentView()
                 }
+                .background(Color.background)
                 .tabItem{
                     Image(systemName: "camera.metering.unknown")
                     Text("Reading")
@@ -30,7 +31,11 @@ struct MarcanaApp: App {
                     Text("Deck")
                 }
             }
+            .background(.white)
+            .accentColor(.icon)
             .environmentObject(deck)
         }
+
+        
     }
 }

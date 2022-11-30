@@ -18,6 +18,8 @@
 		7675E45929326EF500ED17D5 /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7675E45829326EF500ED17D5 /* Deck.swift */; };
 		7675E45B2932774300ED17D5 /* ChooseReaderButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7675E45A2932774300ED17D5 /* ChooseReaderButtonView.swift */; };
 		7675E45F29336C3F00ED17D5 /* DeckInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7675E45E29336C3F00ED17D5 /* DeckInfoView.swift */; };
+		76B2E12F29365BD4004BCF46 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B2E12E29365BD4004BCF46 /* Extensions.swift */; };
+		76B2E13129365E15004BCF46 /* Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B2E13029365E15004BCF46 /* Modifiers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +35,8 @@
 		7675E45829326EF500ED17D5 /* Deck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deck.swift; sourceTree = "<group>"; };
 		7675E45A2932774300ED17D5 /* ChooseReaderButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseReaderButtonView.swift; sourceTree = "<group>"; };
 		7675E45E29336C3F00ED17D5 /* DeckInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckInfoView.swift; sourceTree = "<group>"; };
+		76B2E12E29365BD4004BCF46 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		76B2E13029365E15004BCF46 /* Modifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modifiers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,13 +83,23 @@
 			isa = PBXGroup;
 			children = (
 				7675E44429326B2600ED17D5 /* MarcanaApp.swift */,
+				76B2E13229365E3A004BCF46 /* DataModels */,
 				7654E8032933D5E800F9FDAB /* Views */,
 				7675E44829326B2700ED17D5 /* Assets.xcassets */,
-				7675E45229326B6300ED17D5 /* Card.swift */,
-				7675E45829326EF500ED17D5 /* Deck.swift */,
 				7675E45629326E1E00ED17D5 /* tarot.json */,
+				76B2E13029365E15004BCF46 /* Modifiers.swift */,
+				76B2E12E29365BD4004BCF46 /* Extensions.swift */,
 			);
 			path = Marcana;
+			sourceTree = "<group>";
+		};
+		76B2E13229365E3A004BCF46 /* DataModels */ = {
+			isa = PBXGroup;
+			children = (
+				7675E45229326B6300ED17D5 /* Card.swift */,
+				7675E45829326EF500ED17D5 /* Deck.swift */,
+			);
+			path = DataModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -159,10 +173,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				7654E8022933D5AF00F9FDAB /* ThreeReaderView.swift in Sources */,
+				76B2E13129365E15004BCF46 /* Modifiers.swift in Sources */,
 				7675E45B2932774300ED17D5 /* ChooseReaderButtonView.swift in Sources */,
 				7654E8002933D56500F9FDAB /* SingleReaderView.swift in Sources */,
 				7675E45929326EF500ED17D5 /* Deck.swift in Sources */,
 				7675E45329326B6300ED17D5 /* Card.swift in Sources */,
+				76B2E12F29365BD4004BCF46 /* Extensions.swift in Sources */,
 				7675E44729326B2600ED17D5 /* ReaderChoiceView.swift in Sources */,
 				7675E45F29336C3F00ED17D5 /* DeckInfoView.swift in Sources */,
 				7675E44529326B2600ED17D5 /* MarcanaApp.swift in Sources */,

@@ -9,30 +9,34 @@ import SwiftUI
 
 struct CardDetailView: View {
     var card: Card
-    
+
     var body: some View {
+
         ScrollView {
             CardDisplayImageView(image: card.image)
-                .padding()
+                .padding(.top, 45)
+
+            Text(card.name)
+                .font(.title)
+                .padding(.bottom)
 
             Text(card.interpretation)
                 .font(.footnote)
                 .italic()
                 .padding(.horizontal, 20)
                 .padding(.bottom, 10)
-            
+
             Text(card.description)
                 .padding(.horizontal, 20)
                 .lineLimit(nil)
         }
-        .navigationBarTitle(card.name, displayMode: .inline)
     }
 }
 
 
 struct CardDisplayImageView: View {
     var image: String
-    
+
     var body: some View {
         Image(image)
             .resizable()
