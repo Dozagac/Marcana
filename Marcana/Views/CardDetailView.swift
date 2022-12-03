@@ -11,21 +11,24 @@ struct CardDetailView: View {
     var card: Card
 
     var body: some View {
-
         ScrollView {
+            // MARK: Card Image
             CardDisplayImageView(image: card.image)
-                .padding(.top, 45)
+                .padding(.top, 20)
 
+            // MARK: Title
             Text(card.name)
                 .font(.title)
-                .padding(.bottom)
+                .padding()
 
+            // MARK: Card keywords, interpretation
             Text(card.interpretation)
                 .font(.footnote)
                 .italic()
                 .padding(.horizontal, 20)
                 .padding(.bottom, 10)
 
+            // MARK: Description
             Text(card.description)
                 .padding(.horizontal, 20)
                 .lineLimit(nil)

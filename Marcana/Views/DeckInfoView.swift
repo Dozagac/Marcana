@@ -28,6 +28,7 @@ struct DeckInfoView: View {
                     print(searchedString)
                     filterDeck(with: searchedString)
                 }
+                .padding(.bottom)
             
                
 
@@ -97,16 +98,20 @@ struct ListItem: View {
                 .resizable()
                 .scaledToFit()
                 .frame(height: 140.0)
-                .cornerRadius(8)
-                .shadow(radius: 3)
+                .cornerRadius(4)
+                .shadow(color: Color.gray, radius: 4, x: 0, y: 4)
+
+
 
             Text(card.name)
+                .frame(height: 40, alignment: .top)
+                .font(.footnote)
                 .fontWeight(.semibold)
                 .lineLimit(2)
                 .minimumScaleFactor(0.4)
 
         }
-            .frame(width: 100, height: 200)
+            .frame(width: 100, height: 180)
             .navigationTitle("Cards")
             .navigationBarTitleDisplayMode(.automatic)
     }

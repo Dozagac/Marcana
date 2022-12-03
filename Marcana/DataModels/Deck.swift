@@ -16,30 +16,18 @@ class Deck: ObservableObject {
     var swordsCards: [Card] = []
     var wandsCards: [Card] = []
 
-    
+
     init() {
         let url = Bundle.main.url(forResource: "tarot", withExtension: ".json")!
         let data = try! Data(contentsOf: url)
         allCards = try! JSONDecoder().decode([Card].self, from: data)
 
-        for card in allCards {
-            switch(card.suite) {
-            case .major:
-                majorCards.append(card)
-            case .wands:
-                wandsCards.append(card)
-                minorCards.append(card)
-            case .pentacles:
-                pentaclesCards.append(card)
-                minorCards.append(card)
-            case .swords:
-                swordsCards.append(card)
-                minorCards.append(card)
-            case .cups:
-                cupsCards.append(card)
-                minorCards.append(card)
-            }
-        }
+        self.majorCards = allCards.filter({ $0.suite == .major })
+        self.minorCards = allCards.filter({ $0.suite != .major })
+        self.cupsCards = allCards.filter({ $0.suite == .cups })
+        self.pentaclesCards = allCards.filter({ $0.suite == .pentacles })
+        self.swordsCards = allCards.filter({ $0.suite == .swords })
+        self.wandsCards = allCards.filter({ $0.suite == .wands })
     }
 }
 

@@ -33,7 +33,6 @@ struct ContentView: View {
                 .navigationTitle("Start Screen")
                 .frame(maxWidth: .infinity)
                 .background(Color.background)
-
     }
 }
 
