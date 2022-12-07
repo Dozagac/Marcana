@@ -15,39 +15,40 @@ struct DeckInfoView: View {
     @State private var searchedString: String = ""
     @State private var searchFilteredList: [Card] = Deck().allCards // I am not using the nev var deck anymore?
 
-    let columns = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
+    let columns = [
+        GridItem(.flexible(), spacing:20),
+        GridItem(.flexible(), spacing:20),
+        GridItem(.flexible(), spacing:20)
+    ]
 
     var body: some View {
         ScrollView {
-            ClearableTextField("Card Search", text: $searchedString, prompt: Text("Search..."))
-                .padding(8) // this sets the size
-                .background(Color.icon.opacity(0.2))
-                .cornerRadius(20)
-                .padding(.horizontal) // this sets the outer padding
-                .onChange(of: searchedString) { newValue in
-                    print(searchedString)
+            VStack {
+                //MARK: TEXT FIELD
+                ClearableTextField("Card Search", text: $searchedString)
+                    .onChange(of: searchedString) { newValue in
                     filterDeck(with: searchedString)
                 }
-                .padding(.bottom)
-            
-               
-
-            LazyVGrid (columns: columns) {
-                ForEach(searchFilteredList) { card in
-                    ListItem(card: card)
-                        .onTapGesture {
-                        self.sheetCard = card
-                        self.showingSheet.toggle()
+                    .padding(.bottom, 10)
+                //MARK: GRID VIEW
+                LazyVGrid (columns: columns, spacing: 0) {
+                    ForEach(searchFilteredList) { card in
+                        CardItem(card: card)
+                            .onTapGesture {
+                            self.sheetCard = card
+                            self.showingSheet.toggle()
+                        }
                     }
-                }
-
-                    .listStyle(.insetGrouped)
-                    .sheet(item: self.$sheetCard) { item in
-                    CardDetailView(card: item)
+                        .sheet(item: self.$sheetCard) { item in
+                        CardDetailView(card: item)
+                    }
                 }
             }
         }
             .padding()
+            .padding([.top, .bottom], 1) // this is to make scrollview ignore safe area, a bug.
+        .navigationTitle("All Cards")
+            .navigationBarTitleDisplayMode(.inline)
 
     }
 
@@ -68,7 +69,7 @@ struct ClearableTextField: View {
     var title: String
     @Binding var text: String
 
-    init(_ title: String, text: Binding<String>, prompt: Text) {
+    init(_ title: String, text: Binding<String>, prompt: Text = Text("Search...").foregroundColor(.secondary)) {
         self.title = title
         self.prompt = prompt
         _text = text
@@ -76,50 +77,53 @@ struct ClearableTextField: View {
 
     var body: some View {
         ZStack(alignment: .trailing) {
-            TextField(title, text: $text, prompt: prompt)
-            Image(systemName: "xmark.circle")
-            .resizable()
-            .frame(width: 20, height: 20)
-            .foregroundColor(.secondary)
-            .onTapGesture {
-                text = ""
+            HStack {
+                Image(systemName: "magnifyingglass")
+                    .foregroundColor(.secondary)
+                TextField(title, text: $text, prompt: prompt)
             }
-            .padding(.trailing, 4)
+            if text.isNotEmpty {
+                Image(systemName: "xmark.circle.fill")
+                    .resizable()
+                    .frame(width: 20, height: 20)
+                    .foregroundColor(.gray)
+                    .onTapGesture {
+                    text = ""
+                }
+                    .padding(.trailing, 4)
+            }
         }
+            .padding(8) // provides seach bar size
+            .background(Color.gray.opacity(0.4))
+            .cornerRadius(8)
     }
 }
 
-struct ListItem: View {
+struct CardItem: View {
     var card: Card
 
     var body: some View {
         VStack {
             Image(card.image)
                 .resizable()
-                .scaledToFit()
-                .frame(height: 140.0)
-                .cornerRadius(4)
-                .shadow(color: Color.gray, radius: 4, x: 0, y: 4)
-
-
-
+                .aspectRatio(3/4, contentMode: .fill)
+                .cornerRadius(8)
+            
             Text(card.name)
                 .frame(height: 40, alignment: .top)
                 .font(.footnote)
                 .fontWeight(.semibold)
-                .lineLimit(2)
+                .lineLimit(1)
                 .minimumScaleFactor(0.4)
-
         }
-            .frame(width: 100, height: 180)
-            .navigationTitle("Cards")
-            .navigationBarTitleDisplayMode(.automatic)
     }
 }
 
 struct DeckInfoView_Previews: PreviewProvider {
     static var previews: some View {
-        DeckInfoView()
-            .environmentObject(Deck())
+        NavigationView {
+            DeckInfoView()
+                .environmentObject(Deck())
+        }
     }
 }

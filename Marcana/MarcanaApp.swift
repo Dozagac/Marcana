@@ -9,33 +9,32 @@ import SwiftUI
 
 @main
 struct MarcanaApp: App {
-    
+    @State private var selectedTab = 0
     @StateObject var deck = Deck()
     
     var body: some Scene {
         WindowGroup {
-            TabView {
+            TabView(selection: $selectedTab) {
                 NavigationView {
                     ContentView()
+
                 }
-                .background(Color.background)
+                .accentColor(.primary)
                 .tabItem{
-                    Image(systemName: "camera.metering.unknown")
+                    selectedTab == 0 ? Image(systemName: "rectangle.roundedtop") : Image(systemName: "rectangle.roundedbottom")
                     Text("Reading")
-                }
+                }.tag(0)
                 NavigationView {
                     DeckInfoView()
                 }
+                .accentColor(.primary)
                 .tabItem{
-                    Image(systemName: "info.circle")
+                    selectedTab == 1 ? Image(systemName: "info.bubble") : Image(systemName: "info.circle")
                     Text("Deck")
-                }
+                }.tag(1)
             }
-            .background(.white)
-            .accentColor(.icon)
+            .accentColor(.cyan)
             .environmentObject(deck)
         }
-
-        
     }
 }

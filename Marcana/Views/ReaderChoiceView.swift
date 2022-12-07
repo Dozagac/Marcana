@@ -13,85 +13,87 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
+        ZStack {
+            Color.gray
+                .ignoresSafeArea() // this way the Vstack still respects the safe area
+
             VStack {
+                Spacer()
+
                 NavigationLink(destination: SingleReaderView(), label: {
-                    ChooseReaderButtonView(buttonInfo: startButton(
+                    SelectionCard(
                         title: "Read 1 card",
                         subtitle: "Read the vibe of the day",
-                        imageName: "threeReader"))
+                        imageName: "threeReader")
                 })
 
-                Spacer().frame(height: 24)
+                Spacer()
 
                 NavigationLink(destination: ThreeReaderView(), label: {
-                    ChooseReaderButtonView(buttonInfo: startButton(
+                    SelectionCard(
                         title: "Read 3 cards",
                         subtitle: "Seek answers to a question",
-                        imageName: "singleReader"))
+                        imageName: "singleReader")
                 })
+
+                Spacer()
             }
-                .navigationTitle("Start Screen")
-                .frame(maxWidth: .infinity)
-                .background(Color.background)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .navigationTitle("Welcome")
+        }
     }
 }
 
 
-struct startButton {
+struct SelectionCard: View {
     let title: String
     let subtitle: String
     let imageName: String
 
-    static let example = startButton(
-        title: "Read 1 card",
-        subtitle: "seek answers to a question",
-        imageName: "threeReader")
-}
-
-
-struct ChooseReaderButtonView: View {
-    let buttonInfo: startButton
-
     var body: some View {
         HStack() {
-            Image(buttonInfo.imageName)
+            // MARK: CARD IMAGE
+            Image(imageName)
                 .resizable()
                 .scaledToFill()
                 .frame(width: 100, height: 140)
-            Spacer()
-            cardText
+            VStack(alignment: .leading) {
+                //MARK: CARD TITLE
+                Text(title)
+                    .font(.headline)
+                    .foregroundColor(.primary)
+                    .minimumScaleFactor(0.5)
+                //MARK: CARD SUBTITLE
+                Text(subtitle)
+                    .font(.subheadline)
+                    .foregroundColor(.secondary)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.5)
+            }
                 .padding(.horizontal, 8)
-            
+            Spacer()
         }
             .frame(width: 300, height: 140)
             .background()
             .clipShape(RoundedRectangle(cornerRadius: 24.0))
             .shadow(color: .icon, radius: 8)
             .padding(40)
-            
-    }
-
-    var cardText: some View {
-        VStack (alignment: .leading) {
-            Text(buttonInfo.title)
-                .font(.headline)
-                .foregroundColor(.primary)
-                .minimumScaleFactor(0.5)
-
-            Text(buttonInfo.subtitle)
-                .font(.subheadline)
-                .foregroundColor(.secondary)
-                .lineLimit(1)
-                .minimumScaleFactor(0.5)
-        }
-            .padding(.bottom, 12)
     }
 }
 
 
+
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        Group {
+            NavigationView {
+                ContentView()
+            }
+
+            NavigationView {
+                ContentView()
+            }.preferredColorScheme(.dark)
+        }
     }
 }
 

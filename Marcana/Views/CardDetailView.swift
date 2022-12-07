@@ -14,7 +14,9 @@ struct CardDetailView: View {
         ScrollView {
             // MARK: Card Image
             CardDisplayImageView(image: card.image)
+                .shadow(color: Color.gray, radius: 4, x: 0, y: 4)
                 .padding(.top, 20)
+
 
             // MARK: Title
             Text(card.name)
@@ -32,6 +34,9 @@ struct CardDetailView: View {
             Text(card.description)
                 .padding(.horizontal, 20)
                 .lineLimit(nil)
+        }
+            .onAppear {
+            UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
         }
     }
 }

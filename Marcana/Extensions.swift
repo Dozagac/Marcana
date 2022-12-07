@@ -8,7 +8,14 @@
 import Foundation
 import SwiftUI
 
-extension Color{
+// Protocol Extension
+extension Collection {
+    var isNotEmpty: Bool {
+        isEmpty == false
+    }
+}
+
+extension Color {
     static let background = Color("Background")
     static let icon = Color("Icon")
     static let text = Color("Text")
