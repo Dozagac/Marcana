@@ -7,9 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		763DCC9C2944A77800D286C7 /* OpenAISwift in Frameworks */ = {isa = PBXBuildFile; productRef = 763DCC9B2944A77800D286C7 /* OpenAISwift */; };
 		7654E7FE2933C67A00F9FDAB /* CardDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7654E7FD2933C67A00F9FDAB /* CardDetailView.swift */; };
 		7654E8002933D56500F9FDAB /* SingleReaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7654E7FF2933D56500F9FDAB /* SingleReaderView.swift */; };
-		7654E8022933D5AF00F9FDAB /* ThreeReaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7654E8012933D5AF00F9FDAB /* ThreeReaderView.swift */; };
+		766F59FA2941342700A328E4 /* BackGroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766F59F92941342700A328E4 /* BackGroundView.swift */; };
 		7675E44529326B2600ED17D5 /* MarcanaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7675E44429326B2600ED17D5 /* MarcanaApp.swift */; };
 		7675E44729326B2600ED17D5 /* ReaderChoiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7675E44629326B2600ED17D5 /* ReaderChoiceView.swift */; };
 		7675E44929326B2700ED17D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7675E44829326B2700ED17D5 /* Assets.xcassets */; };
@@ -24,7 +25,7 @@
 /* Begin PBXFileReference section */
 		7654E7FD2933C67A00F9FDAB /* CardDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailView.swift; sourceTree = "<group>"; };
 		7654E7FF2933D56500F9FDAB /* SingleReaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleReaderView.swift; sourceTree = "<group>"; };
-		7654E8012933D5AF00F9FDAB /* ThreeReaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreeReaderView.swift; sourceTree = "<group>"; };
+		766F59F92941342700A328E4 /* BackGroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackGroundView.swift; sourceTree = "<group>"; };
 		7675E44129326B2600ED17D5 /* Marcana.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Marcana.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7675E44429326B2600ED17D5 /* MarcanaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarcanaApp.swift; sourceTree = "<group>"; };
 		7675E44629326B2600ED17D5 /* ReaderChoiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReaderChoiceView.swift; sourceTree = "<group>"; };
@@ -42,6 +43,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				763DCC9C2944A77800D286C7 /* OpenAISwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -53,9 +55,9 @@
 			children = (
 				7675E44629326B2600ED17D5 /* ReaderChoiceView.swift */,
 				7675E45E29336C3F00ED17D5 /* DeckInfoView.swift */,
-				7654E7FD2933C67A00F9FDAB /* CardDetailView.swift */,
 				7654E7FF2933D56500F9FDAB /* SingleReaderView.swift */,
-				7654E8012933D5AF00F9FDAB /* ThreeReaderView.swift */,
+				7654E7FD2933C67A00F9FDAB /* CardDetailView.swift */,
+				766F59F92941342700A328E4 /* BackGroundView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -115,6 +117,9 @@
 			dependencies = (
 			);
 			name = Marcana;
+			packageProductDependencies = (
+				763DCC9B2944A77800D286C7 /* OpenAISwift */,
+			);
 			productName = Marcana;
 			productReference = 7675E44129326B2600ED17D5 /* Marcana.app */;
 			productType = "com.apple.product-type.application";
@@ -143,6 +148,9 @@
 				Base,
 			);
 			mainGroup = 7675E43829326B2600ED17D5;
+			packageReferences = (
+				763DCC9A2944A77800D286C7 /* XCRemoteSwiftPackageReference "OpenAISwift" */,
+			);
 			productRefGroup = 7675E44229326B2600ED17D5 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -169,7 +177,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7654E8022933D5AF00F9FDAB /* ThreeReaderView.swift in Sources */,
 				76B2E13129365E15004BCF46 /* Modifiers.swift in Sources */,
 				7654E8002933D56500F9FDAB /* SingleReaderView.swift in Sources */,
 				7675E45929326EF500ED17D5 /* Deck.swift in Sources */,
@@ -177,6 +184,7 @@
 				76B2E12F29365BD4004BCF46 /* Extensions.swift in Sources */,
 				7675E44729326B2600ED17D5 /* ReaderChoiceView.swift in Sources */,
 				7675E45F29336C3F00ED17D5 /* DeckInfoView.swift in Sources */,
+				766F59FA2941342700A328E4 /* BackGroundView.swift in Sources */,
 				7675E44529326B2600ED17D5 /* MarcanaApp.swift in Sources */,
 				7654E7FE2933C67A00F9FDAB /* CardDetailView.swift in Sources */,
 			);
@@ -379,6 +387,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		763DCC9A2944A77800D286C7 /* XCRemoteSwiftPackageReference "OpenAISwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/adamrushy/OpenAISwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		763DCC9B2944A77800D286C7 /* OpenAISwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 763DCC9A2944A77800D286C7 /* XCRemoteSwiftPackageReference "OpenAISwift" */;
+			productName = OpenAISwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 7675E43929326B2600ED17D5 /* Project object */;
 }

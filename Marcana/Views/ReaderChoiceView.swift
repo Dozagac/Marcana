@@ -14,29 +14,16 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         ZStack {
-            Color.gray
-                .ignoresSafeArea() // this way the Vstack still respects the safe area
-
+            BackgroundView() // this way the Vstack still respects the safe area
             VStack {
-                Spacer()
 
                 NavigationLink(destination: SingleReaderView(), label: {
-                    SelectionCard(
+                    SelectionCardView(
                         title: "Read 1 card",
                         subtitle: "Read the vibe of the day",
                         imageName: "threeReader")
                 })
 
-                Spacer()
-
-                NavigationLink(destination: ThreeReaderView(), label: {
-                    SelectionCard(
-                        title: "Read 3 cards",
-                        subtitle: "Seek answers to a question",
-                        imageName: "singleReader")
-                })
-
-                Spacer()
             }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .navigationTitle("Welcome")
@@ -45,7 +32,7 @@ struct ContentView: View {
 }
 
 
-struct SelectionCard: View {
+struct SelectionCardView: View {
     let title: String
     let subtitle: String
     let imageName: String
@@ -82,7 +69,6 @@ struct SelectionCard: View {
 }
 
 
-
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
@@ -96,6 +82,8 @@ struct ContentView_Previews: PreviewProvider {
         }
     }
 }
+
+
 
 
 

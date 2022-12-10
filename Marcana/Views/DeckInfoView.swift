@@ -16,40 +16,43 @@ struct DeckInfoView: View {
     @State private var searchFilteredList: [Card] = Deck().allCards // I am not using the nev var deck anymore?
 
     let columns = [
-        GridItem(.flexible(), spacing:20),
-        GridItem(.flexible(), spacing:20),
-        GridItem(.flexible(), spacing:20)
+        GridItem(.flexible(), spacing: 20),
+        GridItem(.flexible(), spacing: 20),
+        GridItem(.flexible(), spacing: 20)
     ]
 
     var body: some View {
-        ScrollView {
-            VStack {
-                //MARK: TEXT FIELD
-                ClearableTextField("Card Search", text: $searchedString)
-                    .onChange(of: searchedString) { newValue in
-                    filterDeck(with: searchedString)
-                }
-                    .padding(.bottom, 10)
-                //MARK: GRID VIEW
-                LazyVGrid (columns: columns, spacing: 0) {
-                    ForEach(searchFilteredList) { card in
-                        CardItem(card: card)
-                            .onTapGesture {
-                            self.sheetCard = card
-                            self.showingSheet.toggle()
-                        }
+        ZStack {
+            BackgroundView()
+
+            ScrollView {
+                VStack {
+                    //MARK: TEXT FIELD
+                    ClearableTextField("Card Search", text: $searchedString)
+                        .onChange(of: searchedString) { newValue in
+                        filterDeck(with: searchedString)
                     }
-                        .sheet(item: self.$sheetCard) { item in
-                        CardDetailView(card: item)
+                        .padding(.bottom, 10)
+                    //MARK: GRID VIEW
+                    LazyVGrid (columns: columns, spacing: 0) {
+                        ForEach(searchFilteredList) { card in
+                            CardItemView(card: card)
+                                .onTapGesture {
+                                self.sheetCard = card
+                                self.showingSheet.toggle()
+                            }
+                        }
+                            .sheet(item: self.$sheetCard) { item in
+                            CardDetailView(card: item)
+                        }
                     }
                 }
             }
+                .padding()
+                .padding([.top, .bottom], 1) // this is to make scrollview ignore safe area, a bug.
+            .navigationTitle("All Cards")
+                .navigationBarTitleDisplayMode(.inline)
         }
-            .padding()
-            .padding([.top, .bottom], 1) // this is to make scrollview ignore safe area, a bug.
-        .navigationTitle("All Cards")
-            .navigationBarTitleDisplayMode(.inline)
-
     }
 
     func filterDeck(with input: String) -> Void {
@@ -94,21 +97,21 @@ struct ClearableTextField: View {
             }
         }
             .padding(8) // provides seach bar size
-            .background(Color.gray.opacity(0.4))
+        .background(Color.gray.opacity(0.4))
             .cornerRadius(8)
     }
 }
 
-struct CardItem: View {
+struct CardItemView: View {
     var card: Card
 
     var body: some View {
         VStack {
             Image(card.image)
                 .resizable()
-                .aspectRatio(3/4, contentMode: .fill)
+                .aspectRatio(3 / 4, contentMode: .fill)
                 .cornerRadius(8)
-            
+
             Text(card.name)
                 .frame(height: 40, alignment: .top)
                 .font(.footnote)
