@@ -7,9 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		76267D3B2955CDAE00108612 /* GetUserNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76267D3A2955CDAE00108612 /* GetUserNameView.swift */; };
+		76267D402955D33900108612 /* GetUserBirthdateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76267D3F2955D33800108612 /* GetUserBirthdateView.swift */; };
+		76267D422955D60E00108612 /* GetUserOccupationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76267D412955D60E00108612 /* GetUserOccupationView.swift */; };
+		76267D442955EA5900108612 /* GetUserRelationshipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76267D432955EA5900108612 /* GetUserRelationshipView.swift */; };
+		76267D462955EC3F00108612 /* GetUserGenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76267D452955EC3F00108612 /* GetUserGenderView.swift */; };
+		76267D482955F91E00108612 /* TestingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76267D472955F91E00108612 /* TestingView.swift */; };
 		763DCC9C2944A77800D286C7 /* OpenAISwift in Frameworks */ = {isa = PBXBuildFile; productRef = 763DCC9B2944A77800D286C7 /* OpenAISwift */; };
 		7654E7FE2933C67A00F9FDAB /* CardDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7654E7FD2933C67A00F9FDAB /* CardDetailView.swift */; };
-		7654E8002933D56500F9FDAB /* SingleReaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7654E7FF2933D56500F9FDAB /* SingleReaderView.swift */; };
+		7654E8002933D56500F9FDAB /* ThreeCardSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7654E7FF2933D56500F9FDAB /* ThreeCardSelectionView.swift */; };
 		766F59FA2941342700A328E4 /* BackGroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766F59F92941342700A328E4 /* BackGroundView.swift */; };
 		7675E44529326B2600ED17D5 /* MarcanaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7675E44429326B2600ED17D5 /* MarcanaApp.swift */; };
 		7675E44729326B2600ED17D5 /* ReaderChoiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7675E44629326B2600ED17D5 /* ReaderChoiceView.swift */; };
@@ -23,8 +29,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		76267D3A2955CDAE00108612 /* GetUserNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserNameView.swift; sourceTree = "<group>"; };
+		76267D3F2955D33800108612 /* GetUserBirthdateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserBirthdateView.swift; sourceTree = "<group>"; };
+		76267D412955D60E00108612 /* GetUserOccupationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserOccupationView.swift; sourceTree = "<group>"; };
+		76267D432955EA5900108612 /* GetUserRelationshipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserRelationshipView.swift; sourceTree = "<group>"; };
+		76267D452955EC3F00108612 /* GetUserGenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserGenderView.swift; sourceTree = "<group>"; };
+		76267D472955F91E00108612 /* TestingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingView.swift; sourceTree = "<group>"; };
 		7654E7FD2933C67A00F9FDAB /* CardDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailView.swift; sourceTree = "<group>"; };
-		7654E7FF2933D56500F9FDAB /* SingleReaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleReaderView.swift; sourceTree = "<group>"; };
+		7654E7FF2933D56500F9FDAB /* ThreeCardSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreeCardSelectionView.swift; sourceTree = "<group>"; };
 		766F59F92941342700A328E4 /* BackGroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackGroundView.swift; sourceTree = "<group>"; };
 		7675E44129326B2600ED17D5 /* Marcana.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Marcana.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7675E44429326B2600ED17D5 /* MarcanaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarcanaApp.swift; sourceTree = "<group>"; };
@@ -50,14 +62,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		76267D3C2955D2C600108612 /* DataCollection */ = {
+			isa = PBXGroup;
+			children = (
+				76267D3A2955CDAE00108612 /* GetUserNameView.swift */,
+				76267D3F2955D33800108612 /* GetUserBirthdateView.swift */,
+				76267D452955EC3F00108612 /* GetUserGenderView.swift */,
+				76267D412955D60E00108612 /* GetUserOccupationView.swift */,
+				76267D432955EA5900108612 /* GetUserRelationshipView.swift */,
+				76267D472955F91E00108612 /* TestingView.swift */,
+			);
+			path = DataCollection;
+			sourceTree = "<group>";
+		};
 		7654E8032933D5E800F9FDAB /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				766F59F92941342700A328E4 /* BackGroundView.swift */,
 				7675E44629326B2600ED17D5 /* ReaderChoiceView.swift */,
 				7675E45E29336C3F00ED17D5 /* DeckInfoView.swift */,
-				7654E7FF2933D56500F9FDAB /* SingleReaderView.swift */,
+				7654E7FF2933D56500F9FDAB /* ThreeCardSelectionView.swift */,
 				7654E7FD2933C67A00F9FDAB /* CardDetailView.swift */,
-				766F59F92941342700A328E4 /* BackGroundView.swift */,
+				76267D3C2955D2C600108612 /* DataCollection */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -178,14 +204,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				76B2E13129365E15004BCF46 /* Modifiers.swift in Sources */,
-				7654E8002933D56500F9FDAB /* SingleReaderView.swift in Sources */,
+				7654E8002933D56500F9FDAB /* ThreeCardSelectionView.swift in Sources */,
 				7675E45929326EF500ED17D5 /* Deck.swift in Sources */,
 				7675E45329326B6300ED17D5 /* Card.swift in Sources */,
+				76267D442955EA5900108612 /* GetUserRelationshipView.swift in Sources */,
+				76267D482955F91E00108612 /* TestingView.swift in Sources */,
 				76B2E12F29365BD4004BCF46 /* Extensions.swift in Sources */,
 				7675E44729326B2600ED17D5 /* ReaderChoiceView.swift in Sources */,
 				7675E45F29336C3F00ED17D5 /* DeckInfoView.swift in Sources */,
+				76267D3B2955CDAE00108612 /* GetUserNameView.swift in Sources */,
 				766F59FA2941342700A328E4 /* BackGroundView.swift in Sources */,
 				7675E44529326B2600ED17D5 /* MarcanaApp.swift in Sources */,
+				76267D462955EC3F00108612 /* GetUserGenderView.swift in Sources */,
+				76267D422955D60E00108612 /* GetUserOccupationView.swift in Sources */,
+				76267D402955D33900108612 /* GetUserBirthdateView.swift in Sources */,
 				7654E7FE2933C67A00F9FDAB /* CardDetailView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

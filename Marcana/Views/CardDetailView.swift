@@ -11,32 +11,37 @@ struct CardDetailView: View {
     var card: Card
 
     var body: some View {
-        ScrollView {
-            // MARK: Card Image
-            CardDisplayImageView(image: card.image)
-                .shadow(color: Color.gray, radius: 4, x: 0, y: 4)
-                .padding(.top, 20)
+        ZStack {
+            PlainBackgroundView()
+            ScrollView {
+                // MARK: Card Image
+                CardDisplayImageView(image: card.image)
+                    .shadow(color: Color.gray, radius: 4, x: 0, y: 4)
+                    .padding(.top, 50)
 
+                // MARK: Title
+                Text(card.name)
+                    .font(.title)
+                    .padding()
 
-            // MARK: Title
-            Text(card.name)
-                .font(.title)
-                .padding()
+                // MARK: Card keywords, interpretation
+                Text(card.interpretation)
+                    .font(.footnote)
+                    .italic()
+                    .frame(maxWidth: 360, alignment: .leading)
+                    .padding(.horizontal)
+                    .padding(.bottom, 10)
 
-            // MARK: Card keywords, interpretation
-            Text(card.interpretation)
-                .font(.footnote)
-                .italic()
-                .padding(.horizontal, 20)
-                .padding(.bottom, 10)
-
-            // MARK: Description
-            Text(card.description)
-                .padding(.horizontal, 20)
-                .lineLimit(nil)
-        }
-            .onAppear {
-            UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
+                // MARK: Description
+                Text(card.description)
+                    .frame(width: 360, alignment: .leading)
+                    .padding(.horizontal)
+                    .lineLimit(nil)
+            }
+            .foregroundColor(.text)
+                .onAppear {
+                UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
+            }
         }
     }
 }
@@ -49,6 +54,7 @@ struct CardDisplayImageView: View {
         Image(image)
             .resizable()
             .scaledToFill()
+            .cornerRadius(8)
             .frame(width: 200, height: 300)
     }
 }

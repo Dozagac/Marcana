@@ -17,7 +17,7 @@ struct ContentView: View {
             BackgroundView() // this way the Vstack still respects the safe area
             VStack {
 
-                NavigationLink(destination: SingleReaderView(), label: {
+                NavigationLink(destination: ThreeCardSelectionView(), label: {
                     SelectionCardView(
                         title: "Read 1 card",
                         subtitle: "Read the vibe of the day",

@@ -118,6 +118,7 @@ struct CardItemView: View {
                 .fontWeight(.semibold)
                 .lineLimit(1)
                 .minimumScaleFactor(0.4)
+                .foregroundColor(.text)
         }
     }
 }

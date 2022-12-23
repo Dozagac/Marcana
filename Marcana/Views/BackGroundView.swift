@@ -10,9 +10,36 @@ import SwiftUI
 
 struct BackgroundView: View {
     var body: some View {
-        LinearGradient(gradient: Gradient(colors: [Color.bgGradient2, Color.bgGradient1]),
-                       startPoint: .topLeading,
-                       endPoint: .bottomTrailing)
-            .ignoresSafeArea()
+        ZStack {
+            Color.background
+                .ignoresSafeArea()
+            HStack {
+                VStack {
+                    // Creating this with an arc causes the image's cut part to overflow the screen and messes up the layout of the pages it is in. Infinite width child Views extend past the Screen.
+                    Image("CornerSun")
+                    Spacer()
+                }
+                Spacer()
+            }.ignoresSafeArea()
+        }
     }
 }
+
+
+struct PlainBackgroundView: View {
+    var body: some View {
+        ZStack {
+            Color.background
+                .ignoresSafeArea()
+        }
+    }
+}
+
+
+struct BackgroundView_Previews: PreviewProvider {
+    static var previews: some View {
+        BackgroundView()
+    }
+}
+
+

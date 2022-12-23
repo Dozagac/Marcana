@@ -16,8 +16,7 @@ struct MarcanaApp: App {
         WindowGroup {
             TabView(selection: $selectedTab) {
                 NavigationView {
-                    SingleReaderView()
-
+                    GetUserNameView()
                 }
                 .accentColor(.primary)
                 .tabItem{

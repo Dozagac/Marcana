@@ -17,9 +17,9 @@ extension Collection {
 
 extension Color {
     static let background = Color("Background")
-    static let bgGradient1 = Color("BgGradient1")
-    static let bgGradient2 = Color("BgGradient2")
+    static let foreground = Color("Foreground")
     static let icon = Color("Icon")
+    static let iconUnselected = Color("IconUnselected")
     static let text = Color("Text")
     static let systemBackground = Color(uiColor: .systemBackground)
 }
