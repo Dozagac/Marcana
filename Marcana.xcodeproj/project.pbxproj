@@ -13,6 +13,7 @@
 		76267D442955EA5900108612 /* GetUserRelationshipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76267D432955EA5900108612 /* GetUserRelationshipView.swift */; };
 		76267D462955EC3F00108612 /* GetUserGenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76267D452955EC3F00108612 /* GetUserGenderView.swift */; };
 		76267D482955F91E00108612 /* TestingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76267D472955F91E00108612 /* TestingView.swift */; };
+		76267D4A295643CC00108612 /* GetUserQuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76267D49295643CC00108612 /* GetUserQuestionView.swift */; };
 		763DCC9C2944A77800D286C7 /* OpenAISwift in Frameworks */ = {isa = PBXBuildFile; productRef = 763DCC9B2944A77800D286C7 /* OpenAISwift */; };
 		7654E7FE2933C67A00F9FDAB /* CardDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7654E7FD2933C67A00F9FDAB /* CardDetailView.swift */; };
 		7654E8002933D56500F9FDAB /* ThreeCardSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7654E7FF2933D56500F9FDAB /* ThreeCardSelectionView.swift */; };
@@ -35,6 +36,7 @@
 		76267D432955EA5900108612 /* GetUserRelationshipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserRelationshipView.swift; sourceTree = "<group>"; };
 		76267D452955EC3F00108612 /* GetUserGenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserGenderView.swift; sourceTree = "<group>"; };
 		76267D472955F91E00108612 /* TestingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingView.swift; sourceTree = "<group>"; };
+		76267D49295643CC00108612 /* GetUserQuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserQuestionView.swift; sourceTree = "<group>"; };
 		7654E7FD2933C67A00F9FDAB /* CardDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailView.swift; sourceTree = "<group>"; };
 		7654E7FF2933D56500F9FDAB /* ThreeCardSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreeCardSelectionView.swift; sourceTree = "<group>"; };
 		766F59F92941342700A328E4 /* BackGroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackGroundView.swift; sourceTree = "<group>"; };
@@ -62,7 +64,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		76267D3C2955D2C600108612 /* DataCollection */ = {
+		76267D3C2955D2C600108612 /* FortuneFlow */ = {
 			isa = PBXGroup;
 			children = (
 				76267D3A2955CDAE00108612 /* GetUserNameView.swift */,
@@ -70,9 +72,11 @@
 				76267D452955EC3F00108612 /* GetUserGenderView.swift */,
 				76267D412955D60E00108612 /* GetUserOccupationView.swift */,
 				76267D432955EA5900108612 /* GetUserRelationshipView.swift */,
+				76267D49295643CC00108612 /* GetUserQuestionView.swift */,
+				7654E7FF2933D56500F9FDAB /* ThreeCardSelectionView.swift */,
 				76267D472955F91E00108612 /* TestingView.swift */,
 			);
-			path = DataCollection;
+			path = FortuneFlow;
 			sourceTree = "<group>";
 		};
 		7654E8032933D5E800F9FDAB /* Views */ = {
@@ -81,9 +85,8 @@
 				766F59F92941342700A328E4 /* BackGroundView.swift */,
 				7675E44629326B2600ED17D5 /* ReaderChoiceView.swift */,
 				7675E45E29336C3F00ED17D5 /* DeckInfoView.swift */,
-				7654E7FF2933D56500F9FDAB /* ThreeCardSelectionView.swift */,
 				7654E7FD2933C67A00F9FDAB /* CardDetailView.swift */,
-				76267D3C2955D2C600108612 /* DataCollection */,
+				76267D3C2955D2C600108612 /* FortuneFlow */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -219,6 +222,7 @@
 				76267D422955D60E00108612 /* GetUserOccupationView.swift in Sources */,
 				76267D402955D33900108612 /* GetUserBirthdateView.swift in Sources */,
 				7654E7FE2933C67A00F9FDAB /* CardDetailView.swift in Sources */,
+				76267D4A295643CC00108612 /* GetUserQuestionView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

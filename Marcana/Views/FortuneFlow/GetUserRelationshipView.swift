@@ -16,7 +16,6 @@ struct GetUserRelationshipView: View {
         case relationship = "In a relationship"
         case engaged = "Engaged"
         case married = "Married"
-        case widowed = "Widowed"
     }
 
     var body: some View {
@@ -24,31 +23,31 @@ struct GetUserRelationshipView: View {
             BackgroundView()
             VStack {
                 QuestionText(text: "What is your relationship status?")
-                    .padding(.bottom, 10)
+                    .padding(.bottom, 20)
                 ForEach(Relationship.allCases, id: \.self) { status in
                     Button(action: {
                         self.selectedRelationship = status }
                     ) {
-                        HStack {
+                        HStack() {
                             Text(status.rawValue)
                                 .padding(.leading)
                             Spacer()
                         }
                     }
-                    .frame(width: 200, height: 50)
-                    .background(self.selectedRelationship == status ? Color.foreground : Color.clear)
-                    .foregroundColor(Color.text)
-                    .cornerRadius(10)
-                    .overlay(RoundedRectangle(cornerRadius: 10
-                                             ).stroke(Color.text, lineWidth: 1).background(.clear))
+                        .frame(width: 200, height: 50)
+                        .background(self.selectedRelationship == status ? Color.foreground : Color.clear)
+                        .foregroundColor(Color.text)
+                        .cornerRadius(10)
+                        .overlay(RoundedRectangle(cornerRadius: 10
+                    ).stroke(Color.text, lineWidth: 1).background(.clear))
                 }
             }
-            
+
             //MARK: Continue Button
             if selectedRelationship != nil {
                 VStack {
                     Spacer()
-                    NavigationLink(destination: ThreeCardSelectionView()) {
+                    NavigationLink(destination: GetUserQuestionView()) {
                         Text("Continue")
                             .modifier(ContinueNavLinkModifier())
                     }

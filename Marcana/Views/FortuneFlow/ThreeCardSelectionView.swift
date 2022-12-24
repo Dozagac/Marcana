@@ -21,31 +21,52 @@ struct ThreeCardSelectionView: View {
     @State var card1Open = false
     @State var card2Open = false
     @State var card3Open = false
-    @State var response = "... Reading your fortune ..."
+    @State var response = ""
+//        """
+//        The figure calls for no special description the face is rather dark, suggesting also courage, but somewhat lethargic in tendency. The bull's head should be noted as a recurrent symbol on the throne. The sign of this suit is represented throughout as engraved or blazoned with the pentagram, typifying the correspondence of the four elements in human nature and that by which they may be governed. In many old Tarot packs this suit stood for current coin, money, deniers. I have not invented the substitution of pentacles and I have no special cause to sustain in respect of the alternative. But the consensus of divinatory meanings is on the side of some change, because the cards do not happen to deal especially with questions of money.
+//        """
 
     var body: some View {
 
         ZStack {
             BackgroundView()
 
-            HStack {
-                VStack {
-                    ClosedCardView(cardOpen: $card1Open, positionText: "Past")
+            VStack {
+                HStack {
+                    VStack {
+                        ClosedCardView(cardOpen: $card1Open, positionText: "Past")
+                    }
+                    VStack {
+                        ClosedCardView(cardOpen: $card2Open, positionText: "Present")
+                    }
+                    VStack {
+                        ClosedCardView(cardOpen: $card3Open, positionText: "Future")
+                    }
                 }
-                VStack {
-                    ClosedCardView(cardOpen: $card2Open, positionText: "Present")
-                }
-                VStack {
-                    ClosedCardView(cardOpen: $card3Open, positionText: "Future")
+                if response.isNotEmpty {
+                    ScrollView {
+                        Text(response)
+                    }
+                        .foregroundColor(.text)
+                        .frame(maxWidth: .infinity)
+                        .padding()
                 }
             }
+
+
 
             if card1Open && card2Open && card3Open {
                 VStack {
                     Spacer()
-                    NavigationLink(destination: Text("FORTUNE TIME WOO")) {
-                        Text("Continue")
-                            .modifier(ContinueNavLinkModifier())
+                    Text("Tell me, Aurelion")
+                        .modifier(ContinueNavLinkModifier())
+                        .onTapGesture {
+                        UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
+                        UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
+                        UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
+                        sendAPIRequest(
+                            AIPrompt: prepareAPIPrompt()
+                        )
                     }
                 }
             }
@@ -53,30 +74,31 @@ struct ThreeCardSelectionView: View {
             .navigationTitle("Reveal Your Cards")
     }
 
-    func prepareAPIPrompt(card: Card, question: String) -> String {
+    func prepareAPIPrompt() -> String {
         print("PROMPT SENT TO AI")
-        let name = "Deniz"
-        let age = 29
-        let gender = "Male"
+        let name = "Su"
+        let age = 24
+        let gender = "Female"
         let sexualOrientation = "Straight"
-        let employment = "Aspiring Entrepreneur"
-        let relationship = "In a relationship"
+        let employment = "Architect"
+        let relationship = "Single and ready to mingle"
 
-        let cardPast = "The fool" // TODO add reversed, upright info
-        let cardPresent = "The emperor"
-        let cardFuture = "6 of Swords"
+        let cardPast = "Death" // TODO add reversed, upright info
+        let cardPresent = "High Proestess"
+        let cardFuture = "7 of Cups"
 
         let personalQuestion = "Does Hugo love me?"
 
         let AIprompt = """
         Act as a mystical fortune teller named Aurelion that uses tarot cards to tell a personalized fortune.
-        I will give you general information about myself and 3 tarot cards that I picked that are used to create fortune readings for my past, present and future respectively.
+        I will give you general information about myself and 3 tarot cards I picked.
+        Use the cards I chose to make interpretations and create fortune tellings for my past, present and future respectively.
         I will also ask a personal question that you should provide a fortune reading for.
-        Give answers that provoke curiousity, wonder and mystery.
-        As a part of your fortune reading, ask least one question that will nudge the reader to think about their personal lives.
-        Try to make it less generic and more personal so the reader can get surprised.
-        Provide at least one paragraph per past, present and future readings.
-        Provide the answer in the tone of a mystical and spiritually attuned fortune teller.
+        As a part of your fortune reading, ask at least one question that will make the reader curious.
+        Don't just tell the meaning of the cards, make it personal to the reader.
+        Give answers that provoke curiosity, wonder and mystery.
+        Provide at least one paragraph per past, present and future card interpretation.
+        Provide the answer in the tone of a mystical and spiritually attuned, human fortune teller.
 
         Here is my personal information:
         Name: \(name)
@@ -86,7 +108,7 @@ struct ThreeCardSelectionView: View {
         Employment Status: \(employment)
         Relationship Status: \(relationship)
 
-        These are the cards that I picked that represent my past, present and future:
+        These are the tarot cards that I picked that represent my past, present and future:
 
         Past: \(cardPast)
         Current: \(cardPresent)
@@ -94,21 +116,11 @@ struct ThreeCardSelectionView: View {
 
         My personal question:
         \(personalQuestion)
-
         
-        For example:
-        My card is \(card.name).
-        Keywords: \(card.interpretation.split(separator: "\nReversed")[0])
-        My question is: \(question)
         """
 
         return AIprompt
     }
-
-    //sendAPIRequest(
-    //    AIPrompt: prepareAPIPrompt(
-    //        card: shownCard,
-    //        question: "How is my love life looking in the future?"))
 
 
     func sendAPIRequest(AIPrompt: String) {
@@ -116,7 +128,7 @@ struct ThreeCardSelectionView: View {
         // https://beta.openai.com/docs/api-reference/completions/create
         openAPI.sendCompletion(with: AIPrompt,
                                model: .gpt3(.davinci),
-                               maxTokens: 16) { result in
+                               maxTokens: 500) { result in
 
             switch result {
             case .success(let response):
@@ -128,11 +140,6 @@ struct ThreeCardSelectionView: View {
             }
         }
     }
-
-
-    let dummyFortune = """
-        The figure calls for no special description the face is rather dark, suggesting also courage, but somewhat lethargic in tendency. The bull's head should be noted as a recurrent symbol on the throne. The sign of this suit is represented throughout as engraved or blazoned with the pentagram, typifying the correspondence of the four elements in human nature and that by which they may be governed. In many old Tarot packs this suit stood for current coin, money, deniers. I have not invented the substitution of pentacles and I have no special cause to sustain in respect of the alternative. But the consensus of divinatory meanings is on the side of some change, because the cards do not happen to deal especially with questions of money.
-        """
 }
 
 
@@ -183,7 +190,6 @@ struct ClosedCardView: View {
                     }
                 }
             }
-
             Text(positionText)
                 .foregroundColor(cardOpen ? Color.gray : Color.text)
         }
@@ -200,7 +206,7 @@ struct ContinueNavLinkModifier: ViewModifier {
             .background(Color.foreground.opacity(0.9))
             .foregroundColor(.text)
             .cornerRadius(10)
-            .padding(.bottom, 10)
+            .padding(.bottom, 20)
     }
 }
 

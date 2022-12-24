@@ -20,19 +20,19 @@ struct MarcanaApp: App {
                 }
                 .accentColor(.primary)
                 .tabItem{
-                    selectedTab == 0 ? Image(systemName: "rectangle.roundedtop") : Image(systemName: "rectangle.roundedbottom")
-                    Text("Reading")
+                    Image(systemName: "rectangle.portrait.on.rectangle.portrait.angled.fill")
+                    Text("Fortune")
                 }.tag(0)
                 NavigationView {
                     DeckInfoView()
                 }
                 .accentColor(.primary)
                 .tabItem{
-                    selectedTab == 1 ? Image(systemName: "info.bubble") : Image(systemName: "info.circle")
+                    Image(systemName: "book.fill")
                     Text("Deck")
                 }.tag(1)
             }
-            .accentColor(.cyan)
+            .accentColor(.white)
             .environmentObject(deck)
         }
     }
