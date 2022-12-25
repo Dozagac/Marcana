@@ -22,6 +22,7 @@ struct GetUserBirthdateView: View {
                     .labelsHidden()
                     .datePickerStyle(WheelDatePickerStyle())
                     .colorScheme(.dark)
+                    
             }
 
             if birthday != defaultDate {

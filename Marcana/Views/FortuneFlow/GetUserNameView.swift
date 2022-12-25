@@ -9,21 +9,23 @@ import SwiftUI
 
 
 struct GetUserNameView: View {
+    @State private var animating = false
     @State private var name: String = ""
     var body: some View {
         ZStack {
             BackgroundView()
-            
+
             //MARK: Get User Name
-            VStack {
+            VStack(spacing: 20) {
                 Spacer()
                 QuestionText(text: "Hello, seeker of answers")
                 TextField("Enter your name", text: $name, prompt: Text("What is your name?"))
                     .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .padding(.horizontal, 20)
                 Spacer()
             }
-            
+                .frame(maxWidth: .infinity)
+                .padding(.horizontal, 20)
+
             //MARK: Continue Button
             if name.isNotEmpty {
                 VStack {
@@ -34,6 +36,8 @@ struct GetUserNameView: View {
                     }
                 }
             }
+        }.onAppear {
+            animating.toggle()
         }
     }
 }
@@ -51,5 +55,8 @@ struct QuestionText: View {
         Text(text)
             .font(.title)
             .foregroundColor(.text)
+            .frame(maxWidth: .infinity)
+            .padding(.horizontal, 20)
+            .minimumScaleFactor(0.8)
     }
 }

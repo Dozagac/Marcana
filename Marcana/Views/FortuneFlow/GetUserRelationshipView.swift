@@ -21,27 +21,28 @@ struct GetUserRelationshipView: View {
     var body: some View {
         ZStack {
             BackgroundView()
-            VStack {
+            VStack(spacing: 10) {
                 QuestionText(text: "What is your relationship status?")
-                    .padding(.bottom, 20)
+                    .padding(10) // 10 + 10 with VStack spacing
                 ForEach(Relationship.allCases, id: \.self) { status in
                     Button(action: {
                         self.selectedRelationship = status }
                     ) {
                         HStack() {
                             Text(status.rawValue)
-                                .padding(.leading)
+                                .padding(.leading, 16)
                             Spacer()
                         }
                     }
-                        .frame(width: 200, height: 50)
+                        .frame(width: 350, height: 50)
                         .background(self.selectedRelationship == status ? Color.foreground : Color.clear)
                         .foregroundColor(Color.text)
-                        .cornerRadius(10)
                         .overlay(RoundedRectangle(cornerRadius: 10
                     ).stroke(Color.text, lineWidth: 1).background(.clear))
                 }
             }
+            .frame(maxWidth: .infinity)
+            .padding(.horizontal, 20)
 
             //MARK: Continue Button
             if selectedRelationship != nil {

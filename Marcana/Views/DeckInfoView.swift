@@ -25,33 +25,35 @@ struct DeckInfoView: View {
         ZStack {
             BackgroundView()
 
-            ScrollView {
-                VStack {
-                    //MARK: TEXT FIELD
-                    ClearableTextField("Card Search", text: $searchedString)
-                        .onChange(of: searchedString) { newValue in
-                        filterDeck(with: searchedString)
-                    }
-                        .padding(.bottom, 10)
-                    //MARK: GRID VIEW
-                    LazyVGrid (columns: columns, spacing: 0) {
-                        ForEach(searchFilteredList) { card in
-                            CardItemView(card: card)
-                                .onTapGesture {
-                                self.sheetCard = card
-                                self.showingSheet.toggle()
+            VStack(spacing: 20) {
+                //MARK: TEXT FIELD
+                ClearableTextField("Card Search", text: $searchedString)
+                    .onChange(of: searchedString) { newValue in
+                    filterDeck(with: searchedString)
+                }
+
+                ScrollView {
+                    VStack(spacing: 20) {
+                        //MARK: GRID VIEW
+                        LazyVGrid (columns: columns, spacing: 20) {
+                            ForEach(searchFilteredList) { card in
+                                CardItemView(card: card)
+                                    .onTapGesture {
+                                    self.sheetCard = card
+                                    self.showingSheet.toggle()
+                                }
                             }
-                        }
-                            .sheet(item: self.$sheetCard) { item in
-                            CardDetailView(card: item)
+                                .sheet(item: self.$sheetCard) { item in
+                                CardDetailView(card: item)
+                            }
                         }
                     }
                 }
+                    .navigationTitle("All Cards")
+                    .navigationBarTitleDisplayMode(.inline)
             }
-                .padding()
-                .padding([.top, .bottom], 1) // this is to make scrollview ignore safe area, a bug.
-            .navigationTitle("All Cards")
-                .navigationBarTitleDisplayMode(.inline)
+                .frame(maxWidth: .infinity)
+                .padding(.horizontal, 20)
         }
     }
 
@@ -80,25 +82,25 @@ struct ClearableTextField: View {
 
     var body: some View {
         ZStack(alignment: .trailing) {
-            HStack {
+            HStack(spacing: 4) {
                 Image(systemName: "magnifyingglass")
                     .foregroundColor(.secondary)
+                    .padding(.leading, 10)
                 TextField(title, text: $text, prompt: prompt)
             }
-            if text.isNotEmpty {
-                Image(systemName: "xmark.circle.fill")
-                    .resizable()
-                    .frame(width: 20, height: 20)
-                    .foregroundColor(.gray)
-                    .onTapGesture {
-                    text = ""
-                }
-                    .padding(.trailing, 4)
+            //MARK: X reset button
+            Image(systemName: "xmark.circle.fill")
+                .resizable()
+                .frame(width: 20, height: 20)
+                .foregroundColor(.black.opacity(0.7))
+                .padding(.trailing, 10) // Search bar X button padding
+                .onTapGesture {
+                text = ""
             }
         }
-            .padding(8) // provides seach bar size
-        .background(Color.gray.opacity(0.4))
-            .cornerRadius(8)
+            .frame(height: 40)
+            .background(Color.gray.opacity(0.7))
+            .cornerRadius(10)
     }
 }
 
@@ -106,14 +108,14 @@ struct CardItemView: View {
     var card: Card
 
     var body: some View {
-        VStack {
+        VStack(spacing: 4) {
             Image(card.image)
                 .resizable()
-                .aspectRatio(3 / 4, contentMode: .fill)
-                .cornerRadius(8)
+                .aspectRatio(2 / 3, contentMode: .fill)
+                .cornerRadius(10)
 
             Text(card.name)
-                .frame(height: 40, alignment: .top)
+                .frame(height: 20, alignment: .top)
                 .font(.footnote)
                 .fontWeight(.semibold)
                 .lineLimit(1)

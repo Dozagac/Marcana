@@ -54,7 +54,7 @@ struct CardDisplayImageView: View {
         Image(image)
             .resizable()
             .scaledToFill()
-            .cornerRadius(8)
+            .cornerRadius(10)
             .frame(width: 200, height: 300)
     }
 }

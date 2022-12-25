@@ -31,8 +31,8 @@ struct ThreeCardSelectionView: View {
         ZStack {
             BackgroundView()
 
-            VStack {
-                HStack {
+            VStack(spacing: 0) {
+                HStack(spacing: 20) {
                     VStack {
                         ClosedCardView(cardOpen: $card1Open, positionText: "Past")
                     }
@@ -98,7 +98,7 @@ struct ThreeCardSelectionView: View {
         Don't just tell the meaning of the cards, make it personal to the reader.
         Give answers that provoke curiosity, wonder and mystery.
         Provide at least one paragraph per past, present and future card interpretation.
-        Provide the answer in the tone of a mystical and spiritually attuned, human fortune teller.
+        Provide the answer in the tone of a mystical and spiritually attuned fortune teller.
 
         Here is my personal information:
         Name: \(name)
@@ -156,7 +156,7 @@ struct ClosedCardView: View {
             Image(cardOpen ? shownCard.image : "facedownCard")
                 .resizable()
                 .scaledToFill()
-                .frame(width: 120, height: 180)
+                .frame(width: 103, height: 155)
                 .clipShape(RoundedRectangle(cornerRadius: 8))
                 .shadow(color: Color.gray, radius: 10, x: 0, y: 0)
                 .onTapGesture {
@@ -174,7 +174,6 @@ struct ClosedCardView: View {
                 }
             }
                 .sheet(isPresented: $showingSheet) { CardDetailView(card: shownCard) }
-                .padding(.bottom, 10)
 
             //MARK: Revealed Card Text
             if cardOpen {

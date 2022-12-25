@@ -29,14 +29,13 @@ struct GetUserGenderView: View {
     var body: some View {
         ZStack {
             BackgroundView()
-            VStack {
+            VStack(spacing: 20) {
 
                 //MARK: Question Title
                 QuestionText(text: "Welcome {Name}")
                 QuestionText(text: "What is your gender?")
-                    .padding(.bottom, 20)
 
-                HStack {
+                HStack(spacing: 20) {
                     //MARK: Gender Buttons
                     ForEach(Gender.allCases, id: \.self) { gender in
                         Button(action: {
@@ -46,14 +45,11 @@ struct GetUserGenderView: View {
                                 gender.icon
                                 Text(gender.rawValue)
                                     .font(.title2)
-                                    .padding(.trailing)
-
                             }
                         }
-                            .frame(width: 150, height: 150)
+                            .frame(width: 165, height: 165)
                             .background(self.selectedGender == gender ? Color.foreground : Color.clear)
                             .foregroundColor(Color.text)
-                            .cornerRadius(10)
                             .overlay(RoundedRectangle(cornerRadius: 10
                         ).stroke(Color.text, lineWidth: 1).background(.clear))
                     }
@@ -68,17 +64,11 @@ struct GetUserGenderView: View {
                         Text("LGBTQ")
                     }
                 }
-                    .frame(width: 150, height: 50)
+                    .frame(width: 165, height: 50)
                     .background(lgbtq ? Color.foreground : Color.clear)
                     .foregroundColor(Color.text)
-                    .cornerRadius(10)
                     .overlay(RoundedRectangle(cornerRadius: 10
                 ).stroke(Color.text, lineWidth: 1).background(.clear))
-
-
-//            case lgbtq = "LGBTQ"
-//            case .lgbtq:
-//                return Image("GenderPride")
             }
 
             //MARK: Continue Button

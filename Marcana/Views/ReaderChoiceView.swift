@@ -62,8 +62,8 @@ struct SelectionCardView: View {
         }
             .frame(width: 300, height: 140)
             .background()
-            .clipShape(RoundedRectangle(cornerRadius: 24.0))
-            .shadow(color: .icon, radius: 8)
+            .clipShape(RoundedRectangle(cornerRadius: 10))
+            .shadow(color: .icon, radius: 10)
             .padding(40)
     }
 }
