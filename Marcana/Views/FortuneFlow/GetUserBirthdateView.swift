@@ -8,8 +8,16 @@
 import SwiftUI
 
 struct GetUserBirthdateView: View {
-    @State private var birthday: Date = Date()
-    private var defaultDate = Date()
+    @State private var birthday: Date = defaultDate
+
+    static var defaultDate: Date {
+        let currentDate = Date()
+        let calendar = Calendar.current
+        var components = calendar.dateComponents([.month, .day], from: currentDate)
+        components.year = 2000
+        
+        return Calendar.current.date(from: components) ?? Date.now
+    }
 
     var body: some View {
         ZStack {
@@ -22,10 +30,10 @@ struct GetUserBirthdateView: View {
                     .labelsHidden()
                     .datePickerStyle(WheelDatePickerStyle())
                     .colorScheme(.dark)
-                    
+
             }
 
-            if birthday != defaultDate {
+            if birthday != GetUserBirthdateView.defaultDate {
                 VStack {
                     Spacer()
                     Button(action: {
@@ -33,21 +41,18 @@ struct GetUserBirthdateView: View {
                     }) {
                         Text("Continue")
                             .font(.title3)
-                            .padding(.horizontal, 10)
+                            .padding(.horizontal, 12)
                             .frame(width: 280, height: 30)
                     }
-                        .buttonStyle(.borderedProminent)
-                        .buttonBorderShape(.automatic)
-                        .controlSize(.large)
-                        .tint(.foreground)
+                        .modifier(ContinueNavLinkModifier())
                 }
             }
-            }
         }
     }
+}
 
-    struct GetUserBirthdateView_Previews: PreviewProvider {
-        static var previews: some View {
-            GetUserBirthdateView()
-        }
+struct GetUserBirthdateView_Previews: PreviewProvider {
+    static var previews: some View {
+        GetUserBirthdateView()
     }
+}

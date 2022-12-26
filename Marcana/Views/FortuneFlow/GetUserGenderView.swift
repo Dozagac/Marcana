@@ -29,13 +29,12 @@ struct GetUserGenderView: View {
     var body: some View {
         ZStack {
             BackgroundView()
-            VStack(spacing: 20) {
+            VStack(spacing: 24) {
 
                 //MARK: Question Title
-                QuestionText(text: "Welcome {Name}")
-                QuestionText(text: "What is your gender?")
+                QuestionText(text: "Welcome {Name}, \nWhat is your gender?")
 
-                HStack(spacing: 20) {
+                HStack(spacing: 24) {
                     //MARK: Gender Buttons
                     ForEach(Gender.allCases, id: \.self) { gender in
                         Button(action: {
@@ -47,7 +46,7 @@ struct GetUserGenderView: View {
                                     .font(.title2)
                             }
                         }
-                            .frame(width: 165, height: 165)
+                            .frame(width: 160, height: 160)
                             .background(self.selectedGender == gender ? Color.foreground : Color.clear)
                             .foregroundColor(Color.text)
                             .overlay(RoundedRectangle(cornerRadius: 10
@@ -64,7 +63,7 @@ struct GetUserGenderView: View {
                         Text("LGBTQ")
                     }
                 }
-                    .frame(width: 165, height: 50)
+                    .frame(width: 160, height: 50)
                     .background(lgbtq ? Color.foreground : Color.clear)
                     .foregroundColor(Color.text)
                     .overlay(RoundedRectangle(cornerRadius: 10

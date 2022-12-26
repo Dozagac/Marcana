@@ -32,7 +32,7 @@ struct ThreeCardSelectionView: View {
             BackgroundView()
 
             VStack(spacing: 0) {
-                HStack(spacing: 20) {
+                HStack(spacing: 24) {
                     VStack {
                         ClosedCardView(cardOpen: $card1Open, positionText: "Past")
                     }
@@ -43,13 +43,15 @@ struct ThreeCardSelectionView: View {
                         ClosedCardView(cardOpen: $card3Open, positionText: "Future")
                     }
                 }
+
+                // MARK: Temporary Text to show API response
                 if response.isNotEmpty {
                     ScrollView {
                         Text(response)
                     }
                         .foregroundColor(.text)
                         .frame(maxWidth: .infinity)
-                        .padding()
+                        .padding(8)
                 }
             }
 
@@ -58,7 +60,7 @@ struct ThreeCardSelectionView: View {
             if card1Open && card2Open && card3Open {
                 VStack {
                     Spacer()
-                    Text("Tell me, Aurelion")
+                    Text("Read Fortune")
                         .modifier(ContinueNavLinkModifier())
                         .onTapGesture {
                         UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
@@ -77,7 +79,7 @@ struct ThreeCardSelectionView: View {
     func prepareAPIPrompt() -> String {
         print("PROMPT SENT TO AI")
         let name = "Su"
-        let age = 24
+        let age = 23
         let gender = "Female"
         let sexualOrientation = "Straight"
         let employment = "Architect"
@@ -151,14 +153,14 @@ struct ClosedCardView: View {
     let positionText: String
 
     var body: some View {
-        VStack {
+        VStack(spacing: 12) {
             //MARK: Flipping Card
             Image(cardOpen ? shownCard.image : "facedownCard")
                 .resizable()
                 .scaledToFill()
-                .frame(width: 103, height: 155)
+                .frame(width: 98, height: 148)
                 .clipShape(RoundedRectangle(cornerRadius: 8))
-                .shadow(color: Color.gray, radius: 10, x: 0, y: 0)
+                .shadow(color: Color.gray, radius: 8, x: 0, y: 0)
                 .onTapGesture {
                 withAnimation(.linear(duration: 1.0)) {
                     // Haptic feedback
@@ -178,19 +180,22 @@ struct ClosedCardView: View {
             //MARK: Revealed Card Text
             if cardOpen {
                 withAnimation(.linear(duration: 1.0)) {
-                    VStack(spacing: 8) {
+                    VStack(spacing: 0) {
                         //MARK: Card NAme
                         Text(shownCard.name)
                             .foregroundColor(.text)
                             .cornerRadius(8)
-                            .frame(width: 120, height: 20)
+                            .frame(width: 98, height: 24)
                             .minimumScaleFactor(0.2)
                             .lineLimit(1)
                     }
                 }
             }
+
             Text(positionText)
+                .frame(width: 98, height: 24)
                 .foregroundColor(cardOpen ? Color.gray : Color.text)
+                .padding(-8) // to narrow down the default spacing for Text
         }
     }
 }
@@ -204,8 +209,8 @@ struct ContinueNavLinkModifier: ViewModifier {
             .frame(width: 280, height: 50)
             .background(Color.foreground.opacity(0.9))
             .foregroundColor(.text)
-            .cornerRadius(10)
-            .padding(.bottom, 20)
+            .cornerRadius(12)
+            .padding(.bottom, 24)
     }
 }
 

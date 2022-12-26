@@ -25,20 +25,20 @@ struct GetUserOccupationView: View {
             VStack {
                 Spacer()
                 QuestionText(text: "What is your occupation?")
-                    .padding(.bottom, 20)
+                    .padding(.bottom, 24)
                 TextField("Enter your occupation", text: $occupation, prompt: Text("Student, Artist, Lawyer, Engineer ..."))
                     .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .padding(.horizontal, 20)
+                    .padding(.horizontal, 24)
                 
                 VStack {
                     Text("You can enter your job title in detail, or choose one below:")
                 }
                     .frame(maxWidth: .infinity)
-                    .padding(20)
+                    .padding(24)
                     .foregroundColor(.text)
 
 
-                VStack(alignment: .leading, spacing: 10) {
+                VStack(alignment: .leading, spacing: 12) {
                     //MARK: Gender Buttons
                     ForEach(defaultOccupations, id: \.self) { occupation in
                         Button(action: {
@@ -55,10 +55,9 @@ struct GetUserOccupationView: View {
                             .frame(maxWidth: .infinity)
                             .background(Color.clear)
                             .foregroundColor(Color.text)
-                            .cornerRadius(10)
-                            .overlay(RoundedRectangle(cornerRadius: 10
+                            .overlay(RoundedRectangle(cornerRadius: 12
                         ).stroke(Color.text, lineWidth: 0.3).background(.clear))
-                            .padding(.horizontal, 20)
+                            .padding(.horizontal, 24)
                     }
                 }
                 

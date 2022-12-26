@@ -29,19 +29,19 @@ struct GetUserQuestionView: View {
                 Spacer()
                 QuestionText(text: "What is the one question")
                 QuestionText(text: "that you seek the answer for?")
-                    .padding(.bottom, 20)
+                    .padding(.bottom, 24)
                 TextField("Enter your occupation",
                           text: $question,
                           prompt: Text("How can I attract love into my life?"))
                     .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .padding(.horizontal, 20)
+                    .padding(.horizontal, 24)
                 
                 Text("You can ask your own personal question to Aurelion, or choose one below:")
                     .frame(maxWidth: .infinity)
-                    .padding(20)
+                    .padding(24)
                     .foregroundColor(.text)
 
-                VStack(alignment: .leading, spacing: 10) {
+                VStack(alignment: .leading, spacing: 12) {
                     //MARK: Gender Buttons
                     ForEach(defaultQuestions, id: \.self) { question in
                         Button(action: {
@@ -61,7 +61,7 @@ struct GetUserQuestionView: View {
                             .cornerRadius(10)
                             .overlay(RoundedRectangle(cornerRadius: 10
                         ).stroke(Color.text, lineWidth: 0.3).background(.clear))
-                            .padding(.horizontal, 20)
+                            .padding(.horizontal, 24)
                     }
                 }
 

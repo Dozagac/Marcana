@@ -16,16 +16,16 @@ struct DeckInfoView: View {
     @State private var searchFilteredList: [Card] = Deck().allCards // I am not using the nev var deck anymore?
 
     let columns = [
-        GridItem(.flexible(), spacing: 20),
-        GridItem(.flexible(), spacing: 20),
-        GridItem(.flexible(), spacing: 20)
+        GridItem(.flexible(), spacing: 24),
+        GridItem(.flexible(), spacing: 24),
+        GridItem(.flexible(), spacing: 24)
     ]
 
     var body: some View {
         ZStack {
             BackgroundView()
 
-            VStack(spacing: 20) {
+            VStack(spacing: 24) {
                 //MARK: TEXT FIELD
                 ClearableTextField("Card Search", text: $searchedString)
                     .onChange(of: searchedString) { newValue in
@@ -33,9 +33,9 @@ struct DeckInfoView: View {
                 }
 
                 ScrollView {
-                    VStack(spacing: 20) {
+                    VStack(spacing: 24) {
                         //MARK: GRID VIEW
-                        LazyVGrid (columns: columns, spacing: 20) {
+                        LazyVGrid (columns: columns, spacing: 24) {
                             ForEach(searchFilteredList) { card in
                                 CardItemView(card: card)
                                     .onTapGesture {
@@ -53,7 +53,7 @@ struct DeckInfoView: View {
                     .navigationBarTitleDisplayMode(.inline)
             }
                 .frame(maxWidth: .infinity)
-                .padding(.horizontal, 20)
+                .padding(.horizontal, 24)
         }
     }
 
@@ -85,22 +85,22 @@ struct ClearableTextField: View {
             HStack(spacing: 4) {
                 Image(systemName: "magnifyingglass")
                     .foregroundColor(.secondary)
-                    .padding(.leading, 10)
+                    .padding(.leading, 12)
                 TextField(title, text: $text, prompt: prompt)
             }
             //MARK: X reset button
             Image(systemName: "xmark.circle.fill")
                 .resizable()
                 .frame(width: 20, height: 20)
-                .foregroundColor(.black.opacity(0.7))
-                .padding(.trailing, 10) // Search bar X button padding
+                .foregroundColor(.black.opacity(0.4))
+                .padding(.trailing, 12) // Search bar X button padding
                 .onTapGesture {
                 text = ""
             }
         }
             .frame(height: 40)
             .background(Color.gray.opacity(0.7))
-            .cornerRadius(10)
+            .cornerRadius(12)
     }
 }
 
@@ -112,7 +112,7 @@ struct CardItemView: View {
             Image(card.image)
                 .resizable()
                 .aspectRatio(2 / 3, contentMode: .fill)
-                .cornerRadius(10)
+                .cornerRadius(12)
 
             Text(card.name)
                 .frame(height: 20, alignment: .top)

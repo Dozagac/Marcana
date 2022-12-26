@@ -16,7 +16,7 @@ struct GetUserNameView: View {
             BackgroundView()
 
             //MARK: Get User Name
-            VStack(spacing: 20) {
+            VStack(spacing: 24) {
                 Spacer()
                 QuestionText(text: "Hello, seeker of answers")
                 TextField("Enter your name", text: $name, prompt: Text("What is your name?"))
@@ -24,7 +24,7 @@ struct GetUserNameView: View {
                 Spacer()
             }
                 .frame(maxWidth: .infinity)
-                .padding(.horizontal, 20)
+                .padding(.horizontal, 24)
 
             //MARK: Continue Button
             if name.isNotEmpty {
@@ -56,7 +56,7 @@ struct QuestionText: View {
             .font(.title)
             .foregroundColor(.text)
             .frame(maxWidth: .infinity)
-            .padding(.horizontal, 20)
+            .padding(.horizontal, 24)
             .minimumScaleFactor(0.8)
     }
 }

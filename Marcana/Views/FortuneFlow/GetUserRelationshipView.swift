@@ -21,9 +21,9 @@ struct GetUserRelationshipView: View {
     var body: some View {
         ZStack {
             BackgroundView()
-            VStack(spacing: 10) {
+            VStack(spacing: 12) {
                 QuestionText(text: "What is your relationship status?")
-                    .padding(10) // 10 + 10 with VStack spacing
+                    .padding(12) // 10 + 10 with VStack spacing
                 ForEach(Relationship.allCases, id: \.self) { status in
                     Button(action: {
                         self.selectedRelationship = status }
@@ -42,7 +42,7 @@ struct GetUserRelationshipView: View {
                 }
             }
             .frame(maxWidth: .infinity)
-            .padding(.horizontal, 20)
+            .padding(.horizontal, 24)
 
             //MARK: Continue Button
             if selectedRelationship != nil {
