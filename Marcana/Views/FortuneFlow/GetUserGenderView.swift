@@ -10,6 +10,10 @@ import SwiftUI
 struct GetUserGenderView: View {
     @State private var selectedGender: Gender? = nil
     @State private var lgbtq = false
+    private var filled: Bool {
+        selectedGender != nil
+    }
+
 
     enum Gender: String, CaseIterable {
         case female = "Female"
@@ -71,15 +75,14 @@ struct GetUserGenderView: View {
             }
 
             //MARK: Continue Button
-            if selectedGender != nil {
+
                 VStack {
                     Spacer()
                     NavigationLink(destination: GetUserOccupationView()) {
                         Text("Continue")
-                            .modifier(ContinueNavLinkModifier())
+                            .modifier(ContinueNavLinkModifier(filled: filled))
                     }
                 }
-            }
         }
     }
 }

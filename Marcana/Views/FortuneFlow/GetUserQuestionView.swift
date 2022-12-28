@@ -22,6 +22,10 @@ struct GetUserQuestionView: View {
 
     ]
 
+    private var filled: Bool {
+        question.isNotEmpty
+    }
+
     var body: some View {
         ZStack {
             BackgroundView()
@@ -35,7 +39,7 @@ struct GetUserQuestionView: View {
                           prompt: Text("How can I attract love into my life?"))
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding(.horizontal, 24)
-                
+
                 Text("You can ask your own personal question to Aurelion, or choose one below:")
                     .frame(maxWidth: .infinity)
                     .padding(24)
@@ -47,7 +51,7 @@ struct GetUserQuestionView: View {
                         Button(action: {
                             self.question = question }
                         ) {
-                            HStack{
+                            HStack {
                                 Text(question)
                                     .font(.subheadline)
                                     .padding(.leading, 8)
@@ -69,13 +73,11 @@ struct GetUserQuestionView: View {
             }
 
             //MARK: Continue Button
-            if question.isNotEmpty {
-                VStack {
-                    Spacer()
-                    NavigationLink(destination: ThreeCardSelectionView()) {
-                        Text("Continue")
-                            .modifier(ContinueNavLinkModifier())
-                    }
+            VStack {
+                Spacer()
+                NavigationLink(destination: ThreeCardSelectionView()) {
+                    Text("Continue")
+                        .modifier(ContinueNavLinkModifier(filled: filled))
                 }
             }
         }

@@ -26,6 +26,11 @@ struct ThreeCardSelectionView: View {
 //        The figure calls for no special description the face is rather dark, suggesting also courage, but somewhat lethargic in tendency. The bull's head should be noted as a recurrent symbol on the throne. The sign of this suit is represented throughout as engraved or blazoned with the pentagram, typifying the correspondence of the four elements in human nature and that by which they may be governed. In many old Tarot packs this suit stood for current coin, money, deniers. I have not invented the substitution of pentacles and I have no special cause to sustain in respect of the alternative. But the consensus of divinatory meanings is on the side of some change, because the cards do not happen to deal especially with questions of money.
 //        """
 
+    private var filled: Bool {
+        card1Open && card2Open && card3Open
+    }
+
+
     var body: some View {
 
         ZStack {
@@ -57,21 +62,23 @@ struct ThreeCardSelectionView: View {
 
 
 
-            if card1Open && card2Open && card3Open {
-                VStack {
-                    Spacer()
-                    Text("Read Fortune")
-                        .modifier(ContinueNavLinkModifier())
-                        .onTapGesture {
-                        UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
-                        UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
-                        UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
-                        sendAPIRequest(
-                            AIPrompt: prepareAPIPrompt()
-                        )
-                    }
+
+            VStack {
+                Spacer()
+                Text("Read Fortune")
+                    .modifier(ContinueNavLinkModifier(filled: filled))
+                    .onTapGesture {
+                    UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
+                    UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
+                    UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
+                    sendAPIRequest(
+                        AIPrompt: prepareAPIPrompt()
+                    )
                 }
             }
+                .opacity(filled ? 1 : 0)
+                .animation(.easeIn(duration: 0.3), value: filled)
+
         }
             .navigationTitle("Reveal Your Cards")
     }
@@ -203,6 +210,7 @@ struct ClosedCardView: View {
 
 //MARK: Custom modifier for the continue navigation button
 struct ContinueNavLinkModifier: ViewModifier {
+    var filled: Bool
     func body(content: Content) -> some View {
         content
             .font(.title3)
@@ -211,6 +219,8 @@ struct ContinueNavLinkModifier: ViewModifier {
             .foregroundColor(.text)
             .cornerRadius(12)
             .padding(.bottom, 24)
+            .opacity(filled ? 1 : 0)
+            .animation(.easeIn(duration: 0.3), value: filled)
     }
 }
 

@@ -9,6 +9,10 @@ import SwiftUI
 
 struct GetUserRelationshipView: View {
     @State private var selectedRelationship: Relationship? = nil
+    private var filled: Bool {
+        selectedRelationship != nil
+    }
+
 
     enum Relationship: String, CaseIterable {
         case single = "Single"
@@ -41,17 +45,15 @@ struct GetUserRelationshipView: View {
                     ).stroke(Color.text, lineWidth: 1).background(.clear))
                 }
             }
-            .frame(maxWidth: .infinity)
-            .padding(.horizontal, 24)
+                .frame(maxWidth: .infinity)
+                .padding(.horizontal, 24)
 
             //MARK: Continue Button
-            if selectedRelationship != nil {
-                VStack {
-                    Spacer()
-                    NavigationLink(destination: GetUserQuestionView()) {
-                        Text("Continue")
-                            .modifier(ContinueNavLinkModifier())
-                    }
+            VStack {
+                Spacer()
+                NavigationLink(destination: GetUserQuestionView()) {
+                    Text("Continue")
+                        .modifier(ContinueNavLinkModifier(filled: filled))
                 }
             }
         }

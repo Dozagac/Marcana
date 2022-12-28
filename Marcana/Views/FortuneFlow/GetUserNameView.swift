@@ -9,8 +9,10 @@ import SwiftUI
 
 
 struct GetUserNameView: View {
-    @State private var animating = false
     @State private var name: String = ""
+    private var filled: Bool {
+        name.isNotEmpty
+    }
     var body: some View {
         ZStack {
             BackgroundView()
@@ -27,17 +29,13 @@ struct GetUserNameView: View {
                 .padding(.horizontal, 24)
 
             //MARK: Continue Button
-            if name.isNotEmpty {
-                VStack {
-                    Spacer()
-                    NavigationLink(destination: GetUserGenderView()) {
-                        Text("Continue")
-                            .modifier(ContinueNavLinkModifier())
-                    }
+            VStack {
+                Spacer()
+                NavigationLink(destination: GetUserGenderView()) {
+                    Text("Continue")
+                        .modifier(ContinueNavLinkModifier(filled: filled))
                 }
             }
-        }.onAppear {
-            animating.toggle()
         }
     }
 }

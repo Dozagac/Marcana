@@ -18,7 +18,12 @@ struct GetUserOccupationView: View {
         "Business Owner",
         "Retired",
     ]
-    
+
+    private var filled: Bool {
+        occupation.isNotEmpty
+    }
+
+
     var body: some View {
         ZStack {
             BackgroundView()
@@ -29,7 +34,7 @@ struct GetUserOccupationView: View {
                 TextField("Enter your occupation", text: $occupation, prompt: Text("Student, Artist, Lawyer, Engineer ..."))
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding(.horizontal, 24)
-                
+
                 VStack {
                     Text("You can enter your job title in detail, or choose one below:")
                 }
@@ -44,7 +49,7 @@ struct GetUserOccupationView: View {
                         Button(action: {
                             self.occupation = occupation }
                         ) {
-                            HStack{
+                            HStack {
                                 Text(occupation)
                                     .font(.subheadline)
                                     .padding(.leading, 8)
@@ -60,18 +65,17 @@ struct GetUserOccupationView: View {
                             .padding(.horizontal, 24)
                     }
                 }
-                
+
                 Spacer()
             }
-            
+
             //MARK: Continue Button
-            if occupation.isNotEmpty {
-                VStack {
-                    Spacer()
-                    NavigationLink(destination: GetUserRelationshipView()) {
-                        Text("Continue")
-                            .modifier(ContinueNavLinkModifier())
-                    }
+
+            VStack {
+                Spacer()
+                NavigationLink(destination: GetUserRelationshipView()) {
+                    Text("Continue")
+                        .modifier(ContinueNavLinkModifier(filled: filled))
                 }
             }
         }

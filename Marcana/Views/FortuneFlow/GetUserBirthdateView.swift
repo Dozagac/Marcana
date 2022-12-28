@@ -9,13 +9,16 @@ import SwiftUI
 
 struct GetUserBirthdateView: View {
     @State private var birthday: Date = defaultDate
+    private var filled: Bool {
+        birthday != GetUserBirthdateView.defaultDate
+    }
 
     static var defaultDate: Date {
         let currentDate = Date()
         let calendar = Calendar.current
         var components = calendar.dateComponents([.month, .day], from: currentDate)
         components.year = 2000
-        
+
         return Calendar.current.date(from: components) ?? Date.now
     }
 
@@ -33,19 +36,18 @@ struct GetUserBirthdateView: View {
 
             }
 
-            if birthday != GetUserBirthdateView.defaultDate {
-                VStack {
-                    Spacer()
-                    Button(action: {
-                        // Navigate to the next page
-                    }) {
-                        Text("Continue")
-                            .font(.title3)
-                            .padding(.horizontal, 12)
-                            .frame(width: 280, height: 30)
-                    }
-                        .modifier(ContinueNavLinkModifier())
+
+            VStack {
+                Spacer()
+                Button(action: {
+                    // Navigate to the next page
+                }) {
+                    Text("Continue")
+                        .font(.title3)
+                        .padding(.horizontal, 12)
+                        .frame(width: 280, height: 30)
                 }
+                    .modifier(ContinueNavLinkModifier(filled: filled))
             }
         }
     }

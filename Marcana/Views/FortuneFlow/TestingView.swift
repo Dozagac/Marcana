@@ -14,7 +14,7 @@ struct TestingView: View {
         ZStack {
             BackgroundView()
 //            AnimatedStrokeStyleExamples()
-            ZStack() {
+            Group() {
                 // animating has to be accessible to an outside view for this to animate... don't know why.
                 Color.clear.ignoresSafeArea()
                 let strokeStyle = StrokeStyle(
