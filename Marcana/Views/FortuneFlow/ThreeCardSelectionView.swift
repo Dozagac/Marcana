@@ -9,8 +9,9 @@ import SwiftUI
 import OpenAISwift
 
 struct ThreeCardSelectionView: View {
-    let openAPI = OpenAISwift(authToken: "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")
+    let openAPI = OpenAISwift(authToken: "")
 
+    
     init() {
         UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.lightText]
         UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.lightText]
@@ -221,6 +222,9 @@ struct ContinueNavLinkModifier: ViewModifier {
             .padding(.bottom, 24)
             .opacity(filled ? 1 : 0)
             .animation(.easeIn(duration: 0.3), value: filled)
+            .onTapGesture {
+                UIImpactFeedbackGenerator(style: .light).impactOccurred()
+            }
     }
 }
 
