@@ -222,9 +222,9 @@ struct ContinueNavLinkModifier: ViewModifier {
             .padding(.bottom, 24)
             .opacity(filled ? 1 : 0)
             .animation(.easeIn(duration: 0.3), value: filled)
-            .onTapGesture {
-                UIImpactFeedbackGenerator(style: .light).impactOccurred()
-            }
+//            .onTapGesture {
+//                UIImpactFeedbackGenerator(style: .light).impactOccurred()
+//            }
     }
 }
 

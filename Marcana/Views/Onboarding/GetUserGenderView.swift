@@ -18,6 +18,7 @@ struct GetUserGenderView: View {
     enum Gender: String, CaseIterable {
         case female = "Female"
         case male = "Male"
+        case other = "Other"
 
 
         var icon: Image {
@@ -26,6 +27,9 @@ struct GetUserGenderView: View {
                 return Image("GenderMaleWhite")
             case .female:
                 return Image("GenderFemaleWhite")
+            case .other:
+                return Image(systemName: "bubbles.and.sparkles")
+                    
             }
         }
     }
@@ -44,34 +48,19 @@ struct GetUserGenderView: View {
                         Button(action: {
                             self.selectedGender = gender }
                         ) {
-                            HStack {
+                            VStack {
                                 gender.icon
                                 Text(gender.rawValue)
                                     .font(.title2)
                             }
                         }
-                            .frame(width: 160, height: 160)
+                            .frame(width: 110, height: 110)
                             .background(self.selectedGender == gender ? Color.foreground : Color.clear)
                             .foregroundColor(Color.text)
                             .overlay(RoundedRectangle(cornerRadius: 10
                         ).stroke(Color.text, lineWidth: 1).background(.clear))
                     }
                 }
-
-                //MARK: LQBTQ Toggle
-                Button(action: {
-                    lgbtq.toggle() }
-                ) {
-                    HStack {
-                        Image("GenderPride")
-                        Text("LGBTQ")
-                    }
-                }
-                    .frame(width: 160, height: 50)
-                    .background(lgbtq ? Color.foreground : Color.clear)
-                    .foregroundColor(Color.text)
-                    .overlay(RoundedRectangle(cornerRadius: 10
-                ).stroke(Color.text, lineWidth: 1).background(.clear))
             }
 
             //MARK: Continue Button

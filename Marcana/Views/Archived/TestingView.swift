@@ -32,7 +32,7 @@ struct TestingView: View {
                     .foregroundStyle(LinearGradient(colors: [.yellow, .icon],
                                                     startPoint: .topLeading, endPoint: .bottomTrailing))
                 // or use padding, it si a pushout view.
-                    .frame(width: 100, height: 100)
+                    .frame(width: 200, height: 200)
             }.onAppear{
                 animating.toggle()
             }
