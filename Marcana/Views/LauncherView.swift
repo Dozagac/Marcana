@@ -8,17 +8,8 @@
 import SwiftUI
 
 struct LauncherView: View {
-    // Last step of the onboarding sets this to false
-    @AppStorage("doOnboarding") var doOnboarding = true
-    
     var body: some View {
-        ZStack{
-            if doOnboarding{
-                GetUserNameView()
-            } else {
-                GetUserQuestionView()
-            }
-        }
+        Text("Launcher")
     }
 }
 

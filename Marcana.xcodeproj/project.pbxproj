@@ -8,11 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		76267D3B2955CDAE00108612 /* GetUserNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76267D3A2955CDAE00108612 /* GetUserNameView.swift */; };
-		76267D402955D33900108612 /* GetUserBirthdateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76267D3F2955D33800108612 /* GetUserBirthdateView.swift */; };
 		76267D422955D60E00108612 /* GetUserOccupationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76267D412955D60E00108612 /* GetUserOccupationView.swift */; };
 		76267D442955EA5900108612 /* GetUserRelationshipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76267D432955EA5900108612 /* GetUserRelationshipView.swift */; };
-		76267D462955EC3F00108612 /* GetUserGenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76267D452955EC3F00108612 /* GetUserGenderView.swift */; };
-		76267D482955F91E00108612 /* TestingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76267D472955F91E00108612 /* TestingView.swift */; };
+		76267D462955EC3F00108612 /* GetUserGenderAndBirthdayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76267D452955EC3F00108612 /* GetUserGenderAndBirthdayView.swift */; };
 		76267D4A295643CC00108612 /* GetUserQuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76267D49295643CC00108612 /* GetUserQuestionView.swift */; };
 		763DCC9C2944A77800D286C7 /* OpenAISwift in Frameworks */ = {isa = PBXBuildFile; productRef = 763DCC9B2944A77800D286C7 /* OpenAISwift */; };
 		7654E7FE2933C67A00F9FDAB /* CardDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7654E7FD2933C67A00F9FDAB /* CardDetailView.swift */; };
@@ -29,15 +27,17 @@
 		76B2E13129365E15004BCF46 /* Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B2E13029365E15004BCF46 /* Modifiers.swift */; };
 		76F72ACB2967518F009E7501 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F72ACA2967518F009E7501 /* User.swift */; };
 		76F72ACD2967FC3E009E7501 /* LauncherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F72ACC2967FC3E009E7501 /* LauncherView.swift */; };
+		76F72BBD296C652D009E7501 /* OccupationViewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F72BBC296C652D009E7501 /* OccupationViewTest.swift */; };
+		76F72BBF296D85E7009E7501 /* LocalDataStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F72BBE296D85E7009E7501 /* LocalDataStrings.swift */; };
+		76F72BC3296D9DF0009E7501 /* TestingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F72BC2296D9DF0009E7501 /* TestingView.swift */; };
+		76F72BC6296DCD81009E7501 /* SwifterSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 76F72BC5296DCD81009E7501 /* SwifterSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		76267D3A2955CDAE00108612 /* GetUserNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserNameView.swift; sourceTree = "<group>"; };
-		76267D3F2955D33800108612 /* GetUserBirthdateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserBirthdateView.swift; sourceTree = "<group>"; };
 		76267D412955D60E00108612 /* GetUserOccupationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserOccupationView.swift; sourceTree = "<group>"; };
 		76267D432955EA5900108612 /* GetUserRelationshipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserRelationshipView.swift; sourceTree = "<group>"; };
-		76267D452955EC3F00108612 /* GetUserGenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserGenderView.swift; sourceTree = "<group>"; };
-		76267D472955F91E00108612 /* TestingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingView.swift; sourceTree = "<group>"; };
+		76267D452955EC3F00108612 /* GetUserGenderAndBirthdayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserGenderAndBirthdayView.swift; sourceTree = "<group>"; };
 		76267D49295643CC00108612 /* GetUserQuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserQuestionView.swift; sourceTree = "<group>"; };
 		7654E7FD2933C67A00F9FDAB /* CardDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailView.swift; sourceTree = "<group>"; };
 		7654E7FF2933D56500F9FDAB /* ThreeCardSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreeCardSelectionView.swift; sourceTree = "<group>"; };
@@ -54,6 +54,9 @@
 		76B2E13029365E15004BCF46 /* Modifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modifiers.swift; sourceTree = "<group>"; };
 		76F72ACA2967518F009E7501 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		76F72ACC2967FC3E009E7501 /* LauncherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LauncherView.swift; sourceTree = "<group>"; };
+		76F72BBC296C652D009E7501 /* OccupationViewTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OccupationViewTest.swift; sourceTree = "<group>"; };
+		76F72BBE296D85E7009E7501 /* LocalDataStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataStrings.swift; sourceTree = "<group>"; };
+		76F72BC2296D9DF0009E7501 /* TestingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +65,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				763DCC9C2944A77800D286C7 /* OpenAISwift in Frameworks */,
+				76F72BC6296DCD81009E7501 /* SwifterSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -127,6 +131,7 @@
 				76F72ACA2967518F009E7501 /* User.swift */,
 				7675E45229326B6300ED17D5 /* Card.swift */,
 				7675E45829326EF500ED17D5 /* Deck.swift */,
+				76F72BBE296D85E7009E7501 /* LocalDataStrings.swift */,
 			);
 			path = DataModels;
 			sourceTree = "<group>";
@@ -135,8 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				76267D3A2955CDAE00108612 /* GetUserNameView.swift */,
-				76267D3F2955D33800108612 /* GetUserBirthdateView.swift */,
-				76267D452955EC3F00108612 /* GetUserGenderView.swift */,
+				76267D452955EC3F00108612 /* GetUserGenderAndBirthdayView.swift */,
 				76267D412955D60E00108612 /* GetUserOccupationView.swift */,
 				76267D432955EA5900108612 /* GetUserRelationshipView.swift */,
 			);
@@ -146,8 +150,9 @@
 		76F72ACF2968013B009E7501 /* Archived */ = {
 			isa = PBXGroup;
 			children = (
-				76267D472955F91E00108612 /* TestingView.swift */,
 				7675E45E29336C3F00ED17D5 /* DeckInfoView.swift */,
+				76F72BBC296C652D009E7501 /* OccupationViewTest.swift */,
+				76F72BC2296D9DF0009E7501 /* TestingView.swift */,
 			);
 			path = Archived;
 			sourceTree = "<group>";
@@ -170,6 +175,7 @@
 			name = Marcana;
 			packageProductDependencies = (
 				763DCC9B2944A77800D286C7 /* OpenAISwift */,
+				76F72BC5296DCD81009E7501 /* SwifterSwift */,
 			);
 			productName = Marcana;
 			productReference = 7675E44129326B2600ED17D5 /* Marcana.app */;
@@ -201,6 +207,7 @@
 			mainGroup = 7675E43829326B2600ED17D5;
 			packageReferences = (
 				763DCC9A2944A77800D286C7 /* XCRemoteSwiftPackageReference "OpenAISwift" */,
+				76F72BC4296DCD81009E7501 /* XCRemoteSwiftPackageReference "SwifterSwift" */,
 			);
 			productRefGroup = 7675E44229326B2600ED17D5 /* Products */;
 			projectDirPath = "";
@@ -229,21 +236,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				76B2E13129365E15004BCF46 /* Modifiers.swift in Sources */,
+				76F72BC3296D9DF0009E7501 /* TestingView.swift in Sources */,
 				7654E8002933D56500F9FDAB /* ThreeCardSelectionView.swift in Sources */,
 				7675E45929326EF500ED17D5 /* Deck.swift in Sources */,
 				7675E45329326B6300ED17D5 /* Card.swift in Sources */,
 				76267D442955EA5900108612 /* GetUserRelationshipView.swift in Sources */,
-				76267D482955F91E00108612 /* TestingView.swift in Sources */,
 				76B2E12F29365BD4004BCF46 /* Extensions.swift in Sources */,
 				7675E44729326B2600ED17D5 /* ReaderChoiceView.swift in Sources */,
 				7675E45F29336C3F00ED17D5 /* DeckInfoView.swift in Sources */,
 				76267D3B2955CDAE00108612 /* GetUserNameView.swift in Sources */,
 				766F59FA2941342700A328E4 /* BackGroundView.swift in Sources */,
 				7675E44529326B2600ED17D5 /* MarcanaApp.swift in Sources */,
-				76267D462955EC3F00108612 /* GetUserGenderView.swift in Sources */,
+				76F72BBF296D85E7009E7501 /* LocalDataStrings.swift in Sources */,
+				76F72BBD296C652D009E7501 /* OccupationViewTest.swift in Sources */,
+				76267D462955EC3F00108612 /* GetUserGenderAndBirthdayView.swift in Sources */,
 				76267D422955D60E00108612 /* GetUserOccupationView.swift in Sources */,
 				76F72ACB2967518F009E7501 /* User.swift in Sources */,
-				76267D402955D33900108612 /* GetUserBirthdateView.swift in Sources */,
 				76F72ACD2967FC3E009E7501 /* LauncherView.swift in Sources */,
 				7654E7FE2933C67A00F9FDAB /* CardDetailView.swift in Sources */,
 				76267D4A295643CC00108612 /* GetUserQuestionView.swift in Sources */,
@@ -384,6 +392,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -415,6 +424,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -461,6 +471,14 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		76F72BC4296DCD81009E7501 /* XCRemoteSwiftPackageReference "SwifterSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwifterSwift/SwifterSwift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -468,6 +486,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 763DCC9A2944A77800D286C7 /* XCRemoteSwiftPackageReference "OpenAISwift" */;
 			productName = OpenAISwift;
+		};
+		76F72BC5296DCD81009E7501 /* SwifterSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 76F72BC4296DCD81009E7501 /* XCRemoteSwiftPackageReference "SwifterSwift" */;
+			productName = SwifterSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

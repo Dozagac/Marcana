@@ -25,6 +25,40 @@ struct BackgroundView: View {
     }
 }
 
+struct OnboardingBackgroundView: View {
+    @State private var change = false
+    
+    var body: some View {
+        //        ZStack {
+        //            Image("onboardingBackground")
+        //                .resizable()
+        //                .ignoresSafeArea()
+        //        }
+        ZStack {
+
+            //MARK: Linear Gradiant with rotating hue
+            LinearGradient(
+                gradient: Gradient(colors: [.blue, .purple, .red]),
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
+                .hueRotation(.degrees(change ? 360 : 0))
+                .ignoresSafeArea()
+
+            //MARK: Opacity and blur mask
+            Color.black
+                .opacity(0.3) // 1 opacity gives an interesting effect
+            .blur(radius: 0)
+                .ignoresSafeArea()
+        }
+            .animation(.linear(duration: 10).repeatForever(autoreverses: false), value: change)
+            .onAppear {
+            change.toggle()
+        }
+    }
+}
+
+
 
 struct PlainBackgroundView: View {
     var body: some View {
@@ -38,7 +72,7 @@ struct PlainBackgroundView: View {
 
 struct BackgroundView_Previews: PreviewProvider {
     static var previews: some View {
-        BackgroundView()
+        OnboardingBackgroundView()
     }
 }
 

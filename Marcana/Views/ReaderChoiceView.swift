@@ -12,14 +12,21 @@ import SwiftUI
 
 
 struct ReaderChoiceView: View {
+    @EnvironmentObject var newUser: User
+
     var body: some View {
         ZStack {
             BackgroundView() // this way the Vstack still respects the safe area
             VStack {
 
-                NavigationLink(destination: ThreeCardSelectionView(), label: {
+                VStack {
+                    Text(newUser.name)
+                    Text(newUser.relationship)
+                }
+
+                NavigationLink(destination: GetUserQuestionView(), label: {
                     GetFortuneButton(
-                        title: "Get Fortune",
+                        title: "Get Fortune Reading",
                         subtitle: "Ask a question to Aurelion",
                         imageName: "threeReader")
                 })
@@ -76,11 +83,9 @@ struct ContentView_Previews: PreviewProvider {
         Group {
             NavigationView {
                 ReaderChoiceView()
+                    .environmentObject(User())
+                    .preferredColorScheme(.dark)
             }
-
-            NavigationView {
-                ReaderChoiceView()
-            }.preferredColorScheme(.dark)
         }
     }
 }

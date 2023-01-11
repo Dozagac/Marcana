@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct DeckInfoView: View {
-    @EnvironmentObject var deck: Deck
+    fileprivate var deck = Deck()
     @State private var showingSheet = false
-    @State var sheetCard: Card? = nil
+    @State private var sheetCard: Card? = nil
 
     @State private var searchedString: String = ""
     @State private var searchFilteredList: [Card] = Deck().allCards // I am not using the nev var deck anymore?
@@ -116,8 +116,7 @@ struct CardItemView: View {
 
             Text(card.name)
                 .frame(height: 20, alignment: .top)
-                .font(.footnote)
-                .fontWeight(.semibold)
+                .font(.footnote.bold())
                 .lineLimit(1)
                 .minimumScaleFactor(0.4)
                 .foregroundColor(.text)
@@ -129,7 +128,6 @@ struct DeckInfoView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
             DeckInfoView()
-                .environmentObject(Deck())
         }
     }
 }

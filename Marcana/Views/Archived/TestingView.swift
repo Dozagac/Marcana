@@ -2,100 +2,45 @@
 //  TestingView.swift
 //  Marcana
 //
-//  Created by Deniz Ozagac on 23/12/2022.
+//  Created by Deniz Ozagac on 10/01/2023.
 //
 
 import SwiftUI
 
 struct TestingView: View {
-    @State private var animating = false
-
     var body: some View {
-        ZStack {
-            BackgroundView()
-//            AnimatedStrokeStyleExamples()
-            Group() {
-                // animating has to be accessible to an outside view for this to animate... don't know why.
-                Color.clear.ignoresSafeArea()
-                let strokeStyle = StrokeStyle(
-                    lineWidth: animating ? 10 : 2,
-                    dash: [20, 10, 5],
-                    dashPhase: animating ? 105 : 0
-                )
-
-                Circle()
-                    .stroke(style: strokeStyle)
-                    .stroke(style: strokeStyle)
-                    .stroke(lineWidth: 2)
-                    .animation(Animation.linear(duration: 5).repeatForever(autoreverses: true),
-                               value: animating)
-                    .foregroundStyle(LinearGradient(colors: [.yellow, .icon],
-                                                    startPoint: .topLeading, endPoint: .bottomTrailing))
-                // or use padding, it si a pushout view.
-                    .frame(width: 200, height: 200)
-            }.onAppear{
-                animating.toggle()
+        VStack {
+            RoundedRectangle(cornerRadius: 20)
+                .fill(Color.foreground)
+                .frame(width: 190, height: 190)
+                .foregroundColor(Color.text)
+                .overlay(RoundedRectangle(cornerRadius: 20)
+                .stroke(Color.text, lineWidth: 1).background(.clear))
+                .overlay(
+                    VStack {
+                        Image("GenderMaleWhite")
+                        Text("Male")
+                            .font(.title2)
+                    })
+            
+            VStack {
+                Image("GenderMaleWhite")
+                Text("Male")
+                    .font(.title2)
             }
+                .frame(width: 190, height: 190)
+                .background(Color.foreground)
+                .foregroundColor(Color.text)
+                .overlay(RoundedRectangle(cornerRadius: 20)
+                .stroke(Color.text, lineWidth: 1).background(.clear))
         }
     }
 }
 
-struct AnimatedStrokeStyleExample: View {
-    @State private var animating = true
-    var body: some View {
-        ZStack() {
-            // animating has to be accessible to an outside view for this to animate... don't know why.
-            Color.clear.ignoresSafeArea()
-            let strokeStyle = StrokeStyle(
-                lineWidth: animating ? 10 : 2,
-                dash: [20, 10, 5],
-                dashPhase: animating ? 105 : 0
-            )
-
-            Circle()
-                .stroke(style: strokeStyle)
-                .stroke(style: strokeStyle)
-                .stroke(lineWidth: 2)
-                .animation(Animation.linear(duration: 5).repeatForever(autoreverses: true),
-                           value: animating)
-                .foregroundStyle(LinearGradient(colors: [.yellow, .icon],
-                                                startPoint: .topLeading, endPoint: .bottomTrailing))
-            // or use padding, it si a pushout view.
-                .frame(width: 100, height: 100)
-        }
-    }
-}
-
-
-
-
-struct AnimatedStrokeStyleExampleOriginal: View {
-    @State private var animating = true
-    var body: some View {
-        ZStack() {
-            Color.clear.ignoresSafeArea()
-            let strokeStyle = StrokeStyle(
-                lineWidth: animating ? 10 : 2,
-                dash: [20, 10, 5],
-                dashPhase: animating ? 105 : 0
-            )
-
-            Circle()
-                .stroke(style: strokeStyle)
-                .stroke(style: strokeStyle)
-                .stroke(lineWidth: 2)
-                .animation(Animation.linear(duration: 5).repeatForever(autoreverses: true),
-                           value: animating)
-                .foregroundStyle(LinearGradient(colors: [.red, .purple],
-                                                startPoint: .topLeading, endPoint: .bottomTrailing))
-                .padding()
-
-        }
-    }
-}
 
 struct TestingView_Previews: PreviewProvider {
     static var previews: some View {
         TestingView()
+            .preferredColorScheme(.dark)
     }
 }

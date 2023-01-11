@@ -77,7 +77,7 @@ struct GetUserQuestionView: View {
                 Spacer()
                 NavigationLink(destination: ThreeCardSelectionView()) {
                     Text("Continue")
-                        .modifier(ContinueNavLinkModifier(filled: filled))
+                        .modifier(ContinueNavLinkModifier(canContinue: filled))
                 }
             }
         }

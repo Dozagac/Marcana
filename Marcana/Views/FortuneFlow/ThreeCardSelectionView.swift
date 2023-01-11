@@ -9,6 +9,7 @@ import SwiftUI
 import OpenAISwift
 
 struct ThreeCardSelectionView: View {
+    @EnvironmentObject var newUser: User
     let openAPI = OpenAISwift(authToken: "")
 
     
@@ -17,12 +18,12 @@ struct ThreeCardSelectionView: View {
         UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.lightText]
     }
 
-    @EnvironmentObject var deck: Deck
+    var deck = Deck()
 
-    @State var card1Open = false
-    @State var card2Open = false
-    @State var card3Open = false
-    @State var response = ""
+    @State private var card1Open = false
+    @State private var card2Open = false
+    @State private var card3Open = false
+    @State private var response = ""
 //        """
 //        The figure calls for no special description the face is rather dark, suggesting also courage, but somewhat lethargic in tendency. The bull's head should be noted as a recurrent symbol on the throne. The sign of this suit is represented throughout as engraved or blazoned with the pentagram, typifying the correspondence of the four elements in human nature and that by which they may be governed. In many old Tarot packs this suit stood for current coin, money, deniers. I have not invented the substitution of pentacles and I have no special cause to sustain in respect of the alternative. But the consensus of divinatory meanings is on the side of some change, because the cards do not happen to deal especially with questions of money.
 //        """
@@ -61,13 +62,10 @@ struct ThreeCardSelectionView: View {
                 }
             }
 
-
-
-
             VStack {
                 Spacer()
                 Text("Read Fortune")
-                    .modifier(ContinueNavLinkModifier(filled: filled))
+                    .modifier(ContinueNavLinkModifier(canContinue: filled))
                     .onTapGesture {
                     UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
                     UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
@@ -86,18 +84,12 @@ struct ThreeCardSelectionView: View {
 
     func prepareAPIPrompt() -> String {
         print("PROMPT SENT TO AI")
-        let name = "Su"
-        let age = 23
-        let gender = "Female"
-        let sexualOrientation = "Straight"
-        let employment = "Architect"
-        let relationship = "Single and ready to mingle"
 
         let cardPast = "Death" // TODO add reversed, upright info
         let cardPresent = "High Proestess"
         let cardFuture = "7 of Cups"
 
-        let personalQuestion = "Does Hugo love me?"
+        let personalQuestion = "Will I find love?"
 
         let AIprompt = """
         Act as a mystical fortune teller named Aurelion that uses tarot cards to tell a personalized fortune.
@@ -111,12 +103,11 @@ struct ThreeCardSelectionView: View {
         Provide the answer in the tone of a mystical and spiritually attuned fortune teller.
 
         Here is my personal information:
-        Name: \(name)
-        Age: \(age)
-        Gender: \(gender)
-        Sexual orientation: \(sexualOrientation)
-        Employment Status: \(employment)
-        Relationship Status: \(relationship)
+        Name: \(newUser.name)
+        Age: \(newUser.age)
+        Gender: \(newUser.gender)
+        Occupation: \(newUser.occupation)
+        Relationship Status: \(newUser.relationship)
 
         These are the tarot cards that I picked that represent my past, present and future:
 
@@ -209,31 +200,12 @@ struct ClosedCardView: View {
 }
 
 
-//MARK: Custom modifier for the continue navigation button
-struct ContinueNavLinkModifier: ViewModifier {
-    var filled: Bool
-    func body(content: Content) -> some View {
-        content
-            .font(.title3)
-            .frame(width: 280, height: 50)
-            .background(Color.foreground.opacity(0.9))
-            .foregroundColor(.text)
-            .cornerRadius(12)
-            .padding(.bottom, 24)
-            .opacity(filled ? 1 : 0)
-            .animation(.easeIn(duration: 0.3), value: filled)
-//            .onTapGesture {
-//                UIImpactFeedbackGenerator(style: .light).impactOccurred()
-//            }
-    }
-}
-
 
 struct ThreeCardSelectionView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
             ThreeCardSelectionView()
-                .environmentObject(Deck())
+                .environmentObject(MockUser())
         }
     }
 }

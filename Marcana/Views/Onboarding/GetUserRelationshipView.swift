@@ -7,9 +7,11 @@
 
 import SwiftUI
 
+// Last step of onboarding
 struct GetUserRelationshipView: View {
+    @EnvironmentObject var newUser: User
     @State private var selectedRelationship: Relationship? = nil
-    private var filled: Bool {
+    private var canContinue: Bool {
         selectedRelationship != nil
     }
 
@@ -24,14 +26,13 @@ struct GetUserRelationshipView: View {
 
     var body: some View {
         ZStack {
-            BackgroundView()
+            OnboardingBackgroundView()
             VStack(spacing: 12) {
                 QuestionText(text: "What is your relationship status?")
-                    .padding(12) // 10 + 10 with VStack spacing
+                    .padding(12)
                 ForEach(Relationship.allCases, id: \.self) { status in
-                    Button(action: {
-                        self.selectedRelationship = status }
-                    ) {
+                    // SHOULD GO TO MAIN PAGE FROM HERE (readerChoiceView for now)
+                    NavigationLink(destination: ReaderChoiceView()) {
                         HStack() {
                             Text(status.rawValue)
                                 .padding(.leading, 16)
@@ -41,22 +42,21 @@ struct GetUserRelationshipView: View {
                         .frame(width: 350, height: 50)
                         .background(self.selectedRelationship == status ? Color.foreground : Color.clear)
                         .foregroundColor(Color.text)
+                        .simultaneousGesture(TapGesture().onEnded {
+                        self.selectedRelationship = status
+                        newUser.relationship = selectedRelationship?.rawValue ?? Relationship.single.rawValue
+                        
+                        // SAVE THE USER SOMEHOW
+                            //users.users.append(newUser)
+                    })
                         .overlay(RoundedRectangle(cornerRadius: 10
                     ).stroke(Color.text, lineWidth: 1).background(.clear))
                 }
             }
                 .frame(maxWidth: .infinity)
                 .padding(.horizontal, 24)
-
-            //MARK: Continue Button
-            VStack {
-                Spacer()
-                NavigationLink(destination: GetUserQuestionView()) {
-                    Text("Continue")
-                        .modifier(ContinueNavLinkModifier(filled: filled))
-                }
-            }
         }
+            .modifier(OnboardingCustomNavBack())
     }
 }
 
@@ -65,5 +65,6 @@ struct GetUserRelationshipView: View {
 struct GetUserRelationshipView_Previews: PreviewProvider {
     static var previews: some View {
         GetUserRelationshipView()
+            .environmentObject(MockUser())
     }
 }

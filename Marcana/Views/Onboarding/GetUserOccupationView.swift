@@ -8,66 +8,35 @@
 import SwiftUI
 
 struct GetUserOccupationView: View {
+    @EnvironmentObject var newUser: User
     @State private var occupation: String = ""
-    private var defaultOccupations = [
-        "Working as a ___",
-        "Studying ___",
-        "Not Working",
-        "Looking for a job",
-        "Parent",
-        "Business Owner",
-        "Retired",
-    ]
+    @FocusState private var focusTextField
 
-    private var filled: Bool {
+    private var canContinue: Bool {
         occupation.isNotEmpty
     }
 
-
     var body: some View {
         ZStack {
-            BackgroundView()
-            VStack {
-                Spacer()
-                QuestionText(text: "What is your occupation?")
-                    .padding(.bottom, 24)
-                TextField("Enter your occupation", text: $occupation, prompt: Text("Student, Artist, Lawyer, Engineer ..."))
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .padding(.horizontal, 24)
+            OnboardingBackgroundView()
 
+            VStack(spacing: 36) {
                 VStack {
-                    Text("You can enter your job title in detail, or choose one below:")
+                    QuestionText(text: "What is your occupation?")
+                        .padding(.bottom, 24)
+                    TextField("Enter your occupation", text: $occupation, prompt: Text("")) //"Student, Artist, Lawyer, Engineer ..."
+                    .font(.title)
+                        .multilineTextAlignment(.center)
+                        .textFieldStyle(.plain)
+                        .focused($focusTextField)
+
+                    Rectangle()
+                        .frame(height: 2)
+                        .foregroundColor(.white.opacity(0.8))
+                        .padding(.horizontal)
                 }
-                    .frame(maxWidth: .infinity)
-                    .padding(24)
-                    .foregroundColor(.text)
-
-
-                VStack(alignment: .leading, spacing: 12) {
-                    //MARK: Gender Buttons
-                    ForEach(defaultOccupations, id: \.self) { occupation in
-                        Button(action: {
-                            self.occupation = occupation }
-                        ) {
-                            HStack {
-                                Text(occupation)
-                                    .font(.subheadline)
-                                    .padding(.leading, 8)
-                                    .padding(4)
-                                Spacer()
-                            }
-                        }
-                            .frame(maxWidth: .infinity)
-                            .background(Color.clear)
-                            .foregroundColor(Color.text)
-                            .overlay(RoundedRectangle(cornerRadius: 12
-                        ).stroke(Color.text, lineWidth: 0.3).background(.clear))
-                            .padding(.horizontal, 24)
-                    }
-                }
-
-                Spacer()
             }
+
 
             //MARK: Continue Button
 
@@ -75,15 +44,27 @@ struct GetUserOccupationView: View {
                 Spacer()
                 NavigationLink(destination: GetUserRelationshipView()) {
                     Text("Continue")
-                        .modifier(ContinueNavLinkModifier(filled: filled))
+                        .modifier(ContinueNavLinkModifier(canContinue: canContinue))
                 }
+                    .disabled(!canContinue)
+                    .simultaneousGesture(TapGesture().onEnded {
+                    UIImpactFeedbackGenerator(style: .light).impactOccurred()
+                    newUser.occupation = occupation
+                })
             }
+        }
+            .modifier(OnboardingCustomNavBack())
+            .onAppear {
+            // this is necessary to make focus work
+            DispatchQueue.main.async { focusTextField = true }
         }
     }
 }
 
+
 struct GetUserOccupationView_Previews: PreviewProvider {
     static var previews: some View {
         GetUserOccupationView()
+            .environmentObject(MockUser())
     }
 }
