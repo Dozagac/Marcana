@@ -9,14 +9,8 @@ import SwiftUI
 import OpenAISwift
 
 struct ThreeCardSelectionView: View {
-    @EnvironmentObject var newUser: User
+    @EnvironmentObject var newUser: UserOO
     let openAPI = OpenAISwift(authToken: "")
-
-    
-    init() {
-        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.lightText]
-        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.lightText]
-    }
 
     var deck = Deck()
 
@@ -205,7 +199,8 @@ struct ThreeCardSelectionView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
             ThreeCardSelectionView()
-                .environmentObject(MockUser())
+                .environmentObject(MockUserOO())
+                .preferredColorScheme(.dark)
         }
     }
 }

@@ -9,12 +9,15 @@ import SwiftUI
 
 
 struct GetUserNameView: View {
-    @EnvironmentObject var newUser: User
+    @EnvironmentObject var newUser: UserOO
     @State private var name: String = ""
     @FocusState private var focusTextField
     private var canContinue: Bool {
         name.isNotEmpty
     }
+    
+    @State var continueOnBoarding = false
+    
     var body: some View {
         ZStack {
             OnboardingBackgroundView()
@@ -29,11 +32,16 @@ struct GetUserNameView: View {
                         .multilineTextAlignment(.center)
                         .textFieldStyle(.plain)
                         .focused($focusTextField)
+                        .onSubmit {
+                            if name.isNotEmpty{
+                                continueOnBoarding = true
+                            }
+                        }
                     Rectangle()
                         .frame(height: 2)
                 }
                     .frame(width: 200)
-                    .foregroundColor(.white.opacity(0.8))
+                    .foregroundColor(.text)
                 Spacer()
             }
                 .frame(maxWidth: .infinity)
@@ -42,7 +50,8 @@ struct GetUserNameView: View {
             //MARK: Continue Button
             VStack {
                 Spacer()
-                NavigationLink(destination: GetUserGenderAndBirthdayView()) {
+                NavigationLink(destination: GetUserGenderAndBirthdayView(),
+                               isActive: $continueOnBoarding) {
                     Text("Continue")
                         .modifier(ContinueNavLinkModifier(canContinue: canContinue))
                 }
@@ -100,8 +109,8 @@ struct ContinueNavLinkModifier: ViewModifier {
         content
             .font(.title3)
             .frame(width: 280, height: 50)
-            .background(Color.red.opacity(0.7))
-            .foregroundColor(Color.text)
+            .background(canContinue ? Color.text : .purple)
+            .foregroundColor(canContinue ? .black : .text)
             .cornerRadius(12)
             .saturation(canContinue ? 1 : 0)
             .padding(.bottom, 24)
@@ -114,7 +123,7 @@ struct ContinueNavLinkModifier: ViewModifier {
 struct CollectUserInfoView_Previews: PreviewProvider {
     static var previews: some View {
         GetUserNameView()
-            .environmentObject(MockUser())
+            .environmentObject(MockUserOO())
     }
 }
 

@@ -8,9 +8,10 @@
 import SwiftUI
 
 struct GetUserOccupationView: View {
-    @EnvironmentObject var newUser: User
+    @EnvironmentObject var newUser: UserOO
     @State private var occupation: String = ""
     @FocusState private var focusTextField
+    @State var continueOnBoarding = false
 
     private var canContinue: Bool {
         occupation.isNotEmpty
@@ -29,10 +30,15 @@ struct GetUserOccupationView: View {
                         .multilineTextAlignment(.center)
                         .textFieldStyle(.plain)
                         .focused($focusTextField)
+                        .onSubmit {
+                            if occupation.isNotEmpty{
+                                continueOnBoarding = true
+                            }
+                        }
 
                     Rectangle()
                         .frame(height: 2)
-                        .foregroundColor(.white.opacity(0.8))
+                        .foregroundColor(.text)
                         .padding(.horizontal)
                 }
             }
@@ -42,7 +48,7 @@ struct GetUserOccupationView: View {
 
             VStack {
                 Spacer()
-                NavigationLink(destination: GetUserRelationshipView()) {
+                NavigationLink(destination: GetUserRelationshipView(), isActive: $continueOnBoarding) {
                     Text("Continue")
                         .modifier(ContinueNavLinkModifier(canContinue: canContinue))
                 }
@@ -65,6 +71,6 @@ struct GetUserOccupationView: View {
 struct GetUserOccupationView_Previews: PreviewProvider {
     static var previews: some View {
         GetUserOccupationView()
-            .environmentObject(MockUser())
+            .environmentObject(MockUserOO())
     }
 }

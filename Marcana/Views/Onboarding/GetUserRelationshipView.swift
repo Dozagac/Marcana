@@ -9,12 +9,12 @@ import SwiftUI
 
 // Last step of onboarding
 struct GetUserRelationshipView: View {
-    @EnvironmentObject var newUser: User
+    @AppStorage(wrappedValue: true, "doOnboarding") var doOnboarding
+    @EnvironmentObject var newUser: UserOO
     @State private var selectedRelationship: Relationship? = nil
     private var canContinue: Bool {
         selectedRelationship != nil
     }
-
 
     enum Relationship: String, CaseIterable {
         case single = "Single"
@@ -31,8 +31,9 @@ struct GetUserRelationshipView: View {
                 QuestionText(text: "What is your relationship status?")
                     .padding(12)
                 ForEach(Relationship.allCases, id: \.self) { status in
-                    // SHOULD GO TO MAIN PAGE FROM HERE (readerChoiceView for now)
-                    NavigationLink(destination: ReaderChoiceView()) {
+                    NavigationLink(destination: MainView()
+                    // navlink animation?
+                    ) {
                         HStack() {
                             Text(status.rawValue)
                                 .padding(.leading, 16)
@@ -45,9 +46,9 @@ struct GetUserRelationshipView: View {
                         .simultaneousGesture(TapGesture().onEnded {
                         self.selectedRelationship = status
                         newUser.relationship = selectedRelationship?.rawValue ?? Relationship.single.rawValue
-                        
+                        doOnboarding = false
                         // SAVE THE USER SOMEHOW
-                            //users.users.append(newUser)
+                        //users.users.append(newUser)
                     })
                         .overlay(RoundedRectangle(cornerRadius: 10
                     ).stroke(Color.text, lineWidth: 1).background(.clear))
@@ -65,6 +66,6 @@ struct GetUserRelationshipView: View {
 struct GetUserRelationshipView_Previews: PreviewProvider {
     static var previews: some View {
         GetUserRelationshipView()
-            .environmentObject(MockUser())
+            .environmentObject(MockUserOO())
     }
 }

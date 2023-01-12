@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Deck: ObservableObject {
+class Deck {
     let allCards: [Card]
     var majorCards: [Card] = []
     var minorCards: [Card] = []

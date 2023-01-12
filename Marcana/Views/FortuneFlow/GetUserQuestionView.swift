@@ -11,14 +11,18 @@ import SwiftUI
 
 struct GetUserQuestionView: View {
     @State private var question: String = ""
-    private var defaultQuestions = [
+    @Binding var isTabViewShown: Bool
+    
+    @Environment(\.presentationMode) var presentationMode
+    
+    var defaultQuestions = [
         "When will I find a job?",
         "When will I find a lover?",
-        "When will I get married?",
-        "When will I have a child?",
-        "Will my relationship last?",
-        "Will I get the promotion at work?",
-        "Will my ex come back into my life?",
+    //        "When will I get married?",
+    //        "When will I have a child?",
+    //        "Will my relationship last?",
+    //        "Will I get the promotion at work?",
+    //        "Will my ex come back into my life?",
 
     ]
 
@@ -81,11 +85,26 @@ struct GetUserQuestionView: View {
                 }
             }
         }
+        .onAppear{
+            isTabViewShown = false
+        }
+        // Hide the system back button
+        .navigationBarBackButtonHidden(true)
+        // Add your custom back button here
+        .navigationBarItems(leading:
+            Button(action: {
+            self.presentationMode.wrappedValue.dismiss()
+            isTabViewShown = true
+        }) {
+            Image(systemName: "arrowshape.backward")
+                .frame(width: 24, height: 24)
+        })
     }
 }
 
 struct GetUserQuestionView_Previews: PreviewProvider {
+    @State static var isTabViewShown = false
     static var previews: some View {
-        GetUserQuestionView()
+        GetUserQuestionView(isTabViewShown: $isTabViewShown)
     }
 }

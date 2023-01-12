@@ -12,7 +12,9 @@ import SwiftUI
 
 
 struct ReaderChoiceView: View {
-    @EnvironmentObject var newUser: User
+    @AppStorage(wrappedValue: false, "doOnboarding") var doOnboarding
+    @EnvironmentObject var newUser: UserOO
+    @Binding var isTabViewShown: Bool
 
     var body: some View {
         ZStack {
@@ -24,28 +26,35 @@ struct ReaderChoiceView: View {
                     Text(newUser.relationship)
                 }
 
-                NavigationLink(destination: GetUserQuestionView(), label: {
-                    GetFortuneButton(
-                        title: "Get Fortune Reading",
-                        subtitle: "Ask a question to Aurelion",
-                        imageName: "threeReader")
-                })
+                Button("reset user") {
+                    doOnboarding = true
+                }
+
+                GetFortuneButton(
+                    isTabViewShown: $isTabViewShown,
+                    title: "Get Fortune Reading",
+                    subtitle: "Ask a question to Aurelion",
+                    imageName: "threeReader")
 
             }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .navigationTitle("Welcome")
+        }
+        .onAppear{
+            isTabViewShown = true // this 
         }
     }
 }
 
 
 struct GetFortuneButton: View {
+    @Binding var isTabViewShown: Bool
     let title: String
     let subtitle: String
     let imageName: String
 
     var body: some View {
-        NavigationLink(destination: GetUserQuestionView(), label: {
+        NavigationLink(destination: GetUserQuestionView(isTabViewShown: $isTabViewShown), label: {
             HStack() {
                 // MARK: CARD IMAGE
                 Image(imageName)
@@ -71,19 +80,19 @@ struct GetFortuneButton: View {
                 .frame(width: 300, height: 140)
                 .background()
                 .clipShape(RoundedRectangle(cornerRadius: 10))
-                .shadow(color: .icon, radius: 10)
-                .padding(40)
+                .shadow(color: .icon.opacity(0.5), radius: 5)
         })
     }
 }
 
 
 struct ContentView_Previews: PreviewProvider {
+    @State static var isTabViewShown = true
     static var previews: some View {
         Group {
             NavigationView {
-                ReaderChoiceView()
-                    .environmentObject(User())
+                ReaderChoiceView(isTabViewShown: $isTabViewShown)
+                    .environmentObject(UserOO())
                     .preferredColorScheme(.dark)
             }
         }

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct GetUserGenderAndBirthdayView: View {
-    @EnvironmentObject var newUser: User
+    @EnvironmentObject var newUser: UserOO
     // Gender
     @State private var selectedGender: Gender? = nil
 
@@ -35,14 +35,14 @@ struct GetUserGenderAndBirthdayView: View {
         case male = "Male"
         case other = "Other"
 
-        var icon: Image {
+        var icon: String {
             switch self {
             case .male:
-                return Image("GenderMaleWhite")
+                return "GenderMale"
             case .female:
-                return Image("GenderFemaleWhite")
+                return "GenderFemale"
             case .other:
-                return Image(systemName: "bubbles.and.sparkles")
+                return "GenderOther"
             }
         }
     }
@@ -52,6 +52,8 @@ struct GetUserGenderAndBirthdayView: View {
             OnboardingBackgroundView()
             VStack(spacing: 0) {
 
+                Spacer()
+
                 //MARK: Birthday Selection
                 VStack(spacing: 0) {
                     QuestionText(text: "What is your birthday ?")
@@ -60,6 +62,8 @@ struct GetUserGenderAndBirthdayView: View {
                         .datePickerStyle(WheelDatePickerStyle())
                         .colorScheme(.dark)
                 }
+
+                Spacer()
 
                 //MARK: Gender Selection
                 VStack(spacing: 24) {
@@ -74,22 +78,25 @@ struct GetUserGenderAndBirthdayView: View {
                                 self.selectedGender = gender }
                             ) {
                                 RoundedRectangle(cornerRadius: 20)
-                                    .fill(self.selectedGender == gender ? Color.foreground : .clear)
+                                    .fill(self.selectedGender == gender ? Color.text : .clear)
                                     .frame(width: 95, height: 95)
-                                    .foregroundColor(Color.text)
                                     .overlay(RoundedRectangle(cornerRadius: 20)
                                     .stroke(Color.text, lineWidth: 1).background(.clear))
                                     .overlay(
                                     VStack {
-                                        gender.icon
+                                        Image(gender.icon)
+                                            .renderingMode(.template)
+                                            .tint(.red)
                                         Text(gender.rawValue)
                                             .font(.title2)
                                     }
-                                        .foregroundColor(Color.text))
+                                        .foregroundColor(self.selectedGender == gender ? Color.black : .text))
                             }
                         }
                     }
                 }
+                Spacer()
+                Spacer()
             }
 
             //MARK: Continue Button
@@ -115,6 +122,6 @@ struct GetUserGenderAndBirthdayView: View {
 struct GetUserGenderAndBirthdayView_Previews: PreviewProvider {
     static var previews: some View {
         GetUserGenderAndBirthdayView()
-            .environmentObject(MockUser())
+            .environmentObject(MockUserOO())
     }
 }
