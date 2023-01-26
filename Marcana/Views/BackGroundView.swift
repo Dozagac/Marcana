@@ -9,24 +9,29 @@ import Foundation
 import SwiftUI
 import AVKit
 
-struct OnboardingBackgroundView: View {
-    @State private var player = AVPlayer()
 
+struct VideoBackgroundView: View {
+    @State private var player = AVPlayer()
+    var videoFileName: String // "candleVideo", "tarotTableVideo"
+    var playRate: Float = 1
+    var myOpacity: Double = 0.5
+    var myBlur: Double = 2
     var body: some View {
         ZStack {
-//            GeometryReader { geo in
-//                PlayerView()
-//                    .aspectRatio(contentMode: .fill)
-//                    .frame(width: geo.size.width, height: geo.size.height + 100)
-//                    .edgesIgnoringSafeArea(.all)
-//                    .overlay(Color.black.opacity(0.5))
-//                    .blur(radius: 6)
-//                    .edgesIgnoringSafeArea(.all)
-//                    .colorMultiply(.foreground) // #6B4E71
-//            }
+            GeometryReader { geo in
+                PlayerView(forResource: videoFileName, withExtension: "mp4" , playRate: playRate)
+//                    .aspectRatio(contentMode: .fit)
+                    .frame(width: geo.size.width, height: geo.size.height + 100)
+                    .edgesIgnoringSafeArea(.all)
+                    .overlay(Color.black.opacity(myOpacity))
+                    .blur(radius: myBlur)
+                    .edgesIgnoringSafeArea(.all)
+            }
         }
+        .ignoresSafeArea(.all)
     }
 }
+
 
 struct BackgroundView: View {
     var body: some View {
@@ -45,33 +50,11 @@ struct BackgroundView: View {
     }
 }
 
-struct OnboardingBackgroundViewBKP: View {
-    @State private var change = false
-
-    var body: some View {
-        ZStack {
-            Image("onboardingBackground")
-                .resizable()
-                .ignoresSafeArea()
-        }
-    }
-}
-
-
-
-struct PlainBackgroundView: View {
-    var body: some View {
-        ZStack {
-            Color.background
-                .ignoresSafeArea()
-        }
-    }
-}
 
 
 struct BackgroundView_Previews: PreviewProvider {
     static var previews: some View {
-        OnboardingBackgroundView()
+        VideoBackgroundView(videoFileName: "candleVideo", playRate: 0.8)
     }
 }
 

@@ -11,100 +11,68 @@ import SwiftUI
 
 struct GetUserQuestionView: View {
     @State private var question: String = ""
-    @Binding var isTabViewShown: Bool
-    
+    @FocusState private var focusTextField
     @Environment(\.presentationMode) var presentationMode
-    
-    var defaultQuestions = [
-        "When will I find a job?",
-        "When will I find a lover?",
-    //        "When will I get married?",
-    //        "When will I have a child?",
-    //        "Will my relationship last?",
-    //        "Will I get the promotion at work?",
-    //        "Will my ex come back into my life?",
 
-    ]
-
-    private var filled: Bool {
+    private var canContinue: Bool {
         question.isNotEmpty
     }
 
     var body: some View {
         ZStack {
-            BackgroundView()
-            VStack {
+            // Background
+            VideoBackgroundView(videoFileName: "candleVideo", playRate: 0.8)
+
+            //MARK: Content
+            VStack{
                 Spacer()
-                QuestionText(text: "What is the one question")
-                QuestionText(text: "that you seek the answer for?")
-                    .padding(.bottom, 24)
-                TextField("Enter your occupation",
-                          text: $question,
-                          prompt: Text("How can I attract love into my life?"))
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .padding(.horizontal, 24)
-
-                Text("You can ask your own personal question to Aurelion, or choose one below:")
-                    .frame(maxWidth: .infinity)
-                    .padding(24)
-                    .foregroundColor(.text)
-
-                VStack(alignment: .leading, spacing: 12) {
-                    //MARK: Gender Buttons
-                    ForEach(defaultQuestions, id: \.self) { question in
-                        Button(action: {
-                            self.question = question }
-                        ) {
-                            HStack {
-                                Text(question)
-                                    .font(.subheadline)
-                                    .padding(.leading, 8)
-                                    .padding(4)
-                                Spacer()
-                            }
-                        }
-                            .frame(maxWidth: .infinity)
-                            .background(Color.clear)
-                            .foregroundColor(Color.text)
-                            .cornerRadius(10)
-                            .overlay(RoundedRectangle(cornerRadius: 10
-                        ).stroke(Color.text, lineWidth: 0.3).background(.clear))
-                            .padding(.horizontal, 24)
-                    }
+                    .frame(height: 100)
+                
+                VStack {
+                    QuestionText(text: "Ask your question to fate")
+                        .padding(.bottom, 24)
+                    TextField("Ask a question",
+                              text: $question,
+                              prompt: Text("Will I get a surprise this month?"))
+                    .font(.title3)
+                    .minimumScaleFactor(0.5)
+                        .textFieldStyle(.plain)
+                        .multilineTextAlignment(.center)
+                        .focused($focusTextField)
+                        .padding(.horizontal, 24)
                 }
-
+                    .frame(maxWidth: .infinity)
+                    .foregroundColor(.text)
+                    .padding(24)
+                    .background(.ultraThinMaterial)
+                    .cornerRadius(48)
+                
+                Spacer()
                 Spacer()
             }
 
             //MARK: Continue Button
             VStack {
                 Spacer()
-                NavigationLink(destination: ThreeCardSelectionView()) {
+                NavigationLink(destination: ThreeCardSelectionView(chosenQuestion: question)) {
                     Text("Continue")
-                        .modifier(ContinueNavLinkModifier(canContinue: filled))
+                        .modifier(OnboardingContinueButtonModifier(canContinue: canContinue))
                 }
+                .disabled(question.isEmpty)
             }
         }
-        .onAppear{
-            isTabViewShown = false
+        .padding(.horizontal, 16)
+            .onAppear {
+            // this is necessary to make focus work
+            DispatchQueue.main.async { focusTextField = true }
         }
-        // Hide the system back button
-        .navigationBarBackButtonHidden(true)
-        // Add your custom back button here
-        .navigationBarItems(leading:
-            Button(action: {
-            self.presentationMode.wrappedValue.dismiss()
-            isTabViewShown = true
-        }) {
-            Image(systemName: "arrowshape.backward")
-                .frame(width: 24, height: 24)
-        })
+            .modifier(customNavBackModifier())
     }
 }
 
 struct GetUserQuestionView_Previews: PreviewProvider {
-    @State static var isTabViewShown = false
     static var previews: some View {
-        GetUserQuestionView(isTabViewShown: $isTabViewShown)
+        GetUserQuestionView()
+            .preferredColorScheme(.dark)
     }
 }

@@ -8,10 +8,9 @@
 import SwiftUI
 
 struct GetUserOccupationView: View {
-    @EnvironmentObject var newUser: UserOO
+    @Binding var onboardingStage: Int
     @State private var occupation: String = ""
     @FocusState private var focusTextField
-    @State var continueOnBoarding = false
 
     private var canContinue: Bool {
         occupation.isNotEmpty
@@ -19,47 +18,43 @@ struct GetUserOccupationView: View {
 
     var body: some View {
         ZStack {
-            OnboardingBackgroundView()
-
-            VStack(spacing: 36) {
+            VStack(spacing: 0) {
+                Spacer()
+                    .frame(height: 100)
                 VStack {
                     QuestionText(text: "What is your occupation?")
                         .padding(.bottom, 24)
-                    TextField("Enter your occupation", text: $occupation, prompt: Text("")) //"Student, Artist, Lawyer, Engineer ..."
-                    .font(.title)
+                    TextField("Enter your occupation", text: $occupation, prompt: Text("Student"))
+                        .font(.title)
+                        .foregroundColor(.text)
                         .multilineTextAlignment(.center)
                         .textFieldStyle(.plain)
                         .focused($focusTextField)
                         .onSubmit {
-                            if occupation.isNotEmpty{
-                                continueOnBoarding = true
-                            }
+                        if occupation.isNotEmpty {
+                            onboardingStage += 1
+                            focusTextField = false
                         }
-
-                    Rectangle()
-                        .frame(height: 2)
-                        .foregroundColor(.text)
-                        .padding(.horizontal)
+                    }
                 }
+                    .padding(24)
+                    .background(.ultraThinMaterial)
+                    .cornerRadius(48)
+                
+                Spacer()
             }
-
+                .padding(.horizontal, 16)
 
             //MARK: Continue Button
-
             VStack {
                 Spacer()
-                NavigationLink(destination: GetUserRelationshipView(), isActive: $continueOnBoarding) {
-                    Text("Continue")
-                        .modifier(ContinueNavLinkModifier(canContinue: canContinue))
-                }
-                    .disabled(!canContinue)
+                OnboardingContinueButton(onboardingStage: $onboardingStage, canContinue: canContinue)
                     .simultaneousGesture(TapGesture().onEnded {
-                    UIImpactFeedbackGenerator(style: .light).impactOccurred()
-                    newUser.occupation = occupation
+                    PersistentDataManager.shared.user.occupation = occupation
+                    focusTextField = false
                 })
             }
         }
-            .modifier(OnboardingCustomNavBack())
             .onAppear {
             // this is necessary to make focus work
             DispatchQueue.main.async { focusTextField = true }
@@ -69,8 +64,10 @@ struct GetUserOccupationView: View {
 
 
 struct GetUserOccupationView_Previews: PreviewProvider {
+    @State static var onboardingStage = 3
     static var previews: some View {
-        GetUserOccupationView()
+        GetUserOccupationView(onboardingStage: $onboardingStage)
             .environmentObject(MockUserOO())
+            .preferredColorScheme(.dark)
     }
 }

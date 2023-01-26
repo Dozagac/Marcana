@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>57829925618-97tmre2fs4sljsa9guts51321pmp0uor.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.57829925618-97tmre2fs4sljsa9guts51321pmp0uor</string>
+	<key>API_KEY</key>
+	<string>AIzaSyC5GBByImr1x8XLrDCxYdckr_Rv4_ITPMM</string>
+	<key>GCM_SENDER_ID</key>
+	<string>57829925618</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>dozagac.Marcana</string>
+	<key>PROJECT_ID</key>
+	<string>marcana-56c02</string>
+	<key>STORAGE_BUCKET</key>
+	<string>marcana-56c02.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:57829925618:ios:1bc7d5a9b0b009f092666b</string>
+</dict>
+</plist>

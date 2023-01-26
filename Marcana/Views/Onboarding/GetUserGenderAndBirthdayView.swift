@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct GetUserGenderAndBirthdayView: View {
-    @EnvironmentObject var newUser: UserOO
+    @Binding var onboardingStage: Int
     // Gender
     @State private var selectedGender: Gender? = nil
 
@@ -27,13 +27,14 @@ struct GetUserGenderAndBirthdayView: View {
         var components = calendar.dateComponents([.month, .day], from: currentDate)
         components.year = 2000
         return Calendar.current.date(from: components) ?? Date.now
+//        Date()
     }
 
 
     enum Gender: String, CaseIterable {
-        case female = "Female"
-        case male = "Male"
-        case other = "Other"
+        case female = "Her"
+        case male = "Him"
+        case other = "They"
 
         var icon: String {
             switch self {
@@ -42,86 +43,92 @@ struct GetUserGenderAndBirthdayView: View {
             case .female:
                 return "GenderFemale"
             case .other:
-                return "GenderOther"
+                return "GenderIntersex"
             }
         }
     }
 
     var body: some View {
         ZStack {
-            OnboardingBackgroundView()
-            VStack(spacing: 0) {
-
+            VStack {
                 Spacer()
+                    .frame(height: 100)
 
-                //MARK: Birthday Selection
                 VStack(spacing: 0) {
-                    QuestionText(text: "What is your birthday ?")
-                    DatePicker("Enter your birthday", selection: $birthday, displayedComponents: .date)
-                        .labelsHidden()
-                        .datePickerStyle(WheelDatePickerStyle())
-                        .colorScheme(.dark)
-                }
+                    //MARK: - Birthday Selection
+                    VStack(spacing: 8) {
+                        Image(systemName: "birthday.cake.fill")
+                            .font(.largeTitle)
+                        QuestionText(text: "What is your birthday ?")
+                        DatePicker("Enter your birthday", selection: $birthday, in: ...Date(), displayedComponents: .date)
+                            .labelsHidden()
+                            .datePickerStyle(WheelDatePickerStyle())
+                            .colorScheme(.dark)
+                    }
+                    .padding(.bottom, 24)
 
-                Spacer()
+                    //MARK: - Gender Selection
+                    VStack(spacing: 8) {
+                        Image(systemName: "person.fill")
+                            .font(.largeTitle)
 
-                //MARK: Gender Selection
-                VStack(spacing: 24) {
-                    //MARK: Question Title
-                    QuestionText(text: "What is your gender?")
+                        QuestionText(text: "How should we call you?")
+                            .padding(.bottom)
 
-                    //MARK: Gender Selection
-                    HStack(spacing: 24) {
                         //MARK: Gender Buttons
-                        ForEach(Gender.allCases, id: \.self) { gender in
-                            Button(action: {
-                                self.selectedGender = gender }
-                            ) {
-                                RoundedRectangle(cornerRadius: 20)
-                                    .fill(self.selectedGender == gender ? Color.text : .clear)
-                                    .frame(width: 95, height: 95)
-                                    .overlay(RoundedRectangle(cornerRadius: 20)
-                                    .stroke(Color.text, lineWidth: 1).background(.clear))
-                                    .overlay(
-                                    VStack {
-                                        Image(gender.icon)
-                                            .renderingMode(.template)
-                                            .tint(.red)
-                                        Text(gender.rawValue)
-                                            .font(.title2)
-                                    }
-                                        .foregroundColor(self.selectedGender == gender ? Color.black : .text))
+                        HStack(spacing: 16) {
+                            ForEach(Gender.allCases, id: \.self) { gender in
+                                Button(action: {
+                                    self.selectedGender = gender }
+                                ) {
+                                    RoundedRectangle(cornerRadius: 20)
+                                        .fill(self.selectedGender == gender ? Color.text : .clear)
+                                        .frame(width: 95, height: 95)
+                                        .overlay(RoundedRectangle(cornerRadius: 20)
+                                        .stroke(Color.text, lineWidth: 1).background(.clear))
+                                        .overlay(
+                                        VStack {
+                                            Image(gender.icon)
+                                                .renderingMode(.template)
+                                            Text(gender.rawValue)
+                                                .font(.title2)
+                                        }
+                                            .foregroundColor(self.selectedGender == gender ? Color.black : .text))
+                                }
                             }
                         }
                     }
                 }
-                Spacer()
+                    .padding(24)
+                    .background(.ultraThinMaterial)
+                    .cornerRadius(48)
+
                 Spacer()
             }
 
             //MARK: Continue Button
             VStack {
                 Spacer()
-                NavigationLink(destination: GetUserOccupationView()) {
-                    Text("Continue")
-                        .modifier(ContinueNavLinkModifier(canContinue: canContinue))
-                }
-                    .disabled(!canContinue)
+                OnboardingContinueButton(onboardingStage: $onboardingStage, canContinue: canContinue)
                     .simultaneousGesture(TapGesture().onEnded {
-                    UIImpactFeedbackGenerator(style: .light).impactOccurred()
-                    newUser.gender = selectedGender?.rawValue ?? Gender.other.rawValue
-                    newUser.birthday = birthday
+                    if selectedGender != nil {
+                        PersistentDataManager.shared.user.gender = selectedGender!.rawValue
+                        PersistentDataManager.shared.user.birthday = birthday
+                    }
                 })
             }
         }
-            .modifier(OnboardingCustomNavBack())
+            .padding(.horizontal, 16)
+
     }
 }
 
 
 struct GetUserGenderAndBirthdayView_Previews: PreviewProvider {
+    @State static var onboardingStage = 2
     static var previews: some View {
-        GetUserGenderAndBirthdayView()
+        GetUserGenderAndBirthdayView(onboardingStage: $onboardingStage)
             .environmentObject(MockUserOO())
+            .preferredColorScheme(.dark)
     }
 }

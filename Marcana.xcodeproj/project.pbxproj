@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		76152A4B296FFD7C001D5B8F /* spaceBackground.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 76152A4A296FFD7C001D5B8F /* spaceBackground.mp4 */; };
 		76152A4D296FFE42001D5B8F /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76152A4C296FFE42001D5B8F /* PlayerView.swift */; };
 		76267D3B2955CDAE00108612 /* GetUserNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76267D3A2955CDAE00108612 /* GetUserNameView.swift */; };
 		76267D422955D60E00108612 /* GetUserOccupationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76267D412955D60E00108612 /* GetUserOccupationView.swift */; };
@@ -17,16 +16,28 @@
 		763DCC9C2944A77800D286C7 /* OpenAISwift in Frameworks */ = {isa = PBXBuildFile; productRef = 763DCC9B2944A77800D286C7 /* OpenAISwift */; };
 		7654E7FE2933C67A00F9FDAB /* CardDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7654E7FD2933C67A00F9FDAB /* CardDetailView.swift */; };
 		7654E8002933D56500F9FDAB /* ThreeCardSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7654E7FF2933D56500F9FDAB /* ThreeCardSelectionView.swift */; };
+		7668BF0A297026CA00019E14 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7668BF09297026CA00019E14 /* OnboardingView.swift */; };
 		766F59FA2941342700A328E4 /* BackGroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766F59F92941342700A328E4 /* BackGroundView.swift */; };
 		7675E44529326B2600ED17D5 /* MarcanaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7675E44429326B2600ED17D5 /* MarcanaApp.swift */; };
-		7675E44729326B2600ED17D5 /* ReaderChoiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7675E44629326B2600ED17D5 /* ReaderChoiceView.swift */; };
+		7675E44729326B2600ED17D5 /* HomePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7675E44629326B2600ED17D5 /* HomePageView.swift */; };
 		7675E44929326B2700ED17D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7675E44829326B2700ED17D5 /* Assets.xcassets */; };
 		7675E45329326B6300ED17D5 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7675E45229326B6300ED17D5 /* Card.swift */; };
 		7675E45729326E1E00ED17D5 /* tarot.json in Resources */ = {isa = PBXBuildFile; fileRef = 7675E45629326E1E00ED17D5 /* tarot.json */; };
 		7675E45929326EF500ED17D5 /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7675E45829326EF500ED17D5 /* Deck.swift */; };
 		7675E45F29336C3F00ED17D5 /* DeckInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7675E45E29336C3F00ED17D5 /* DeckInfoView.swift */; };
+		76760C70297A87EB00D9C5D2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 76760C6F297A87EB00D9C5D2 /* GoogleService-Info.plist */; };
+		76760C74297A8D0500D9C5D2 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 76760C73297A8D0500D9C5D2 /* FirebaseAuth */; };
+		76760C76297A8E0B00D9C5D2 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76760C75297A8E0B00D9C5D2 /* LoginView.swift */; };
+		76760C78297A8E1A00D9C5D2 /* LoginViewOO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76760C77297A8E1A00D9C5D2 /* LoginViewOO.swift */; };
+		76760C7C297AB64900D9C5D2 /* candleVideo.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 76760C7B297AB64900D9C5D2 /* candleVideo.mp4 */; };
 		76B2E12F29365BD4004BCF46 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B2E12E29365BD4004BCF46 /* Extensions.swift */; };
-		76B2E13129365E15004BCF46 /* Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B2E13029365E15004BCF46 /* Modifiers.swift */; };
+		76D5EF6029718BC300EF9C4A /* AnimatedCipherStroke.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D5EF5F29718BC300EF9C4A /* AnimatedCipherStroke.swift */; };
+		76D5EF6229718BF600EF9C4A /* CustomViewElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D5EF6129718BF600EF9C4A /* CustomViewElements.swift */; };
+		76D5EF64297191A400EF9C4A /* PersistentDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D5EF63297191A400EF9C4A /* PersistentDataManager.swift */; };
+		76D5EF662971A58900EF9C4A /* tarotTableVideo.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 76D5EF652971A58900EF9C4A /* tarotTableVideo.mp4 */; };
+		76D5EF682972AB3300EF9C4A /* TabViewExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D5EF672972AB3300EF9C4A /* TabViewExample.swift */; };
+		76D5EF6B2972B83800EF9C4A /* AnimateText in Frameworks */ = {isa = PBXBuildFile; productRef = 76D5EF6A2972B83800EF9C4A /* AnimateText */; };
+		76D5EF6D2972BB8500EF9C4A /* FortuneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D5EF6C2972BB8500EF9C4A /* FortuneView.swift */; };
 		76F72ACB2967518F009E7501 /* UserOO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F72ACA2967518F009E7501 /* UserOO.swift */; };
 		76F72ACD2967FC3E009E7501 /* LauncherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F72ACC2967FC3E009E7501 /* LauncherView.swift */; };
 		76F72BBD296C652D009E7501 /* OccupationViewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F72BBC296C652D009E7501 /* OccupationViewTest.swift */; };
@@ -36,26 +47,36 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		76152A4A296FFD7C001D5B8F /* spaceBackground.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = spaceBackground.mp4; sourceTree = "<group>"; };
 		76152A4C296FFE42001D5B8F /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
 		76267D3A2955CDAE00108612 /* GetUserNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserNameView.swift; sourceTree = "<group>"; };
 		76267D412955D60E00108612 /* GetUserOccupationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserOccupationView.swift; sourceTree = "<group>"; };
 		76267D432955EA5900108612 /* GetUserRelationshipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserRelationshipView.swift; sourceTree = "<group>"; };
 		76267D452955EC3F00108612 /* GetUserGenderAndBirthdayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserGenderAndBirthdayView.swift; sourceTree = "<group>"; };
 		76267D49295643CC00108612 /* GetUserQuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserQuestionView.swift; sourceTree = "<group>"; };
+		7629F6AC297088E900FC2D17 /* Marcana.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Marcana.entitlements; sourceTree = "<group>"; };
 		7654E7FD2933C67A00F9FDAB /* CardDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailView.swift; sourceTree = "<group>"; };
 		7654E7FF2933D56500F9FDAB /* ThreeCardSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreeCardSelectionView.swift; sourceTree = "<group>"; };
+		7668BF09297026CA00019E14 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		766F59F92941342700A328E4 /* BackGroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackGroundView.swift; sourceTree = "<group>"; };
 		7675E44129326B2600ED17D5 /* Marcana.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Marcana.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7675E44429326B2600ED17D5 /* MarcanaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarcanaApp.swift; sourceTree = "<group>"; };
-		7675E44629326B2600ED17D5 /* ReaderChoiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReaderChoiceView.swift; sourceTree = "<group>"; };
+		7675E44629326B2600ED17D5 /* HomePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageView.swift; sourceTree = "<group>"; };
 		7675E44829326B2700ED17D5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7675E45229326B6300ED17D5 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		7675E45629326E1E00ED17D5 /* tarot.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tarot.json; sourceTree = "<group>"; };
 		7675E45829326EF500ED17D5 /* Deck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deck.swift; sourceTree = "<group>"; };
 		7675E45E29336C3F00ED17D5 /* DeckInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckInfoView.swift; sourceTree = "<group>"; };
+		76760C6F297A87EB00D9C5D2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		76760C75297A8E0B00D9C5D2 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		76760C77297A8E1A00D9C5D2 /* LoginViewOO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewOO.swift; sourceTree = "<group>"; };
+		76760C7B297AB64900D9C5D2 /* candleVideo.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = candleVideo.mp4; sourceTree = "<group>"; };
 		76B2E12E29365BD4004BCF46 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		76B2E13029365E15004BCF46 /* Modifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modifiers.swift; sourceTree = "<group>"; };
+		76D5EF5F29718BC300EF9C4A /* AnimatedCipherStroke.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedCipherStroke.swift; sourceTree = "<group>"; };
+		76D5EF6129718BF600EF9C4A /* CustomViewElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViewElements.swift; sourceTree = "<group>"; };
+		76D5EF63297191A400EF9C4A /* PersistentDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentDataManager.swift; sourceTree = "<group>"; };
+		76D5EF652971A58900EF9C4A /* tarotTableVideo.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = tarotTableVideo.mp4; sourceTree = "<group>"; };
+		76D5EF672972AB3300EF9C4A /* TabViewExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewExample.swift; sourceTree = "<group>"; };
+		76D5EF6C2972BB8500EF9C4A /* FortuneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FortuneView.swift; sourceTree = "<group>"; };
 		76F72ACA2967518F009E7501 /* UserOO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserOO.swift; sourceTree = "<group>"; };
 		76F72ACC2967FC3E009E7501 /* LauncherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LauncherView.swift; sourceTree = "<group>"; };
 		76F72BBC296C652D009E7501 /* OccupationViewTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OccupationViewTest.swift; sourceTree = "<group>"; };
@@ -70,6 +91,8 @@
 			files = (
 				763DCC9C2944A77800D286C7 /* OpenAISwift in Frameworks */,
 				76F72BC6296DCD81009E7501 /* SwifterSwift in Frameworks */,
+				76D5EF6B2972B83800EF9C4A /* AnimateText in Frameworks */,
+				76760C74297A8D0500D9C5D2 /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,27 +104,46 @@
 			children = (
 				76267D49295643CC00108612 /* GetUserQuestionView.swift */,
 				7654E7FF2933D56500F9FDAB /* ThreeCardSelectionView.swift */,
+				76D5EF6C2972BB8500EF9C4A /* FortuneView.swift */,
 			);
 			path = FortuneFlow;
+			sourceTree = "<group>";
+		};
+		7629F6AD29715E1700FC2D17 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				76152A4C296FFE42001D5B8F /* PlayerView.swift */,
+				76B2E12E29365BD4004BCF46 /* Extensions.swift */,
+				76D5EF6129718BF600EF9C4A /* CustomViewElements.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 		7654E8032933D5E800F9FDAB /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				76F72ACF2968013B009E7501 /* Archived */,
 				76F72ACE2967FCE8009E7501 /* Onboarding */,
 				76267D3C2955D2C600108612 /* FortuneFlow */,
 				766F59F92941342700A328E4 /* BackGroundView.swift */,
-				7675E44629326B2600ED17D5 /* ReaderChoiceView.swift */,
+				76760C75297A8E0B00D9C5D2 /* LoginView.swift */,
+				7675E44629326B2600ED17D5 /* HomePageView.swift */,
+				7675E45E29336C3F00ED17D5 /* DeckInfoView.swift */,
 				7654E7FD2933C67A00F9FDAB /* CardDetailView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
 		};
+		7663553F29798C10001E4CDA /* Animations */ = {
+			isa = PBXGroup;
+			children = (
+				76D5EF5F29718BC300EF9C4A /* AnimatedCipherStroke.swift */,
+			);
+			path = Animations;
+			sourceTree = "<group>";
+		};
 		7675E43829326B2600ED17D5 = {
 			isa = PBXGroup;
 			children = (
-				76152A4C296FFE42001D5B8F /* PlayerView.swift */,
 				7675E44329326B2600ED17D5 /* Marcana */,
 				7675E44229326B2600ED17D5 /* Products */,
 			);
@@ -118,33 +160,40 @@
 		7675E44329326B2600ED17D5 /* Marcana */ = {
 			isa = PBXGroup;
 			children = (
+				76760C6F297A87EB00D9C5D2 /* GoogleService-Info.plist */,
+				7629F6AC297088E900FC2D17 /* Marcana.entitlements */,
 				7675E44429326B2600ED17D5 /* MarcanaApp.swift */,
 				76F72ACC2967FC3E009E7501 /* LauncherView.swift */,
-				76B2E13229365E3A004BCF46 /* DataModels */,
+				76F72ACF2968013B009E7501 /* Archived */,
+				76B2E13229365E3A004BCF46 /* Data */,
 				7654E8032933D5E800F9FDAB /* Views */,
+				7663553F29798C10001E4CDA /* Animations */,
+				7629F6AD29715E1700FC2D17 /* Utilities */,
+				76D5EF652971A58900EF9C4A /* tarotTableVideo.mp4 */,
+				76760C7B297AB64900D9C5D2 /* candleVideo.mp4 */,
 				7675E44829326B2700ED17D5 /* Assets.xcassets */,
 				7675E45629326E1E00ED17D5 /* tarot.json */,
-				76B2E13029365E15004BCF46 /* Modifiers.swift */,
-				76B2E12E29365BD4004BCF46 /* Extensions.swift */,
-				76152A4A296FFD7C001D5B8F /* spaceBackground.mp4 */,
 			);
 			path = Marcana;
 			sourceTree = "<group>";
 		};
-		76B2E13229365E3A004BCF46 /* DataModels */ = {
+		76B2E13229365E3A004BCF46 /* Data */ = {
 			isa = PBXGroup;
 			children = (
 				76F72ACA2967518F009E7501 /* UserOO.swift */,
+				76760C77297A8E1A00D9C5D2 /* LoginViewOO.swift */,
 				7675E45229326B6300ED17D5 /* Card.swift */,
 				7675E45829326EF500ED17D5 /* Deck.swift */,
 				76F72BBE296D85E7009E7501 /* LocalDataStrings.swift */,
+				76D5EF63297191A400EF9C4A /* PersistentDataManager.swift */,
 			);
-			path = DataModels;
+			path = Data;
 			sourceTree = "<group>";
 		};
 		76F72ACE2967FCE8009E7501 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
+				7668BF09297026CA00019E14 /* OnboardingView.swift */,
 				76267D3A2955CDAE00108612 /* GetUserNameView.swift */,
 				76267D452955EC3F00108612 /* GetUserGenderAndBirthdayView.swift */,
 				76267D412955D60E00108612 /* GetUserOccupationView.swift */,
@@ -156,9 +205,9 @@
 		76F72ACF2968013B009E7501 /* Archived */ = {
 			isa = PBXGroup;
 			children = (
-				7675E45E29336C3F00ED17D5 /* DeckInfoView.swift */,
 				76F72BBC296C652D009E7501 /* OccupationViewTest.swift */,
 				76F72BC2296D9DF0009E7501 /* TestingView.swift */,
+				76D5EF672972AB3300EF9C4A /* TabViewExample.swift */,
 			);
 			path = Archived;
 			sourceTree = "<group>";
@@ -182,6 +231,8 @@
 			packageProductDependencies = (
 				763DCC9B2944A77800D286C7 /* OpenAISwift */,
 				76F72BC5296DCD81009E7501 /* SwifterSwift */,
+				76D5EF6A2972B83800EF9C4A /* AnimateText */,
+				76760C73297A8D0500D9C5D2 /* FirebaseAuth */,
 			);
 			productName = Marcana;
 			productReference = 7675E44129326B2600ED17D5 /* Marcana.app */;
@@ -214,6 +265,8 @@
 			packageReferences = (
 				763DCC9A2944A77800D286C7 /* XCRemoteSwiftPackageReference "OpenAISwift" */,
 				76F72BC4296DCD81009E7501 /* XCRemoteSwiftPackageReference "SwifterSwift" */,
+				76D5EF692972B83800EF9C4A /* XCRemoteSwiftPackageReference "AnimateText" */,
+				76760C72297A8D0500D9C5D2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 7675E44229326B2600ED17D5 /* Products */;
 			projectDirPath = "";
@@ -230,8 +283,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				7675E45729326E1E00ED17D5 /* tarot.json in Resources */,
-				76152A4B296FFD7C001D5B8F /* spaceBackground.mp4 in Resources */,
+				76760C7C297AB64900D9C5D2 /* candleVideo.mp4 in Resources */,
+				76760C70297A87EB00D9C5D2 /* GoogleService-Info.plist in Resources */,
 				7675E44929326B2700ED17D5 /* Assets.xcassets in Resources */,
+				76D5EF662971A58900EF9C4A /* tarotTableVideo.mp4 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -242,15 +297,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				76B2E13129365E15004BCF46 /* Modifiers.swift in Sources */,
 				76F72BC3296D9DF0009E7501 /* TestingView.swift in Sources */,
 				7654E8002933D56500F9FDAB /* ThreeCardSelectionView.swift in Sources */,
+				76D5EF6029718BC300EF9C4A /* AnimatedCipherStroke.swift in Sources */,
 				7675E45929326EF500ED17D5 /* Deck.swift in Sources */,
 				7675E45329326B6300ED17D5 /* Card.swift in Sources */,
 				76267D442955EA5900108612 /* GetUserRelationshipView.swift in Sources */,
 				76B2E12F29365BD4004BCF46 /* Extensions.swift in Sources */,
-				7675E44729326B2600ED17D5 /* ReaderChoiceView.swift in Sources */,
+				7675E44729326B2600ED17D5 /* HomePageView.swift in Sources */,
 				7675E45F29336C3F00ED17D5 /* DeckInfoView.swift in Sources */,
+				76D5EF64297191A400EF9C4A /* PersistentDataManager.swift in Sources */,
 				76152A4D296FFE42001D5B8F /* PlayerView.swift in Sources */,
 				76267D3B2955CDAE00108612 /* GetUserNameView.swift in Sources */,
 				766F59FA2941342700A328E4 /* BackGroundView.swift in Sources */,
@@ -259,10 +315,16 @@
 				76F72BBD296C652D009E7501 /* OccupationViewTest.swift in Sources */,
 				76267D462955EC3F00108612 /* GetUserGenderAndBirthdayView.swift in Sources */,
 				76267D422955D60E00108612 /* GetUserOccupationView.swift in Sources */,
+				76760C78297A8E1A00D9C5D2 /* LoginViewOO.swift in Sources */,
 				76F72ACB2967518F009E7501 /* UserOO.swift in Sources */,
+				76760C76297A8E0B00D9C5D2 /* LoginView.swift in Sources */,
 				76F72ACD2967FC3E009E7501 /* LauncherView.swift in Sources */,
+				76D5EF6D2972BB8500EF9C4A /* FortuneView.swift in Sources */,
 				7654E7FE2933C67A00F9FDAB /* CardDetailView.swift in Sources */,
 				76267D4A295643CC00108612 /* GetUserQuestionView.swift in Sources */,
+				76D5EF682972AB3300EF9C4A /* TabViewExample.swift in Sources */,
+				76D5EF6229718BF600EF9C4A /* CustomViewElements.swift in Sources */,
+				7668BF0A297026CA00019E14 /* OnboardingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -388,6 +450,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Marcana/Marcana.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -420,6 +483,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Marcana/Marcana.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -479,6 +543,22 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		76760C72297A8D0500D9C5D2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		76D5EF692972B83800EF9C4A /* XCRemoteSwiftPackageReference "AnimateText" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jasudev/AnimateText";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.5.0;
+			};
+		};
 		76F72BC4296DCD81009E7501 /* XCRemoteSwiftPackageReference "SwifterSwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SwifterSwift/SwifterSwift";
@@ -494,6 +574,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 763DCC9A2944A77800D286C7 /* XCRemoteSwiftPackageReference "OpenAISwift" */;
 			productName = OpenAISwift;
+		};
+		76760C73297A8D0500D9C5D2 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 76760C72297A8D0500D9C5D2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		76D5EF6A2972B83800EF9C4A /* AnimateText */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 76D5EF692972B83800EF9C4A /* XCRemoteSwiftPackageReference "AnimateText" */;
+			productName = AnimateText;
 		};
 		76F72BC5296DCD81009E7501 /* SwifterSwift */ = {
 			isa = XCSwiftPackageProductDependency;
