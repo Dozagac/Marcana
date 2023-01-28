@@ -28,7 +28,9 @@ struct GetUserRelationshipView: View {
                     .frame(height: 100)
                 VStack{
                     VStack(spacing: 12) {
-                        QuestionText(text: "What is your relationship status?")
+                        Image(systemName: "heart.circle")
+                            .font(.largeTitle)
+                        QuestionText(text: "Relationship status")
                             .padding(.bottom, 12)
                         ForEach(Relationship.allCases, id: \.self) { status in
                             Button {
@@ -70,7 +72,6 @@ struct GetUserRelationshipView: View {
                 Spacer()
             }
         }
-        .padding(.horizontal, 16)
     }
 }
 

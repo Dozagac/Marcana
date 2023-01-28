@@ -29,6 +29,8 @@ struct OccupationViewTest: View {
             BackgroundView()
             VStack {
                 Spacer()
+                Image(systemName: "star.fill")
+                    .font(.largeTitle)
                 QuestionText(text: "What is your occupation?")
                     .padding(.bottom, 24)
                 TextField("Enter your occupation", text: $occupation, prompt: Text("Student, Artist, Lawyer, Engineer ..."))
@@ -89,5 +91,6 @@ struct OccupationViewTest: View {
 struct OccupationViewTest_Previews: PreviewProvider {
     static var previews: some View {
         OccupationViewTest()
+            .preferredColorScheme(.dark)
     }
 }

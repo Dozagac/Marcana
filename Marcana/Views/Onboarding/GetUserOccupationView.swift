@@ -21,10 +21,12 @@ struct GetUserOccupationView: View {
             VStack(spacing: 0) {
                 Spacer()
                     .frame(height: 100)
-                VStack {
+                VStack(spacing: 12) {
+                    Image(systemName: "star.fill")
+                        .font(.largeTitle)
                     QuestionText(text: "What is your occupation?")
                         .padding(.bottom, 24)
-                    TextField("Enter your occupation", text: $occupation, prompt: Text("Student"))
+                    TextField("Enter your occupation", text: $occupation, prompt: Text("Job"))
                         .font(.title)
                         .foregroundColor(.text)
                         .multilineTextAlignment(.center)
@@ -40,10 +42,9 @@ struct GetUserOccupationView: View {
                     .padding(24)
                     .background(.ultraThinMaterial)
                     .cornerRadius(48)
-                
+
                 Spacer()
             }
-                .padding(.horizontal, 16)
 
             //MARK: Continue Button
             VStack {

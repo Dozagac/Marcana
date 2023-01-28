@@ -61,7 +61,6 @@ struct GetUserNameView: View {
                 })
             }
         }
-        .padding(.horizontal, 16)
             .onAppear {
             // this is necessary to make focus work
             DispatchQueue.main.async { focusTextField = true }

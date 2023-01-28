@@ -22,7 +22,7 @@ struct OnboardingView: View {
 //            Color.black
 
             //MARK: Back button for onboarding
-            OnboardingBackButton(onboardingStage: $onboardingStage)
+            ChevronBackButton(onboardingStage: $onboardingStage)
 
             //MARK: Onboarding Views
             Group {
@@ -44,6 +44,7 @@ struct OnboardingView: View {
                     }
                 }
             }
+            .padding(.horizontal, 16)
                 .zIndex(1) // This is needed to enable transition out animations. It's a bug: https://sarunw.com/posts/how-to-fix-zstack-transition-animation-in-swiftui/
             .environmentObject(user)
                 .accentColor(.text)
@@ -107,7 +108,7 @@ struct OnboardingContinueButtonModifier: ViewModifier {
 }
 
 
-struct OnboardingBackButton: View {
+struct ChevronBackButton: View {
     @Binding var onboardingStage: Int
     var body: some View {
         HStack {

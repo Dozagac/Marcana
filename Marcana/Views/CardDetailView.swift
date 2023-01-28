@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CardDetailView: View {
-    @Binding var showingSheet: Bool
+    @Environment(\.presentationMode) var presentationMode
     var card: Card
 
     var body: some View {
@@ -24,24 +24,46 @@ struct CardDetailView: View {
             VStack{
                 //MARK: Dismiss Button
                 Button {
-                    showingSheet.toggle()
+                    presentationMode.wrappedValue.dismiss()
                 } label: {
                     VStack {
                         HStack {
                             Image(systemName: "xmark")
-                                .padding(16)
+                                .font(.title2)
+                                .padding(24)
                                 .foregroundColor(.text)
                             Spacer()
                         }
                     }
                     .background(.clear)
                 }
+                
                 ScrollView(showsIndicators: false) {
                     // MARK: Card Image
-                    CardDisplayImageView(image: card.image)
-                        .shadow(color: Color.gray, radius: 4, x: 0, y: 0)
-                        .padding(.top, 30)
-                        .padding(.bottom, 16)
+                    ZStack{
+                        CardDisplayImageView(image: "facedownCard")
+                            .shadow(color: Color.gray, radius: 4, x: 0, y: 0)
+                            .padding(.top, 30)
+                            .padding(.bottom, 16)
+                            .offset(x: -50, y: 0)
+                            .opacity(0.5)
+                            .zIndex(0)
+                        
+                        CardDisplayImageView(image: card.image)
+                            .shadow(color: Color.gray, radius: 4, x: 0, y: 0)
+                            .padding(.top, 30)
+                            .padding(.bottom, 16)
+                            .zIndex(1)
+                    
+                        
+                        CardDisplayImageView(image: "facedownCard")
+                            .shadow(color: Color.gray, radius: 4, x: 0, y: 0)
+                            .padding(.top, 30)
+                            .padding(.bottom, 16)
+                            .offset(x: 50, y: 0)
+                            .opacity(0.5)
+                            .zIndex(0)
+                    }
 
                     // MARK: Title
                     Text(card.name)
@@ -108,7 +130,7 @@ struct CardDisplayImageView: View {
 
 struct CardDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        CardDetailView(showingSheet: .constant(true), card: Deck().allCards[0])
+        CardDetailView(card: Deck().allCards[0])
             .preferredColorScheme(.dark)
     }
 }

@@ -15,10 +15,11 @@ import SwiftUI
 
 struct HomePageView: View {
     @AppStorage(wrappedValue: false, "doOnboarding") var doOnboarding // for development
-    @AppStorage(wrappedValue: false, "log_status") var log_Status // for development
+    @AppStorage(wrappedValue: false, "loginStatus") var loginStatus // for development
     @State var launchOnboarding = false
     @State var isPresentingConfirm = false
-
+    
+    let appearance = UINavigationBarAppearance()
 
     var body: some View {
         ZStack {
@@ -40,6 +41,7 @@ struct HomePageView: View {
                             .background(.cyan)
                             .foregroundColor(.white)
                             .clipShape(Capsule())
+                        
                     }
 
 
@@ -64,7 +66,7 @@ struct HomePageView: View {
                         .confirmationDialog("Are you sure you want to log out?",
                                             isPresented: $isPresentingConfirm) {
                         Button("Log Out?", role: .destructive) {
-                            log_Status = false
+                            loginStatus = false
                         }
                     } message: {
                         Text("Are you sure you want to log out?")

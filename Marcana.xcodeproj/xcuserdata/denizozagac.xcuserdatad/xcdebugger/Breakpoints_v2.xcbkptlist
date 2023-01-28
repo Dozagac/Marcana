@@ -247,38 +247,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "CCE46303-A821-46A5-8280-FE8972BB2A05"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Marcana/Views/FortuneFlow/ThreeCardSelectionView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "116"
-            endingLineNumber = "116"
-            landmarkName = "prepareAPIPrompt(chosenCards:chosenQuestion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "D9FA2932-DD9E-4733-8CF5-6349390D7E58"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Marcana/Views/FortuneFlow/ThreeCardSelectionView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "131"
-            endingLineNumber = "131"
-            landmarkName = "prepareAPIPrompt(chosenCards:chosenQuestion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "BB2A33D4-20A9-4E00-995F-47432195E434"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -286,8 +254,8 @@
             filePath = "Marcana/Views/FortuneFlow/ThreeCardSelectionView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "88"
-            endingLineNumber = "88"
+            startingLineNumber = "86"
+            endingLineNumber = "86"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>
@@ -302,8 +270,8 @@
             filePath = "Marcana/Views/FortuneFlow/ThreeCardSelectionView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "67"
-            endingLineNumber = "67"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
             landmarkName = "body"
             landmarkType = "24">
             <Locations>
@@ -350,8 +318,8 @@
             filePath = "Marcana/Views/FortuneFlow/FortuneView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "26"
-            endingLineNumber = "26"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
             landmarkName = "FortuneView"
             landmarkType = "14">
          </BreakpointContent>
@@ -366,8 +334,8 @@
             filePath = "Marcana/Views/FortuneFlow/FortuneView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "25"
-            endingLineNumber = "25"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
             landmarkName = "FortuneView"
             landmarkType = "14">
             <Locations>
@@ -467,130 +435,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "1769F702-E4EB-487B-98D7-4C86316BA17A"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Marcana/Views/FortuneFlow/FortuneView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "24"
-            endingLineNumber = "24"
-            landmarkName = "FortuneView"
-            landmarkType = "14">
-            <Locations>
-               <Location
-                  uuid = "1769F702-E4EB-487B-98D7-4C86316BA17A - cd495f2918213821"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "property wrapper backing initializer of Marcana.FortuneView.type : AnimateText.ATUnitType"
-                  moduleName = "Marcana"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/denizozagac/Desktop/Projects/Marcana/Marcana/Views/FortuneFlow/FortuneView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "24"
-                  endingLineNumber = "24"
-                  offsetFromSymbolStart = "36">
-               </Location>
-               <Location
-                  uuid = "1769F702-E4EB-487B-98D7-4C86316BA17A - 63973d21e995effb"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Marcana.FortuneView.type.getter : AnimateText.ATUnitType"
-                  moduleName = "Marcana"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/denizozagac/Desktop/Projects/Marcana/Marcana/Views/FortuneFlow/FortuneView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "24"
-                  endingLineNumber = "24"
-                  offsetFromSymbolStart = "128">
-               </Location>
-               <Location
-                  uuid = "1769F702-E4EB-487B-98D7-4C86316BA17A - f36c58907e0e17f7"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Marcana.FortuneView.type.setter : AnimateText.ATUnitType"
-                  moduleName = "Marcana"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/denizozagac/Desktop/Projects/Marcana/Marcana/Views/FortuneFlow/FortuneView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "24"
-                  endingLineNumber = "24"
-                  offsetFromSymbolStart = "156">
-               </Location>
-               <Location
-                  uuid = "1769F702-E4EB-487B-98D7-4C86316BA17A - 2a730b747463a1f8"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Marcana.FortuneView.type.modify : AnimateText.ATUnitType"
-                  moduleName = "Marcana"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/denizozagac/Desktop/Projects/Marcana/Marcana/Views/FortuneFlow/FortuneView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "24"
-                  endingLineNumber = "24"
-                  offsetFromSymbolStart = "0">
-               </Location>
-               <Location
-                  uuid = "1769F702-E4EB-487B-98D7-4C86316BA17A - 9cb660a2011a65f7"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Marcana.FortuneView.type.modify : AnimateText.ATUnitType with unmangled suffix &quot;.resume.0&quot;"
-                  moduleName = "Marcana"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/denizozagac/Desktop/Projects/Marcana/Marcana/Views/FortuneFlow/FortuneView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "24"
-                  endingLineNumber = "24"
-                  offsetFromSymbolStart = "32">
-               </Location>
-               <Location
-                  uuid = "1769F702-E4EB-487B-98D7-4C86316BA17A - bfafa208d8b0b0bf"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Marcana.FortuneView.$type.getter : SwiftUI.Binding&lt;AnimateText.ATUnitType&gt;"
-                  moduleName = "Marcana"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/denizozagac/Desktop/Projects/Marcana/Marcana/Views/FortuneFlow/FortuneView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "24"
-                  endingLineNumber = "24"
-                  offsetFromSymbolStart = "144">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "FEEF4563-5ABA-4A24-B594-27A669CBEE05"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Marcana/Views/FortuneFlow/FortuneView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "58"
-            endingLineNumber = "58"
-            landmarkName = "body"
-            landmarkType = "24">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "DA5DBCE2-C63A-478E-846A-AA4D43157FA6"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -598,24 +442,8 @@
             filePath = "Marcana/Views/FortuneFlow/FortuneView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
-            landmarkName = "body"
-            landmarkType = "24">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "5939314C-5219-4BD2-8D95-ADA5D2660800"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Marcana/Views/FortuneFlow/FortuneView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>

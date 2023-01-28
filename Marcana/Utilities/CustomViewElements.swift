@@ -19,7 +19,7 @@ struct customNavBackModifier: ViewModifier {
             Button(action: {
             self.presentationMode.wrappedValue.dismiss()
         }) {
-            Image(systemName: "arrowshape.backward")
+            Image(systemName: "chevron.left")
                 .frame(width: 24, height: 24)
         })
     }

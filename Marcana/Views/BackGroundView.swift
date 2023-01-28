@@ -36,17 +36,9 @@ struct VideoBackgroundView: View {
 struct BackgroundView: View {
     var body: some View {
         ZStack {
-//            Color.background
-//                .ignoresSafeArea()
-//            HStack {
-//                VStack {
-//                    // Creating this with an arc causes the image's cut part to overflow the screen and messes up the layout of the pages it is in. Infinite width child Views extend past the Screen.
-//                    Image("CornerSun")
-//                    Spacer()
-//                }
-//                Spacer()
-//            }.ignoresSafeArea()
+            Color.background
         }
+        .ignoresSafeArea()
     }
 }
 

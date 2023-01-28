@@ -10,12 +10,12 @@ import SwiftUI
 struct LauncherView: View {
     // Last step of the onboarding should this to false
     @AppStorage(wrappedValue: true, "doOnboarding") var doOnboarding
-    @AppStorage(wrappedValue: false, "log_status") var log_Status
+    @AppStorage(wrappedValue: false, "loginStatus") var loginStatus
     @StateObject var user = UserOO()
 
     var body: some View {
         ZStack{
-            if log_Status{
+            if loginStatus{
                 ZStack {
                     NavigationView{
                         HomePageView()

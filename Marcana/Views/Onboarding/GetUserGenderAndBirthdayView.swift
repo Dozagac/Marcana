@@ -54,7 +54,7 @@ struct GetUserGenderAndBirthdayView: View {
                 Spacer()
                     .frame(height: 100)
 
-                VStack(spacing: 0) {
+                VStack(spacing: 16) {
                     //MARK: - Birthday Selection
                     VStack(spacing: 8) {
                         Image(systemName: "birthday.cake.fill")
@@ -65,7 +65,6 @@ struct GetUserGenderAndBirthdayView: View {
                             .datePickerStyle(WheelDatePickerStyle())
                             .colorScheme(.dark)
                     }
-                    .padding(.bottom, 24)
 
                     //MARK: - Gender Selection
                     VStack(spacing: 8) {
@@ -99,10 +98,9 @@ struct GetUserGenderAndBirthdayView: View {
                         }
                     }
                 }
-                    .padding(24)
+                .padding(.vertical, 24)
                     .background(.ultraThinMaterial)
                     .cornerRadius(48)
-
                 Spacer()
             }
 
@@ -118,8 +116,6 @@ struct GetUserGenderAndBirthdayView: View {
                 })
             }
         }
-            .padding(.horizontal, 16)
-
     }
 }
 

@@ -12,11 +12,24 @@ import Firebase
 struct MarcanaApp: App {
     // Calling Delegate
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    
+    //MARK: - Custom title font
+    init () {
+        UINavigationBar.appearance().largeTitleTextAttributes = [.font : UIFont(name: FontsManager.NanumMyeongjo.extraBold, size: 34)!]
+    }
+    
     var body: some Scene {
         WindowGroup {
-//            ContentView() // animations are here
+//            TextToSpeechTest() // test
             LauncherView()
-//            OnboardingView()
+                .preferredColorScheme(.dark)
+                .onAppear{
+                    // Show all available font names, for Debugging
+                    for family in UIFont.familyNames.sorted() {
+                        let names = UIFont.fontNames(forFamilyName: family)
+                        print("Family: \(family) Font names: \(names)")
+                    }
+                }
         }
     }
 }
@@ -26,7 +39,6 @@ struct MarcanaApp: App {
 
 class AppDelegate: NSObject, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-        
         FirebaseApp.configure()
         return true
     }

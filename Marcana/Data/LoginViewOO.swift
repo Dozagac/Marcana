@@ -13,7 +13,8 @@ import SwiftUI
 
 class LoginViewOO: ObservableObject {
     @Published var nonce = ""
-    @AppStorage(wrappedValue: false, "log_status") var log_Status
+    @AppStorage(wrappedValue: false, "loginStatus") var loginStatus
+    @AppStorage(wrappedValue: false, "anonymousUser") var anonymousUser
     
     func authenticate(credendial: ASAuthorizationAppleIDCredential){
         // Getting token
@@ -41,7 +42,7 @@ class LoginViewOO: ObservableObject {
             
             //Directing User to the Home Page
             withAnimation(.easeOut){
-                self.log_Status = true
+                self.loginStatus = true
             }
         }
     }
@@ -56,13 +57,14 @@ class LoginViewOO: ObservableObject {
             // User Successfully Logged into Firebase...
             print("Anonymous login successfull")
             
+            // TODO: Use isAnonymous to check
             guard let user = result?.user else { return }
-//            let isAnonymous = user.isAnonymous  // true
+            self.anonymousUser = user.isAnonymous  // true, saved to @AppStorage
 //            let uid = user.uid
             
             //Directing User to the Home Page
             withAnimation(.easeOut){
-                self.log_Status = true
+                self.loginStatus = true
             }
         }
     }

@@ -9,7 +9,6 @@ import SwiftUI
 
 struct DeckInfoView: View {
     fileprivate var deck = Deck()
-    @State private var showingSheet = false
     @State private var sheetCard: Card? = nil
 
     @State private var searchedString: String = ""
@@ -39,11 +38,10 @@ struct DeckInfoView: View {
                                 CardItemView(card: card)
                                     .onTapGesture {
                                     self.sheetCard = card
-                                    self.showingSheet.toggle()
                                 }
                             }
-                            .sheet(isPresented: $showingSheet) {
-                                CardDetailView(showingSheet: $showingSheet, card: sheetCard ?? deck.allCards[0])
+                            .sheet(item: $sheetCard) {card in
+                                CardDetailView(card: card)
                             }
                         }
                     }
