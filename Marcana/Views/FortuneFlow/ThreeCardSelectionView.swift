@@ -35,7 +35,7 @@ struct ThreeCardSelectionView: View {
         card1Open && card2Open && card3Open
     }
     
-    
+
 
 
     var body: some View {

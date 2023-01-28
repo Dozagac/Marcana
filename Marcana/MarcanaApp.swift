@@ -13,9 +13,10 @@ struct MarcanaApp: App {
     // Calling Delegate
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     
-    //MARK: - Custom title font
+    // Custom title font for the whole app
     init () {
-        UINavigationBar.appearance().largeTitleTextAttributes = [.font : UIFont(name: FontsManager.NanumMyeongjo.extraBold, size: 34)!]
+//        UINavigationBar.appearance().largeTitleTextAttributes = [.font : UIFont(name: FontsManager.NanumMyeongjo.extraBold, size: 34)!]
+        UINavigationBar.appearance().largeTitleTextAttributes = [.font: UIFont(name: "Palatino-Bold", size: 34)!]
     }
     
     var body: some Scene {

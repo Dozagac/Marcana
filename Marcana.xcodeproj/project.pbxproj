@@ -207,7 +207,7 @@
 				7629F6AC297088E900FC2D17 /* Marcana.entitlements */,
 				7675E44429326B2600ED17D5 /* MarcanaApp.swift */,
 				76F72ACC2967FC3E009E7501 /* LauncherView.swift */,
-				76F72ACF2968013B009E7501 /* Archived */,
+				76F72ACF2968013B009E7501 /* Development */,
 				76B2E13229365E3A004BCF46 /* Data */,
 				7654E8032933D5E800F9FDAB /* Views */,
 				7663553F29798C10001E4CDA /* Animations */,
@@ -248,7 +248,7 @@
 			path = Onboarding;
 			sourceTree = "<group>";
 		};
-		76F72ACF2968013B009E7501 /* Archived */ = {
+		76F72ACF2968013B009E7501 /* Development */ = {
 			isa = PBXGroup;
 			children = (
 				76F72BBC296C652D009E7501 /* OccupationViewTest.swift */,
@@ -256,7 +256,7 @@
 				76F72BC2296D9DF0009E7501 /* TestingView.swift */,
 				76D5EF672972AB3300EF9C4A /* TabViewExample.swift */,
 			);
-			path = Archived;
+			path = Development;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

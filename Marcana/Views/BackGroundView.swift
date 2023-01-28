@@ -36,7 +36,7 @@ struct VideoBackgroundView: View {
 struct BackgroundView: View {
     var body: some View {
         ZStack {
-            Color.background
+            Color.marcanaBackground
         }
         .ignoresSafeArea()
     }
@@ -46,7 +46,8 @@ struct BackgroundView: View {
 
 struct BackgroundView_Previews: PreviewProvider {
     static var previews: some View {
-        VideoBackgroundView(videoFileName: "candleVideo", playRate: 0.8)
+//        VideoBackgroundView(videoFileName: "candleVideo", playRate: 0.8)
+        BackgroundView()
     }
 }
 

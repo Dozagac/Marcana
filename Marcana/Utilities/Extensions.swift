@@ -16,8 +16,9 @@ extension Collection {
 }
 
 extension Color {
-    static let background = Color("Background")
-    static let foreground = Color("Foreground")
+    static let marcanaBackground = Color("MarcanaBackground")
+    static let marcanaPink = Color("MarcanaPink")
+    static let marcanaBlue = Color("MarcanaBlue")
     static let icon = Color("Icon")
     static let iconUnselected = Color("IconUnselected")
     static let text = Color("Text")
