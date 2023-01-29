@@ -30,10 +30,12 @@ struct OnboardingView: View {
                 case 0:
                     GetUserNameView(onboardingStage: $onboardingStage).transition(transition)
                 case 1:
-                    GetUserGenderAndBirthdayView(onboardingStage: $onboardingStage).transition(transition)
+                    GetUserGenderView(onboardingStage: $onboardingStage).transition(transition)
                 case 2:
-                    GetUserOccupationView(onboardingStage: $onboardingStage).transition(transition)
+                    GetUserBirthdayView(onboardingStage: $onboardingStage).transition(transition)
                 case 3:
+                    GetUserOccupationView(onboardingStage: $onboardingStage).transition(transition)
+                case 4:
                     GetUserRelationshipView(onboardingStage: $onboardingStage).transition(transition)
                 default:
                     VStack {
@@ -67,19 +69,25 @@ struct QuestionText: View {
 
 
 struct OnboardingContinueButton: View {
+    @Environment(\.presentationMode) var presentationMode
     @Binding var onboardingStage: Int
+    let finalStep = 4
     var canContinue: Bool
     var body: some View {
         Button {
-            if onboardingStage == 3 {
+            if onboardingStage == finalStep {
                 finalizeOnboarding()
-            } else {
+            } else if onboardingStage == 99 {
+                // this means it got called from the profile page
+                presentationMode.wrappedValue.dismiss()
+            }
+            else {
                 withAnimation(.spring()) {
                     onboardingStage += 1
                 }
             }
         } label: {
-            Text("Continue")
+            Text(onboardingStage == 99 ? "Save" : onboardingStage == finalStep ?  "Finish" : "Continue")
                 .modifier(OnboardingContinueButtonModifier(canContinue: canContinue))
         }
             .disabled(!canContinue)

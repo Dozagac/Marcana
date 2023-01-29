@@ -10,10 +10,11 @@ import SwiftUI
 
 struct GetUserNameView: View {
     @Binding var onboardingStage: Int
-    @State private var name: String = ""
     @FocusState private var focusTextField
+    
+    @AppStorage("userName") var userName = ""
     private var canContinue: Bool {
-        name.isNotEmpty
+        userName.isNotEmpty
     }
 
     var body: some View {
@@ -25,18 +26,17 @@ struct GetUserNameView: View {
                     .frame(height: 100)
                 
                 VStack(spacing: 12) {
-                    Image(systemName: "person.fill")
+                    Image(systemName: "pencil.line")
                         .font(.largeTitle)
                     QuestionText(text: "What is your name?")
 
-                    TextField("Enter your name", text: $name, prompt: Text("Name"))
+                    TextField("Enter your name", text: $userName, prompt: Text("Name"))
                         .font(.title)
                         .multilineTextAlignment(.center)
                         .textFieldStyle(.plain)
                         .focused($focusTextField)
                         .onSubmit {
-                        if name.isNotEmpty {
-                            PersistentDataManager.shared.user.name = name
+                        if userName.isNotEmpty {
                             onboardingStage += 1
                             focusTextField = false
                         }
@@ -56,7 +56,6 @@ struct GetUserNameView: View {
                 Spacer()
                 OnboardingContinueButton(onboardingStage: $onboardingStage, canContinue: canContinue)
                     .simultaneousGesture(TapGesture().onEnded {
-                    PersistentDataManager.shared.user.name = name
                     focusTextField = false
                 })
             }

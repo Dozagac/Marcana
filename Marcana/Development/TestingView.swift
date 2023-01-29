@@ -50,3 +50,40 @@ struct TestingView_Previews: PreviewProvider {
             .preferredColorScheme(.dark)
     }
 }
+
+
+//struct FortuneTypeSelectionButtonOLD: View {
+//    let title: String
+//    let subtitle: String
+//    let imageName: String
+//
+//    var body: some View {
+//        NavigationLink(destination: GetUserQuestionView(), label: {
+//            VStack() {
+//                // MARK: CARD IMAGE
+//                Image(imageName)
+//                    .resizable()
+//                    .scaledToFill()
+//                VStack(alignment: .leading) {
+//                    //MARK: CARD TITLE
+//                    Text(title)
+//                        .font(.mediumLargeFont)
+//                        .foregroundColor(.primary)
+//                        .minimumScaleFactor(0.5)
+//                    //MARK: CARD SUBTITLE
+//                    Text(subtitle)
+//                        .font(.mediumFont)
+//                        .foregroundColor(.secondary)
+//                        .lineLimit(1)
+//                        .minimumScaleFactor(0.5)
+//                }
+//                    .padding(.horizontal, 8)
+//                Spacer()
+//            }
+//                .frame(width: 300, height: 500)
+//                .background()
+//                .clipShape(RoundedRectangle(cornerRadius: 10))
+//                .shadow(color: .icon.opacity(0.5), radius: 5)
+//        })
+//    }
+//}

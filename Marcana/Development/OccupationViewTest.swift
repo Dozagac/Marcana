@@ -29,7 +29,7 @@ struct OccupationViewTest: View {
             BackgroundView()
             VStack {
                 Spacer()
-                Image(systemName: "star.fill")
+                Image(systemName: "briefcase.fill")
                     .font(.largeTitle)
                 QuestionText(text: "What is your occupation?")
                     .padding(.bottom, 24)
@@ -81,7 +81,6 @@ struct OccupationViewTest: View {
                 }
                 .simultaneousGesture(TapGesture().onEnded {
                 UIImpactFeedbackGenerator(style: .light).impactOccurred()
-                    PersistentDataManager.shared.user.occupation = occupation
             })
             }
         }

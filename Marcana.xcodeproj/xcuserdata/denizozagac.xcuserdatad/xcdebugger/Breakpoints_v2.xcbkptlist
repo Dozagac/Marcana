@@ -142,8 +142,8 @@
             filePath = "Marcana/Views/Onboarding/GetUserGenderAndBirthdayView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "52"
-            endingLineNumber = "52"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
             landmarkName = "body"
             landmarkType = "24">
             <Locations>
@@ -254,8 +254,8 @@
             filePath = "Marcana/Views/FortuneFlow/ThreeCardSelectionView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "86"
-            endingLineNumber = "86"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>
@@ -270,8 +270,8 @@
             filePath = "Marcana/Views/FortuneFlow/ThreeCardSelectionView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "66"
-            endingLineNumber = "66"
+            startingLineNumber = "64"
+            endingLineNumber = "64"
             landmarkName = "body"
             landmarkType = "24">
             <Locations>
@@ -446,6 +446,134 @@
             endingLineNumber = "36"
             landmarkName = "body"
             landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5B4F403C-D4B1-4A0D-9F5A-2A1473A72B94"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Marcana/Data/FortuneRequester.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
+            landmarkName = "prepareAPIPrompt(chosenCards:chosenQuestion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "AD851514-A995-495D-AE29-FBF7D82B92DC"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Marcana/Views/LoginView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "39DD7D14-180F-4BA6-9028-CBBADBB81B90"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Marcana/Data/LoginViewOO.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "61"
+            endingLineNumber = "61"
+            landmarkName = "authenticate(credendial:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "39DD7D14-180F-4BA6-9028-CBBADBB81B90 - 73d0ab16b4c9b3a2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRAuthDataResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Marcana.LoginViewOO.authenticate(credendial: __C.ASAuthorizationAppleIDCredential) -&gt; ()"
+                  moduleName = "Marcana"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/denizozagac/Desktop/Projects/Marcana/Marcana/Data/LoginViewOO.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "61"
+                  endingLineNumber = "61"
+                  offsetFromSymbolStart = "1208">
+               </Location>
+               <Location
+                  uuid = "39DD7D14-180F-4BA6-9028-CBBADBB81B90 - 85d100ca3205ab7f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in closure #1 (Swift.Optional&lt;__C.FIRAuthDataResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Marcana.LoginViewOO.authenticate(credendial: __C.ASAuthorizationAppleIDCredential) -&gt; ()"
+                  moduleName = "Marcana"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/denizozagac/Desktop/Projects/Marcana/Marcana/Data/LoginViewOO.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "62"
+                  endingLineNumber = "62"
+                  offsetFromSymbolStart = "36">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "ABDE0BB0-63C6-43DC-B0AE-8EA62FFFA76C"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Marcana/Data/LoginViewOO.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
+            landmarkName = "anonymousSignIn()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "ABDE0BB0-63C6-43DC-B0AE-8EA62FFFA76C - 67012b28ef077b7d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRAuthDataResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Marcana.LoginViewOO.anonymousSignIn() -&gt; ()"
+                  moduleName = "Marcana"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/denizozagac/Desktop/Projects/Marcana/Marcana/Data/LoginViewOO.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "85"
+                  endingLineNumber = "85"
+                  offsetFromSymbolStart = "1588">
+               </Location>
+               <Location
+                  uuid = "ABDE0BB0-63C6-43DC-B0AE-8EA62FFFA76C - d306be975318fad6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in closure #1 (Swift.Optional&lt;__C.FIRAuthDataResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Marcana.LoginViewOO.anonymousSignIn() -&gt; ()"
+                  moduleName = "Marcana"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/denizozagac/Desktop/Projects/Marcana/Marcana/Data/LoginViewOO.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "86"
+                  endingLineNumber = "86"
+                  offsetFromSymbolStart = "36">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

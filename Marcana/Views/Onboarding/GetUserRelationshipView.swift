@@ -11,7 +11,9 @@ import SwiftUI
 struct GetUserRelationshipView: View {
     @Binding var onboardingStage: Int
     @AppStorage(wrappedValue: true, "doOnboarding") var doOnboarding
-    @State private var selectedRelationship: Relationship? = nil
+    @Environment(\.presentationMode) var presentationMode
+    
+    @AppStorage("userRelationship") var userRelationship : String?
 
     enum Relationship: String, CaseIterable {
         case single = "Single"
@@ -34,17 +36,14 @@ struct GetUserRelationshipView: View {
                             .padding(.bottom, 12)
                         ForEach(Relationship.allCases, id: \.self) { status in
                             Button {
-                                selectedRelationship = status
-                                PersistentDataManager.shared.user.relationship = selectedRelationship!.rawValue
-                                // Save the user to local
-                                PersistentDataManager.shared.saveUserToLocal()
+                                userRelationship = status.rawValue
                                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
-                                    doOnboarding = false // this dismisses the view
-                                    print("onboardingStage: \(onboardingStage)")
+                                    doOnboarding = false // this dismisses the last view of onboarding
+                                    presentationMode.wrappedValue.dismiss() // so the view ca be dismissed when accessed from the settings
                                 }
                             } label: {
                                 RoundedRectangle(cornerRadius: 10)
-                                    .fill(selectedRelationship == status ? Color.text : .clear)
+                                    .fill(userRelationship == status.rawValue ? Color.text : .clear)
                                     .frame(height: 50)
                                     .overlay(
                                     ZStack {
@@ -56,7 +55,7 @@ struct GetUserRelationshipView: View {
                                                 .padding(.leading, 16)
                                             Spacer()
                                         }
-                                            .foregroundColor(selectedRelationship == status ? Color.black : .text)
+                                        .foregroundColor(userRelationship == status.rawValue ? Color.black : .text)
                                     }
                                 )
                             }

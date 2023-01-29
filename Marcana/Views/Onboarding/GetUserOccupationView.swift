@@ -9,11 +9,11 @@ import SwiftUI
 
 struct GetUserOccupationView: View {
     @Binding var onboardingStage: Int
-    @State private var occupation: String = ""
+    @AppStorage("userOccupation") var userOccupation = ""
     @FocusState private var focusTextField
 
     private var canContinue: Bool {
-        occupation.isNotEmpty
+        userOccupation.isNotEmpty
     }
 
     var body: some View {
@@ -26,14 +26,14 @@ struct GetUserOccupationView: View {
                         .font(.largeTitle)
                     QuestionText(text: "What is your occupation?")
                         .padding(.bottom, 24)
-                    TextField("Enter your occupation", text: $occupation, prompt: Text("Job"))
+                    TextField("Enter your occupation", text: $userOccupation, prompt: Text("Job"))
                         .font(.title)
                         .foregroundColor(.text)
                         .multilineTextAlignment(.center)
                         .textFieldStyle(.plain)
                         .focused($focusTextField)
                         .onSubmit {
-                        if occupation.isNotEmpty {
+                        if userOccupation.isNotEmpty {
                             onboardingStage += 1
                             focusTextField = false
                         }
@@ -51,7 +51,6 @@ struct GetUserOccupationView: View {
                 Spacer()
                 OnboardingContinueButton(onboardingStage: $onboardingStage, canContinue: canContinue)
                     .simultaneousGesture(TapGesture().onEnded {
-                    PersistentDataManager.shared.user.occupation = occupation
                     focusTextField = false
                 })
             }

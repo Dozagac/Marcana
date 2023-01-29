@@ -16,6 +16,7 @@ struct User: Identifiable, Codable{
     var relationship: String = ""
 }
 
+//MARK: NOT CURRENTLY USED, BUT CAN BE USEFUL FOR HISTORY
 class PersistentDataManager {
     // ne zaman notification atilmasi gerektigi gibi her sey burada durabilir
 

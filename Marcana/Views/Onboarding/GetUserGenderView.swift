@@ -7,45 +7,33 @@
 
 import SwiftUI
 
-struct GetUserGenderAndBirthdayView: View {
-    @Binding var onboardingStage: Int
-    // Gender
-    @State private var selectedGender: Gender? = nil
+enum GenderPronoun: String, Equatable, CaseIterable {
+    case her = "Her"
+    case him = "Him"
+    case them = "Them"
 
-    // Birthday
-    @State private var birthday: Date = defaultDate
+    var icon: String {
+        switch self {
+        case .him:
+            return "GenderMale"
+        case .her:
+            return "GenderFemale"
+        case .them:
+            return "GenderIntersex"
+        }
+    }
+}
+
+struct GetUserGenderView: View {
+    @Binding var onboardingStage: Int
+    
+    // Gender
+//    @State private var selectedGender: GenderPronoun? = nil
+    @AppStorage("userGender") var userGender: String?
 
     // Condition for the continue button
     private var canContinue: Bool {
-//        birthday != GetUserGenderAndBirthdayView.defaultDate && selectedGender != nil
-        selectedGender != nil
-    }
-
-    static var defaultDate: Date {
-        let currentDate = Date()
-        let calendar = Calendar.current
-        var components = calendar.dateComponents([.month, .day], from: currentDate)
-        components.year = 2000
-        return Calendar.current.date(from: components) ?? Date.now
-//        Date()
-    }
-
-
-    enum Gender: String, CaseIterable {
-        case female = "Her"
-        case male = "Him"
-        case other = "They"
-
-        var icon: String {
-            switch self {
-            case .male:
-                return "GenderMale"
-            case .female:
-                return "GenderFemale"
-            case .other:
-                return "GenderIntersex"
-            }
-        }
+        userGender != nil
     }
 
     var body: some View {
@@ -55,17 +43,6 @@ struct GetUserGenderAndBirthdayView: View {
                     .frame(height: 100)
 
                 VStack(spacing: 16) {
-                    //MARK: - Birthday Selection
-                    VStack(spacing: 8) {
-                        Image(systemName: "birthday.cake.fill")
-                            .font(.largeTitle)
-                        QuestionText(text: "What is your birthday ?")
-                        DatePicker("Enter your birthday", selection: $birthday, in: ...Date(), displayedComponents: .date)
-                            .labelsHidden()
-                            .datePickerStyle(WheelDatePickerStyle())
-                            .colorScheme(.dark)
-                    }
-
                     //MARK: - Gender Selection
                     VStack(spacing: 8) {
                         Image(systemName: "person.fill")
@@ -76,12 +53,13 @@ struct GetUserGenderAndBirthdayView: View {
 
                         //MARK: Gender Buttons
                         HStack(spacing: 16) {
-                            ForEach(Gender.allCases, id: \.self) { gender in
+                            ForEach(GenderPronoun.allCases, id: \.self) { gender in
                                 Button(action: {
-                                    self.selectedGender = gender }
+                                    userGender = gender.rawValue
+                                }
                                 ) {
                                     RoundedRectangle(cornerRadius: 20)
-                                        .fill(self.selectedGender == gender ? Color.text : .clear)
+                                        .fill(userGender == gender.rawValue ? Color.text : .clear)
                                         .frame(width: 95, height: 95)
                                         .overlay(RoundedRectangle(cornerRadius: 20)
                                         .stroke(Color.text, lineWidth: 1).background(.clear))
@@ -92,7 +70,7 @@ struct GetUserGenderAndBirthdayView: View {
                                             Text(gender.rawValue)
                                                 .font(.title2)
                                         }
-                                            .foregroundColor(self.selectedGender == gender ? Color.black : .text))
+                                            .foregroundColor(userGender == gender.rawValue ? Color.black : .text))
                                 }
                             }
                         }
@@ -108,12 +86,6 @@ struct GetUserGenderAndBirthdayView: View {
             VStack {
                 Spacer()
                 OnboardingContinueButton(onboardingStage: $onboardingStage, canContinue: canContinue)
-                    .simultaneousGesture(TapGesture().onEnded {
-                    if selectedGender != nil {
-                        PersistentDataManager.shared.user.gender = selectedGender!.rawValue
-                        PersistentDataManager.shared.user.birthday = birthday
-                    }
-                })
             }
         }
     }
@@ -123,7 +95,7 @@ struct GetUserGenderAndBirthdayView: View {
 struct GetUserGenderAndBirthdayView_Previews: PreviewProvider {
     @State static var onboardingStage = 2
     static var previews: some View {
-        GetUserGenderAndBirthdayView(onboardingStage: $onboardingStage)
+        GetUserGenderView(onboardingStage: $onboardingStage)
             .environmentObject(MockUserOO())
             .preferredColorScheme(.dark)
     }

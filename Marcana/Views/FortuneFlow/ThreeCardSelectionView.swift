@@ -34,8 +34,6 @@ struct ThreeCardSelectionView: View {
     private var canContinue: Bool {
         card1Open && card2Open && card3Open
     }
-    
-
 
 
     var body: some View {

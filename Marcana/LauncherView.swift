@@ -13,25 +13,49 @@ struct LauncherView: View {
     @AppStorage(wrappedValue: false, "loginStatus") var loginStatus
     @StateObject var user = UserOO()
 
+
+    @State private var selectedTab = 0
+
     var body: some View {
-        ZStack{
-            if loginStatus{
-                ZStack {
-                    NavigationView{
-                        HomePageView()
-                            .fullScreenCover(
-                            isPresented: $doOnboarding,
-                            content: OnboardingView.init // init is necessary
-                        )
-                    }
+
+
+        if loginStatus {
+
+            TabView(selection: $selectedTab) {
+                //MARK: TAB 1
+                NavigationView {
+                    HomePageView()
                 }
-                    .environmentObject(user)
-                    .accentColor(.text)
-                    .preferredColorScheme(.dark)
-            } else {
-                LoginView()
+                    .accentColor(.primary)
+                    .tabItem {
+                    Image(systemName: "rectangle.portrait.on.rectangle.portrait.angled.fill")
+                    Text("Fortune")
+                }.tag(0)
+
+                //MARK: TAB 2
+                NavigationView {
+//                    DeckInfoView()
+                    SettingsView()
+                }
+                    .accentColor(.primary)
+                    .tabItem {
+                    Image(systemName: "gearshape.fill")
+                    Text("Settings")
+                }.tag(1)
             }
+                .environmentObject(user)
+                .accentColor(.text)
+                .preferredColorScheme(.dark)
+                .fullScreenCover(
+                isPresented: $doOnboarding,
+                content: OnboardingView.init // init is necessary
+            )
+
+
+        } else {
+            LoginView()
         }
+
     }
 }
 

@@ -12,6 +12,15 @@ class FortuneRequester: ObservableObject {
     private let openAPI = OpenAISwift(authToken: "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")
     @Published var waitingForAPIResponse = false
     @Published private(set) var response = ""
+    
+    
+    // read data from userdefaults/appstorag
+    let userName = UserDefaults.standard.string(forKey: "userName")
+    let userGender = UserDefaults.standard.string(forKey: "userGender")
+    let userBirthday = UserDefaults.standard.double(forKey: "userBirthday")
+    let userOccupation = UserDefaults.standard.string(forKey: "userOccupation")
+    let userRelationship = UserDefaults.standard.string(forKey: "userRelationship")
+
 
     let dummyResponse = """
 For your past card, Death is a powerful card that symbolizes endings and new beginnings. It could mean that in the past you had to go through some difficult changes or losses which were necessary for growth and transformation. This card suggests that although it was hard at first, these changes ultimately allowed you to move forward in life with more clarity and purpose than before.
@@ -23,7 +32,6 @@ Finally we come to the 7 of Cups which signifies your future path ahead. This ca
 
     func prepareAPIPrompt(chosenCards: [Card], chosenQuestion: String) -> String {
         print("PROMPT SENT TO AI")
-        let user = PersistentDataManager.shared.user
 
         let AIprompt = """
         Act as a mystical fortune teller named Marcana that uses tarot cards to tell a personalized fortune.
@@ -39,11 +47,11 @@ Finally we come to the 7 of Cups which signifies your future path ahead. This ca
         Break your answer into paragraphs.
 
         Here is my personal information:
-        Name: \(user.name)
-        Birthday: \(user.birthday.formatted(date: .abbreviated, time: .omitted))
-        Gender: \(user.gender)
-        Occupation: \(user.occupation)
-        Relationship Status: \(user.relationship)
+        Name: \(userName ?? "")
+        Birthday: \(Date(timeIntervalSince1970: userBirthday).formatted(date: .abbreviated, time: .omitted))
+        Gender: \(userGender ?? "")
+        Occupation: \(userOccupation ?? "")
+        Relationship Status: \(userRelationship ?? "")
 
         These are the tarot cards that I picked that represent my past, present and future:
 
@@ -54,7 +62,6 @@ Finally we come to the 7 of Cups which signifies your future path ahead. This ca
         My personal question:
         \(chosenQuestion)?
         """
-
         return AIprompt
     }
 
@@ -68,9 +75,12 @@ Finally we come to the 7 of Cups which signifies your future path ahead. This ca
 
             switch result {
             case .success(let response):
-                let responseText = response.choices.first?.text ?? "Sorry, something went wrong."
-                self.response = responseText.trimmingCharacters(in: .whitespacesAndNewlines)
-                self.waitingForAPIResponse = false
+                DispatchQueue.main.async{
+                    let responseText = response.choices.first?.text ?? "Sorry, something went wrong."
+                    self.response = responseText.trimmingCharacters(in: .whitespacesAndNewlines)
+                    print("response")
+                    self.waitingForAPIResponse = false
+                 }
             case .failure(let error):
                 print(error)
                 self.response = error.localizedDescription

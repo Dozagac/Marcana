@@ -8,8 +8,6 @@
 import Foundation
 
 
-
-
 // @Published is only needed if we need to make live UI changes
 // This doesnt even need to be an onbervable object
 class UserOO: Identifiable, Codable, ObservableObject {

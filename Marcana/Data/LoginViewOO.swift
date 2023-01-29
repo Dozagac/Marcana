@@ -15,55 +15,74 @@ class LoginViewOO: ObservableObject {
     @Published var nonce = ""
     @AppStorage(wrappedValue: false, "loginStatus") var loginStatus
     @AppStorage(wrappedValue: false, "anonymousUser") var anonymousUser
-    
-    func authenticate(credendial: ASAuthorizationAppleIDCredential){
+
+    @AppStorage(wrappedValue: "", "userName") var userName
+
+    func authenticate(credendial: ASAuthorizationAppleIDCredential) {
         // Getting token
         guard let token = credendial.identityToken else {
             print("error with firebase - token")
             return
         }
-        
+
         // Token String
-        guard let tokenString = String(data: token, encoding: .utf8) else{
+        guard let tokenString = String(data: token, encoding: .utf8) else {
             print("error with Token")
             return
         }
-        
+
         let firebaseCredential = OAuthProvider.credential(withProviderID: "apple.com", idToken: tokenString, rawNonce: nonce)
-        
+
         Auth.auth().signIn(with: firebaseCredential) { result, err in
-            if let error = err{
+            if let error = err {
                 print(error.localizedDescription)
                 return
             }
-            
+
             // User Successfully Logged into Firebase...
             print("Apple login successfull")
             
+            guard let userName = Auth.auth().currentUser?.displayName else {return}
+
+//            let firstName =  result.token.ASAuthorizationAppleIDCredential.fullName?.givenName ?? "noname"
+            
+//            if let currentUser = Auth.auth().currentUser {
+//               let changeRequest = currentUser.createProfileChangeRequest()
+//               changeRequest.displayName = "Firstname" + "Lastname"
+//               changeRequest.commitChanges(completion: { (error) in
+//                   if let error = error {
+//                       print("--> firebase user display name error:- ", error)
+//                   }
+//               })
+//                print("CURRENT USER NAME: \(currentUser.displayName ?? "noname")")
+//           }
+            
             //Directing User to the Home Page
-            withAnimation(.easeOut){
+            withAnimation(.easeOut) {
                 self.loginStatus = true
             }
         }
     }
-    
-    func anonymousSignIn(){
+
+    func anonymousSignIn() {
         Auth.auth().signInAnonymously { result, err in
-            if let error = err{
+            if let error = err {
                 print(error.localizedDescription)
                 return
             }
-            
+
             // User Successfully Logged into Firebase...
             print("Anonymous login successfull")
-            
+
             // TODO: Use isAnonymous to check
             guard let user = result?.user else { return }
-            self.anonymousUser = user.isAnonymous  // true, saved to @AppStorage
-//            let uid = user.uid
+            self.anonymousUser = user.isAnonymous
             
+            let uid = user.uid
+            print("anonymous user id: \(uid)")
+
             //Directing User to the Home Page
-            withAnimation(.easeOut){
+            withAnimation(.easeOut) {
                 self.loginStatus = true
             }
         }
