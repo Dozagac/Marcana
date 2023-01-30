@@ -47,7 +47,6 @@
 		76D5EF6229718BF600EF9C4A /* CustomViewElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D5EF6129718BF600EF9C4A /* CustomViewElements.swift */; };
 		76D5EF64297191A400EF9C4A /* PersistentDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D5EF63297191A400EF9C4A /* PersistentDataManager.swift */; };
 		76D5EF662971A58900EF9C4A /* tarotTableVideo.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 76D5EF652971A58900EF9C4A /* tarotTableVideo.mp4 */; };
-		76D5EF682972AB3300EF9C4A /* TabViewExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D5EF672972AB3300EF9C4A /* TabViewExample.swift */; };
 		76D5EF6B2972B83800EF9C4A /* AnimateText in Frameworks */ = {isa = PBXBuildFile; productRef = 76D5EF6A2972B83800EF9C4A /* AnimateText */; };
 		76EC8A2129830D7900F5CD89 /* TextToSpeechTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EC8A2029830D7900F5CD89 /* TextToSpeechTest.swift */; };
 		76F72ACB2967518F009E7501 /* UserOO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F72ACA2967518F009E7501 /* UserOO.swift */; };
@@ -100,7 +99,6 @@
 		76D5EF6129718BF600EF9C4A /* CustomViewElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViewElements.swift; sourceTree = "<group>"; };
 		76D5EF63297191A400EF9C4A /* PersistentDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentDataManager.swift; sourceTree = "<group>"; };
 		76D5EF652971A58900EF9C4A /* tarotTableVideo.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = tarotTableVideo.mp4; sourceTree = "<group>"; };
-		76D5EF672972AB3300EF9C4A /* TabViewExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewExample.swift; sourceTree = "<group>"; };
 		76EC8A2029830D7900F5CD89 /* TextToSpeechTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextToSpeechTest.swift; sourceTree = "<group>"; };
 		76F72ACA2967518F009E7501 /* UserOO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserOO.swift; sourceTree = "<group>"; };
 		76F72ACC2967FC3E009E7501 /* LauncherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LauncherView.swift; sourceTree = "<group>"; };
@@ -142,14 +140,14 @@
 			path = History;
 			sourceTree = "<group>";
 		};
-		763D854C2987FCD80040611F /* FortuneFlowDeletedAccident */ = {
+		763D854C2987FCD80040611F /* FortuneFlow */ = {
 			isa = PBXGroup;
 			children = (
 				763D854D2987FCD80040611F /* GetFortuneQuestionView.swift */,
 				763D854E2987FCD80040611F /* SelectThreeCardsView.swift */,
 				763D854F2987FCD80040611F /* FortuneView.swift */,
 			);
-			path = FortuneFlowDeletedAccident;
+			path = FortuneFlow;
 			sourceTree = "<group>";
 		};
 		7653134B2985517100CF52A3 /* Fonts */ = {
@@ -182,7 +180,7 @@
 		7654E8032933D5E800F9FDAB /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				763D854C2987FCD80040611F /* FortuneFlowDeletedAccident */,
+				763D854C2987FCD80040611F /* FortuneFlow */,
 				763D854B2987F7DE0040611F /* History */,
 				7689C3BC2985B92E002A8314 /* Settings */,
 				76F72ACE2967FCE8009E7501 /* Onboarding */,
@@ -284,7 +282,6 @@
 				76F72BBC296C652D009E7501 /* OccupationViewTest.swift */,
 				76EC8A2029830D7900F5CD89 /* TextToSpeechTest.swift */,
 				76F72BC2296D9DF0009E7501 /* TestingView.swift */,
-				76D5EF672972AB3300EF9C4A /* TabViewExample.swift */,
 				7689C3C129867551002A8314 /* BirthdayTestView.swift */,
 			);
 			path = Development;
@@ -410,7 +407,6 @@
 				7654E7FE2933C67A00F9FDAB /* CardDetailView.swift in Sources */,
 				7689C3C62987D33A002A8314 /* FortuneHistoryView.swift in Sources */,
 				763D85522987FCD80040611F /* FortuneView.swift in Sources */,
-				76D5EF682972AB3300EF9C4A /* TabViewExample.swift in Sources */,
 				76D5EF6229718BF600EF9C4A /* CustomViewElements.swift in Sources */,
 				7668BF0A297026CA00019E14 /* OnboardingView.swift in Sources */,
 				765313582985587600CF52A3 /* FontsManager.swift in Sources */,

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct FortuneHistoryView: View {
     @StateObject var fortuneHistory = FortuneHistory()
-    
+    @State private var showingFortuneSheet = false
 
 
     var body: some View {
@@ -61,8 +61,8 @@ struct FortuneHistoryView: View {
 
                     Text("Your history is empty")
                         .font(.largeFont3)
-                    NavigationLink {
-                        GetFortuneQuestionView()
+                    Button {
+                        showingFortuneSheet.toggle()
                     } label: {
                         Text("Read Fortune")
                             .frame(width: 250, height: 50)
@@ -71,6 +71,9 @@ struct FortuneHistoryView: View {
                             .foregroundColor(.text)
                     }
                 }
+                .fullScreenCover(isPresented: $showingFortuneSheet) {
+                GetFortuneQuestionView()
+            }
             }
         }
             .navigationTitle("History")

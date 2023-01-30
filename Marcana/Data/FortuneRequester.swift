@@ -13,7 +13,7 @@ class FortuneRequester: ObservableObject {
         self.fortuneQuestion = fortuneQuestion
     }
     
-    private let openAPI = OpenAISwift(authToken: "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")
+    private let openAPI = OpenAISwift(authToken: "")
     
     var fortuneHistory = FortuneHistory()
     var fortuneQuestion: String
@@ -85,8 +85,6 @@ Finally we come to the 7 of Cups which signifies your future path ahead. This ca
                 DispatchQueue.main.async{
                     let responseText = response.choices.first?.text ?? "Sorry, something went wrong."
                     self.response = responseText.trimmingCharacters(in: .whitespacesAndNewlines)
-                    self.waitingForAPIResponse = false
-                    
                     self.fortuneHistory.addFortune(
                         FortuneReading(
                             fortuneQuestion: self.fortuneQuestion,
@@ -98,11 +96,16 @@ Finally we come to the 7 of Cups which signifies your future path ahead. This ca
                             userRelationship: self.userRelationship ?? "")
                     )
                     print("Fortune added to history")
+                    self.waitingForAPIResponse = false
                  }
                 //MARK: - Fail
             case .failure(let error):
-                print(error)
-                self.response = error.localizedDescription
+                print(error.localizedDescription)
+                DispatchQueue.main.async{ // for the purple error "Publishing changes from background threads is not allowed; "
+                    self.response = error.localizedDescription as String
+                    print(self.response)
+                    self.waitingForAPIResponse = false
+                }
             }
         }
     }

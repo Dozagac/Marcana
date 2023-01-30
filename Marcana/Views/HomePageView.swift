@@ -14,6 +14,7 @@ import SwiftUI
 struct HomePageView: View {
     @AppStorage(wrappedValue: "", "userName") var userName
     let appearance = UINavigationBarAppearance()
+    @State var showingFortuneSheet = false
 
     //MARK: - Custom title font
     init () {
@@ -23,42 +24,46 @@ struct HomePageView: View {
 
     var body: some View {
         ZStack {
-            BackgroundView() // this way the Vstack shtill respects the safe area
+            BackgroundView()
+
             VStack(spacing: 24) {
 
+                FortuneTypeSelectionButton(
+                    title: "Daily Fortune",
+                    subtitle: "Pick a card",
+                    imageName: "singleCardReader",
+                    colors: [.marcanaPink, .marcanaPink.opacity(0.5)],
+                    showingFortuneSheet: $showingFortuneSheet
+                )
 
-                    FortuneTypeSelectionButton(
-                        title: "Daily Fortune",
-                        subtitle: "Pick a card",
-                        imageName: "singleCardReader",
-                        colors: [.marcanaPink, .marcanaPink.opacity(0.5)]
-                    )
-        
-
-                    FortuneTypeSelectionButton(
-                        title: "Past - Present - Future",
-                        subtitle: "Pick 3 cards",
-                        imageName: "threeCardReader",
-                        colors: [.marcanaBlue, .marcanaBlue.opacity(0.5)]
-                    )
+                FortuneTypeSelectionButton(
+                    title: "Past - Present - Future",
+                    subtitle: "Pick 3 cards",
+                    imageName: "threeCardReader",
+                    colors: [.marcanaBlue, .marcanaBlue.opacity(0.5)],
+                    showingFortuneSheet: $showingFortuneSheet
+                )
+                    .fullScreenCover(isPresented: $showingFortuneSheet) {
+                    GetFortuneQuestionView()
+                }
 
             }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
-//                .navigationTitle("Home")
-            .navigationTitle("Welcome \(userName)")
+                .navigationTitle("Welcome \(userName)")
         }
     }
 }
 
 struct FortuneTypeSelectionButton: View {
-    var title: String //= "Daily Fortune"
-    var subtitle: String //= "Pick a card"
-    var imageName: String// = "threeCardReader"
-    var colors: [Color]// = [.foreground,.foreground.opacity(0.5)]
+    var title: String
+    var subtitle: String
+    var imageName: String
+    var colors: [Color]
+    @Binding var showingFortuneSheet: Bool
 
     var body: some View {
-        NavigationLink {
-            GetFortuneQuestionView()
+        Button {
+            showingFortuneSheet.toggle()
         } label: {
             VStack(spacing: 0) {
                 // MARK: CARD IMAGE
@@ -78,8 +83,8 @@ struct FortuneTypeSelectionButton: View {
                         .font(.mediumFont)
                         .foregroundColor(.secondary)
                         .lineLimit(1)
-                        .minimumScaleFactor(0.5)                }
-Spacer()
+                        .minimumScaleFactor(0.5) }
+                Spacer()
             }
                 .frame(width: 300, height: 200)
                 .background(LinearGradient(colors: colors, startPoint: .topLeading, endPoint: .bottomTrailing))

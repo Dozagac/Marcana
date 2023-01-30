@@ -22,7 +22,7 @@ struct SelectThreeCardsView: View {
     var deck = Deck()
 
     @State private var animateViews = false
-    @State var showingFortuneSheet = false
+
     @State private var card1Open = false
     @State private var card2Open = false
     @State private var card3Open = false
@@ -49,7 +49,7 @@ struct SelectThreeCardsView: View {
                 Spacer()
                     .frame(height: 100)
 
-                //MARK: - Cards
+                //MARK: - Cards to pick
                 HStack(alignment: .top, spacing: 24) {
                     ClosedCardView(
                         cardOpen: $card1Open,
@@ -73,11 +73,8 @@ struct SelectThreeCardsView: View {
                         .shadow(color: Color.gray, radius: 8, x: 0, y: 0)
                 }
                     .padding(.horizontal, 24)
-                    .fullScreenCover(isPresented: $showingFortuneSheet) {
-                    FortuneView(fortuneRequester: fortuneRequester)
-                }
 
-
+                // MARK: - Activation Prompt for user
                 HStack{
                     Image(systemName: "hand.tap.fill")
                         .font(.largeFont2)
@@ -102,19 +99,22 @@ struct SelectThreeCardsView: View {
             VStack {
                 Spacer()
                 Spacer()
-                Text("Read Fortune")
-                    .modifier(OnboardingContinueButtonModifier(canContinue: canContinue))
-                    .onTapGesture {
-                    UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
-                    fortuneRequester.sendAPIRequest(
-                        AIPrompt: fortuneRequester.prepareAPIPrompt(chosenCards: shownCards, fortuneQuestion: fortuneQuestion)
-                    )
-                    fortuneRequester.waitingForAPIResponse = true
-                    showingFortuneSheet = true
+                NavigationLink{
+                    FortuneView(fortuneRequester: fortuneRequester)
+                } label: {
+                    Text("Read Fortune")
+                        .modifier(OnboardingContinueButtonModifier(canContinue: canContinue))
+                        .onTapGesture {
+                        UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
+                        fortuneRequester.sendAPIRequest(
+                            AIPrompt: fortuneRequester.prepareAPIPrompt(chosenCards: shownCards, fortuneQuestion: fortuneQuestion)
+                        )
+                        fortuneRequester.waitingForAPIResponse = true
+                    }
                 }
                 Spacer()
             }
-                .opacity(canContinue && !showingFortuneSheet ? 1 : 0)
+                .opacity(canContinue ? 1 : 0)
                 .animation(.easeIn(duration: 0.3), value: canContinue)
 
         }

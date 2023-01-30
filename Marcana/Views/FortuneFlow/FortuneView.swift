@@ -13,9 +13,6 @@ struct FortuneView: View {
     @Environment(\.presentationMode) var presentationMode
     @ObservedObject var fortuneRequester: FortuneRequester
 
-//    @Binding var response: String
-//    @Binding var waitingForAPIResponse: Bool
-
     let loadingTexts: [String] = ["...Harnessing Mystic Powers...",
                                   "...Consulting the Cards...",
                                   "...Unlocking Secrets...",
@@ -33,18 +30,22 @@ struct FortuneView: View {
         ZStack {
             BackgroundView()
             
+            
             // MARK: - Loading Animation
             ZStack {
                 AnimatedCipherStroke()
                     .padding()
                 AnimateText<ATOpacityEffect>($loadingText, type: type, userInfo: userInfo)
+                    .font(.mediumLargeFont)
                     .onAppear {
                     loadingText = loadingTexts.randomElement()!
                     Timer.scheduledTimer(withTimeInterval: 3, repeats: true) { _ in
                         loadingText = loadingTexts.randomElement()!
                     }
+
                 }
-            }.opacity(fortuneRequester.waitingForAPIResponse ? 1 : 0)
+            }
+            .opacity(fortuneRequester.waitingForAPIResponse ? 1 : 0)
 
             // MARK: - Fortune view
             VStack {
