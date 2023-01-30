@@ -113,6 +113,20 @@ struct SettingsView: View {
                         }
                         .padding(.vertical, elementVerticalPadding)
                     }
+                    
+                    Section(header: Text("Explore Cards")) {
+                        NavigationLink{
+                            DeckInfoView()
+                        } label: {
+                            HStack {
+                                Image(systemName: "rectangle.portrait.inset.filled")
+                                    .modifier(SettingButtonModifier())
+                                Text("Explore Tarot Deck").frame(alignment: .leading)
+                                    .foregroundColor(.gray)
+                            }
+                        }
+                        .padding(.vertical, elementVerticalPadding)
+                    }
 
                     Section {
                         //MARK: - Development , re-launch onboarding

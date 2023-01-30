@@ -9,11 +9,15 @@ import Foundation
 import OpenAISwift
 
 class FortuneRequester: ObservableObject {
+    init(fortuneQuestion: String) {
+        self.fortuneQuestion = fortuneQuestion
+    }
+    
     private let openAPI = OpenAISwift(authToken: "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")
-    @Published var waitingForAPIResponse = false
-    @Published private(set) var response = ""
     
-    
+    var fortuneHistory = FortuneHistory()
+    var fortuneQuestion: String
+
     // read data from userdefaults/appstorag
     let userName = UserDefaults.standard.string(forKey: "userName")
     let userGender = UserDefaults.standard.string(forKey: "userGender")
@@ -21,6 +25,8 @@ class FortuneRequester: ObservableObject {
     let userOccupation = UserDefaults.standard.string(forKey: "userOccupation")
     let userRelationship = UserDefaults.standard.string(forKey: "userRelationship")
 
+    @Published var waitingForAPIResponse = false
+    @Published private(set) var response = ""
 
     let dummyResponse = """
 For your past card, Death is a powerful card that symbolizes endings and new beginnings. It could mean that in the past you had to go through some difficult changes or losses which were necessary for growth and transformation. This card suggests that although it was hard at first, these changes ultimately allowed you to move forward in life with more clarity and purpose than before.
@@ -30,7 +36,7 @@ The High Priestess represents your current state of being; this card often indic
 Finally we come to the 7 of Cups which signifies your future path ahead. This card often appears when there are multiple options available but not all will bring desired results; take time to really think about what each option brings before making any decisions as they can have long lasting effects on your life going forward. In addition, it could also indicate that love is coming into play soon - if Hugo loves you then he may appear again in due course so keep an open heart ready for him! As for whether Hugo loves you specifically: my advice would be to look within yourself first - do YOU love him? That answer lies deep within...
 """
 
-    func prepareAPIPrompt(chosenCards: [Card], chosenQuestion: String) -> String {
+    func prepareAPIPrompt(chosenCards: [Card], fortuneQuestion: String) -> String {
         print("PROMPT SENT TO AI")
 
         let AIprompt = """
@@ -60,7 +66,7 @@ Finally we come to the 7 of Cups which signifies your future path ahead. This ca
         Future: \(chosenCards[2].name)
 
         My personal question:
-        \(chosenQuestion)?
+        \(fortuneQuestion)?
         """
         return AIprompt
     }
@@ -74,13 +80,26 @@ Finally we come to the 7 of Cups which signifies your future path ahead. This ca
                                maxTokens: 500) { result in
 
             switch result {
+                //MARK: - Success
             case .success(let response):
                 DispatchQueue.main.async{
                     let responseText = response.choices.first?.text ?? "Sorry, something went wrong."
                     self.response = responseText.trimmingCharacters(in: .whitespacesAndNewlines)
-                    print("response")
                     self.waitingForAPIResponse = false
+                    
+                    self.fortuneHistory.addFortune(
+                        FortuneReading(
+                            fortuneQuestion: self.fortuneQuestion,
+                            fortuneText: self.response,
+                            userName: self.userName ?? "",
+                            userGender: self.userGender ?? "",
+                            userBirthday: self.userBirthday,
+                            userOccupation: self.userOccupation ?? "",
+                            userRelationship: self.userRelationship ?? "")
+                    )
+                    print("Fortune added to history")
                  }
+                //MARK: - Fail
             case .failure(let error):
                 print(error)
                 self.response = error.localizedDescription

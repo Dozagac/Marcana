@@ -37,7 +37,7 @@ struct GetUserGenderView: View {
     }
 
     var body: some View {
-        ZStack {
+        ZStack(alignment: .top) {
             VStack {
                 Spacer()
                     .frame(height: 100)
@@ -79,7 +79,6 @@ struct GetUserGenderView: View {
                 .padding(.vertical, 24)
                     .background(.ultraThinMaterial)
                     .cornerRadius(48)
-                Spacer()
             }
 
             //MARK: Continue Button

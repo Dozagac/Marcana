@@ -42,7 +42,13 @@ class LoginViewOO: ObservableObject {
             // User Successfully Logged into Firebase...
             print("Apple login successfull")
             
-            guard let userName = Auth.auth().currentUser?.displayName else {return}
+            // DOES THIS WORK? didnt work in my own account
+            if let firebaseUserName = Auth.auth().currentUser?.displayName {
+                self.userName = firebaseUserName
+                return
+            }
+            
+
 
 //            let firstName =  result.token.ASAuthorizationAppleIDCredential.fullName?.givenName ?? "noname"
             

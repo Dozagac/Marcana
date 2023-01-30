@@ -1,5 +1,5 @@
 //
-//  GetUserQuestionView.swift
+//  GetFortuneQuestionView.swift
 //  Marcana
 //
 //  Created by Deniz Ozagac on 23/12/2022.
@@ -9,7 +9,7 @@ import SwiftUI
 
 
 
-struct GetUserQuestionView: View {
+struct GetFortuneQuestionView: View {
     @State private var question: String = ""
     @FocusState private var focusTextField
     @Environment(\.presentationMode) var presentationMode
@@ -54,7 +54,7 @@ struct GetUserQuestionView: View {
             //MARK: Continue Button
             VStack {
                 Spacer()
-                NavigationLink(destination: ThreeCardSelectionView(chosenQuestion: question)) {
+                NavigationLink(destination: SelectThreeCardsView(fortuneQuestion: question)) {
                     Text("Continue")
                         .modifier(OnboardingContinueButtonModifier(canContinue: canContinue))
                 }
@@ -70,9 +70,9 @@ struct GetUserQuestionView: View {
     }
 }
 
-struct GetUserQuestionView_Previews: PreviewProvider {
+struct GetFortuneQuestionView_Previews: PreviewProvider {
     static var previews: some View {
-        GetUserQuestionView()
+        GetFortuneQuestionView()
             .preferredColorScheme(.dark)
     }
 }

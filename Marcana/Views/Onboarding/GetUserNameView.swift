@@ -18,7 +18,7 @@ struct GetUserNameView: View {
     }
 
     var body: some View {
-        ZStack {
+        ZStack(alignment: .top) {
             // MARK: - Get User Name
 
             VStack{
@@ -47,8 +47,6 @@ struct GetUserNameView: View {
                     .padding(24)
                     .background(.ultraThinMaterial)
                     .cornerRadius(48)
-                
-                Spacer()
             }
 
             //MARK: Continue Button

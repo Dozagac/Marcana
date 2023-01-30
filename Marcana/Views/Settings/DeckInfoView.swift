@@ -14,43 +14,56 @@ struct DeckInfoView: View {
     @State private var searchedString: String = ""
     @State private var searchFilteredList: [Card] = Deck().allCards // I am not using the nev var deck anymore?
 
+    @State var shouldScrollToTop: Bool = false
+
     let columns = [
         GridItem(.flexible(), spacing: 24),
         GridItem(.flexible(), spacing: 24),
         GridItem(.flexible(), spacing: 24)
     ]
+    
+    private static let topId = "topIdHere"
 
     var body: some View {
         ZStack {
             BackgroundView()
+        
 
             VStack(spacing: 24) {
-                ScrollView {
-                    VStack(spacing: 24) {
-                        //MARK: TEXT FIELD
-                        ClearableTextField("Card Search", text: $searchedString)
-                            .onChange(of: searchedString) { newValue in
-                            filterDeck(with: searchedString)
-                        }
-                        //MARK: GRID VIEW
-                        LazyVGrid (columns: columns, spacing: 24) {
-                            ForEach(searchFilteredList) { card in
-                                CardItemView(card: card)
-                                    .onTapGesture {
-                                    self.sheetCard = card
-                                }
+                ScrollViewReader { reader in
+                    ScrollView(showsIndicators: false) {
+                        VStack(spacing: 24) {
+                            //MARK: TEXT FIELD
+                            ClearableTextField("Card Search", text: $searchedString)
+                                .onChange(of: searchedString) { newValue in
+                                filterDeck(with: searchedString)
                             }
-                            .sheet(item: $sheetCard) {card in
-                                CardDetailView(card: card)
+                                .id(Self.topId)
+                            //MARK: GRID VIEW
+                            LazyVGrid (columns: columns, spacing: 24) {
+                                ForEach(searchFilteredList) { card in
+                                    CardItemView(card: card)
+                                        .onTapGesture {
+                                        self.sheetCard = card
+                                    }
+                                }
+                                    .sheet(item: $sheetCard) { card in
+                                    CardDetailView(card: card)
+                                }
                             }
                         }
                     }
+                    .onChange(of: shouldScrollToTop) { _ in
+                        withAnimation { // add animation for scroll to top
+                            reader.scrollTo(Self.topId, anchor: .top) // scroll
+                        }
+                    }
                 }
-                    .navigationTitle("All Cards")
             }
                 .frame(maxWidth: .infinity)
                 .padding(.horizontal, 24)
         }
+            .navigationTitle("All Cards")
     }
 
     func filterDeck(with input: String) -> Void {
@@ -90,7 +103,7 @@ struct ClearableTextField: View {
                 .frame(width: 20, height: 20)
                 .foregroundColor(.black.opacity(0.4))
                 .padding(.trailing, 12) // Search bar X button padding
-                .onTapGesture {
+            .onTapGesture {
                 text = ""
             }
         }
@@ -124,6 +137,7 @@ struct DeckInfoView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
             DeckInfoView()
+                .preferredColorScheme(.dark)
         }
     }
 }

@@ -10,6 +10,7 @@ import AnimateText
 
 
 struct FortuneView: View {
+    @Environment(\.presentationMode) var presentationMode
     @ObservedObject var fortuneRequester: FortuneRequester
 
 //    @Binding var response: String
@@ -47,7 +48,15 @@ struct FortuneView: View {
 
             // MARK: - Fortune view
             VStack {
-                Label("1 min read...", systemImage: "timer")
+                HStack{
+                    Button{
+                        presentationMode.wrappedValue.dismiss()
+                    } label: {
+                        Image(systemName: "xmark")
+                            .padding()
+                    }
+                    Label("1 min read...", systemImage: "timer")
+                }
 
                 ScrollView(showsIndicators: false) {
                     Text(fortuneRequester.response)
@@ -55,7 +64,7 @@ struct FortuneView: View {
                     // AnimateText<ATOpacityEffect>($response, type: type, userInfo: userInfo)
                 }
                     .foregroundColor(.text)
-                    .frame(height: fortuneRequester.waitingForAPIResponse ? 0 : 700)
+                    .frame(height: fortuneRequester.waitingForAPIResponse ? 0 : 500)
                 //                .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .padding(24)
                     .background(.ultraThinMaterial)
@@ -95,7 +104,7 @@ struct FortuneView_Previews: PreviewProvider {
     @State static private var response = ""
 
     static var previews: some View {
-        FortuneView(fortuneRequester: FortuneRequester())
+        FortuneView(fortuneRequester: FortuneRequester(fortuneQuestion: "dummy question"))
             .preferredColorScheme(.dark)
     }
 }

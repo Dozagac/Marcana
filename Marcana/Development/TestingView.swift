@@ -58,7 +58,7 @@ struct TestingView_Previews: PreviewProvider {
 //    let imageName: String
 //
 //    var body: some View {
-//        NavigationLink(destination: GetUserQuestionView(), label: {
+//        NavigationLink(destination: GetFortuneQuestionView(), label: {
 //            VStack() {
 //                // MARK: CARD IMAGE
 //                Image(imageName)

@@ -24,7 +24,7 @@ struct GetUserRelationshipView: View {
     }
 
     var body: some View {
-        ZStack {
+        ZStack(alignment: .top) {
             VStack {
                 Spacer()
                     .frame(height: 100)

@@ -22,7 +22,6 @@ struct MarcanaApp: App {
     
     var body: some Scene {
         WindowGroup {
-//            TextToSpeechTest() // test
             LauncherView()
                 .preferredColorScheme(.dark)
                 .onAppear{

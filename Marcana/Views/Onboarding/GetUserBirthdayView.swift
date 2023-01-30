@@ -39,7 +39,7 @@ struct GetUserBirthdayView: View {
 
 
     var body: some View {
-        ZStack {
+        ZStack(alignment: .top) {
             VStack {
                 Spacer()
                     .frame(height: 100)
@@ -49,7 +49,7 @@ struct GetUserBirthdayView: View {
                     VStack(spacing: 8) {
                         Image(systemName: "birthday.cake.fill")
                             .font(.largeTitle)
-                        QuestionText(text: "What is your birthday ?")
+                        QuestionText(text: "When is your birthday?")
                         DatePicker("Enter your birthday", selection: birthday, in: ...Date(), displayedComponents: .date)
                             .labelsHidden()
                             .datePickerStyle(WheelDatePickerStyle())
@@ -59,7 +59,7 @@ struct GetUserBirthdayView: View {
                 .padding(.vertical, 24)
                     .background(.ultraThinMaterial)
                     .cornerRadius(48)
-                Spacer()
+
             }
 
             //MARK: Continue Button

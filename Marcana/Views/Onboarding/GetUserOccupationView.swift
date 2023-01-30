@@ -17,12 +17,12 @@ struct GetUserOccupationView: View {
     }
 
     var body: some View {
-        ZStack {
+        ZStack(alignment: .top) {
             VStack(spacing: 0) {
                 Spacer()
                     .frame(height: 100)
                 VStack(spacing: 12) {
-                    Image(systemName: "star.fill")
+                    Image(systemName: "briefcase.fill")
                         .font(.largeTitle)
                     QuestionText(text: "What is your occupation?")
                         .padding(.bottom, 24)
@@ -42,8 +42,6 @@ struct GetUserOccupationView: View {
                     .padding(24)
                     .background(.ultraThinMaterial)
                     .cornerRadius(48)
-
-                Spacer()
             }
 
             //MARK: Continue Button

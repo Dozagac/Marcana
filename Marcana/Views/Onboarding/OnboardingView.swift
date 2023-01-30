@@ -17,7 +17,7 @@ struct OnboardingView: View {
 
     var body: some View {
 
-        ZStack {
+        ZStack(alignment: .top) {
             VideoBackgroundView(videoFileName: "tarotTableVideo", playRate: 0.8)
 //            Color.black
 
@@ -46,7 +46,7 @@ struct OnboardingView: View {
                     }
                 }
             }
-            .padding(.horizontal, 16)
+            .padding(.horizontal, 16) // Equal lateral spacing is given to all views here.
                 .zIndex(1) // This is needed to enable transition out animations. It's a bug: https://sarunw.com/posts/how-to-fix-zstack-transition-animation-in-swiftui/
             .environmentObject(user)
                 .accentColor(.text)

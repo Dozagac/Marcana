@@ -8,23 +8,25 @@
 import SwiftUI
 import AnimateText
 
-struct ThreeCardSelectionView: View {
-    @StateObject var fortuneRequester = FortuneRequester()
+struct SelectThreeCardsView: View {
+    @StateObject var fortuneRequester: FortuneRequester
+    var fortuneQuestion: String
+    
+    // Manually initialize the StateObject with parameter
+    // https://stackoverflow.com/questions/62635914/initialize-stateobject-with-a-parameter-in-swiftui
+    init(fortuneQuestion: String = "") {
+        self._fortuneRequester = StateObject(wrappedValue: FortuneRequester(fortuneQuestion: fortuneQuestion))
+        self.fortuneQuestion = fortuneQuestion
+    }
 
-    var chosenQuestion: String = ""
     var deck = Deck()
 
-//    @State var waitingForAPIResponse = false
+    @State private var animateViews = false
     @State var showingFortuneSheet = false
-
     @State private var card1Open = false
     @State private var card2Open = false
     @State private var card3Open = false
-//        """
-//        The figure calls for no special description the face is rather dark, suggesting also courage, but somewhat lethargic in tendency. The bull's head should be noted as a recurrent symbol on the throne. The sign of this suit is represented throughout as engraved or blazoned with the pentagram, typifying the correspondence of the four elements in human nature and that by which they may be governed. In many old Tarot packs this suit stood for current coin, money, deniers. I have not invented the substitution of pentacles and I have no special cause to sustain in respect of the alternative. But the consensus of divinatory meanings is on the side of some change, because the cards do not happen to deal especially with questions of money.
-//        """
-
-
+    
     @State private var shownCards: [Card] = [
         Deck().allCards.randomElement()!,
         Deck().allCards.randomElement()!,
@@ -35,6 +37,9 @@ struct ThreeCardSelectionView: View {
         card1Open && card2Open && card3Open
     }
 
+    private var allCardsClosed: Bool {
+        card1Open || card2Open || card3Open
+    }
 
     var body: some View {
         ZStack {
@@ -43,43 +48,71 @@ struct ThreeCardSelectionView: View {
             VStack(spacing: 24) {
                 Spacer()
                     .frame(height: 100)
-                
-                HStack(spacing: 24) {
+
+                //MARK: - Cards
+                HStack(alignment: .top, spacing: 24) {
                     ClosedCardView(
                         cardOpen: $card1Open,
                         shownCard: $shownCards[0],
                         positionText: "Past")
+                        .scaleEffect(allCardsClosed ? 1 : animateViews ? 1.05 : 1)
+                        .shadow(color: allCardsClosed ? .gray : animateViews ? .white : .gray, radius: 8, x: 0, y: 0)
+                        .animation(.easeInOut(duration: 2).repeatForever(autoreverses: true), value: animateViews)
 
                     ClosedCardView(
                         cardOpen: $card2Open,
                         shownCard: $shownCards[1],
                         positionText: "Present")
+                        .offset(y: -50)
+                        .shadow(color: Color.gray, radius: 8, x: 0, y: 0)
 
                     ClosedCardView(
                         cardOpen: $card3Open,
                         shownCard: $shownCards[2],
                         positionText: "Future")
+                        .shadow(color: Color.gray, radius: 8, x: 0, y: 0)
                 }
                     .padding(.horizontal, 24)
                     .fullScreenCover(isPresented: $showingFortuneSheet) {
-                        FortuneView(fortuneRequester: fortuneRequester)
+                    FortuneView(fortuneRequester: fortuneRequester)
                 }
+
+
+                HStack{
+                    Image(systemName: "hand.tap.fill")
+                        .font(.largeFont2)
+                    Text("Tap to reveal cards")
+                        .font(.largeFont3)
+                }
+                .foregroundColor(.text)
+                .padding(.top, 70)
+                .opacity(allCardsClosed ? 0 : animateViews ? 1 : 0)
+                .offset(x: 0, y: allCardsClosed ? 100 : animateViews ? 0 : 150)
+
                 Spacer()
+                    .frame(minHeight: 200)
+            }
+                .onAppear {
+                withAnimation(Animation.easeOut(duration: 1.5).delay(0.5)) {
+                    animateViews.toggle()
+                }
             }
 
-            //MARK: Continue Button
+            //MARK: - Continue Button
             VStack {
+                Spacer()
                 Spacer()
                 Text("Read Fortune")
                     .modifier(OnboardingContinueButtonModifier(canContinue: canContinue))
                     .onTapGesture {
                     UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
                     fortuneRequester.sendAPIRequest(
-                        AIPrompt: fortuneRequester.prepareAPIPrompt(chosenCards: shownCards, chosenQuestion: chosenQuestion)
+                        AIPrompt: fortuneRequester.prepareAPIPrompt(chosenCards: shownCards, fortuneQuestion: fortuneQuestion)
                     )
                     fortuneRequester.waitingForAPIResponse = true
                     showingFortuneSheet = true
                 }
+                Spacer()
             }
                 .opacity(canContinue && !showingFortuneSheet ? 1 : 0)
                 .animation(.easeIn(duration: 0.3), value: canContinue)
@@ -106,8 +139,8 @@ struct ClosedCardView: View {
                 .scaledToFit()
                 .frame(width: 100, height: 150)
                 .clipShape(RoundedRectangle(cornerRadius: 8))
-                .shadow(color: Color.gray, radius: 8, x: 0, y: 0)
-                .onTapGesture {
+//                .shadow(color: Color.gray, radius: 8, x: 0, y: 0)
+            .onTapGesture {
                 withAnimation(.easeIn(duration: 1.0)) {
                     // Haptic feedback
                     UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
@@ -130,28 +163,30 @@ struct ClosedCardView: View {
                     VStack(spacing: 0) {
                         //MARK: Card NAme
                         Text(shownCard.name)
+                            .font(.mediumLargeFont)
                             .foregroundColor(.text)
                             .cornerRadius(8)
                             .frame(width: 98, height: 24)
                             .minimumScaleFactor(0.2)
-                            .lineLimit(1)
+                            .lineLimit(2)
                     }
                 }
             }
 
             Text(positionText)
+                .font(.mediumLargeFont)
                 .frame(width: 98, height: 24)
                 .foregroundColor(cardOpen ? Color.gray : Color.text)
-                .padding(-8) // to narrow down the default spacing for Text
+                .padding(.vertical, 0) // to narrow down the default spacing for Text, if needed
         }
     }
 }
 
 
-struct ThreeCardSelectionView_Previews: PreviewProvider {
+struct SelectThreeCardsView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            ThreeCardSelectionView()
+            SelectThreeCardsView(fortuneQuestion: "This is a dummy question")
                 .environmentObject(MockUserOO())
                 .preferredColorScheme(.dark)
         }
