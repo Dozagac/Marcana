@@ -6,22 +6,21 @@
 //
 
 import SwiftUI
+enum Relationship: String, CaseIterable {
+    case single = "Single"
+    case complicated = "It is complicated"
+    case relationship = "In a relationship"
+    case engaged = "Engaged"
+    case married = "Married"
+}
 
 // Last step of onboarding
 struct GetUserRelationshipView: View {
     @Binding var onboardingStage: Int
     @AppStorage(wrappedValue: true, "doOnboarding") var doOnboarding
-    @Environment(\.presentationMode) var presentationMode
+    @Environment(\.dismiss) var dismiss
     
     @AppStorage("userRelationship") var userRelationship : String?
-
-    enum Relationship: String, CaseIterable {
-        case single = "Single"
-        case complicated = "It is complicated"
-        case relationship = "In a relationship"
-        case engaged = "Engaged"
-        case married = "Married"
-    }
 
     var body: some View {
         ZStack(alignment: .top) {
@@ -33,13 +32,19 @@ struct GetUserRelationshipView: View {
                         Image(systemName: "heart.circle")
                             .font(.largeTitle)
                         QuestionText(text: "Relationship status")
+                        
+                        Text("Your relationship status can give us a better understanding of your personal relationships and help us provide a more accurate reading.")
+                            .multilineTextAlignment(.center)
+                            .font(.customFontCallout)
                             .padding(.bottom, 12)
+                        
+                            
                         ForEach(Relationship.allCases, id: \.self) { status in
                             Button {
                                 userRelationship = status.rawValue
                                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
                                     doOnboarding = false // this dismisses the last view of onboarding
-                                    presentationMode.wrappedValue.dismiss() // so the view ca be dismissed when accessed from the settings
+                                    dismiss() // so the view ca be dismissed when accessed from the settings
                                 }
                             } label: {
                                 RoundedRectangle(cornerRadius: 10)
@@ -60,8 +65,10 @@ struct GetUserRelationshipView: View {
                                 )
                             }
                         }
+                        
                     }
                         .frame(maxWidth: .infinity)
+                    
                         .padding(.horizontal, 24)
                 }
                 .padding(.vertical, 24)

@@ -49,7 +49,11 @@ struct GetUserGenderView: View {
                             .font(.largeTitle)
 
                         QuestionText(text: "How should we call you?")
-                            .padding(.bottom)
+ 
+                        Text("Your birthday is important in fortune telling as it provides information about your astrological sign and helps to give a more in-depth reading.")
+                            .multilineTextAlignment(.center)
+                            .font(.customFontCallout)
+                            
 
                         //MARK: Gender Buttons
                         HStack(spacing: 16) {
@@ -74,6 +78,7 @@ struct GetUserGenderView: View {
                                 }
                             }
                         }
+                        .padding(.top)
                     }
                 }
                 .padding(.vertical, 24)

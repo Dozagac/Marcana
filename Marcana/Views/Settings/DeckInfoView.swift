@@ -97,7 +97,7 @@ struct ClearableTextField: View {
                     .padding(.leading, 12)
                 TextField(title, text: $text, prompt: prompt)
             }
-            //MARK: X reset button
+            //MARK: X reset button for the search bar
             Image(systemName: "xmark.circle.fill")
                 .resizable()
                 .frame(width: 20, height: 20)

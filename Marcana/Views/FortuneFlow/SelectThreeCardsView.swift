@@ -9,29 +9,40 @@ import SwiftUI
 import AnimateText
 
 struct SelectThreeCardsView: View {
+    @Binding var showingFortuneSheet: Bool
     @StateObject var fortuneRequester: FortuneRequester
     var fortuneQuestion: String
-    
+
     // Manually initialize the StateObject with parameter
     // https://stackoverflow.com/questions/62635914/initialize-stateobject-with-a-parameter-in-swiftui
-    init(fortuneQuestion: String = "") {
-        self._fortuneRequester = StateObject(wrappedValue: FortuneRequester(fortuneQuestion: fortuneQuestion))
+    init(showingFortuneSheet: Binding<Bool>, fortuneQuestion: String = "") {
+        let randomFortuneCards = [
+            Deck().allCards.randomElement()!,
+            Deck().allCards.randomElement()!,
+            Deck().allCards.randomElement()!
+        ]
+        
+        self._fortuneRequester = StateObject(wrappedValue: FortuneRequester(
+            fortuneQuestion: fortuneQuestion,
+            fortuneType: .with1card,
+            fortuneCards: randomFortuneCards
+        )
+        )
         self.fortuneQuestion = fortuneQuestion
+        self._showingFortuneSheet = showingFortuneSheet
+        self.fortuneCards = randomFortuneCards
     }
 
     var deck = Deck()
+    @State private var continueIsPushed = false // triggers navigation view
 
     @State private var animateViews = false
 
     @State private var card1Open = false
     @State private var card2Open = false
     @State private var card3Open = false
-    
-    @State private var shownCards: [Card] = [
-        Deck().allCards.randomElement()!,
-        Deck().allCards.randomElement()!,
-        Deck().allCards.randomElement()!
-    ]
+
+    private var fortuneCards: [Card]
 
     private var canContinue: Bool {
         card1Open && card2Open && card3Open
@@ -53,38 +64,38 @@ struct SelectThreeCardsView: View {
                 HStack(alignment: .top, spacing: 24) {
                     ClosedCardView(
                         cardOpen: $card1Open,
-                        shownCard: $shownCards[0],
+                        shownCard: fortuneCards[0],
                         positionText: "Past")
                         .scaleEffect(allCardsClosed ? 1 : animateViews ? 1.05 : 1)
-                        .shadow(color: allCardsClosed ? .gray : animateViews ? .white : .gray, radius: 8, x: 0, y: 0)
-                        .animation(.easeInOut(duration: 2).repeatForever(autoreverses: true), value: animateViews)
+                        .shadow(color: allCardsClosed ? .gray : animateViews ? .white : .gray, radius: 10, x: 0, y: 0)
+                        .animation(.easeInOut(duration: 1.5).repeatForever(autoreverses: true), value: animateViews)
 
                     ClosedCardView(
                         cardOpen: $card2Open,
-                        shownCard: $shownCards[1],
+                        shownCard: fortuneCards[1],
                         positionText: "Present")
                         .offset(y: -50)
                         .shadow(color: Color.gray, radius: 8, x: 0, y: 0)
 
                     ClosedCardView(
                         cardOpen: $card3Open,
-                        shownCard: $shownCards[2],
+                        shownCard: fortuneCards[2],
                         positionText: "Future")
                         .shadow(color: Color.gray, radius: 8, x: 0, y: 0)
                 }
                     .padding(.horizontal, 24)
 
-                // MARK: - Activation Prompt for user
-                HStack{
+                // MARK: Activation Prompt for user
+                HStack {
                     Image(systemName: "hand.tap.fill")
-                        .font(.largeFont2)
-                    Text("Tap to reveal cards")
-                        .font(.largeFont3)
+                        .font(.customFontTitle2)
+                    Text("Tap the cards")
+                        .font(.customFontTitle3)
                 }
-                .foregroundColor(.text)
-                .padding(.top, 70)
-                .opacity(allCardsClosed ? 0 : animateViews ? 1 : 0)
-                .offset(x: 0, y: allCardsClosed ? 100 : animateViews ? 0 : 150)
+                    .foregroundColor(.text)
+                    .padding(.top, 70)
+                    .opacity(allCardsClosed ? 0 : animateViews ? 1 : 0)
+                    .offset(x: 0, y: allCardsClosed ? 100 : animateViews ? 0 : 150)
 
                 Spacer()
                     .frame(minHeight: 200)
@@ -99,22 +110,27 @@ struct SelectThreeCardsView: View {
             VStack {
                 Spacer()
                 Spacer()
-                NavigationLink{
-                    FortuneView(fortuneRequester: fortuneRequester)
+                //MARK: - Invisible NavigationLink that is programmatically triggered
+                //This is here because simultaneousGesture didn't work with NavigationLink
+                //and I needed to send the API call at the same time
+                NavigationLink(destination: FortuneLoadingView(showingFortuneSheet: $showingFortuneSheet, fortuneRequester: fortuneRequester),
+                               isActive: $continueIsPushed, label: {
+                                   Text("")
+                               })
+                Button {
+                    continueIsPushed.toggle()
+                    UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
+                    fortuneRequester.sendAPIRequest(
+                        AIPrompt: fortuneRequester.prepareAPIPrompt3Cards()
+                    )
+                    fortuneRequester.waitingForAPIResponse = true
                 } label: {
                     Text("Read Fortune")
                         .modifier(OnboardingContinueButtonModifier(canContinue: canContinue))
-                        .onTapGesture {
-                        UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
-                        fortuneRequester.sendAPIRequest(
-                            AIPrompt: fortuneRequester.prepareAPIPrompt(chosenCards: shownCards, fortuneQuestion: fortuneQuestion)
-                        )
-                        fortuneRequester.waitingForAPIResponse = true
-                    }
                 }
                 Spacer()
             }
-                .opacity(canContinue ? 1 : 0)
+                .opacity(canContinue && !fortuneRequester.waitingForAPIResponse ? 1 : 0)
                 .animation(.easeIn(duration: 0.3), value: canContinue)
 
         }
@@ -125,9 +141,12 @@ struct SelectThreeCardsView: View {
 
 
 struct ClosedCardView: View {
+    var width: CGFloat = 100
+    var height: CGFloat = 150
+    
     @State private var showingSheet = false
     @Binding var cardOpen: Bool
-    @Binding var shownCard: Card
+    var shownCard: Card
 
     let positionText: String
 
@@ -137,7 +156,7 @@ struct ClosedCardView: View {
             Image(cardOpen ? shownCard.image : "facedownCard")
                 .resizable()
                 .scaledToFit()
-                .frame(width: 100, height: 150)
+                .frame(width: width, height: height)
                 .clipShape(RoundedRectangle(cornerRadius: 8))
 //                .shadow(color: Color.gray, radius: 8, x: 0, y: 0)
             .onTapGesture {
@@ -163,7 +182,7 @@ struct ClosedCardView: View {
                     VStack(spacing: 0) {
                         //MARK: Card NAme
                         Text(shownCard.name)
-                            .font(.mediumLargeFont)
+                            .font(.customFontHeadline)
                             .foregroundColor(.text)
                             .cornerRadius(8)
                             .frame(width: 98, height: 24)
@@ -174,7 +193,7 @@ struct ClosedCardView: View {
             }
 
             Text(positionText)
-                .font(.mediumLargeFont)
+                .font(.customFontHeadline)
                 .frame(width: 98, height: 24)
                 .foregroundColor(cardOpen ? Color.gray : Color.text)
                 .padding(.vertical, 0) // to narrow down the default spacing for Text, if needed
@@ -186,7 +205,8 @@ struct ClosedCardView: View {
 struct SelectThreeCardsView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            SelectThreeCardsView(fortuneQuestion: "This is a dummy question")
+            SelectThreeCardsView(showingFortuneSheet: .constant(true),
+                                 fortuneQuestion: "This is a dummy question")
                 .environmentObject(MockUserOO())
                 .preferredColorScheme(.dark)
         }

@@ -17,16 +17,18 @@ struct FontsManager{
 }
 
 extension Font {
-    static let veryLargeFont = Font.custom("Avenir", size: Font.TextStyle.largeTitle.size, relativeTo: .caption)
-    static let largeFont = Font.custom("Avenir", size: Font.TextStyle.title.size, relativeTo: .caption)
-    static let largeFont2 = Font.custom("Avenir", size: Font.TextStyle.title2.size, relativeTo: .caption)
-    static let largeFont3 = Font.custom("Avenir", size: Font.TextStyle.title3.size, relativeTo: .caption)
-    static let mediumLargeFont = Font.custom("Avenir", size: Font.TextStyle.headline.size, relativeTo: .caption)
+    static let customFontlargeTitle = Font.custom("Avenir", size: Font.TextStyle.largeTitle.size, relativeTo: .body)
+    static let customFontTitle = Font.custom("Avenir", size: Font.TextStyle.title.size, relativeTo: .body)
+    static let customFontTitle2 = Font.custom("Avenir", size: Font.TextStyle.title2.size, relativeTo: .body)
+    static let customFontTitle3 = Font.custom("Avenir", size: Font.TextStyle.title3.size, relativeTo: .body)
+    static let customFontHeadline = Font.custom("Avenir", size: Font.TextStyle.headline.size, relativeTo: .headline)
+    static let customFontBody = Font.custom("Avenir", size: Font.TextStyle.body.size, relativeTo: .body)
+    static let customFontCallout = Font.custom("Avenir", size: Font.TextStyle.callout.size, relativeTo: .body)
     
-    static let mediumFont = Font.custom("Avenir", size: Font.TextStyle.subheadline.size, relativeTo: .caption)
-    static let mediumSmallFont = Font.custom("Avenir", size: Font.TextStyle.footnote.size, relativeTo: .caption)
-    static let smallFont = Font.custom("Avenir", size: Font.TextStyle.caption.size, relativeTo: .caption)
-    static let verySmallFont = Font.custom("Avenir", size: Font.TextStyle.caption2.size, relativeTo: .caption)
+    static let customFontSubheadline = Font.custom("Avenir", size: Font.TextStyle.subheadline.size, relativeTo: .body)
+    static let customFontFootnote = Font.custom("Avenir", size: Font.TextStyle.footnote.size, relativeTo: .body)
+    static let customFontCaption = Font.custom("Avenir", size: Font.TextStyle.caption.size, relativeTo: .body)
+    static let customFontCaption2 = Font.custom("Avenir", size: Font.TextStyle.caption2.size, relativeTo: .body)
 }
 
 extension Font.TextStyle {

@@ -7,6 +7,11 @@
 
 import Foundation
 
+struct DrawnCard {
+    let Card: Card
+    let Reversed : Bool
+}
+
 class Deck {
     let allCards: [Card]
     var majorCards: [Card] = []
@@ -15,7 +20,6 @@ class Deck {
     var pentaclesCards: [Card] = []
     var swordsCards: [Card] = []
     var wandsCards: [Card] = []
-
 
     init() {
         let url = Bundle.main.url(forResource: "tarot", withExtension: ".json")!
@@ -28,6 +32,17 @@ class Deck {
         self.pentaclesCards = allCards.filter({ $0.suite == .pentacles })
         self.swordsCards = allCards.filter({ $0.suite == .swords })
         self.wandsCards = allCards.filter({ $0.suite == .wands })
+    }
+    
+    struct DrawnCard {
+        let Card: Card
+        let Reversed : Bool
+    }
+    
+    func DrawCard() -> DrawnCard {
+        return DrawnCard(Card: allCards.randomElement() ?? allCards[0],
+                  Reversed: Bool.random()
+        )
     }
 }
 

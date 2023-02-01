@@ -24,10 +24,14 @@ struct GetUserOccupationView: View {
                 VStack(spacing: 12) {
                     Image(systemName: "briefcase.fill")
                         .font(.largeTitle)
-                    QuestionText(text: "What is your occupation?")
-                        .padding(.bottom, 24)
+                    QuestionText(text: "What is your job/occupation?")
+                    Text("Your occupation can provide insight into your life path and give us a better understanding of your current life situation.")
+                        .multilineTextAlignment(.center)
+                        .font(.customFontCallout)
+                        
                     TextField("Enter your occupation", text: $userOccupation, prompt: Text("Job"))
-                        .font(.title)
+                        .padding(.top, 12)
+                        .font(.customFontTitle3)
                         .foregroundColor(.text)
                         .multilineTextAlignment(.center)
                         .textFieldStyle(.plain)

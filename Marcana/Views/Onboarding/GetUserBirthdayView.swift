@@ -50,6 +50,11 @@ struct GetUserBirthdayView: View {
                         Image(systemName: "birthday.cake.fill")
                             .font(.largeTitle)
                         QuestionText(text: "When is your birthday?")
+                        
+                        Text("Knowing your gender helps us tailor the reading to your specific needs and gives us a better understanding of your life experiences.")
+                            .multilineTextAlignment(.center)
+                            .font(.customFontCallout)
+                        
                         DatePicker("Enter your birthday", selection: birthday, in: ...Date(), displayedComponents: .date)
                             .labelsHidden()
                             .datePickerStyle(WheelDatePickerStyle())

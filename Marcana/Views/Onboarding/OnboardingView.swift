@@ -18,8 +18,8 @@ struct OnboardingView: View {
     var body: some View {
 
         ZStack(alignment: .top) {
-            VideoBackgroundView(videoFileName: "tarotTableVideo", playRate: 0.8)
-//            Color.black
+//            VideoBackgroundView(videoFileName: "tarotTableVideo", playRate: 0.8)
+            BackgroundView()
 
             //MARK: Back button for onboarding
             ChevronBackButton(onboardingStage: $onboardingStage)
@@ -60,16 +60,18 @@ struct QuestionText: View {
     let text: String
     var body: some View {
         Text(text)
-            .font(.title)
+            .font(.customFontTitle3.bold())
             .foregroundColor(.text)
             .frame(maxWidth: .infinity)
-            .minimumScaleFactor(0.8)
+            .minimumScaleFactor(0.5)
+            .multilineTextAlignment(.center)
+            .fixedSize(horizontal: false, vertical: true)
     }
 }
 
 
 struct OnboardingContinueButton: View {
-    @Environment(\.presentationMode) var presentationMode
+    @Environment(\.dismiss) var dismiss
     @Binding var onboardingStage: Int
     let finalStep = 4
     var canContinue: Bool
@@ -79,7 +81,7 @@ struct OnboardingContinueButton: View {
                 finalizeOnboarding()
             } else if onboardingStage == 99 {
                 // this means it got called from the profile page
-                presentationMode.wrappedValue.dismiss()
+                dismiss()
             }
             else {
                 withAnimation(.spring()) {
@@ -104,7 +106,7 @@ struct OnboardingContinueButtonModifier: ViewModifier {
     var canContinue: Bool
     func body(content: Content) -> some View {
         content
-            .font(.title3)
+            .font(.customFontTitle3)
             .frame(width: 280, height: 50)
             .background(canContinue ? Color.text : .purple)
             .foregroundColor(canContinue ? .black : .text)
@@ -112,6 +114,7 @@ struct OnboardingContinueButtonModifier: ViewModifier {
             .saturation(canContinue ? 1 : 0)
             .padding(.bottom, 24)
             .animation(.easeIn(duration: 0.3), value: canContinue)
+            .shadow(radius: 8)
     }
 }
 

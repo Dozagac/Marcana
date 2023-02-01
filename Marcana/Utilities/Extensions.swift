@@ -8,7 +8,15 @@
 import Foundation
 import SwiftUI
 
-// Protocol Extension
+// custom perfix operator for being ablt to add not (!) operator to Bool Binding
+prefix func ! (value: Binding<Bool>) -> Binding<Bool> {
+    Binding<Bool>(
+        get: { !value.wrappedValue },
+        set: { value.wrappedValue = !$0 }
+    )
+}
+
+// Protocol Extension for notEmpty
 extension Collection {
     var isNotEmpty: Bool {
         isEmpty == false

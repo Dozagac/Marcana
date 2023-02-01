@@ -11,7 +11,7 @@ import SwiftUI
 struct GetUserNameView: View {
     @Binding var onboardingStage: Int
     @FocusState private var focusTextField
-    
+
     @AppStorage("userName") var userName = ""
     private var canContinue: Bool {
         userName.isNotEmpty
@@ -20,18 +20,27 @@ struct GetUserNameView: View {
     var body: some View {
         ZStack(alignment: .top) {
             // MARK: - Get User Name
-
-            VStack{
+            VStack {
                 Spacer()
                     .frame(height: 100)
-                
+
                 VStack(spacing: 12) {
                     Image(systemName: "pencil.line")
                         .font(.largeTitle)
                     QuestionText(text: "What is your name?")
 
+//                    Group {
+//                        Text("We value your privacy and assure you that the information you provide will not be used for anything other than providing you with a personalized reading.")
+//                            .multilineTextAlignment(.center)
+//                            .font(.customFontCallout)
+//                    }
+
+                    Text("We ask for your name to personalize your reading and ensure the accuracy of your fortune telling experience.")
+                        .multilineTextAlignment(.center)
+                        .font(.customFontCallout)
+
                     TextField("Enter your name", text: $userName, prompt: Text("Name"))
-                        .font(.title)
+                        .font(.customFontTitle2)
                         .multilineTextAlignment(.center)
                         .textFieldStyle(.plain)
                         .focused($focusTextField)

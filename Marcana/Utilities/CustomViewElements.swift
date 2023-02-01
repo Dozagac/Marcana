@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-//MARK: Custom modifier for the back button in onboarding
+//MARK: Custom modifier for the back button in navigation
 struct customNavBackModifier: ViewModifier {
-    @Environment(\.presentationMode) var presentationMode
+    @Environment(\.dismiss) var dismiss
     func body(content: Content) -> some View {
         content
         // Hide the system back button
@@ -17,11 +17,12 @@ struct customNavBackModifier: ViewModifier {
         // Add your custom back button here
         .navigationBarItems(leading:
             Button(action: {
-            self.presentationMode.wrappedValue.dismiss()
+            dismiss()
         }) {
             Image(systemName: "chevron.left")
                 .frame(width: 24, height: 24)
         })
+        .foregroundColor(.text)
     }
 }
 

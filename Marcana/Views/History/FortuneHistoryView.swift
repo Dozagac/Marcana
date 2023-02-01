@@ -10,28 +10,36 @@ import SwiftUI
 struct FortuneHistoryView: View {
     @StateObject var fortuneHistory = FortuneHistory()
     @State private var showingFortuneSheet = false
-
+    @State private var showingFortuneHistoryItem = false
 
     var body: some View {
         ZStack {
             BackgroundView()
 
+            // ONLY FOR TESTING
             if fortuneHistory.fortunes.isNotEmpty {
+//            if FortuneHistory.dummyFortunes.isNotEmpty {
                 List {
+                    // ONLY FOR TESTING
+//                    ForEach(FortuneHistory.dummyFortunes) { fortune in
                     ForEach(fortuneHistory.fortunes) { fortune in
                         NavigationLink {
-                            ScrollView(showsIndicators: false) {
-                                Text(fortune.fortuneText)
-                                    .font(.mediumLargeFont)
-                            }
-                                .padding(.horizontal)
+                            FortuneReadingView(showingFortuneSheet: $showingFortuneHistoryItem,
+                                               fortuneReading: fortune)
                         } label: {
-                            HStack {
+                            HStack(spacing: 8) {
+                                Image(fortune.fortuneType.icon)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: fortune.fortuneType == FortuneType.with1card ? 24 : 44,
+                                           height: fortune.fortuneType == FortuneType.with1card ? 24 : 44)
+                                    .frame(width: 44, height: 44)
+                                
                                 VStack(alignment: .leading, spacing: 0) {
                                     Text(fortune.userName)
                                     Text(fortune.fortuneQuestion)
                                 }
-                                    .font(.mediumFont)
+                                    .font(.customFontSubheadline)
 
                                 Spacer()
 
@@ -39,7 +47,7 @@ struct FortuneHistoryView: View {
                                     Text(fortune.fortuneDate.formatted(date: .abbreviated, time: .omitted))
                                     Text(fortune.fortuneDate.formatted(date: .omitted, time: .shortened))
                                 }
-                                    .font(.mediumSmallFont)
+                                    .font(.customFontFootnote)
                             }
                         }
                     }
@@ -47,11 +55,11 @@ struct FortuneHistoryView: View {
                         fortuneHistory.fortunes.remove(atOffsets: indexSet)
                     }
                 }
-                .toolbar {
+                    .toolbar {
                     EditButton()
                 }
             } else {
-                VStack(spacing: 12) {
+                VStack(spacing: 24) {
                     Image("EmptyHistoryImage")
                         .resizable()
                         .scaledToFit()
@@ -60,7 +68,7 @@ struct FortuneHistoryView: View {
                         .opacity(1)
 
                     Text("Your history is empty")
-                        .font(.largeFont3)
+                        .font(.customFontTitle3)
                     Button {
                         showingFortuneSheet.toggle()
                     } label: {
@@ -69,11 +77,14 @@ struct FortuneHistoryView: View {
                             .background(Color.marcanaBlue)
                             .cornerRadius(12)
                             .foregroundColor(.text)
+                            .shadow(radius: 8)
                     }
                 }
-                .fullScreenCover(isPresented: $showingFortuneSheet) {
-                GetFortuneQuestionView()
-            }
+                    .fullScreenCover(isPresented: $showingFortuneSheet) {
+                        // Default selection is the 1 card reader.
+                    GetFortuneQuestionView(fortuneType: .with1card,
+                                           showingFortuneSheet: $showingFortuneSheet)
+                }
             }
         }
             .navigationTitle("History")
