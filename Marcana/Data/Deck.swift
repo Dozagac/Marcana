@@ -7,13 +7,18 @@
 
 import Foundation
 
-struct DrawnCard {
+enum Orientation: String, CaseIterable, Codable {
+    case reversed = "Reversed"
+    case upright = "Upright"
+}
+
+struct DrawnCard: Codable {
     let Card: Card
-    let Reversed : Bool
+    let Orientation: Orientation
 }
 
 class Deck {
-    let allCards: [Card]
+    var allCards: [Card]
     var majorCards: [Card] = []
     var minorCards: [Card] = []
     var cupsCards: [Card] = []
@@ -33,16 +38,16 @@ class Deck {
         self.swordsCards = allCards.filter({ $0.suite == .swords })
         self.wandsCards = allCards.filter({ $0.suite == .wands })
     }
-    
-    struct DrawnCard {
-        let Card: Card
-        let Reversed : Bool
-    }
-    
-    func DrawCard() -> DrawnCard {
-        return DrawnCard(Card: allCards.randomElement() ?? allCards[0],
-                  Reversed: Bool.random()
-        )
+
+    // Draws a
+    func DrawCards(n: Int) -> [DrawnCard] {
+        var drawnCards = [DrawnCard]()
+        for i in (0..<n) {
+            drawnCards.append(DrawnCard(Card: allCards.shuffled()[i] ,
+                                        Orientation: Orientation.allCases.randomElement()!))
+        }
+        return drawnCards
     }
 }
+
 

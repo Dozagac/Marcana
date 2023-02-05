@@ -12,19 +12,16 @@ struct SelectThreeCardsView: View {
     @Binding var showingFortuneSheet: Bool
     @StateObject var fortuneRequester: FortuneRequester
     var fortuneQuestion: String
+    let deck = Deck()
 
     // Manually initialize the StateObject with parameter
     // https://stackoverflow.com/questions/62635914/initialize-stateobject-with-a-parameter-in-swiftui
     init(showingFortuneSheet: Binding<Bool>, fortuneQuestion: String = "") {
-        let randomFortuneCards = [
-            Deck().allCards.randomElement()!,
-            Deck().allCards.randomElement()!,
-            Deck().allCards.randomElement()!
-        ]
+        let randomFortuneCards = deck.DrawCards(n: 3)
         
         self._fortuneRequester = StateObject(wrappedValue: FortuneRequester(
             fortuneQuestion: fortuneQuestion,
-            fortuneType: .with1card,
+            fortuneType: .with3cards,
             fortuneCards: randomFortuneCards
         )
         )
@@ -33,7 +30,6 @@ struct SelectThreeCardsView: View {
         self.fortuneCards = randomFortuneCards
     }
 
-    var deck = Deck()
     @State private var continueIsPushed = false // triggers navigation view
 
     @State private var animateViews = false
@@ -42,7 +38,7 @@ struct SelectThreeCardsView: View {
     @State private var card2Open = false
     @State private var card3Open = false
 
-    private var fortuneCards: [Card]
+    private var fortuneCards: [DrawnCard]
 
     private var canContinue: Bool {
         card1Open && card2Open && card3Open
@@ -126,7 +122,7 @@ struct SelectThreeCardsView: View {
                     fortuneRequester.waitingForAPIResponse = true
                 } label: {
                     Text("Read Fortune")
-                        .modifier(OnboardingContinueButtonModifier(canContinue: canContinue))
+                        .modifier(GetUserInfoContinueButtonModifier(canContinue: canContinue))
                 }
                 Spacer()
             }
@@ -146,14 +142,14 @@ struct ClosedCardView: View {
     
     @State private var showingSheet = false
     @Binding var cardOpen: Bool
-    var shownCard: Card
+    var shownCard: DrawnCard
 
     let positionText: String
 
     var body: some View {
         VStack(spacing: 12) {
             //MARK: Flipping Card
-            Image(cardOpen ? shownCard.image : "facedownCard")
+            Image(cardOpen ? shownCard.Card.image : "facedownCard")
                 .resizable()
                 .scaledToFit()
                 .frame(width: width, height: height)
@@ -173,7 +169,7 @@ struct ClosedCardView: View {
                 }
             }
                 .sheet(isPresented: $showingSheet) {
-                CardDetailView(card: shownCard)
+                    CardDetailView(card: shownCard.Card)
             }
 
             //MARK: Revealed Card Text
@@ -181,7 +177,7 @@ struct ClosedCardView: View {
                 withAnimation(.linear(duration: 1.0)) {
                     VStack(spacing: 0) {
                         //MARK: Card NAme
-                        Text(shownCard.name)
+                        Text(shownCard.Card.name)
                             .font(.customFontHeadline)
                             .foregroundColor(.text)
                             .cornerRadius(8)

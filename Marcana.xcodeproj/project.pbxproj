@@ -9,7 +9,9 @@
 /* Begin PBXBuildFile section */
 		7612CE07298A77CC00838B3E /* SimpleToast in Frameworks */ = {isa = PBXBuildFile; productRef = 7612CE06298A77CC00838B3E /* SimpleToast */; };
 		7612CE09298A8AC300838B3E /* FortuneLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7612CE08298A8AC300838B3E /* FortuneLoadingView.swift */; };
-		7612CE0B298AB65600838B3E /* UserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7612CE0A298AB65600838B3E /* UserInfoView.swift */; };
+		7612CE0B298AB65600838B3E /* FortuneUserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7612CE0A298AB65600838B3E /* FortuneUserInfoView.swift */; };
+		7612CE0F298AECFC00838B3E /* ScrollerTextBottomGradientEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7612CE0E298AECFC00838B3E /* ScrollerTextBottomGradientEffectView.swift */; };
+		7612CE11298B235A00838B3E /* OnboardingStepperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7612CE10298B235A00838B3E /* OnboardingStepperView.swift */; };
 		76152A4D296FFE42001D5B8F /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76152A4C296FFE42001D5B8F /* PlayerView.swift */; };
 		76267D3B2955CDAE00108612 /* GetUserNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76267D3A2955CDAE00108612 /* GetUserNameView.swift */; };
 		76267D422955D60E00108612 /* GetUserOccupationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76267D412955D60E00108612 /* GetUserOccupationView.swift */; };
@@ -27,7 +29,9 @@
 		765313542985519900CF52A3 /* NanumMyeongjo-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 765313502985519900CF52A3 /* NanumMyeongjo-ExtraBold.ttf */; };
 		765313582985587600CF52A3 /* FontsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765313572985587600CF52A3 /* FontsManager.swift */; };
 		7654E7FE2933C67A00F9FDAB /* CardDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7654E7FD2933C67A00F9FDAB /* CardDetailView.swift */; };
-		7668BF0A297026CA00019E14 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7668BF09297026CA00019E14 /* OnboardingView.swift */; };
+		76588C1D298F243F003E3530 /* FortuneReading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76588C1C298F243F003E3530 /* FortuneReading.swift */; };
+		76588C1F298FBB7E003E3530 /* Paywall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76588C1E298FBB7E003E3530 /* Paywall.swift */; };
+		7668BF0A297026CA00019E14 /* GetUserInfoFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7668BF09297026CA00019E14 /* GetUserInfoFlowView.swift */; };
 		7669FE8529886EC500DA06F8 /* LoadingPetalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7669FE8429886EC500DA06F8 /* LoadingPetalView.swift */; };
 		766F59FA2941342700A328E4 /* BackGroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766F59F92941342700A328E4 /* BackGroundView.swift */; };
 		7675E44529326B2600ED17D5 /* MarcanaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7675E44429326B2600ED17D5 /* MarcanaApp.swift */; };
@@ -56,7 +60,6 @@
 		76EC8A2129830D7900F5CD89 /* TextToSpeechTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EC8A2029830D7900F5CD89 /* TextToSpeechTest.swift */; };
 		76F72ACB2967518F009E7501 /* UserOO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F72ACA2967518F009E7501 /* UserOO.swift */; };
 		76F72ACD2967FC3E009E7501 /* LauncherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F72ACC2967FC3E009E7501 /* LauncherView.swift */; };
-		76F72BBD296C652D009E7501 /* OccupationViewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F72BBC296C652D009E7501 /* OccupationViewTest.swift */; };
 		76F72BBF296D85E7009E7501 /* LocalDataStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F72BBE296D85E7009E7501 /* LocalDataStrings.swift */; };
 		76F72BC3296D9DF0009E7501 /* TestingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F72BC2296D9DF0009E7501 /* TestingView.swift */; };
 		76F72BC6296DCD81009E7501 /* SwifterSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 76F72BC5296DCD81009E7501 /* SwifterSwift */; };
@@ -64,7 +67,9 @@
 
 /* Begin PBXFileReference section */
 		7612CE08298A8AC300838B3E /* FortuneLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FortuneLoadingView.swift; sourceTree = "<group>"; };
-		7612CE0A298AB65600838B3E /* UserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoView.swift; sourceTree = "<group>"; };
+		7612CE0A298AB65600838B3E /* FortuneUserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FortuneUserInfoView.swift; sourceTree = "<group>"; };
+		7612CE0E298AECFC00838B3E /* ScrollerTextBottomGradientEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollerTextBottomGradientEffectView.swift; sourceTree = "<group>"; };
+		7612CE10298B235A00838B3E /* OnboardingStepperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingStepperView.swift; sourceTree = "<group>"; };
 		76152A4C296FFE42001D5B8F /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
 		76267D3A2955CDAE00108612 /* GetUserNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserNameView.swift; sourceTree = "<group>"; };
 		76267D412955D60E00108612 /* GetUserOccupationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserOccupationView.swift; sourceTree = "<group>"; };
@@ -83,7 +88,9 @@
 		765313562985581400CF52A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		765313572985587600CF52A3 /* FontsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontsManager.swift; sourceTree = "<group>"; };
 		7654E7FD2933C67A00F9FDAB /* CardDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailView.swift; sourceTree = "<group>"; };
-		7668BF09297026CA00019E14 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		76588C1C298F243F003E3530 /* FortuneReading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FortuneReading.swift; sourceTree = "<group>"; };
+		76588C1E298FBB7E003E3530 /* Paywall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Paywall.swift; sourceTree = "<group>"; };
+		7668BF09297026CA00019E14 /* GetUserInfoFlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserInfoFlowView.swift; sourceTree = "<group>"; };
 		7669FE8429886EC500DA06F8 /* LoadingPetalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingPetalView.swift; sourceTree = "<group>"; };
 		766F59F92941342700A328E4 /* BackGroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackGroundView.swift; sourceTree = "<group>"; };
 		7675E44129326B2600ED17D5 /* Marcana.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Marcana.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -111,7 +118,6 @@
 		76EC8A2029830D7900F5CD89 /* TextToSpeechTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextToSpeechTest.swift; sourceTree = "<group>"; };
 		76F72ACA2967518F009E7501 /* UserOO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserOO.swift; sourceTree = "<group>"; };
 		76F72ACC2967FC3E009E7501 /* LauncherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LauncherView.swift; sourceTree = "<group>"; };
-		76F72BBC296C652D009E7501 /* OccupationViewTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OccupationViewTest.swift; sourceTree = "<group>"; };
 		76F72BBE296D85E7009E7501 /* LocalDataStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataStrings.swift; sourceTree = "<group>"; };
 		76F72BC2296D9DF0009E7501 /* TestingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -136,8 +142,10 @@
 			isa = PBXGroup;
 			children = (
 				7654E7FD2933C67A00F9FDAB /* CardDetailView.swift */,
+				7612CE10298B235A00838B3E /* OnboardingStepperView.swift */,
 				766F59F92941342700A328E4 /* BackGroundView.swift */,
-				7612CE0A298AB65600838B3E /* UserInfoView.swift */,
+				7612CE0A298AB65600838B3E /* FortuneUserInfoView.swift */,
+				7612CE0E298AECFC00838B3E /* ScrollerTextBottomGradientEffectView.swift */,
 			);
 			path = Misc;
 			sourceTree = "<group>";
@@ -212,11 +220,12 @@
 			isa = PBXGroup;
 			children = (
 				7612CE0D298AB97000838B3E /* Main */,
+				76F72ACE2967FCE8009E7501 /* Onboarding */,
 				763D854C2987FCD80040611F /* FortuneFlow */,
 				763D854B2987F7DE0040611F /* History */,
 				7689C3BC2985B92E002A8314 /* Settings */,
-				76F72ACE2967FCE8009E7501 /* Onboarding */,
 				7612CE0C298AB95C00838B3E /* Misc */,
+				76588C1E298FBB7E003E3530 /* Paywall.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -288,6 +297,7 @@
 				76D5EF63297191A400EF9C4A /* PersistentDataManager.swift */,
 				76531349298544F000CF52A3 /* FortuneRequester.swift */,
 				7689C3C32987CD9A002A8314 /* FortuneHistory.swift */,
+				76588C1C298F243F003E3530 /* FortuneReading.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -295,7 +305,7 @@
 		76F72ACE2967FCE8009E7501 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
-				7668BF09297026CA00019E14 /* OnboardingView.swift */,
+				7668BF09297026CA00019E14 /* GetUserInfoFlowView.swift */,
 				76267D3A2955CDAE00108612 /* GetUserNameView.swift */,
 				76267D452955EC3F00108612 /* GetUserGenderView.swift */,
 				7689C3BF2986724D002A8314 /* GetUserBirthdayView.swift */,
@@ -308,7 +318,6 @@
 		76F72ACF2968013B009E7501 /* Development */ = {
 			isa = PBXGroup;
 			children = (
-				76F72BBC296C652D009E7501 /* OccupationViewTest.swift */,
 				76EC8A2029830D7900F5CD89 /* TextToSpeechTest.swift */,
 				76F72BC2296D9DF0009E7501 /* TestingView.swift */,
 				7689C3C129867551002A8314 /* BirthdayTestView.swift */,
@@ -424,9 +433,10 @@
 				763D85502987FCD80040611F /* GetFortuneQuestionView.swift in Sources */,
 				7675E44529326B2600ED17D5 /* MarcanaApp.swift in Sources */,
 				76F72BBF296D85E7009E7501 /* LocalDataStrings.swift in Sources */,
-				76F72BBD296C652D009E7501 /* OccupationViewTest.swift in Sources */,
+				76588C1F298FBB7E003E3530 /* Paywall.swift in Sources */,
 				76267D462955EC3F00108612 /* GetUserGenderView.swift in Sources */,
 				76267D422955D60E00108612 /* GetUserOccupationView.swift in Sources */,
+				76588C1D298F243F003E3530 /* FortuneReading.swift in Sources */,
 				76760C78297A8E1A00D9C5D2 /* LoginViewOO.swift in Sources */,
 				7689C3C42987CD9A002A8314 /* FortuneHistory.swift in Sources */,
 				76EC8A2129830D7900F5CD89 /* TextToSpeechTest.swift in Sources */,
@@ -434,6 +444,7 @@
 				76760C76297A8E0B00D9C5D2 /* LoginView.swift in Sources */,
 				76F72ACD2967FC3E009E7501 /* LauncherView.swift in Sources */,
 				7612CE09298A8AC300838B3E /* FortuneLoadingView.swift in Sources */,
+				7612CE11298B235A00838B3E /* OnboardingStepperView.swift in Sources */,
 				763D8554298851E80040611F /* SelectOneCardView.swift in Sources */,
 				7689C3BE2985B93E002A8314 /* SettingsView.swift in Sources */,
 				7653134A298544F000CF52A3 /* FortuneRequester.swift in Sources */,
@@ -442,9 +453,10 @@
 				7669FE8529886EC500DA06F8 /* LoadingPetalView.swift in Sources */,
 				7689C3C62987D33A002A8314 /* FortuneHistoryView.swift in Sources */,
 				763D85522987FCD80040611F /* FortuneReadingView.swift in Sources */,
+				7612CE0F298AECFC00838B3E /* ScrollerTextBottomGradientEffectView.swift in Sources */,
 				76D5EF6229718BF600EF9C4A /* CustomViewElements.swift in Sources */,
-				7668BF0A297026CA00019E14 /* OnboardingView.swift in Sources */,
-				7612CE0B298AB65600838B3E /* UserInfoView.swift in Sources */,
+				7668BF0A297026CA00019E14 /* GetUserInfoFlowView.swift in Sources */,
+				7612CE0B298AB65600838B3E /* FortuneUserInfoView.swift in Sources */,
 				765313582985587600CF52A3 /* FontsManager.swift in Sources */,
 				763D85512987FCD80040611F /* SelectThreeCardsView.swift in Sources */,
 			);

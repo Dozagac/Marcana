@@ -42,7 +42,7 @@ struct FortuneReadingView: View {
 
 
     var body: some View {
-        ZStack {
+        GeometryReader { metric in
             BackgroundView()
 
             // MARK: - Page View
@@ -54,7 +54,7 @@ struct FortuneReadingView: View {
                         dismiss() // goes back in the navigation from the history view
                     } label: {
                         Image(systemName: "xmark")
-                            .font(.title2.bold())
+                            .font(.title3)
                             .foregroundColor(.text)
                             .padding(.leading, 8)
                     }
@@ -67,37 +67,64 @@ struct FortuneReadingView: View {
                 ZStack(alignment: .bottom) {
                     ScrollView(showsIndicators: false) {
                         //MARK: - Cards appear here
-                        HStack(spacing: 8) {
+                        HStack(alignment: .top, spacing: 8) {
                             ForEach(Array(fortuneReading.fortuneCards.enumerated()), id: \.offset) { index, card in
                                 Button {
                                     showingSheet.toggle()
                                 } label: {
-                                    Image(card.image)
-                                        .resizable()
-                                        .scaledToFit()
-                                        .cornerRadius(8)
-                                        .offset(y: animatingViews ? 0 : -100)
-                                        .opacity(animatingViews ? 1 : 0)
+
+                                    VStack(spacing: 0) {
+                                        Image(card.Card.image)
+                                            .resizable()
+                                            .scaledToFit()
+                                            .frame(height: 200)
+                                            .cornerRadius(8)
+                                            .rotationEffect(card.Orientation == Orientation.upright ? .degrees(0) : .degrees(180))
+                                            .padding(.bottom, 4)
+
+                                        Text(card.Card.name)
+                                            .foregroundColor(.text)
+                                            .font(.customFontBody.bold())
+                                            .minimumScaleFactor(0.5)
+                                            .lineLimit(2)
+
+                                        Spacer()
+
+                                        Text(card.Orientation.rawValue)
+                                            .foregroundColor(.text)
+                                            .font(.customFontCallout.italic())
+
+                                    }
+
                                 }
+                                    .offset(y: animatingViews ? 0 : -100)
+                                    .opacity(animatingViews ? 1 : 0)
                                     .animation(.easeInOut(duration: 1).delay(Double(index) * animationDelay),
                                                value: animatingViews)
                                     .sheet(isPresented: $showingSheet) {
-                                    CardDetailView(card: card)
+                                    CardDetailView(card: card.Card)
                                 }
                             }
                         }
-                            .frame(height: 200)
                             .padding(.bottom, 4)
 
+
                         Divider()
+                            .frame(height: 2)
+                            .overlay(.thinMaterial)
                             .padding(.vertical, 8)
+
 
                         // MARK: - Date info
                         HStack {
-                            Label(fortuneReading.fortuneDate.formatted(), systemImage: "calendar")
+                            HStack{
+                                Image(systemName: "calendar")
+                                Text(fortuneReading.fortuneDate.formatted())
+                                    .minimumScaleFactor(0.5)
+                                    .lineLimit(1)
+                            }
                                 .font(.customFontHeadline)
-                                .padding(10) // for size
-                            .background(.ultraThinMaterial)
+//
                                 .cornerRadius(12)
                                 .offset(x: animatingViews ? 0 : -100)
                                 .opacity(animatingViews ? 1 : 0)
@@ -107,9 +134,9 @@ struct FortuneReadingView: View {
                             // MARK: - Action Buttons
                             HStack {
                                 NavigationLink {
-                                    UserInfoView(fortuneReading: fortuneReading)
+                                    FortuneUserInfoView(fortuneReading: fortuneReading)
                                 } label: {
-                                    Image(systemName: "person.fill")
+                                    Image(systemName: "info.circle")
                                 }
                                     .frame(width: 44, height: 44)
                                     .background(.ultraThinMaterial)
@@ -126,12 +153,13 @@ struct FortuneReadingView: View {
                                     .background(.ultraThinMaterial)
                                     .cornerRadius(12)
                                     .foregroundColor(Color.text)
+
                                 // MARK: Copy to clipboard button
                                 Button {
                                     UIPasteboard.general.string = fortuneReading.fortuneText
                                     showingToast = true
                                 } label: {
-                                    Image(systemName: "doc.on.doc.fill")
+                                    Image(systemName: "doc.on.doc")
                                 }
                                     .frame(width: 44, height: 44)
                                     .background(.ultraThinMaterial)
@@ -145,6 +173,8 @@ struct FortuneReadingView: View {
                         }
 
                         Divider()
+                            .frame(height: 2)
+                            .overlay(.thinMaterial)
                             .padding(.vertical, 8)
 
                         // MARK: - Main Text Body
@@ -156,24 +186,18 @@ struct FortuneReadingView: View {
                                        value: animatingViews)
                         // This doesn't work in multiline and I can't fix it...
                         // AnimateText<ATOpacityEffect>($response, type: type, userInfo: userInfo)
+                        
+                        Spacer()
+                            .frame(height: 30)
                     }
                         .foregroundColor(.text)
                         .padding(12)
                     //                    .background(.ultraThinMaterial)
                     .cornerRadius(24)
 
-                    // MARK: - Fadeout gradient at the bottom
-                    Color.marcanaBackground
-                        .frame(height: 100)
-                        .padding(-10) /// expand the blur a bit to cover the edges
-                    .mask(LinearGradient(
-                        gradient: Gradient(stops: [
-                                .init(color: .black, location: 0.5),
-                                .init(color: .clear, location: 1)
-                        ]),
-                        startPoint: .bottom,
-                        endPoint: .top
-                    )) /// mask the blurred image using the gradient's alpha values
+                    ScrollerTextBottomGradientEffectView(effectColor: Color.marcanaBackground)
+                
+
                 }
                     .edgesIgnoringSafeArea(.bottom)
 
@@ -191,6 +215,8 @@ struct FortuneReadingView: View {
             .simpleToast(isPresented: $showingToast,
                          options: toastOptions) {
             Text("Text Copied")
+                .foregroundColor(.text)
+                .font(.customFontBody)
                 .padding(8)
                 .background(.ultraThinMaterial)
                 .cornerRadius(12)
@@ -201,22 +227,15 @@ struct FortuneReadingView: View {
 
 struct FortuneReadingView_Previews: PreviewProvider {
 
-//    static let randomFortuneCards = [
-//        Deck().allCards.randomElement()!,
-//        Deck().allCards.randomElement()!,
-//        Deck().allCards.randomElement()!
-//    ]
-    static let randomFortuneCards = [
-        Deck().allCards.randomElement()!
-    ]
-
     static var previews: some View {
         NavigationView {
             FortuneReadingView(
                 showingFortuneSheet: .constant(true),
-                fortuneReading: FortuneHistory.dummyFortunes[0]
+                fortuneReading: FortuneHistory.dummyFortunes[1]
             )
                 .preferredColorScheme(.dark)
         }
     }
 }
+
+

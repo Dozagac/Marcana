@@ -9,7 +9,7 @@ import Foundation
 import OpenAISwift
 
 class FortuneRequester: ObservableObject {
-    init(fortuneQuestion: String, fortuneType: FortuneType, fortuneCards: [Card]) {
+    init(fortuneQuestion: String, fortuneType: FortuneType, fortuneCards: [DrawnCard]) {
         // read data from userdefaults/appstorage
         self.fortuneReading = FortuneReading(
             fortuneQuestion: fortuneQuestion,
@@ -78,9 +78,9 @@ Finally we come to the 7 of Cups which signifies your future path ahead. This ca
 
         I picked these tarot cards to represent my past, present and future:
 
-        Past: \(self.fortuneReading.fortuneCards[0].name)
-        Current: \(self.fortuneReading.fortuneCards[1].name)
-        Future: \(self.fortuneReading.fortuneCards[2].name)
+        Past: \(self.fortuneReading.fortuneCards[0].Card.name), \(self.fortuneReading.fortuneCards[0].Orientation)
+        Current: \(self.fortuneReading.fortuneCards[1].Card.name), \(self.fortuneReading.fortuneCards[1].Orientation)
+        Future: \(self.fortuneReading.fortuneCards[2].Card.name), \(self.fortuneReading.fortuneCards[2].Orientation)
 
         My question for the fortune reading:
         \(self.fortuneReading.fortuneQuestion)?
@@ -116,7 +116,7 @@ Finally we come to the 7 of Cups which signifies your future path ahead. This ca
         Occupation: \(self.fortuneReading.userOccupation)
         Relationship Status: \(self.fortuneReading.userRelationship)
 
-        I picked this tarot card: \(self.fortuneReading.fortuneCards[0].name)
+        I picked this tarot card: \(self.fortuneReading.fortuneCards[0].Card.name), \(self.fortuneReading.fortuneCards[0].Orientation)
 
         My question for the fortune reading:
         \(self.fortuneReading.fortuneQuestion)?

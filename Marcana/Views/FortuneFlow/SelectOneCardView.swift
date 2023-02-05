@@ -12,11 +12,12 @@ struct SelectOneCardView: View {
     @Binding var showingFortuneSheet: Bool
     @StateObject var fortuneRequester: FortuneRequester
     var fortuneQuestion: String
+    var deck = Deck()
 
     // Manually initialize the StateObject with parameter
     // https://stackoverflow.com/questions/62635914/initialize-stateobject-with-a-parameter-in-swiftui
     init(showingFortuneSheet: Binding<Bool>, fortuneQuestion: String = "") {
-        let randomFortuneCards = [Deck().allCards.randomElement()!]
+        let randomFortuneCards = deck.DrawCards(n:1)
 
         self._fortuneRequester = StateObject(wrappedValue: FortuneRequester(
             fortuneQuestion: fortuneQuestion,
@@ -29,14 +30,13 @@ struct SelectOneCardView: View {
         self.fortuneCards = randomFortuneCards
     }
 
-    var deck = Deck()
     @State private var continueIsPushed = false // triggers navigation view
 
     @State private var animateViews = false
 
     @State private var cardOpen = false
 
-    private var fortuneCards: [Card]
+    private var fortuneCards: [DrawnCard]
 
     private var canContinue: Bool {
         cardOpen
@@ -105,7 +105,7 @@ struct SelectOneCardView: View {
                     fortuneRequester.waitingForAPIResponse = true
                 } label: {
                     Text("Read Fortune")
-                        .modifier(OnboardingContinueButtonModifier(canContinue: canContinue))
+                        .modifier(GetUserInfoContinueButtonModifier(canContinue: canContinue))
                 }
                 Spacer()
             }

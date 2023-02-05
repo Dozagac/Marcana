@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+
 enum Relationship: String, CaseIterable {
     case single = "Single"
     case complicated = "It is complicated"
@@ -14,10 +15,10 @@ enum Relationship: String, CaseIterable {
     case married = "Married"
 }
 
-// Last step of onboarding
+// Last step of userInfoFlow
 struct GetUserRelationshipView: View {
-    @Binding var onboardingStage: Int
-    @AppStorage(wrappedValue: true, "doOnboarding") var doOnboarding
+    @Binding var doUserInfoFlow: Int
+    @AppStorage(wrappedValue: true, "doUserInfoFlow") var doUserInfoFlow
     @Environment(\.dismiss) var dismiss
     
     @AppStorage("userRelationship") var userRelationship : String?
@@ -26,7 +27,7 @@ struct GetUserRelationshipView: View {
         ZStack(alignment: .top) {
             VStack {
                 Spacer()
-                    .frame(height: 100)
+                    .frame(height: 50)
                 VStack{
                     VStack(spacing: 12) {
                         Image(systemName: "heart.circle")
@@ -43,7 +44,7 @@ struct GetUserRelationshipView: View {
                             Button {
                                 userRelationship = status.rawValue
                                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
-                                    doOnboarding = false // this dismisses the last view of onboarding
+                                    doUserInfoFlow = false // this dismisses the last view of userInfoFlow
                                     dismiss() // so the view ca be dismissed when accessed from the settings
                                 }
                             } label: {
@@ -84,9 +85,9 @@ struct GetUserRelationshipView: View {
 
 
 struct GetUserRelationshipView_Previews: PreviewProvider {
-    @State static var onboardingStage = 4
+    @State static var doUserInfoFlow = 4
     static var previews: some View {
-        GetUserRelationshipView(onboardingStage: $onboardingStage)
+        GetUserRelationshipView(doUserInfoFlow: $doUserInfoFlow)
             .environmentObject(MockUserOO())
             .preferredColorScheme(.dark)
     }

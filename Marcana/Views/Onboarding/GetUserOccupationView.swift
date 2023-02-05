@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct GetUserOccupationView: View {
-    @Binding var onboardingStage: Int
+    @Binding var doUserInfoFlow: Int
     @AppStorage("userOccupation") var userOccupation = ""
     @FocusState private var focusTextField
 
@@ -20,7 +20,7 @@ struct GetUserOccupationView: View {
         ZStack(alignment: .top) {
             VStack(spacing: 0) {
                 Spacer()
-                    .frame(height: 100)
+                    .frame(height: 50)
                 VStack(spacing: 12) {
                     Image(systemName: "briefcase.fill")
                         .font(.largeTitle)
@@ -38,7 +38,7 @@ struct GetUserOccupationView: View {
                         .focused($focusTextField)
                         .onSubmit {
                         if userOccupation.isNotEmpty {
-                            onboardingStage += 1
+                            doUserInfoFlow += 1
                             focusTextField = false
                         }
                     }
@@ -46,12 +46,14 @@ struct GetUserOccupationView: View {
                     .padding(24)
                     .background(.ultraThinMaterial)
                     .cornerRadius(48)
+                
+                Spacer()
             }
 
             //MARK: Continue Button
             VStack {
                 Spacer()
-                OnboardingContinueButton(onboardingStage: $onboardingStage, canContinue: canContinue)
+                GetUserInfoContinueButton(doUserInfoFlow: $doUserInfoFlow, canContinue: canContinue)
                     .simultaneousGesture(TapGesture().onEnded {
                     focusTextField = false
                 })
@@ -66,9 +68,9 @@ struct GetUserOccupationView: View {
 
 
 struct GetUserOccupationView_Previews: PreviewProvider {
-    @State static var onboardingStage = 3
+    @State static var doUserInfoFlow = 3
     static var previews: some View {
-        GetUserOccupationView(onboardingStage: $onboardingStage)
+        GetUserOccupationView(doUserInfoFlow: $doUserInfoFlow)
             .environmentObject(MockUserOO())
             .preferredColorScheme(.dark)
     }

@@ -25,22 +25,17 @@ enum GenderPronoun: String, Equatable, CaseIterable {
 }
 
 struct GetUserGenderView: View {
-    @Binding var onboardingStage: Int
+    @Environment(\.dismiss) var dismiss
+    @Binding var doUserInfoFlow: Int
     
     // Gender
-//    @State private var selectedGender: GenderPronoun? = nil
     @AppStorage("userGender") var userGender: String?
-
-    // Condition for the continue button
-    private var canContinue: Bool {
-        userGender != nil
-    }
 
     var body: some View {
         ZStack(alignment: .top) {
             VStack {
                 Spacer()
-                    .frame(height: 100)
+                    .frame(height: 50)
 
                 VStack(spacing: 16) {
                     //MARK: - Gender Selection
@@ -60,6 +55,17 @@ struct GetUserGenderView: View {
                             ForEach(GenderPronoun.allCases, id: \.self) { gender in
                                 Button(action: {
                                     userGender = gender.rawValue
+                                
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
+                                        withAnimation(.spring()) {
+                                            doUserInfoFlow += 1
+                                        }
+                                        
+                                        if doUserInfoFlow == 99 {
+                                            dismiss() // so the view can be dismissed when accessed from the settings
+                                        }
+                                        
+                                    }
                                 }
                                 ) {
                                     RoundedRectangle(cornerRadius: 20)
@@ -84,12 +90,8 @@ struct GetUserGenderView: View {
                 .padding(.vertical, 24)
                     .background(.ultraThinMaterial)
                     .cornerRadius(48)
-            }
-
-            //MARK: Continue Button
-            VStack {
+                
                 Spacer()
-                OnboardingContinueButton(onboardingStage: $onboardingStage, canContinue: canContinue)
             }
         }
     }
@@ -97,9 +99,9 @@ struct GetUserGenderView: View {
 
 
 struct GetUserGenderAndBirthdayView_Previews: PreviewProvider {
-    @State static var onboardingStage = 2
+    @State static var doUserInfoFlow = 2
     static var previews: some View {
-        GetUserGenderView(onboardingStage: $onboardingStage)
+        GetUserGenderView(doUserInfoFlow: $doUserInfoFlow)
             .environmentObject(MockUserOO())
             .preferredColorScheme(.dark)
     }

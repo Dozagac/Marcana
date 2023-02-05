@@ -96,6 +96,8 @@ struct ClearableTextField: View {
                     .foregroundColor(.secondary)
                     .padding(.leading, 12)
                 TextField(title, text: $text, prompt: prompt)
+                    .font(.customFontBody)
+                    .foregroundColor(.text)
             }
             //MARK: X reset button for the search bar
             Image(systemName: "xmark.circle.fill")

@@ -1,5 +1,5 @@
 //
-//  OnboardingView.swift
+//  GetUserInfoFlowView.swift
 //  Marcana
 //
 //  Created by Deniz Ozagac on 12/01/2023.
@@ -8,12 +8,12 @@
 
 import SwiftUI
 
-struct OnboardingView: View {
+struct GetUserInfoFlowView: View {
     //Transitions
     let transition: AnyTransition = .asymmetric(insertion: .move(edge: .trailing),
                                                 removal: .move(edge: .leading))
     @StateObject var user = UserOO()
-    @State var onboardingStage: Int = 0
+    @State var getUserInfoStep: Int = 0
 
     var body: some View {
 
@@ -21,27 +21,31 @@ struct OnboardingView: View {
 //            VideoBackgroundView(videoFileName: "tarotTableVideo", playRate: 0.8)
             BackgroundView()
 
-            //MARK: Back button for onboarding
-            ChevronBackButton(onboardingStage: $onboardingStage)
+            ChevronBackButton(doUserInfoFlow: $getUserInfoStep)
+            
+            ProgressStepperView(stepperColor: Color.white,
+                                  doUserInfoFlow: $getUserInfoStep)
+                .zIndex(2)
+//                .padding(.top, 50) // this is half the height of the spacer used in all the views
 
-            //MARK: Onboarding Views
+            //MARK: GetUserInfoFlowView Views
             Group {
-                switch onboardingStage {
+                switch getUserInfoStep {
                 case 0:
-                    GetUserNameView(onboardingStage: $onboardingStage).transition(transition)
+                    GetUserNameView(doUserInfoFlow: $getUserInfoStep).transition(transition)
                 case 1:
-                    GetUserGenderView(onboardingStage: $onboardingStage).transition(transition)
+                    GetUserGenderView(doUserInfoFlow: $getUserInfoStep).transition(transition)
                 case 2:
-                    GetUserBirthdayView(onboardingStage: $onboardingStage).transition(transition)
+                    GetUserBirthdayView(doUserInfoFlow: $getUserInfoStep).transition(transition)
                 case 3:
-                    GetUserOccupationView(onboardingStage: $onboardingStage).transition(transition)
+                    GetUserOccupationView(doUserInfoFlow: $getUserInfoStep).transition(transition)
                 case 4:
-                    GetUserRelationshipView(onboardingStage: $onboardingStage).transition(transition)
+                    GetUserRelationshipView(doUserInfoFlow: $getUserInfoStep).transition(transition)
                 default:
                     VStack {
                         Text("This should not appear")
                         Button("Reset") {
-                            onboardingStage = 0
+                            getUserInfoStep = 0
                         }
                     }
                 }
@@ -70,39 +74,36 @@ struct QuestionText: View {
 }
 
 
-struct OnboardingContinueButton: View {
+struct GetUserInfoContinueButton: View {
     @Environment(\.dismiss) var dismiss
-    @Binding var onboardingStage: Int
+    @Binding var doUserInfoFlow: Int
     let finalStep = 4
     var canContinue: Bool
     var body: some View {
         Button {
-            if onboardingStage == finalStep {
-                finalizeOnboarding()
-            } else if onboardingStage == 99 {
+            if doUserInfoFlow == finalStep {
+                // nothing here, the last step is without this button since it is multiple choice
+            } else if doUserInfoFlow == 99 {
                 // this means it got called from the profile page
                 dismiss()
             }
             else {
                 withAnimation(.spring()) {
-                    onboardingStage += 1
+                    doUserInfoFlow += 1
                 }
             }
         } label: {
-            Text(onboardingStage == 99 ? "Save" : onboardingStage == finalStep ?  "Finish" : "Continue")
-                .modifier(OnboardingContinueButtonModifier(canContinue: canContinue))
+            Text(doUserInfoFlow == 99 ? "Save" : doUserInfoFlow == finalStep ?  "Finish" : "Continue")
+                .modifier(GetUserInfoContinueButtonModifier(canContinue: canContinue))
         }
             .disabled(!canContinue)
 
-    }
-    func finalizeOnboarding() {
-        print("finish onboarding")
     }
 }
 
 
 //MARK: Custom modifier for the continue navigation button
-struct OnboardingContinueButtonModifier: ViewModifier {
+struct GetUserInfoContinueButtonModifier: ViewModifier {
     var canContinue: Bool
     func body(content: Content) -> some View {
         content
@@ -120,13 +121,13 @@ struct OnboardingContinueButtonModifier: ViewModifier {
 
 
 struct ChevronBackButton: View {
-    @Binding var onboardingStage: Int
+    @Binding var doUserInfoFlow: Int
     var body: some View {
         HStack {
             VStack {
                 Button {
-                    if onboardingStage > 0 {
-                        onboardingStage -= 1
+                    if doUserInfoFlow > 0 {
+                        doUserInfoFlow -= 1
                     }
                 } label: {
                     Image(systemName: "chevron.left")
@@ -135,7 +136,7 @@ struct ChevronBackButton: View {
                 }
                 Spacer()
             }
-                .opacity(onboardingStage == 0 ? 0 : 1)
+                .opacity(doUserInfoFlow == 0 ? 0 : 1)
             Spacer()
         }
             .padding()
@@ -143,9 +144,9 @@ struct ChevronBackButton: View {
 }
 
 
-struct OnboardingView_Previews: PreviewProvider {
+struct GetUserInfoView_Previews: PreviewProvider {
     static var previews: some View {
-        OnboardingView()
+        GetUserInfoFlowView()
             .preferredColorScheme(.dark)
     }
 }

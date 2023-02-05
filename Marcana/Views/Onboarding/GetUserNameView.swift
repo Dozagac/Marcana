@@ -9,7 +9,7 @@ import SwiftUI
 
 
 struct GetUserNameView: View {
-    @Binding var onboardingStage: Int
+    @Binding var doUserInfoFlow: Int
     @FocusState private var focusTextField
 
     @AppStorage("userName") var userName = ""
@@ -22,7 +22,7 @@ struct GetUserNameView: View {
             // MARK: - Get User Name
             VStack {
                 Spacer()
-                    .frame(height: 100)
+                    .frame(height: 50)
 
                 VStack(spacing: 12) {
                     Image(systemName: "pencil.line")
@@ -40,13 +40,13 @@ struct GetUserNameView: View {
                         .font(.customFontCallout)
 
                     TextField("Enter your name", text: $userName, prompt: Text("Name"))
-                        .font(.customFontTitle2)
+                        .font(.customFontTitle3)
                         .multilineTextAlignment(.center)
                         .textFieldStyle(.plain)
                         .focused($focusTextField)
                         .onSubmit {
                         if userName.isNotEmpty {
-                            onboardingStage += 1
+                            doUserInfoFlow += 1
                             focusTextField = false
                         }
                     }
@@ -56,12 +56,14 @@ struct GetUserNameView: View {
                     .padding(24)
                     .background(.ultraThinMaterial)
                     .cornerRadius(48)
+                
+                Spacer()
             }
 
             //MARK: Continue Button
             VStack {
                 Spacer()
-                OnboardingContinueButton(onboardingStage: $onboardingStage, canContinue: canContinue)
+                GetUserInfoContinueButton(doUserInfoFlow: $doUserInfoFlow, canContinue: canContinue)
                     .simultaneousGesture(TapGesture().onEnded {
                     focusTextField = false
                 })
@@ -77,9 +79,9 @@ struct GetUserNameView: View {
 
 
 struct CollectUserInfoView_Previews: PreviewProvider {
-    @State static var onboardingStage = 1
+    @State static var doUserInfoFlow = 1
     static var previews: some View {
-        GetUserNameView(onboardingStage: $onboardingStage)
+        GetUserNameView(doUserInfoFlow: $doUserInfoFlow)
             .environmentObject(MockUserOO())
             .preferredColorScheme(.dark)
     }

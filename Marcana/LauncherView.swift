@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct LauncherView: View {
-    // Last step of the onboarding should this to false
-    @AppStorage(wrappedValue: true, "doOnboarding") var doOnboarding
+    // Last step of the userInfoFlow should this to false
+    @AppStorage(wrappedValue: true, "doUserInfoFlow") var doUserInfoFlow
     @AppStorage(wrappedValue: false, "loginStatus") var loginStatus
     @StateObject var user = UserOO()
 
@@ -24,7 +24,6 @@ struct LauncherView: View {
                 NavigationView {
                     HomePageView()
                 }
-                    .accentColor(.primary)
                     .tabItem {
                     Image(systemName: "rectangle.portrait.on.rectangle.portrait.angled.fill")
                     Text("Fortune")
@@ -36,7 +35,6 @@ struct LauncherView: View {
                 NavigationView {
                     FortuneHistoryView()
                 }
-                    .accentColor(.primary)
                     .tabItem {
                     Image(systemName: "book.fill")
                     Text("History")
@@ -48,12 +46,20 @@ struct LauncherView: View {
                 NavigationView {
                     SettingsView()
                 }
-                    .accentColor(.primary)
                     .tabItem {
                     Image(systemName: "gearshape.fill")
                     Text("Settings")
                 }
                     .tag(2)
+            }
+                .onAppear {
+                // view book pg 415
+                let appearance = UITabBarAppearance()
+//                appearance.backgroundEffect = UIBlurEffect(style: .systemUltraThinMaterialDark)
+//                appearance.backgroundColor = UIColor(Color.marcanaBackground.opacity(0.2))
+                UITabBar.appearance().standardAppearance = appearance
+                UITabBar.appearance().scrollEdgeAppearance = appearance
+                    
             }
                 .onChange(of: selectedTab, perform: { _ in
                 UIImpactFeedbackGenerator(style: .light).impactOccurred()
@@ -63,8 +69,8 @@ struct LauncherView: View {
                 .preferredColorScheme(.dark)
                 .animation(.easeOut(duration: 0.2), value: selectedTab)
                 .fullScreenCover(
-                isPresented: $doOnboarding,
-                content: OnboardingView.init // init is necessary
+                isPresented: $doUserInfoFlow,
+                content: GetUserInfoFlowView.init // init is necessary
             )
         } else {
             LoginView()

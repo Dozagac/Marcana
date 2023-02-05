@@ -17,12 +17,12 @@ struct FortuneHistoryView: View {
             BackgroundView()
 
             // ONLY FOR TESTING
-            if fortuneHistory.fortunes.isNotEmpty {
-//            if FortuneHistory.dummyFortunes.isNotEmpty {
+//            if fortuneHistory.fortunes.isNotEmpty {
+            if FortuneHistory.dummyFortunes.isNotEmpty {
                 List {
                     // ONLY FOR TESTING
-//                    ForEach(FortuneHistory.dummyFortunes) { fortune in
-                    ForEach(fortuneHistory.fortunes) { fortune in
+                    ForEach(FortuneHistory.dummyFortunes) { fortune in
+//                    ForEach(fortuneHistory.fortunes) { fortune in
                         NavigationLink {
                             FortuneReadingView(showingFortuneSheet: $showingFortuneHistoryItem,
                                                fortuneReading: fortune)
@@ -38,6 +38,7 @@ struct FortuneHistoryView: View {
                                 VStack(alignment: .leading, spacing: 0) {
                                     Text(fortune.userName)
                                     Text(fortune.fortuneQuestion)
+                                        .lineLimit(1)
                                 }
                                     .font(.customFontSubheadline)
 

@@ -64,11 +64,8 @@ struct FortuneLoadingView: View {
 }
 
 struct FortuneLoadingView_Previews: PreviewProvider {
-    static let randomFortuneCards = [
-        Deck().allCards.randomElement()!,
-        Deck().allCards.randomElement()!,
-        Deck().allCards.randomElement()!
-    ]
+    static let randomFortuneCards = Deck().DrawCards(n: 3)
+
     
     static var previews: some View {
         FortuneLoadingView(

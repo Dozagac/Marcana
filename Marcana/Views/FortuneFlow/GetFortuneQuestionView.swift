@@ -156,7 +156,7 @@ struct GetFortuneQuestionView: View {
                             }
                         } label: {
                             Text("Continue")
-                                .modifier(OnboardingContinueButtonModifier(canContinue: canContinue))
+                                .modifier(GetUserInfoContinueButtonModifier(canContinue: canContinue))
                         }
                             .disabled(question.isEmpty)
                     }

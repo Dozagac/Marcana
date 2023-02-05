@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct UserInfoView: View {
+struct FortuneUserInfoView: View {
     var fortuneReading: FortuneReading
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
@@ -44,6 +44,20 @@ struct UserInfoView: View {
                     .font(.customFontTitle3)
             }
 
+            
+            Divider()
+                .padding(12)
+            
+            HStack(spacing: 12) {
+                Image(systemName: "questionmark.circle")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 24)
+                Text(fortuneReading.fortuneQuestion)
+                    .font(.customFontBody)
+                    .lineLimit(nil)
+            }
+
         }
         .padding()
         .background(.ultraThinMaterial)
@@ -55,7 +69,7 @@ struct UserInfoView: View {
 
 struct UserInfoView_Previews: PreviewProvider {
     static var previews: some View {
-        UserInfoView(fortuneReading: FortuneHistory.dummyFortunes[0])
+        FortuneUserInfoView(fortuneReading: FortuneHistory.dummyFortunes[0])
             .preferredColorScheme(.dark)
     }
 }

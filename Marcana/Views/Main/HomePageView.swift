@@ -14,7 +14,7 @@ import SwiftUI
 struct HomePageView: View {
     @AppStorage(wrappedValue: "", "userName") var userName
     let appearance = UINavigationBarAppearance()
-    
+
     // This is so that buttons can launch the same cover sheet with a different parameter value in it
     // which is the fortuneType
     @State var showingFortuneSheet1CardFortune = false
@@ -22,22 +22,27 @@ struct HomePageView: View {
 
     var body: some View {
         ZStack {
-            BackgroundView()
+//            BackgroundView()
+            Image("purpleVineBackground")
+                .resizable()
+                .scaledToFill()
+                .opacity(0.5)
+                .ignoresSafeArea(.all)
 
             VStack(spacing: 24) {
                 FortuneTypeSelectionButton(
                     title: "Daily Fortune",
                     subtitle: "Pick a card",
                     imageName: "singleCardReader",
-                    colors: [.marcanaPink, .marcanaPink.opacity(0.5)],
+                    colors: [.marcanaPink, .marcanaPink.opacity(0.8)],
                     showingFortuneSheet: $showingFortuneSheet1CardFortune
                 )
-                .fullScreenCover(isPresented: $showingFortuneSheet1CardFortune) {
-                GetFortuneQuestionView(
-                    fortuneType: .with1card,
-                    showingFortuneSheet: $showingFortuneSheet1CardFortune
-                )
-            }
+                    .fullScreenCover(isPresented: $showingFortuneSheet1CardFortune) {
+                    GetFortuneQuestionView(
+                        fortuneType: .with1card,
+                        showingFortuneSheet: $showingFortuneSheet1CardFortune
+                    )
+                }
 
 
 
@@ -45,15 +50,15 @@ struct HomePageView: View {
                     title: "Past - Present - Future",
                     subtitle: "Pick 3 cards",
                     imageName: "threeCardReader",
-                    colors: [.marcanaBlue, .marcanaBlue.opacity(0.5)],
+                    colors: [.marcanaBlue, .marcanaBlue.opacity(0.8)],
                     showingFortuneSheet: $showingFortuneSheet3CardFortune
                 )
-                .fullScreenCover(isPresented: $showingFortuneSheet3CardFortune) {
-                GetFortuneQuestionView(
-                    fortuneType: .with3cards,
-                    showingFortuneSheet: $showingFortuneSheet3CardFortune
-                )
-            }
+                    .fullScreenCover(isPresented: $showingFortuneSheet3CardFortune) {
+                    GetFortuneQuestionView(
+                        fortuneType: .with3cards,
+                        showingFortuneSheet: $showingFortuneSheet3CardFortune
+                    )
+                }
 
 
             }
@@ -82,21 +87,23 @@ struct FortuneTypeSelectionButton: View {
                     .resizable()
                     .scaledToFit()
                     .frame(width: 150)
+                    .shadow(radius: 5)
                 VStack(alignment: .center, spacing: 0) {
                     //MARK: CARD TITLE
                     Text(title)
-                        .font(.customFontHeadline)
+                        .font(.customFontHeadline.bold())
                         .foregroundColor(.text)
                         .minimumScaleFactor(0.5)
                         .foregroundStyle(.ultraThinMaterial)
                     //MARK: CARD SUBTITLE
                     Text(subtitle)
-                        .font(.customFontSubheadline)
+                        .font(.customFontCallout.bold())
                         .foregroundColor(.secondary)
                         .lineLimit(1)
                         .minimumScaleFactor(0.5) }
                 Spacer()
             }
+
                 .frame(width: 300, height: 200)
                 .background(LinearGradient(colors: colors, startPoint: .topLeading, endPoint: .bottomTrailing))
                 .clipShape(RoundedRectangle(cornerRadius: 10))
