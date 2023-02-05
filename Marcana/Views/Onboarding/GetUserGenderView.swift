@@ -26,7 +26,7 @@ enum GenderPronoun: String, Equatable, CaseIterable {
 
 struct GetUserGenderView: View {
     @Environment(\.dismiss) var dismiss
-    @Binding var doUserInfoFlow: Int
+    @Binding var getUserInfoStep: Int
     
     // Gender
     @AppStorage("userGender") var userGender: String?
@@ -58,10 +58,10 @@ struct GetUserGenderView: View {
                                 
                                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
                                         withAnimation(.spring()) {
-                                            doUserInfoFlow += 1
+                                            getUserInfoStep += 1
                                         }
                                         
-                                        if doUserInfoFlow == 99 {
+                                        if getUserInfoStep == 99 {
                                             dismiss() // so the view can be dismissed when accessed from the settings
                                         }
                                         
@@ -99,9 +99,9 @@ struct GetUserGenderView: View {
 
 
 struct GetUserGenderAndBirthdayView_Previews: PreviewProvider {
-    @State static var doUserInfoFlow = 2
+    @State static var getUserInfoStep = 2
     static var previews: some View {
-        GetUserGenderView(doUserInfoFlow: $doUserInfoFlow)
+        GetUserGenderView(getUserInfoStep: $getUserInfoStep)
             .environmentObject(MockUserOO())
             .preferredColorScheme(.dark)
     }

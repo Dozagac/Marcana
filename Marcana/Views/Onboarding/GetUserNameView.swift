@@ -9,7 +9,7 @@ import SwiftUI
 
 
 struct GetUserNameView: View {
-    @Binding var doUserInfoFlow: Int
+    @Binding var getUserInfoStep: Int
     @FocusState private var focusTextField
 
     @AppStorage("userName") var userName = ""
@@ -46,7 +46,7 @@ struct GetUserNameView: View {
                         .focused($focusTextField)
                         .onSubmit {
                         if userName.isNotEmpty {
-                            doUserInfoFlow += 1
+                            getUserInfoStep += 1
                             focusTextField = false
                         }
                     }
@@ -63,7 +63,7 @@ struct GetUserNameView: View {
             //MARK: Continue Button
             VStack {
                 Spacer()
-                GetUserInfoContinueButton(doUserInfoFlow: $doUserInfoFlow, canContinue: canContinue)
+                GetUserInfoContinueButton(getUserInfoStep: $getUserInfoStep, canContinue: canContinue)
                     .simultaneousGesture(TapGesture().onEnded {
                     focusTextField = false
                 })
@@ -79,9 +79,9 @@ struct GetUserNameView: View {
 
 
 struct CollectUserInfoView_Previews: PreviewProvider {
-    @State static var doUserInfoFlow = 1
+    @State static var getUserInfoStep = 1
     static var previews: some View {
-        GetUserNameView(doUserInfoFlow: $doUserInfoFlow)
+        GetUserNameView(getUserInfoStep: $getUserInfoStep)
             .environmentObject(MockUserOO())
             .preferredColorScheme(.dark)
     }

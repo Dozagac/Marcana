@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct GetUserBirthdayView: View {
-    @Binding var doUserInfoFlow: Int
+    @Binding var getUserInfoStep: Int
 
     // Condition for the continue button, turns true if datepicker is interacted (via didset)
     @State var canContinue = false
@@ -71,7 +71,7 @@ struct GetUserBirthdayView: View {
             //MARK: Continue Button
             VStack {
                 Spacer()
-                GetUserInfoContinueButton(doUserInfoFlow: $doUserInfoFlow, canContinue: canContinue)
+                GetUserInfoContinueButton(getUserInfoStep: $getUserInfoStep, canContinue: canContinue)
                     .simultaneousGesture(TapGesture().onEnded {
                 })
             }
@@ -81,9 +81,9 @@ struct GetUserBirthdayView: View {
 
 
 struct GetUserBirthdayView_Previews: PreviewProvider {
-    @State static var doUserInfoFlow = 2
+    @State static var getUserInfoStep = 2
     static var previews: some View {
-        GetUserBirthdayView(doUserInfoFlow: $doUserInfoFlow)
+        GetUserBirthdayView(getUserInfoStep: $getUserInfoStep)
             .environmentObject(MockUserOO())
             .preferredColorScheme(.dark)
     }

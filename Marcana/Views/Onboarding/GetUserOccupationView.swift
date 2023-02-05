@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct GetUserOccupationView: View {
-    @Binding var doUserInfoFlow: Int
+    @Binding var getUserInfoStep: Int
     @AppStorage("userOccupation") var userOccupation = ""
     @FocusState private var focusTextField
 
@@ -38,7 +38,7 @@ struct GetUserOccupationView: View {
                         .focused($focusTextField)
                         .onSubmit {
                         if userOccupation.isNotEmpty {
-                            doUserInfoFlow += 1
+                            getUserInfoStep += 1
                             focusTextField = false
                         }
                     }
@@ -53,7 +53,7 @@ struct GetUserOccupationView: View {
             //MARK: Continue Button
             VStack {
                 Spacer()
-                GetUserInfoContinueButton(doUserInfoFlow: $doUserInfoFlow, canContinue: canContinue)
+                GetUserInfoContinueButton(getUserInfoStep: $getUserInfoStep, canContinue: canContinue)
                     .simultaneousGesture(TapGesture().onEnded {
                     focusTextField = false
                 })
@@ -68,9 +68,9 @@ struct GetUserOccupationView: View {
 
 
 struct GetUserOccupationView_Previews: PreviewProvider {
-    @State static var doUserInfoFlow = 3
+    @State static var getUserInfoStep = 3
     static var previews: some View {
-        GetUserOccupationView(doUserInfoFlow: $doUserInfoFlow)
+        GetUserOccupationView(getUserInfoStep: $getUserInfoStep)
             .environmentObject(MockUserOO())
             .preferredColorScheme(.dark)
     }

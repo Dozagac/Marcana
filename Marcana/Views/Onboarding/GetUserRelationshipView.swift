@@ -17,7 +17,7 @@ enum Relationship: String, CaseIterable {
 
 // Last step of userInfoFlow
 struct GetUserRelationshipView: View {
-    @Binding var doUserInfoFlow: Int
+    @Binding var getUserInfoStep: Int
     @AppStorage(wrappedValue: true, "doUserInfoFlow") var doUserInfoFlow
     @Environment(\.dismiss) var dismiss
     
@@ -85,9 +85,9 @@ struct GetUserRelationshipView: View {
 
 
 struct GetUserRelationshipView_Previews: PreviewProvider {
-    @State static var doUserInfoFlow = 4
+    @State static var getUserInfoStep = 4
     static var previews: some View {
-        GetUserRelationshipView(doUserInfoFlow: $doUserInfoFlow)
+        GetUserRelationshipView(getUserInfoStep: $getUserInfoStep)
             .environmentObject(MockUserOO())
             .preferredColorScheme(.dark)
     }

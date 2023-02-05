@@ -47,7 +47,7 @@ struct SettingsView: View {
                 Section(header: Text("User Info")) {
                     //MARK: - Name
                     NavigationLink {
-                        GetUserNameView(doUserInfoFlow: .constant(99)) // 99 is chosen to set button functionality, see the view
+                        GetUserNameView(getUserInfoStep: .constant(99)) // 99 is chosen to set button functionality, see the view
                     } label: {
                         HStack {
                             Image(systemName: "pencil.line")
@@ -60,7 +60,7 @@ struct SettingsView: View {
                     }
                     //MARK: - Gender
                     NavigationLink {
-                        GetUserGenderView(doUserInfoFlow: .constant(99)) // 99 is chosen to set button functionality, see the view
+                        GetUserGenderView(getUserInfoStep: .constant(99)) // 99 is chosen to set button functionality, see the view
                     } label: {
                         HStack {
                             Image(systemName: "person.fill")
@@ -74,7 +74,7 @@ struct SettingsView: View {
                     }
                     //MARK: - Birthday
                     NavigationLink {
-                        GetUserBirthdayView(doUserInfoFlow: .constant(99)) // 99 is chosen to set button functionality, see the view
+                        GetUserBirthdayView(getUserInfoStep: .constant(99)) // 99 is chosen to set button functionality, see the view
                     } label: {
                         HStack {
                             Image(systemName: "birthday.cake.fill")
@@ -87,7 +87,7 @@ struct SettingsView: View {
                     }
                     //MARK: - Occupation
                     NavigationLink {
-                        GetUserOccupationView(doUserInfoFlow: .constant(99)) // 99 is chosen to set button functionality, see the view
+                        GetUserOccupationView(getUserInfoStep: .constant(99)) // 99 is chosen to set button functionality, see the view
                     } label: {
                         HStack {
                             Image(systemName: "briefcase.fill")
@@ -102,7 +102,7 @@ struct SettingsView: View {
                     
                     //MARK: - Relationship
                     NavigationLink {
-                        GetUserRelationshipView(doUserInfoFlow: .constant(99)) // 99 is chosen to set button functionality, see the view
+                        GetUserRelationshipView(getUserInfoStep: .constant(99)) // 99 is chosen to set button functionality, see the view
                     } label: {
                         HStack {
                             Image(systemName: "heart.circle")

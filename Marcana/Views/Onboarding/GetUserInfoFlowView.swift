@@ -21,10 +21,10 @@ struct GetUserInfoFlowView: View {
 //            VideoBackgroundView(videoFileName: "tarotTableVideo", playRate: 0.8)
             BackgroundView()
 
-            ChevronBackButton(doUserInfoFlow: $getUserInfoStep)
+            ChevronBackButton(getUserInfoStep: $getUserInfoStep)
             
             ProgressStepperView(stepperColor: Color.white,
-                                  doUserInfoFlow: $getUserInfoStep)
+                                getUserInfoStep: $getUserInfoStep)
                 .zIndex(2)
 //                .padding(.top, 50) // this is half the height of the spacer used in all the views
 
@@ -32,15 +32,15 @@ struct GetUserInfoFlowView: View {
             Group {
                 switch getUserInfoStep {
                 case 0:
-                    GetUserNameView(doUserInfoFlow: $getUserInfoStep).transition(transition)
+                    GetUserNameView(getUserInfoStep: $getUserInfoStep).transition(transition)
                 case 1:
-                    GetUserGenderView(doUserInfoFlow: $getUserInfoStep).transition(transition)
+                    GetUserGenderView(getUserInfoStep: $getUserInfoStep).transition(transition)
                 case 2:
-                    GetUserBirthdayView(doUserInfoFlow: $getUserInfoStep).transition(transition)
+                    GetUserBirthdayView(getUserInfoStep: $getUserInfoStep).transition(transition)
                 case 3:
-                    GetUserOccupationView(doUserInfoFlow: $getUserInfoStep).transition(transition)
+                    GetUserOccupationView(getUserInfoStep: $getUserInfoStep).transition(transition)
                 case 4:
-                    GetUserRelationshipView(doUserInfoFlow: $getUserInfoStep).transition(transition)
+                    GetUserRelationshipView(getUserInfoStep: $getUserInfoStep).transition(transition)
                 default:
                     VStack {
                         Text("This should not appear")
@@ -76,24 +76,24 @@ struct QuestionText: View {
 
 struct GetUserInfoContinueButton: View {
     @Environment(\.dismiss) var dismiss
-    @Binding var doUserInfoFlow: Int
+    @Binding var getUserInfoStep: Int
     let finalStep = 4
     var canContinue: Bool
     var body: some View {
         Button {
-            if doUserInfoFlow == finalStep {
+            if getUserInfoStep == finalStep {
                 // nothing here, the last step is without this button since it is multiple choice
-            } else if doUserInfoFlow == 99 {
+            } else if getUserInfoStep == 99 {
                 // this means it got called from the profile page
                 dismiss()
             }
             else {
                 withAnimation(.spring()) {
-                    doUserInfoFlow += 1
+                    getUserInfoStep += 1
                 }
             }
         } label: {
-            Text(doUserInfoFlow == 99 ? "Save" : doUserInfoFlow == finalStep ?  "Finish" : "Continue")
+            Text(getUserInfoStep == 99 ? "Save" : getUserInfoStep == finalStep ?  "Finish" : "Continue")
                 .modifier(GetUserInfoContinueButtonModifier(canContinue: canContinue))
         }
             .disabled(!canContinue)
@@ -121,13 +121,13 @@ struct GetUserInfoContinueButtonModifier: ViewModifier {
 
 
 struct ChevronBackButton: View {
-    @Binding var doUserInfoFlow: Int
+    @Binding var getUserInfoStep: Int
     var body: some View {
         HStack {
             VStack {
                 Button {
-                    if doUserInfoFlow > 0 {
-                        doUserInfoFlow -= 1
+                    if getUserInfoStep > 0 {
+                        getUserInfoStep -= 1
                     }
                 } label: {
                     Image(systemName: "chevron.left")
@@ -136,7 +136,7 @@ struct ChevronBackButton: View {
                 }
                 Spacer()
             }
-                .opacity(doUserInfoFlow == 0 ? 0 : 1)
+                .opacity(getUserInfoStep == 0 ? 0 : 1)
             Spacer()
         }
             .padding()
