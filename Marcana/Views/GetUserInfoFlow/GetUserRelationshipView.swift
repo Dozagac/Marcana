@@ -34,9 +34,9 @@ struct GetUserRelationshipView: View {
                             .font(.largeTitle)
                         QuestionText(text: "Relationship status")
                         
-                        Text("Your relationship status can give us a better understanding of your personal relationships and help us provide a more accurate reading.")
+                        Text("Your personal information is solely used for generating personalized fortune tellings and will be kept confidential.")
                             .multilineTextAlignment(.center)
-                            .font(.customFontCallout)
+                            .font(.customFontFootnote)
                             .padding(.bottom, 12)
                         
                             

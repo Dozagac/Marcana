@@ -23,9 +23,8 @@ struct FortuneHistoryView: View {
                     // ONLY FOR TESTING
                     ForEach(FortuneHistory.dummyFortunes) { fortune in
 //                    ForEach(fortuneHistory.fortunes) { fortune in
-                        NavigationLink {
-                            FortuneReadingView(showingFortuneSheet: $showingFortuneHistoryItem,
-                                               fortuneReading: fortune)
+                        Button {
+                            showingFortuneHistoryItem = true
                         } label: {
                             HStack(spacing: 8) {
                                 Image(fortune.fortuneType.iconName)
@@ -50,8 +49,13 @@ struct FortuneHistoryView: View {
                                 }
                                     .font(.customFontFootnote)
                             }
+                            .fullScreenCover(isPresented: $showingFortuneHistoryItem){
+                                FortuneReadingView(showingFortuneSheet: $showingFortuneHistoryItem,
+                                                   fortuneReading: fortune)
+                            }
                         }
                     }
+
                         .onDelete { indexSet in
                         fortuneHistory.fortunes.remove(atOffsets: indexSet)
                     }

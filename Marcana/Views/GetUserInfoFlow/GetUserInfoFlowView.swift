@@ -26,7 +26,7 @@ struct GetUserInfoFlowView: View {
             ProgressStepperView(stepperColor: Color.white,
                                 progressStep: $getUserInfoStep)
                 .zIndex(2)
-//                .padding(.top, 50) // this is half the height of the spacer used in all the views
+                .padding(.top)
 
             //MARK: GetUserInfoFlowView Views
             Group {
@@ -109,7 +109,7 @@ struct GetUserInfoContinueButtonModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
             .font(.customFontTitle3)
-            .padding()
+            .padding(8)
             .frame(maxWidth: .infinity)
             .background(canContinue ? Color.marcanaBlue : .gray)
             .foregroundColor(canContinue ? .white : .text)

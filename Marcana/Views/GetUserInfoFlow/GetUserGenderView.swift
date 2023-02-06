@@ -45,9 +45,10 @@ struct GetUserGenderView: View {
 
                         QuestionText(text: "How should we call you?")
  
-                        Text("Your birthday is important in fortune telling as it provides information about your astrological sign and helps to give a more in-depth reading.")
+                        Text("Your personal information is solely used for generating personalized fortune tellings and will be kept confidential.")
                             .multilineTextAlignment(.center)
-                            .font(.customFontCallout)
+                            .font(.customFontFootnote)
+                            .padding(.horizontal)
                             
 
                         //MARK: Gender Buttons

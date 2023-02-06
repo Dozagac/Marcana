@@ -29,15 +29,10 @@ struct GetUserNameView: View {
                         .font(.largeTitle)
                     QuestionText(text: "What is your name?")
 
-//                    Group {
-//                        Text("We value your privacy and assure you that the information you provide will not be used for anything other than providing you with a personalized reading.")
-//                            .multilineTextAlignment(.center)
-//                            .font(.customFontCallout)
-//                    }
-
-                    Text("We ask for your name to personalize your reading and ensure the accuracy of your fortune telling experience.")
+                    Text("Your personal information is solely used for generating personalized fortune tellings and will be kept confidential.")
                         .multilineTextAlignment(.center)
-                        .font(.customFontCallout)
+                        .font(.customFontFootnote)
+                        .padding(.horizontal)
 
                     TextField("Enter your name", text: $userName, prompt: Text("Name"))
                         .font(.customFontTitle3)

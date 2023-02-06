@@ -24,7 +24,7 @@ class FortuneRequester: ObservableObject {
         )
     }
 
-    private let openAPI = OpenAISwift(authToken: "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")
+    private let openAPI = OpenAISwift(authToken: "")
     
     @Published var fortuneReading : FortuneReading
     var fortuneHistory = FortuneHistory()

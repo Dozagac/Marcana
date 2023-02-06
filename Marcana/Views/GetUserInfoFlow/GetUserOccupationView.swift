@@ -25,10 +25,11 @@ struct GetUserOccupationView: View {
                     Image(systemName: "briefcase.fill")
                         .font(.largeTitle)
                     QuestionText(text: "What is your job/occupation?")
-                    Text("Your occupation can provide insight into your life path and give us a better understanding of your current life situation.")
+                    Text("Your personal information is solely used for generating personalized fortune tellings and will be kept confidential.")
                         .multilineTextAlignment(.center)
-                        .font(.customFontCallout)
-                        
+                        .font(.customFontFootnote)
+                        .padding(.horizontal)
+                    
                     TextField("Enter your occupation", text: $userOccupation, prompt: Text("Job"))
                         .padding(.top, 12)
                         .font(.customFontTitle3)

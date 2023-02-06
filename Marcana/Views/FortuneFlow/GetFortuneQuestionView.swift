@@ -58,26 +58,12 @@ struct GetFortuneQuestionView: View {
 
     @State private var animateViews = false
 
-    let suggestedQuestions = [
-        "What does the future hold for my career?",
-        "Will my relationship/marriage improve?",
-        "What can I do to improve my financial situation?",
-        "What do I need to know about my health?",
-        "What can I do to bring more happiness into my life?",
-        "What is the best path for my spiritual journey?",
-        "What should I focus on to bring balance to my life?",
-        "What is the best approach for resolving a current conflict?",
-        "How can I find clarity and direction in my life?",
-        "What do I need to know about a specific person in my life?"
-    ]
-
     @State var showRecommendations = false
     
     private var canContinue: Bool {
         question.isNotEmpty
     }
     
-
     init(fortuneType: FortuneType, showingFortuneSheet: Binding<Bool>) {
         self.fortuneType = fortuneType
         self._showingFortuneSheet = showingFortuneSheet
@@ -110,6 +96,7 @@ struct GetFortuneQuestionView: View {
                                 .multilineTextAlignment(.center)
 
                             Divider()
+                                .frame(height: 2)
 
                             ZStack{
                                 BackgroundView()
@@ -126,12 +113,10 @@ struct GetFortuneQuestionView: View {
                                         .frame(minHeight: 35, maxHeight: 70)
                                         .fixedSize(horizontal: false, vertical: true)
                                         .accentColor(.white)
-//
                             }
 
-
                             Divider()
-            
+                                .frame(height: 2)
 
                             // MARK: - Suggest question button
                             Button {

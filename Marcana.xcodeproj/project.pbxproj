@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		760E9A7329916F3E00023F79 /* tarotAI.json in Resources */ = {isa = PBXBuildFile; fileRef = 760E9A7229916F3E00023F79 /* tarotAI.json */; };
 		7612CE07298A77CC00838B3E /* SimpleToast in Frameworks */ = {isa = PBXBuildFile; productRef = 7612CE06298A77CC00838B3E /* SimpleToast */; };
 		7612CE09298A8AC300838B3E /* FortuneLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7612CE08298A8AC300838B3E /* FortuneLoadingView.swift */; };
 		7612CE0B298AB65600838B3E /* FortuneUserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7612CE0A298AB65600838B3E /* FortuneUserInfoView.swift */; };
@@ -38,7 +39,6 @@
 		7675E44729326B2600ED17D5 /* HomePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7675E44629326B2600ED17D5 /* HomePageView.swift */; };
 		7675E44929326B2700ED17D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7675E44829326B2700ED17D5 /* Assets.xcassets */; };
 		7675E45329326B6300ED17D5 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7675E45229326B6300ED17D5 /* Card.swift */; };
-		7675E45729326E1E00ED17D5 /* tarot.json in Resources */ = {isa = PBXBuildFile; fileRef = 7675E45629326E1E00ED17D5 /* tarot.json */; };
 		7675E45929326EF500ED17D5 /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7675E45829326EF500ED17D5 /* Deck.swift */; };
 		7675E45F29336C3F00ED17D5 /* DeckInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7675E45E29336C3F00ED17D5 /* DeckInfoView.swift */; };
 		76760C70297A87EB00D9C5D2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 76760C6F297A87EB00D9C5D2 /* GoogleService-Info.plist */; };
@@ -67,6 +67,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		760E9A7229916F3E00023F79 /* tarotAI.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tarotAI.json; sourceTree = "<group>"; };
 		7612CE08298A8AC300838B3E /* FortuneLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FortuneLoadingView.swift; sourceTree = "<group>"; };
 		7612CE0A298AB65600838B3E /* FortuneUserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FortuneUserInfoView.swift; sourceTree = "<group>"; };
 		7612CE0E298AECFC00838B3E /* ScrollerTextBottomGradientEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollerTextBottomGradientEffectView.swift; sourceTree = "<group>"; };
@@ -99,7 +100,6 @@
 		7675E44629326B2600ED17D5 /* HomePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageView.swift; sourceTree = "<group>"; };
 		7675E44829326B2700ED17D5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7675E45229326B6300ED17D5 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
-		7675E45629326E1E00ED17D5 /* tarot.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tarot.json; sourceTree = "<group>"; };
 		7675E45829326EF500ED17D5 /* Deck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deck.swift; sourceTree = "<group>"; };
 		7675E45E29336C3F00ED17D5 /* DeckInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckInfoView.swift; sourceTree = "<group>"; };
 		76760C6F297A87EB00D9C5D2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -291,7 +291,7 @@
 		76B2E13229365E3A004BCF46 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				7675E45629326E1E00ED17D5 /* tarot.json */,
+				760E9A7229916F3E00023F79 /* tarotAI.json */,
 				76F72ACA2967518F009E7501 /* UserOO.swift */,
 				76760C77297A8E1A00D9C5D2 /* LoginViewOO.swift */,
 				7675E45229326B6300ED17D5 /* Card.swift */,
@@ -409,10 +409,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7675E45729326E1E00ED17D5 /* tarot.json in Resources */,
 				765313512985519900CF52A3 /* NanumMyeongjo-Bold.ttf in Resources */,
 				76760C7C297AB64900D9C5D2 /* candleVideo.mp4 in Resources */,
 				76760C70297A87EB00D9C5D2 /* GoogleService-Info.plist in Resources */,
+				760E9A7329916F3E00023F79 /* tarotAI.json in Resources */,
 				765313542985519900CF52A3 /* NanumMyeongjo-ExtraBold.ttf in Resources */,
 				7675E44929326B2700ED17D5 /* Assets.xcassets in Resources */,
 				76D5EF662971A58900EF9C4A /* tarotTableVideo.mp4 in Resources */,

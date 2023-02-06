@@ -51,9 +51,10 @@ struct GetUserBirthdayView: View {
                             .font(.largeTitle)
                         QuestionText(text: "When is your birthday?")
                         
-                        Text("Knowing your gender helps us tailor the reading to your specific needs and gives us a better understanding of your life experiences.")
+                        Text("Your personal information is solely used for generating personalized fortune tellings and will be kept confidential.")
                             .multilineTextAlignment(.center)
-                            .font(.customFontCallout)
+                            .font(.customFontFootnote)
+                            .padding(.horizontal)
                         
                         DatePicker("Enter your birthday", selection: birthday, in: ...Date(), displayedComponents: .date)
                             .labelsHidden()
