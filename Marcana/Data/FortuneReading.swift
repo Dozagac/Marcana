@@ -29,19 +29,4 @@ struct FortuneReading: Codable, Identifiable {
 //    }
 }
 
-enum FortuneType: String, Codable {
-    case with1card, with3cards, with5cards
-
-    var icon: String {
-        switch self {
-        case .with1card:
-            return "Icon1Card"
-        case .with3cards:
-            return "Icon3Cards"
-        case .with5cards:
-            return "Icon5Cards"
-        }
-    }
-}
-
 

@@ -12,24 +12,30 @@ import Firebase
 struct MarcanaApp: App {
     // Calling Delegate
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    @AppStorage(wrappedValue: true, "doOnboarding") var doOnboarding
+    @State private var showingPaywall = false
     
     //MARK: - Custom Navigation title font for the whole app
     init () {
 //        UINavigationBar.appearance().largeTitleTextAttributes = [.font : UIFont(name: FontsManager.NanumMyeongjo.extraBold, size: 34)!]
         UINavigationBar.appearance().largeTitleTextAttributes = [.font: UIFont(name: "Palatino-Bold", size: 34)!]
+        doOnboarding = true
     }
     
     var body: some Scene {
         WindowGroup {
-            LauncherView()
-                .preferredColorScheme(.dark)
-                .onAppear{
-                    // Show all available font names, for Debugging
-                    for family in UIFont.familyNames.sorted() {
-                        let names = UIFont.fontNames(forFamilyName: family)
-                        print("Family: \(family) Font names: \(names)")
-                    }
+            ZStack{
+                if doOnboarding{
+                    OnboardingView(showingPaywall: $showingPaywall)
+                        .preferredColorScheme(.dark)
+                } else {
+                    LauncherView()
+                        .preferredColorScheme(.dark)
                 }
+            }
+            .fullScreenCover(isPresented: $showingPaywall){
+                PaywallView(showingPaywall: $showingPaywall)
+            }
         }
     }
 }

@@ -28,7 +28,7 @@ struct FortuneHistoryView: View {
                                                fortuneReading: fortune)
                         } label: {
                             HStack(spacing: 8) {
-                                Image(fortune.fortuneType.icon)
+                                Image(fortune.fortuneType.iconName)
                                     .resizable()
                                     .scaledToFit()
                                     .frame(width: fortune.fortuneType == FortuneType.with1card ? 24 : 44,
@@ -61,7 +61,7 @@ struct FortuneHistoryView: View {
                 }
             } else {
                 VStack(spacing: 24) {
-                    Image("EmptyHistoryImage")
+                    Image("EmptyHistoryPageImage")
                         .resizable()
                         .scaledToFit()
                         .frame(maxWidth: 400, maxHeight: 400)

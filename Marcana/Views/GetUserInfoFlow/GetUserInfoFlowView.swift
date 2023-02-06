@@ -24,7 +24,7 @@ struct GetUserInfoFlowView: View {
             ChevronBackButton(getUserInfoStep: $getUserInfoStep)
             
             ProgressStepperView(stepperColor: Color.white,
-                                getUserInfoStep: $getUserInfoStep)
+                                progressStep: $getUserInfoStep)
                 .zIndex(2)
 //                .padding(.top, 50) // this is half the height of the spacer used in all the views
 

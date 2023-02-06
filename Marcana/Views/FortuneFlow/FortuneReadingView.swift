@@ -60,7 +60,7 @@ struct FortuneReadingView: View {
                     }
                     Spacer()
                 }
-                    .padding(.horizontal, 12)
+                    .padding(.leading, 12)
 
 
                 // MARK: - Scrollview: Cards + Fortune Text Body

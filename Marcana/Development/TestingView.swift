@@ -11,33 +11,39 @@ import AnimateText
 //fullName.components(separatedBy: " ")
 
 struct TestingView: View {
-    @State var response = ""
-
-    var dummyText = """
-            The figure calls for no special description the face is rather dark, suggesting also courage, but somewhat lethar
-            """
-
-    @State var loadingText: String = ""
-    @State var type: ATUnitType = .letters // The type used to split text.
-    @State var userInfo: Any? = nil // Custom user info for the effect.
-
+    @State private var currentPage = 0
 
     var body: some View {
         VStack {
-            AnimateText<ATOpacityEffect>($response, type: type, userInfo: userInfo)
-
-            HStack {
-                Button("text1") {
-                    response = dummyText
+            TabView(selection: $currentPage) {
+                Text("Page 1")
+                    .tabItem {
+//                    Image(systemName: "1.circle")
+                    Text("Page 1")
                 }
-                    .frame(width: 100, height: 50)
-                    .background(.green)
-
-                Button("text2") {
-                    response = "testin testin"
+                    .tag(0)
+                Text("Page 2")
+                    .tabItem {
+//                    Image(systemName: "2.circle")
+                    Text("Page 2")
                 }
-                    .frame(width: 100, height: 50)
-                    .background(.red)
+                    .tag(1)
+                Text("Page 3")
+                    .tabItem {
+//                    Image(systemName: "3.circle")
+                    Text("Page 3")
+                }
+                    .tag(2)
+            }
+                .tabViewStyle(.page)
+                .animation(.spring(), value:currentPage)
+
+            Button(action: {
+                if self.currentPage + 1 < 3 {
+                    self.currentPage += 1
+                }
+            }) {
+                Text("Continue")
             }
         }
     }

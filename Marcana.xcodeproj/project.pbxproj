@@ -11,7 +11,7 @@
 		7612CE09298A8AC300838B3E /* FortuneLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7612CE08298A8AC300838B3E /* FortuneLoadingView.swift */; };
 		7612CE0B298AB65600838B3E /* FortuneUserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7612CE0A298AB65600838B3E /* FortuneUserInfoView.swift */; };
 		7612CE0F298AECFC00838B3E /* ScrollerTextBottomGradientEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7612CE0E298AECFC00838B3E /* ScrollerTextBottomGradientEffectView.swift */; };
-		7612CE11298B235A00838B3E /* OnboardingStepperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7612CE10298B235A00838B3E /* OnboardingStepperView.swift */; };
+		7612CE11298B235A00838B3E /* ProgressStepperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7612CE10298B235A00838B3E /* ProgressStepperView.swift */; };
 		76152A4D296FFE42001D5B8F /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76152A4C296FFE42001D5B8F /* PlayerView.swift */; };
 		76267D3B2955CDAE00108612 /* GetUserNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76267D3A2955CDAE00108612 /* GetUserNameView.swift */; };
 		76267D422955D60E00108612 /* GetUserOccupationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76267D412955D60E00108612 /* GetUserOccupationView.swift */; };
@@ -31,6 +31,7 @@
 		7654E7FE2933C67A00F9FDAB /* CardDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7654E7FD2933C67A00F9FDAB /* CardDetailView.swift */; };
 		76588C1D298F243F003E3530 /* FortuneReading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76588C1C298F243F003E3530 /* FortuneReading.swift */; };
 		76588C1F298FBB7E003E3530 /* Paywall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76588C1E298FBB7E003E3530 /* Paywall.swift */; };
+		76588C2129902D89003E3530 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76588C2029902D89003E3530 /* OnboardingView.swift */; };
 		7668BF0A297026CA00019E14 /* GetUserInfoFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7668BF09297026CA00019E14 /* GetUserInfoFlowView.swift */; };
 		7669FE8529886EC500DA06F8 /* LoadingPetalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7669FE8429886EC500DA06F8 /* LoadingPetalView.swift */; };
 		766F59FA2941342700A328E4 /* BackGroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766F59F92941342700A328E4 /* BackGroundView.swift */; };
@@ -57,6 +58,7 @@
 		76D5EF64297191A400EF9C4A /* PersistentDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D5EF63297191A400EF9C4A /* PersistentDataManager.swift */; };
 		76D5EF662971A58900EF9C4A /* tarotTableVideo.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 76D5EF652971A58900EF9C4A /* tarotTableVideo.mp4 */; };
 		76D5EF6B2972B83800EF9C4A /* AnimateText in Frameworks */ = {isa = PBXBuildFile; productRef = 76D5EF6A2972B83800EF9C4A /* AnimateText */; };
+		76DB3FD029903D740011FC06 /* PaywallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DB3FCF29903D740011FC06 /* PaywallView.swift */; };
 		76EC8A2129830D7900F5CD89 /* TextToSpeechTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EC8A2029830D7900F5CD89 /* TextToSpeechTest.swift */; };
 		76F72ACB2967518F009E7501 /* UserOO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F72ACA2967518F009E7501 /* UserOO.swift */; };
 		76F72ACD2967FC3E009E7501 /* LauncherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F72ACC2967FC3E009E7501 /* LauncherView.swift */; };
@@ -69,7 +71,7 @@
 		7612CE08298A8AC300838B3E /* FortuneLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FortuneLoadingView.swift; sourceTree = "<group>"; };
 		7612CE0A298AB65600838B3E /* FortuneUserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FortuneUserInfoView.swift; sourceTree = "<group>"; };
 		7612CE0E298AECFC00838B3E /* ScrollerTextBottomGradientEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollerTextBottomGradientEffectView.swift; sourceTree = "<group>"; };
-		7612CE10298B235A00838B3E /* OnboardingStepperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingStepperView.swift; sourceTree = "<group>"; };
+		7612CE10298B235A00838B3E /* ProgressStepperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressStepperView.swift; sourceTree = "<group>"; };
 		76152A4C296FFE42001D5B8F /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
 		76267D3A2955CDAE00108612 /* GetUserNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserNameView.swift; sourceTree = "<group>"; };
 		76267D412955D60E00108612 /* GetUserOccupationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserOccupationView.swift; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 		7654E7FD2933C67A00F9FDAB /* CardDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailView.swift; sourceTree = "<group>"; };
 		76588C1C298F243F003E3530 /* FortuneReading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FortuneReading.swift; sourceTree = "<group>"; };
 		76588C1E298FBB7E003E3530 /* Paywall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Paywall.swift; sourceTree = "<group>"; };
+		76588C2029902D89003E3530 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		7668BF09297026CA00019E14 /* GetUserInfoFlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserInfoFlowView.swift; sourceTree = "<group>"; };
 		7669FE8429886EC500DA06F8 /* LoadingPetalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingPetalView.swift; sourceTree = "<group>"; };
 		766F59F92941342700A328E4 /* BackGroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackGroundView.swift; sourceTree = "<group>"; };
@@ -115,6 +118,7 @@
 		76D5EF6129718BF600EF9C4A /* CustomViewElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViewElements.swift; sourceTree = "<group>"; };
 		76D5EF63297191A400EF9C4A /* PersistentDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentDataManager.swift; sourceTree = "<group>"; };
 		76D5EF652971A58900EF9C4A /* tarotTableVideo.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = tarotTableVideo.mp4; sourceTree = "<group>"; };
+		76DB3FCF29903D740011FC06 /* PaywallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallView.swift; sourceTree = "<group>"; };
 		76EC8A2029830D7900F5CD89 /* TextToSpeechTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextToSpeechTest.swift; sourceTree = "<group>"; };
 		76F72ACA2967518F009E7501 /* UserOO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserOO.swift; sourceTree = "<group>"; };
 		76F72ACC2967FC3E009E7501 /* LauncherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LauncherView.swift; sourceTree = "<group>"; };
@@ -142,7 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				7654E7FD2933C67A00F9FDAB /* CardDetailView.swift */,
-				7612CE10298B235A00838B3E /* OnboardingStepperView.swift */,
+				7612CE10298B235A00838B3E /* ProgressStepperView.swift */,
 				766F59F92941342700A328E4 /* BackGroundView.swift */,
 				7612CE0A298AB65600838B3E /* FortuneUserInfoView.swift */,
 				7612CE0E298AECFC00838B3E /* ScrollerTextBottomGradientEffectView.swift */,
@@ -155,6 +159,7 @@
 			children = (
 				7675E44629326B2600ED17D5 /* HomePageView.swift */,
 				76760C75297A8E0B00D9C5D2 /* LoginView.swift */,
+				76DB3FCF29903D740011FC06 /* PaywallView.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -219,8 +224,9 @@
 		7654E8032933D5E800F9FDAB /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				76DB3FD129910A690011FC06 /* Onboarding */,
 				7612CE0D298AB97000838B3E /* Main */,
-				76F72ACE2967FCE8009E7501 /* Onboarding */,
+				76F72ACE2967FCE8009E7501 /* GetUserInfoFlow */,
 				763D854C2987FCD80040611F /* FortuneFlow */,
 				763D854B2987F7DE0040611F /* History */,
 				7689C3BC2985B92E002A8314 /* Settings */,
@@ -302,7 +308,15 @@
 			path = Data;
 			sourceTree = "<group>";
 		};
-		76F72ACE2967FCE8009E7501 /* Onboarding */ = {
+		76DB3FD129910A690011FC06 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				76588C2029902D89003E3530 /* OnboardingView.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		76F72ACE2967FCE8009E7501 /* GetUserInfoFlow */ = {
 			isa = PBXGroup;
 			children = (
 				7668BF09297026CA00019E14 /* GetUserInfoFlowView.swift */,
@@ -312,7 +326,7 @@
 				76267D412955D60E00108612 /* GetUserOccupationView.swift */,
 				76267D432955EA5900108612 /* GetUserRelationshipView.swift */,
 			);
-			path = Onboarding;
+			path = GetUserInfoFlow;
 			sourceTree = "<group>";
 		};
 		76F72ACF2968013B009E7501 /* Development */ = {
@@ -438,13 +452,15 @@
 				76267D422955D60E00108612 /* GetUserOccupationView.swift in Sources */,
 				76588C1D298F243F003E3530 /* FortuneReading.swift in Sources */,
 				76760C78297A8E1A00D9C5D2 /* LoginViewOO.swift in Sources */,
+				76DB3FD029903D740011FC06 /* PaywallView.swift in Sources */,
 				7689C3C42987CD9A002A8314 /* FortuneHistory.swift in Sources */,
 				76EC8A2129830D7900F5CD89 /* TextToSpeechTest.swift in Sources */,
 				76F72ACB2967518F009E7501 /* UserOO.swift in Sources */,
+				76588C2129902D89003E3530 /* OnboardingView.swift in Sources */,
 				76760C76297A8E0B00D9C5D2 /* LoginView.swift in Sources */,
 				76F72ACD2967FC3E009E7501 /* LauncherView.swift in Sources */,
 				7612CE09298A8AC300838B3E /* FortuneLoadingView.swift in Sources */,
-				7612CE11298B235A00838B3E /* OnboardingStepperView.swift in Sources */,
+				7612CE11298B235A00838B3E /* ProgressStepperView.swift in Sources */,
 				763D8554298851E80040611F /* SelectOneCardView.swift in Sources */,
 				7689C3BE2985B93E002A8314 /* SettingsView.swift in Sources */,
 				7653134A298544F000CF52A3 /* FortuneRequester.swift in Sources */,

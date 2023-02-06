@@ -183,54 +183,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "3C554BF7-698C-411F-85B2-F7BAD7E8E793"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Marcana/Views/Onboarding/OnboardingView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "20"
-            endingLineNumber = "20"
-            landmarkName = "body"
-            landmarkType = "24">
-            <Locations>
-               <Location
-                  uuid = "3C554BF7-698C-411F-85B2-F7BAD7E8E793 - fb04c46477b7c3ad"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Marcana.OnboardingView.body.getter : some"
-                  moduleName = "Marcana"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/denizozagac/Desktop/Projects/Marcana/Marcana/Views/Onboarding/OnboardingView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "20"
-                  endingLineNumber = "20"
-                  offsetFromSymbolStart = "400">
-               </Location>
-               <Location
-                  uuid = "3C554BF7-698C-411F-85B2-F7BAD7E8E793 - 9a62fbddfcf03ba5"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; SwiftUI.TupleView&lt;(SwiftUI.Color, SwiftUI.VStack&lt;SwiftUI.TupleView&lt;(SwiftUI.Button&lt;&lt;&lt;opaque return type of SwiftUI.View.tint(Swift.Optional&lt;SwiftUI.Color&gt;) -&gt; some&gt;&gt;.0&gt;, SwiftUI.Spacer)&gt;&gt;, &lt;&lt;opaque return type of SwiftUI.View.preferredColorScheme(Swift.Optional&lt;SwiftUI.ColorScheme&gt;) -&gt; some&gt;&gt;.0)&gt; in Marcana.OnboardingView.body.getter : some"
-                  moduleName = "Marcana"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/denizozagac/Desktop/Projects/Marcana/Marcana/Views/Onboarding/OnboardingView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "22"
-                  endingLineNumber = "22"
-                  offsetFromSymbolStart = "796">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "0FE9AACD-D117-48DB-8B97-A798FB635D03"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -238,8 +190,8 @@
             filePath = "Marcana/Views/Onboarding/OnboardingView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "34"
-            endingLineNumber = "34"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>
