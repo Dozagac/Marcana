@@ -95,6 +95,7 @@ struct GetUserInfoContinueButton: View {
         } label: {
             Text(getUserInfoStep == 99 ? "Save" : getUserInfoStep == finalStep ?  "Finish" : "Continue")
                 .modifier(GetUserInfoContinueButtonModifier(canContinue: canContinue))
+            
         }
             .disabled(!canContinue)
 
@@ -108,13 +109,15 @@ struct GetUserInfoContinueButtonModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
             .font(.customFontTitle3)
-            .frame(width: 280, height: 50)
-            .background(canContinue ? Color.text : .purple)
-            .foregroundColor(canContinue ? .black : .text)
-            .cornerRadius(12)
+            .padding()
+            .frame(maxWidth: .infinity)
+            .background(canContinue ? Color.marcanaBlue : .gray)
+            .foregroundColor(canContinue ? .white : .text)
+            .cornerRadius(50)
             .saturation(canContinue ? 1 : 0)
             .padding(.bottom, 24)
             .animation(.easeIn(duration: 0.3), value: canContinue)
+            .padding(.horizontal, 24)
             .shadow(radius: 8)
     }
 }

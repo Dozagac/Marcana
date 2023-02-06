@@ -8,6 +8,46 @@
 import Foundation
 import SwiftUI
 
+enum questionSuggestion: String {
+    case love = "Love"
+    case career = "Career"
+    case personal = "Personal"
+    case health = "health"
+
+    var questions: [String] {
+        switch self {
+            case .love:
+                return ["Will my relationship/marriage improve?",
+                        "Will I find love in the near future?",
+                        "What do I need to know about a specific person in my life?"]
+            case .career:
+                return ["What does the future hold for my career?",
+                        "What can I do to advance in my career?",
+                        "What can I do to improve my financial situation?"]
+            case .personal:
+                return ["What can I do to bring more happiness into my life?",
+                        "What is the best path for my spiritual journey?",
+                        "What should I focus on to bring balance to my life?"]
+            case .health:
+                return ["What do I need to know about my health?",
+                        "Will I have any health concerns in the near future?",
+                        "How can I improve my overall well-being?"]
+        }
+    }
+
+    var iconName: String {
+        switch self {
+            case .love:
+                return "heart.circle"
+            case .career:
+                return "briefcase"
+            case .personal:
+                return "brain"
+            case .health:
+                return "plus.circle"
+        }
+    }
+}
 
 struct GetFortuneQuestionView: View {
     var fortuneType: FortuneType
@@ -18,7 +58,7 @@ struct GetFortuneQuestionView: View {
 
     @State private var animateViews = false
 
-    @State var suggestedQuestions = [
+    let suggestedQuestions = [
         "What does the future hold for my career?",
         "Will my relationship/marriage improve?",
         "What can I do to improve my financial situation?",
@@ -31,6 +71,8 @@ struct GetFortuneQuestionView: View {
         "What do I need to know about a specific person in my life?"
     ]
 
+    @State var showRecommendations = false
+    
     private var canContinue: Bool {
         question.isNotEmpty
     }
@@ -49,16 +91,11 @@ struct GetFortuneQuestionView: View {
     var body: some View {
         NavigationView {
             ZStack(alignment: .top) {
-                // Background
-                //            VideoBackgroundView(videoFileName: "candleVideo", playRate: 0.8)
                 BackgroundView()
 
                 VStack {
                     //MARK: Content
                     VStack {
-//                        Spacer()
-//                            .frame(height: 100)
-
                         VStack(spacing: 24) {
                             QuestionText(text: "Ask your question to fate")
 
@@ -78,10 +115,9 @@ struct GetFortuneQuestionView: View {
                                 BackgroundView()
                                 // Interacting with this breaks the live preview for some reason...
                                 //MARK: - Text Editor for Question
-                                if #available(iOS 16.0, *) {
                                     // https://www.hackingwithswift.com/quick-start/swiftui/how-to-change-the-background-color-of-list-texteditor-and-more
                                     TextEditor(text: $question)
-                                        .scrollContentBackground(.hidden)
+                                        .scrollContentBackground(.hidden) // iOS 16
                                         .background(.ultraThinMaterial)
                                         .font(.customFontBody)
                                         .multilineTextAlignment(.center)
@@ -90,39 +126,32 @@ struct GetFortuneQuestionView: View {
                                         .frame(minHeight: 35, maxHeight: 70)
                                         .fixedSize(horizontal: false, vertical: true)
                                         .accentColor(.white)
-//                                        .cornerRadius(12)
-                                } else {
-                                    // Fallback on earlier versions
-                                    TextEditor(text: $question)
-                                        .background(.ultraThinMaterial) // doesn't work
-                                        .font(.customFontBody)
-                                        .multilineTextAlignment(.center)
-                                        .textFieldStyle(.plain)
-                                        .focused($focusTextField)
-                                        .frame(minHeight: 35, maxHeight: 70)
-                                        .fixedSize(horizontal: false, vertical: true)
-                                        .cornerRadius(12)
-                                        .accentColor(.white)
-                                }
+//
                             }
 
 
                             Divider()
+            
 
                             // MARK: - Suggest question button
                             Button {
-                                suggestQuestion()
+                                showRecommendations = true
                             } label: {
-                                Text("Recommend Question")
+                                Text("Need ideas ?")
                                     .font(.customFontSubheadline)
                                     .padding()
-                                    .background(Color.marcanaBlue)
+                                    .background(.white)
+                                    .foregroundColor(.black)
                                     .cornerRadius(100)
                                     .shadow(radius: 8)
                                     .disabled(question.isNotEmpty)
                             }
-//                                .opacity(animateViews ? 1 : 0)
-//                                .animation(.easeInOut(duration: 1).delay(2), value: animateViews)
+                            .sheet(isPresented: $showRecommendations) {
+                                // The picker view
+                                QuestionListView(question: $question)
+                                    
+                            }
+
                         }
                             .frame(maxWidth: .infinity)
                             .foregroundColor(.text)
@@ -171,15 +200,53 @@ struct GetFortuneQuestionView: View {
                 .modifier(customNavBackModifier())
         }
     }
-    
-    func suggestQuestion() {
-        suggestedQuestions.shuffle()
-        question = suggestedQuestions.popLast() ?? "How can I become more decisive?"
-    }
 }
 
 
-
+struct QuestionListView: View {
+    @Binding var question: String
+    let suggestionCategory: [questionSuggestion] = [.love, .career, .personal, .health]
+    @Environment(\.dismiss) var dismiss
+    var body: some View {
+        ZStack(alignment: .top){
+            // MARK: - X button
+            HStack() {
+                Button {
+                    dismiss()
+                } label: {
+                    Image(systemName: "xmark")
+                        .font(.title3.bold())
+                        .foregroundColor(.text)
+                        
+                }
+                Spacer()
+            }
+            .padding([.leading, .top], 20)
+            .zIndex(2)
+            
+            List {
+                ForEach(suggestionCategory, id: \.self) { category in
+                    Section{
+                        ForEach(category.questions, id: \.self) { category in
+                            Button{
+                                question = category
+                                dismiss()
+                            } label: {
+                                Text(category)
+                            }
+                        }
+                    } header: {
+                        Label(category.rawValue, systemImage: category.iconName)
+                            .font(.customFontCallout.bold())
+                    }
+                }
+            }
+            .scrollContentBackground(.hidden)
+            .padding(.top, 24)
+        }
+        .background(BackgroundBlurView())
+    }
+}
 
 struct GetFortuneQuestionView_Previews: PreviewProvider {
     static var previews: some View {

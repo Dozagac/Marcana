@@ -56,11 +56,12 @@ struct FortuneReadingView: View {
                         Image(systemName: "xmark")
                             .font(.title3)
                             .foregroundColor(.text)
-                            .padding(.leading, 8)
+                            
                     }
                     Spacer()
                 }
-                    .padding(.leading, 12)
+                .padding([.leading, .top], 20)
+                
 
 
                 // MARK: - Scrollview: Cards + Fortune Text Body

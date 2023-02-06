@@ -19,7 +19,7 @@ struct MarcanaApp: App {
     init () {
 //        UINavigationBar.appearance().largeTitleTextAttributes = [.font : UIFont(name: FontsManager.NanumMyeongjo.extraBold, size: 34)!]
         UINavigationBar.appearance().largeTitleTextAttributes = [.font: UIFont(name: "Palatino-Bold", size: 34)!]
-        doOnboarding = true
+//        doOnboarding = true
     }
     
     var body: some Scene {

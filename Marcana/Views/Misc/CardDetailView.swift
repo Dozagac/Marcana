@@ -31,12 +31,11 @@ struct CardDetailView: View {
                         HStack {
                             Image(systemName: "xmark")
                                 .font(.title3)
-                                .padding(.leading, 16)
-                                .padding(.top, 16)
                                 .foregroundColor(.text)
                             Spacer()
                         }
                     }
+                        .padding([.leading, .top], 20)
                         .background(.clear)
                 }
 
@@ -102,7 +101,7 @@ struct CardDetailView: View {
                         Text(card.description)
                             .font(.customFontBody)
                             .lineLimit(nil)
-                        
+
                         Spacer()
                             .frame(height: 30)
                     }
@@ -112,10 +111,10 @@ struct CardDetailView: View {
                         .onAppear {
                         UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
                     }
-                    
+
                     ScrollerTextBottomGradientEffectView(effectColor: Color.black)
                 }
-                .edgesIgnoringSafeArea(.bottom)
+                    .edgesIgnoringSafeArea(.bottom)
             }
         }
             .background(BackgroundBlurView())

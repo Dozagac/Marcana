@@ -28,13 +28,12 @@ struct PaywallView: View {
                         Image(systemName: "xmark")
                             .font(.title3.bold())
                             .foregroundColor(.text)
-                            .padding(.leading, 8)
                             .opacity(animatingViews ? 1 : 0)
                     }
                     Spacer()
                 }
                 .animation(.default.delay(2.5), value: animatingViews)
-                    .padding(.leading, 12)
+                .padding([.leading, .top], 20)
                     .zIndex(2)
 
 
@@ -61,7 +60,6 @@ struct PaywallView: View {
                         startPoint: .bottom,
                         endPoint: .top
                     ))
-
 
                     Spacer()
 
@@ -91,8 +89,6 @@ struct PaywallView: View {
                         }
                             .multilineTextAlignment(.leading)
                             .foregroundColor(.text)
-
-
                     }
                         .padding(.horizontal, VPadding)
 

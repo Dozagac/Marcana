@@ -60,11 +60,11 @@ enum FortuneType: String, Codable {
     var durationText: String{
         switch self {
         case .with1card:
-            return "1 min"
+            return "1 MIN"
         case .with3cards:
-            return "2 min"
+            return "2 MIN"
         case .with5cards:
-            return "5 min"
+            return "5 MIN"
         }
     }
 }
@@ -158,11 +158,27 @@ struct FortuneTypeSelectionButton: View {
                 .clipShape(RoundedRectangle(cornerRadius: 10))
                 .shadow(color: .black.opacity(0.5), radius: 5)
                 .overlay{
-                    Text(fortuneType.durationText)
-                        .foregroundColor(.text)
-                        .font(.customFontCaption)
-                        .padding(2)
-                        .background(.ultraThinMaterial)
+                    ZStack{
+                        VStack{
+                            Spacer()
+                            HStack{
+                                HStack(spacing: 2){
+                                    Image(systemName: "magnifyingglass")
+                                    Text(fortuneType.durationText)
+                                        .fontWeight(.bold)
+                                }
+                                    .foregroundColor(.text)
+                                    .font(.customFontCaption2)
+                                    .padding(2)
+                                    .background(.black.opacity(0.2))
+                                    .cornerRadius(4)
+                                    .padding(8)
+                                    .preferredColorScheme(.light)
+                                Spacer()
+                            }
+
+                        }
+                    }
                 }
         }
     }
