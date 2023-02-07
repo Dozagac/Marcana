@@ -10,8 +10,8 @@ import SwiftUI
 
 struct GetUserInfoFlowView: View {
     //Transitions
-    let transition: AnyTransition = .asymmetric(insertion: .move(edge: .trailing),
-                                                removal: .move(edge: .leading))
+    let transition: AnyTransition = .push(from: .trailing)
+
     @StateObject var user = UserOO()
     @State var getUserInfoStep: Int = 0
 
