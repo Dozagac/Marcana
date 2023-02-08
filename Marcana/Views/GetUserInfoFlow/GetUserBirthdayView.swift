@@ -13,7 +13,8 @@ struct GetUserBirthdayView: View {
     // Condition for the continue button, turns true if datepicker is interacted (via didset)
     @State var canContinue = false
 
-    @AppStorage("userBirthday") var birthdayTimeInterval: Double = defaultDate.timeIntervalSince1970
+    @AppStorage(UserDataManager.UserKeys.userBirthday.rawValue) var birthdayTimeInterval: Double = defaultDate.timeIntervalSince1970
+    
     
     var birthday: Binding<Date> {
         Binding<Date>(

@@ -18,7 +18,7 @@ struct SelectThreeCardsView: View {
     // https://stackoverflow.com/questions/62635914/initialize-stateobject-with-a-parameter-in-swiftui
     init(showingFortuneSheet: Binding<Bool>, fortuneQuestion: String = "") {
         let randomFortuneCards = deck.DrawCards(n: 3)
-        
+
         self._fortuneRequester = StateObject(wrappedValue: FortuneRequester(
             fortuneQuestion: fortuneQuestion,
             fortuneType: .with3cards,
@@ -106,13 +106,6 @@ struct SelectThreeCardsView: View {
             VStack {
                 Spacer()
                 Spacer()
-                //MARK: - Invisible NavigationLink that is programmatically triggered
-                //This is here because simultaneousGesture didn't work with NavigationLink
-                //and I needed to send the API call at the same time
-                NavigationLink(destination: FortuneLoadingView(showingFortuneSheet: $showingFortuneSheet, fortuneRequester: fortuneRequester),
-                               isActive: $continueIsPushed, label: {
-                                   Text("")
-                               })
                 Button {
                     continueIsPushed.toggle()
                     UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
@@ -123,6 +116,9 @@ struct SelectThreeCardsView: View {
                 } label: {
                     Text("Read Fortune")
                         .modifier(GetUserInfoContinueButtonModifier(canContinue: canContinue))
+                }
+                    .navigationDestination(isPresented: $continueIsPushed) {
+                    FortuneLoadingView(showingFortuneSheet: $showingFortuneSheet, fortuneRequester: fortuneRequester)
                 }
                 Spacer()
             }
@@ -139,7 +135,7 @@ struct SelectThreeCardsView: View {
 struct ClosedCardView: View {
     var width: CGFloat = 100
     var height: CGFloat = 150
-    
+
     @State private var showingSheet = false
     @Binding var cardOpen: Bool
     var shownCard: DrawnCard
@@ -169,7 +165,7 @@ struct ClosedCardView: View {
                 }
             }
                 .sheet(isPresented: $showingSheet) {
-                    CardDetailView(card: shownCard.Card)
+                CardDetailView(card: shownCard.Card)
             }
 
             //MARK: Revealed Card Text
@@ -200,7 +196,7 @@ struct ClosedCardView: View {
 
 struct SelectThreeCardsView_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationView {
+        NavigationStack {
             SelectThreeCardsView(showingFortuneSheet: .constant(true),
                                  fortuneQuestion: "This is a dummy question")
                 .environmentObject(MockUserOO())

@@ -120,7 +120,7 @@ struct PaywallView: View {
                             dismissPaywall()
                         }
                         label: {
-                            Text("Try Free for 7 days")
+                            Text("Try Free & Subscribe")
                                 .font(.customFontBody)
                                 .fontWeight(.semibold)
                                 .frame(maxWidth: .infinity)

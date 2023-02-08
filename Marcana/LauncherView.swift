@@ -8,20 +8,20 @@
 import SwiftUI
 
 struct LauncherView: View {
-    // Last step of the userInfoFlow should this to false
     @AppStorage(wrappedValue: true, "doUserInfoFlow") var doUserInfoFlow
-    @AppStorage(wrappedValue: false, "loginStatus") var loginStatus
+    // Last step of the userInfoFlow should this to false
+    @StateObject var loginData = LoginViewOO()
     @StateObject var user = UserOO()
 
 
     @State private var selectedTab = 0
 
     var body: some View {
-        if loginStatus {
+        if loginData.loginStatus {
 
             TabView(selection: $selectedTab) {
                 //MARK: TAB 1
-                NavigationView {
+                NavigationStack {
                     HomePageView()
                 }
                     .tabItem {
@@ -32,7 +32,7 @@ struct LauncherView: View {
 
 
                 //MARK: TAB 2
-                NavigationView {
+                NavigationStack {
                     FortuneHistoryView()
                 }
                     .tabItem {
@@ -43,8 +43,8 @@ struct LauncherView: View {
 
 
                 //MARK: TAB 3
-                NavigationView {
-                    SettingsView()
+                NavigationStack {
+                    SettingsView(selectedTab: $selectedTab)
                 }
                     .tabItem {
                     Image(systemName: "gearshape.fill")
@@ -59,7 +59,7 @@ struct LauncherView: View {
 //                appearance.backgroundColor = UIColor(Color.marcanaBackground.opacity(0.2))
                 UITabBar.appearance().standardAppearance = appearance
                 UITabBar.appearance().scrollEdgeAppearance = appearance
-                    
+
             }
                 .onChange(of: selectedTab, perform: { _ in
                 UIImpactFeedbackGenerator(style: .light).impactOccurred()
@@ -68,14 +68,13 @@ struct LauncherView: View {
                 .accentColor(.text)
                 .preferredColorScheme(.dark)
                 .animation(.easeOut(duration: 0.2), value: selectedTab)
-                .fullScreenCover(
+                .fullScreenCover( // Launch user info flow conditionally
                 isPresented: $doUserInfoFlow,
                 content: GetUserInfoFlowView.init // init is necessary
             )
         } else {
-            LoginView()
+            LoginView(loginData: loginData)
         }
-
     }
 }
 

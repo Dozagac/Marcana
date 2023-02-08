@@ -75,7 +75,7 @@ struct GetFortuneQuestionView: View {
     }
 
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ZStack(alignment: .top) {
                 BackgroundView()
 
@@ -235,7 +235,7 @@ struct QuestionListView: View {
 
 struct GetFortuneQuestionView_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationView {
+        NavigationStack {
             GetFortuneQuestionView(fortuneType: FortuneType.with1card,
                                    showingFortuneSheet: .constant(true))
                 .preferredColorScheme(.dark)

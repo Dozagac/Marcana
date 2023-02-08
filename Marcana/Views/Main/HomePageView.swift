@@ -23,7 +23,7 @@ enum FortuneType: String, Codable {
             return "Icon5Cards"
         }
     }
-    
+
     var imageName: String {
         switch self {
         case .with1card:
@@ -34,8 +34,8 @@ enum FortuneType: String, Codable {
             return "fiveCardReader"
         }
     }
-    
-    var title:String{
+
+    var title: String {
         switch self {
         case .with1card:
             return "Daily Fortune"
@@ -45,8 +45,8 @@ enum FortuneType: String, Codable {
             return "Full Spread???"
         }
     }
-    
-    var subtitle: String{
+
+    var subtitle: String {
         switch self {
         case .with1card:
             return "Pick a card"
@@ -56,8 +56,8 @@ enum FortuneType: String, Codable {
             return "Pick 5 cards"
         }
     }
-    
-    var durationText: String{
+
+    var durationText: String {
         switch self {
         case .with1card:
             return "1 MIN"
@@ -70,9 +70,11 @@ enum FortuneType: String, Codable {
 }
 
 struct HomePageView: View {
-    @AppStorage(wrappedValue: "", "userName") var userName
+    @AppStorage(wrappedValue: "", UserDataManager.UserKeys.userName.rawValue) var userName
     let appearance = UINavigationBarAppearance()
-
+    @AppStorage(wrappedValue: true, "doUserInfoFlow") var doUserInfoFlow
+    var userDataManager = UserDataManager()
+    
     // This is so that buttons can launch the same cover sheet with a different parameter value in it
     // which is the fortuneType
     @State var showingFortuneSheet1CardFortune = false
@@ -111,21 +113,23 @@ struct HomePageView: View {
                         showingFortuneSheet: $showingFortuneSheet3CardFortune
                     )
                 }
-
-
             }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .navigationTitle("Welcome \(userName)")
-
+        }
+        .onAppear{
+            if userDataManager.thereIsMissingData {
+                doUserInfoFlow = true
+            }
         }
     }
 }
+
 
 struct FortuneTypeSelectionButton: View {
     var fortuneType: FortuneType
     var colors: [Color]
     @Binding var showingFortuneSheet: Bool
-
 
     var body: some View {
         Button {
@@ -157,29 +161,29 @@ struct FortuneTypeSelectionButton: View {
                 .background(LinearGradient(colors: colors, startPoint: .topLeading, endPoint: .bottomTrailing))
                 .clipShape(RoundedRectangle(cornerRadius: 10))
                 .shadow(color: .black.opacity(0.5), radius: 5)
-                .overlay{
-                    ZStack{
-                        VStack{
-                            Spacer()
-                            HStack{
-                                HStack(spacing: 2){
-                                    Image(systemName: "magnifyingglass")
-                                    Text(fortuneType.durationText)
-                                        .fontWeight(.bold)
-                                }
-                                    .foregroundColor(.text)
-                                    .font(.customFontCaption2)
-                                    .padding(2)
-                                    .background(.black.opacity(0.2))
-                                    .cornerRadius(4)
-                                    .padding(8)
-                                    .preferredColorScheme(.light)
-                                Spacer()
+                .overlay {
+                ZStack {
+                    VStack {
+                        Spacer()
+                        HStack {
+                            HStack(spacing: 2) {
+                                Image(systemName: "magnifyingglass")
+                                Text(fortuneType.durationText)
+                                    .fontWeight(.bold)
                             }
-
+                                .foregroundColor(.text)
+                                .font(.customFontCaption2)
+                                .padding(2)
+                                .background(.black.opacity(0.2))
+                                .cornerRadius(4)
+                                .padding(8)
+                                .preferredColorScheme(.light)
+                            Spacer()
                         }
+
                     }
                 }
+            }
         }
     }
 }
@@ -189,7 +193,7 @@ struct FortuneTypeSelectionButton: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            NavigationView {
+            NavigationStack {
                 HomePageView()
                     .environmentObject(UserOO())
                     .preferredColorScheme(.dark)

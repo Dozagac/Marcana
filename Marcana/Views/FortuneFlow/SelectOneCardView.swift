@@ -17,7 +17,7 @@ struct SelectOneCardView: View {
     // Manually initialize the StateObject with parameter
     // https://stackoverflow.com/questions/62635914/initialize-stateobject-with-a-parameter-in-swiftui
     init(showingFortuneSheet: Binding<Bool>, fortuneQuestion: String = "") {
-        let randomFortuneCards = deck.DrawCards(n:1)
+        let randomFortuneCards = deck.DrawCards(n: 1)
 
         self._fortuneRequester = StateObject(wrappedValue: FortuneRequester(
             fortuneQuestion: fortuneQuestion,
@@ -86,16 +86,7 @@ struct SelectOneCardView: View {
             VStack {
                 Spacer()
                 Spacer()
-                //MARK: - Invisible NavigationLink that is programmatically triggered
-                //This is here because simultaneousGesture didn't work with NavigationLink
-                //and I needed to send the API call at the same time
-                NavigationLink(destination: FortuneLoadingView(
-                    showingFortuneSheet: $showingFortuneSheet,
-                    fortuneRequester: fortuneRequester
-                ),
-                               isActive: $continueIsPushed, label: {
-                                   EmptyView()
-                               })
+
                 Button {
                     continueIsPushed.toggle()
                     UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
@@ -107,6 +98,12 @@ struct SelectOneCardView: View {
                     Text("Read Fortune")
                         .modifier(GetUserInfoContinueButtonModifier(canContinue: canContinue))
                 }
+                    .navigationDestination(isPresented: $continueIsPushed, destination: {
+                    FortuneLoadingView(
+                        showingFortuneSheet: $showingFortuneSheet,
+                        fortuneRequester: fortuneRequester
+                    )
+                })
                 Spacer()
             }
                 .opacity(canContinue && !fortuneRequester.waitingForAPIResponse ? 1 : 0)
@@ -122,7 +119,7 @@ struct SelectOneCardView: View {
 
 struct SelectOneCardView_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationView {
+        NavigationStack {
             SelectOneCardView(showingFortuneSheet: .constant(true),
                               fortuneQuestion: "This is a dummy question")
                 .environmentObject(MockUserOO())

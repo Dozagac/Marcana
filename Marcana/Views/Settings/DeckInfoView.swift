@@ -137,7 +137,7 @@ struct CardItemView: View {
 
 struct DeckInfoView_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationView {
+        NavigationStack {
             DeckInfoView()
                 .preferredColorScheme(.dark)
         }

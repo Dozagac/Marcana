@@ -31,25 +31,26 @@ struct FortuneLoadingView: View {
             ZStack(alignment: .center) {
 //                AnimatedCipherStroke(minSize: 300, maxSize: 330)
 //                    .padding()
-//                AnimateText<ATOpacityEffect>($loadingText, type: .letters, userInfo: nil)
-//                    .font(.customFontHeadline)
-//                    .onAppear {
-//                    loadingText = loadingTexts.randomElement()!
-//                    Timer.scheduledTimer(withTimeInterval: 3, repeats: true) { _ in
-//                        loadingText = loadingTexts.randomElement()!
-//                    }
-//                }
-                                FlowerView()
-                                    .padding(24)
-                
-                //MARK: - Invisible NavigationLink that is programmatically triggered
-                NavigationLink(destination: FortuneReadingView(
+                VStack(spacing: 24){
+                    FlowerView()
+                        .padding(24)
+                        .frame(width: 400,height: 400)
+                    AnimateText<ATOpacityEffect>($loadingText, type: .letters, userInfo: nil)
+                        .font(.customFontBody)
+                        .onAppear {
+                        loadingText = loadingTexts.randomElement()!
+                        Timer.scheduledTimer(withTimeInterval: 4, repeats: true) { _ in
+                            loadingText = loadingTexts.randomElement()!
+                        }
+                    }
+                }
+
+            }
+            .navigationDestination(isPresented: !$fortuneRequester.waitingForAPIResponse){
+                FortuneReadingView(
                     showingFortuneSheet: $showingFortuneSheet,
                     fortuneReading: fortuneRequester.fortuneReading
-                ),
-                               isActive: !$fortuneRequester.waitingForAPIResponse, label: {
-                                   EmptyView()
-                               })
+                )
             }
 
             // TODO: here

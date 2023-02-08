@@ -9,7 +9,7 @@ import SwiftUI
 
 struct GetUserOccupationView: View {
     @Binding var getUserInfoStep: Int
-    @AppStorage("userOccupation") var userOccupation = ""
+    @AppStorage(UserDataManager.UserKeys.userOccupation.rawValue) var userOccupation = ""
     @FocusState private var focusTextField
 
     private var canContinue: Bool {

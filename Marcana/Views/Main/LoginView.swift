@@ -10,7 +10,7 @@ import SwiftUI
 import AuthenticationServices
 
 struct LoginView: View {
-    @StateObject var loginData = LoginViewOO()
+    @ObservedObject var loginData : LoginViewOO
     @State private var buttonClicked = false
     
     var body: some View {
@@ -104,7 +104,7 @@ struct LoginView: View {
 
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginView()
+        LoginView(loginData: LoginViewOO())
             .preferredColorScheme(.dark)
     }
 }

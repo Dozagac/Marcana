@@ -16,13 +16,13 @@ struct FortuneHistoryView: View {
         ZStack {
             BackgroundView()
 
-            // ONLY FOR TESTING
-//            if fortuneHistory.fortunes.isNotEmpty {
-            if FortuneHistory.dummyFortunes.isNotEmpty {
+            // COMMENT IN FOR TESTING
+            //            if FortuneHistory.dummyFortunes.isNotEmpty {
+            if fortuneHistory.fortunes.isNotEmpty {
                 List {
-                    // ONLY FOR TESTING
-                    ForEach(FortuneHistory.dummyFortunes) { fortune in
-//                    ForEach(fortuneHistory.fortunes) { fortune in
+                    // COMMENT IN FOR TESTING
+//                    ForEach(FortuneHistory.dummyFortunes) { fortune in
+                    ForEach(fortuneHistory.fortunes) { fortune in
                         Button {
                             showingFortuneHistoryItem = true
                         } label: {
@@ -98,7 +98,7 @@ struct FortuneHistoryView: View {
 
 struct FortuneHistoryView_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationView {
+        NavigationStack {
             FortuneHistoryView()
                 .preferredColorScheme(.dark)
         }

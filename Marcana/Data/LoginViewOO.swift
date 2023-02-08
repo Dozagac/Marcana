@@ -16,7 +16,7 @@ class LoginViewOO: ObservableObject {
     @AppStorage(wrappedValue: false, "loginStatus") var loginStatus
     @AppStorage(wrappedValue: false, "anonymousUser") var anonymousUser
 
-    @AppStorage(wrappedValue: "", "userName") var userName
+    @AppStorage(wrappedValue: "", UserDataManager.UserKeys.userName.rawValue) var userName
 
     func authenticate(credendial: ASAuthorizationAppleIDCredential) {
         // Getting token
@@ -41,17 +41,17 @@ class LoginViewOO: ObservableObject {
 
             // User Successfully Logged into Firebase...
             print("Apple login successfull")
-            
-            // DOES THIS WORK? didnt work in my own account
-            if let firebaseUserName = Auth.auth().currentUser?.displayName {
-                self.userName = firebaseUserName
-                return
-            }
-            
 
+
+            // MARK: - TRYING TO SET USER NAME FROM APPLE BUT FAILING
+//            // DOES THIS WORK? didnt work in my own account
+//            if let firebaseUserName = Auth.auth().currentUser?.displayName {
+//                self.userName = firebaseUserName
+//                return
+//            }
 
 //            let firstName =  result.token.ASAuthorizationAppleIDCredential.fullName?.givenName ?? "noname"
-            
+//
 //            if let currentUser = Auth.auth().currentUser {
 //               let changeRequest = currentUser.createProfileChangeRequest()
 //               changeRequest.displayName = "Firstname" + "Lastname"
@@ -62,10 +62,11 @@ class LoginViewOO: ObservableObject {
 //               })
 //                print("CURRENT USER NAME: \(currentUser.displayName ?? "noname")")
 //           }
-            
+
             //Directing User to the Home Page
             withAnimation(.easeOut) {
                 self.loginStatus = true
+                print("Login status set to: \(self.loginStatus)")
             }
         }
     }
@@ -83,7 +84,7 @@ class LoginViewOO: ObservableObject {
             // TODO: Use isAnonymous to check
             guard let user = result?.user else { return }
             self.anonymousUser = user.isAnonymous
-            
+
             let uid = user.uid
             print("anonymous user id: \(uid)")
 

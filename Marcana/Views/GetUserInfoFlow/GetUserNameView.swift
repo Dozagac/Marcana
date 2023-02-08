@@ -12,7 +12,7 @@ struct GetUserNameView: View {
     @Binding var getUserInfoStep: Int
     @FocusState private var focusTextField
 
-    @AppStorage("userName") var userName = ""
+    @AppStorage(wrappedValue: "", UserDataManager.UserKeys.userName.rawValue) var userName
     private var canContinue: Bool {
         userName.isNotEmpty
     }

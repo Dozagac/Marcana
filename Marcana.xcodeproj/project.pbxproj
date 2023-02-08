@@ -23,6 +23,10 @@
 		763D85522987FCD80040611F /* FortuneReadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763D854F2987FCD80040611F /* FortuneReadingView.swift */; };
 		763D8554298851E80040611F /* SelectOneCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763D8553298851E80040611F /* SelectOneCardView.swift */; };
 		763DCC9C2944A77800D286C7 /* OpenAISwift in Frameworks */ = {isa = PBXBuildFile; productRef = 763DCC9B2944A77800D286C7 /* OpenAISwift */; };
+		764FF8E32993BAD70062E221 /* AccountSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764FF8E22993BAD70062E221 /* AccountSettingsView.swift */; };
+		764FF8E52993BF760062E221 /* ToastManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764FF8E42993BF760062E221 /* ToastManager.swift */; };
+		764FF8E72993C9050062E221 /* UserDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764FF8E62993C9050062E221 /* UserDataManager.swift */; };
+		764FF8E92993E5B20062E221 /* MailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764FF8E82993E5B20062E221 /* MailView.swift */; };
 		7653134A298544F000CF52A3 /* FortuneRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76531349298544F000CF52A3 /* FortuneRequester.swift */; };
 		765313512985519900CF52A3 /* NanumMyeongjo-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7653134D2985519900CF52A3 /* NanumMyeongjo-Bold.ttf */; };
 		765313522985519900CF52A3 /* NanumMyeongjo-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7653134E2985519900CF52A3 /* NanumMyeongjo-Regular.ttf */; };
@@ -54,7 +58,7 @@
 		76B2E12F29365BD4004BCF46 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B2E12E29365BD4004BCF46 /* Extensions.swift */; };
 		76D5EF6029718BC300EF9C4A /* AnimatedCipherStroke.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D5EF5F29718BC300EF9C4A /* AnimatedCipherStroke.swift */; };
 		76D5EF6229718BF600EF9C4A /* CustomViewElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D5EF6129718BF600EF9C4A /* CustomViewElements.swift */; };
-		76D5EF64297191A400EF9C4A /* PersistentDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D5EF63297191A400EF9C4A /* PersistentDataManager.swift */; };
+		76D5EF64297191A400EF9C4A /* PersistentDataManagerEfeExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D5EF63297191A400EF9C4A /* PersistentDataManagerEfeExample.swift */; };
 		76D5EF662971A58900EF9C4A /* tarotTableVideo.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 76D5EF652971A58900EF9C4A /* tarotTableVideo.mp4 */; };
 		76D5EF6B2972B83800EF9C4A /* AnimateText in Frameworks */ = {isa = PBXBuildFile; productRef = 76D5EF6A2972B83800EF9C4A /* AnimateText */; };
 		76DB3FD029903D740011FC06 /* PaywallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DB3FCF29903D740011FC06 /* PaywallView.swift */; };
@@ -82,6 +86,10 @@
 		763D854E2987FCD80040611F /* SelectThreeCardsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectThreeCardsView.swift; sourceTree = "<group>"; };
 		763D854F2987FCD80040611F /* FortuneReadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FortuneReadingView.swift; sourceTree = "<group>"; };
 		763D8553298851E80040611F /* SelectOneCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectOneCardView.swift; sourceTree = "<group>"; };
+		764FF8E22993BAD70062E221 /* AccountSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingsView.swift; sourceTree = "<group>"; };
+		764FF8E42993BF760062E221 /* ToastManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastManager.swift; sourceTree = "<group>"; };
+		764FF8E62993C9050062E221 /* UserDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataManager.swift; sourceTree = "<group>"; };
+		764FF8E82993E5B20062E221 /* MailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailView.swift; sourceTree = "<group>"; };
 		76531349298544F000CF52A3 /* FortuneRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FortuneRequester.swift; sourceTree = "<group>"; };
 		7653134D2985519900CF52A3 /* NanumMyeongjo-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NanumMyeongjo-Bold.ttf"; sourceTree = "<group>"; };
 		7653134E2985519900CF52A3 /* NanumMyeongjo-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NanumMyeongjo-Regular.ttf"; sourceTree = "<group>"; };
@@ -114,7 +122,7 @@
 		76B2E12E29365BD4004BCF46 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		76D5EF5F29718BC300EF9C4A /* AnimatedCipherStroke.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedCipherStroke.swift; sourceTree = "<group>"; };
 		76D5EF6129718BF600EF9C4A /* CustomViewElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViewElements.swift; sourceTree = "<group>"; };
-		76D5EF63297191A400EF9C4A /* PersistentDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentDataManager.swift; sourceTree = "<group>"; };
+		76D5EF63297191A400EF9C4A /* PersistentDataManagerEfeExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentDataManagerEfeExample.swift; sourceTree = "<group>"; };
 		76D5EF652971A58900EF9C4A /* tarotTableVideo.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = tarotTableVideo.mp4; sourceTree = "<group>"; };
 		76DB3FCF29903D740011FC06 /* PaywallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallView.swift; sourceTree = "<group>"; };
 		76EC8A2029830D7900F5CD89 /* TextToSpeechTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextToSpeechTest.swift; sourceTree = "<group>"; };
@@ -165,6 +173,8 @@
 		7629F6AD29715E1700FC2D17 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				76531349298544F000CF52A3 /* FortuneRequester.swift */,
+				764FF8E42993BF760062E221 /* ToastManager.swift */,
 				76152A4C296FFE42001D5B8F /* PlayerView.swift */,
 				76B2E12E29365BD4004BCF46 /* Extensions.swift */,
 				76D5EF6129718BF600EF9C4A /* CustomViewElements.swift */,
@@ -284,6 +294,8 @@
 			children = (
 				7689C3BD2985B93E002A8314 /* SettingsView.swift */,
 				7675E45E29336C3F00ED17D5 /* DeckInfoView.swift */,
+				764FF8E22993BAD70062E221 /* AccountSettingsView.swift */,
+				764FF8E82993E5B20062E221 /* MailView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -296,11 +308,10 @@
 				76760C77297A8E1A00D9C5D2 /* LoginViewOO.swift */,
 				7675E45229326B6300ED17D5 /* Card.swift */,
 				7675E45829326EF500ED17D5 /* Deck.swift */,
-				76F72BBE296D85E7009E7501 /* LocalDataStrings.swift */,
-				76D5EF63297191A400EF9C4A /* PersistentDataManager.swift */,
-				76531349298544F000CF52A3 /* FortuneRequester.swift */,
-				7689C3C32987CD9A002A8314 /* FortuneHistory.swift */,
 				76588C1C298F243F003E3530 /* FortuneReading.swift */,
+				7689C3C32987CD9A002A8314 /* FortuneHistory.swift */,
+				76F72BBE296D85E7009E7501 /* LocalDataStrings.swift */,
+				764FF8E62993C9050062E221 /* UserDataManager.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -333,6 +344,7 @@
 				76F72BC2296D9DF0009E7501 /* TestingView.swift */,
 				7689C3C129867551002A8314 /* BirthdayTestView.swift */,
 				7669FE8429886EC500DA06F8 /* LoadingPetalView.swift */,
+				76D5EF63297191A400EF9C4A /* PersistentDataManagerEfeExample.swift */,
 			);
 			path = Development;
 			sourceTree = "<group>";
@@ -436,8 +448,9 @@
 				76B2E12F29365BD4004BCF46 /* Extensions.swift in Sources */,
 				7675E44729326B2600ED17D5 /* HomePageView.swift in Sources */,
 				7675E45F29336C3F00ED17D5 /* DeckInfoView.swift in Sources */,
-				76D5EF64297191A400EF9C4A /* PersistentDataManager.swift in Sources */,
+				76D5EF64297191A400EF9C4A /* PersistentDataManagerEfeExample.swift in Sources */,
 				76152A4D296FFE42001D5B8F /* PlayerView.swift in Sources */,
+				764FF8E92993E5B20062E221 /* MailView.swift in Sources */,
 				7689C3C229867551002A8314 /* BirthdayTestView.swift in Sources */,
 				76267D3B2955CDAE00108612 /* GetUserNameView.swift in Sources */,
 				766F59FA2941342700A328E4 /* BackGroundView.swift in Sources */,
@@ -458,6 +471,7 @@
 				7612CE09298A8AC300838B3E /* FortuneLoadingView.swift in Sources */,
 				7612CE11298B235A00838B3E /* ProgressStepperView.swift in Sources */,
 				763D8554298851E80040611F /* SelectOneCardView.swift in Sources */,
+				764FF8E52993BF760062E221 /* ToastManager.swift in Sources */,
 				7689C3BE2985B93E002A8314 /* SettingsView.swift in Sources */,
 				7653134A298544F000CF52A3 /* FortuneRequester.swift in Sources */,
 				7689C3C02986724D002A8314 /* GetUserBirthdayView.swift in Sources */,
@@ -465,9 +479,11 @@
 				7669FE8529886EC500DA06F8 /* LoadingPetalView.swift in Sources */,
 				7689C3C62987D33A002A8314 /* FortuneHistoryView.swift in Sources */,
 				763D85522987FCD80040611F /* FortuneReadingView.swift in Sources */,
+				764FF8E32993BAD70062E221 /* AccountSettingsView.swift in Sources */,
 				7612CE0F298AECFC00838B3E /* ScrollerTextBottomGradientEffectView.swift in Sources */,
 				76D5EF6229718BF600EF9C4A /* CustomViewElements.swift in Sources */,
 				7668BF0A297026CA00019E14 /* GetUserInfoFlowView.swift in Sources */,
+				764FF8E72993C9050062E221 /* UserDataManager.swift in Sources */,
 				7612CE0B298AB65600838B3E /* FortuneUserInfoView.swift in Sources */,
 				765313582985587600CF52A3 /* FontsManager.swift in Sources */,
 				763D85512987FCD80040611F /* SelectThreeCardsView.swift in Sources */,
@@ -605,7 +621,6 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Marcana/Info.plist;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -640,7 +655,6 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Marcana/Info.plist;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;

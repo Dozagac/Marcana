@@ -29,7 +29,7 @@ struct GetUserGenderView: View {
     @Binding var getUserInfoStep: Int
     
     // Gender
-    @AppStorage("userGender") var userGender: String?
+    @AppStorage(wrappedValue: "", UserDataManager.UserKeys.userGender.rawValue) var userGender
 
     var body: some View {
         ZStack(alignment: .top) {

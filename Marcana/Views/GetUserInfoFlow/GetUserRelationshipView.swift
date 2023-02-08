@@ -18,10 +18,10 @@ enum Relationship: String, CaseIterable {
 // Last step of userInfoFlow
 struct GetUserRelationshipView: View {
     @Binding var getUserInfoStep: Int
-    @AppStorage(wrappedValue: true, "doUserInfoFlow") var doUserInfoFlow
     @Environment(\.dismiss) var dismiss
     
-    @AppStorage("userRelationship") var userRelationship : String?
+    @AppStorage(UserDataManager.UserKeys.userRelationship.rawValue) var userRelationship : String?
+    @AppStorage(wrappedValue: true, "doUserInfoFlow") var doUserInfoFlow
 
     var body: some View {
         ZStack(alignment: .top) {
@@ -44,8 +44,8 @@ struct GetUserRelationshipView: View {
                             Button {
                                 userRelationship = status.rawValue
                                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
-                                    doUserInfoFlow = false // this dismisses the last view of userInfoFlow
-                                    dismiss() // so the view ca be dismissed when accessed from the settings
+                                    doUserInfoFlow = false // this dismisses the userInfoFlow sheet
+                                    dismiss() // so the view can be dismissed when accessed from the settings
                                 }
                             } label: {
                                 RoundedRectangle(cornerRadius: 10)

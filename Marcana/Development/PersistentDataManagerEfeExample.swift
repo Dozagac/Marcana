@@ -17,12 +17,12 @@ struct User: Identifiable, Codable{
 }
 
 //MARK: NOT CURRENTLY USED, BUT CAN BE USEFUL FOR HISTORY
-class PersistentDataManager {
+class PersistentDataManagerEfeExample {
     // ne zaman notification atilmasi gerektigi gibi her sey burada durabilir
 
     var user: User
 
-    static let shared: PersistentDataManager = PersistentDataManager()
+    static let shared: PersistentDataManagerEfeExample = PersistentDataManagerEfeExample()
 
     private init() {
         if let savedUser = UserDefaults.standard.data(forKey: "user"),

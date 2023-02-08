@@ -28,14 +28,8 @@ struct FortuneReadingView: View {
     @State var userInfo: Any? = nil // Custom user info for the effect.
 
     @State var showingSheet = false
-    @State var showingToast = false
-    private let toastOptions = SimpleToastOptions(
-        alignment: .bottom,
-        hideAfter: 1,
-        backdrop: Color.black.opacity(0.2),
-        animation: .default,
-        modifierType: .slide
-    )
+    
+    @StateObject var toastManager = ToastManager()
 
     @State var animatingViews = false
     var animationDelay = 0.25
@@ -158,7 +152,7 @@ struct FortuneReadingView: View {
                                 // MARK: Copy to clipboard button
                                 Button {
                                     UIPasteboard.general.string = fortuneReading.fortuneText
-                                    showingToast = true
+                                    toastManager.showingToast = true
                                 } label: {
                                     Image(systemName: "doc.on.doc")
                                 }
@@ -213,8 +207,8 @@ struct FortuneReadingView: View {
             .onAppear {
             animatingViews = true
         }
-            .simpleToast(isPresented: $showingToast,
-                         options: toastOptions) {
+            .simpleToast(isPresented: $toastManager.showingToast,
+                         options: toastManager.toastOptions) {
             Text("Text Copied")
                 .foregroundColor(.text)
                 .font(.customFontBody)
@@ -229,7 +223,7 @@ struct FortuneReadingView: View {
 struct FortuneReadingView_Previews: PreviewProvider {
 
     static var previews: some View {
-        NavigationView {
+        NavigationStack {
             FortuneReadingView(
                 showingFortuneSheet: .constant(true),
                 fortuneReading: FortuneHistory.dummyFortunes[1]
