@@ -17,7 +17,6 @@ struct FortuneUserInfoView: View {
                     .scaledToFit()
                     .frame(width: 24)
                 Text("\(fortuneReading.userName) (\(fortuneReading.userGender))")
-                    .font(.customFontTitle3)
             }
             HStack(spacing: 12) {
                 Image(systemName: "birthday.cake.fill")
@@ -25,7 +24,6 @@ struct FortuneUserInfoView: View {
                     .scaledToFit()
                     .frame(width: 24)
                 Text(Date(timeIntervalSince1970: fortuneReading.userBirthday).formatted(date: .abbreviated, time: .omitted))
-                    .font(.customFontTitle3)
             }
             HStack(spacing: 12) {
                 Image(systemName: "briefcase.fill")
@@ -33,7 +31,6 @@ struct FortuneUserInfoView: View {
                     .scaledToFit()
                     .frame(width: 24)
                 Text(fortuneReading.userOccupation)
-                    .font(.customFontTitle3)
             }
             HStack(spacing: 12) {
                 Image(systemName: "heart.circle.fill")
@@ -41,7 +38,6 @@ struct FortuneUserInfoView: View {
                     .scaledToFit()
                     .frame(width: 24)
                 Text(fortuneReading.userRelationship)
-                    .font(.customFontTitle3)
             }
 
             
@@ -59,6 +55,7 @@ struct FortuneUserInfoView: View {
             }
 
         }
+        .font(.customFontTitle3)
         .padding()
         .background(.ultraThinMaterial)
         .cornerRadius(24)

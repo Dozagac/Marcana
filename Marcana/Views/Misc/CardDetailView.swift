@@ -101,9 +101,7 @@ struct CardDetailView: View {
                         Text(card.description)
                             .font(.customFontBody)
                             .lineLimit(nil)
-
-                        Spacer()
-                            .frame(height: 30)
+                            .padding(.bottom, 45) // so the entire text is visible
                     }
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.horizontal, 16)
@@ -114,10 +112,10 @@ struct CardDetailView: View {
 
                     ScrollerTextBottomGradientEffectView(effectColor: Color.black)
                 }
-                    .edgesIgnoringSafeArea(.bottom)
             }
         }
             .background(BackgroundBlurView())
+            .edgesIgnoringSafeArea(.bottom)
             .modifier(customNavBackModifier())
     }
 }

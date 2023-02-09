@@ -13,12 +13,10 @@ struct LauncherView: View {
     @StateObject var loginData = LoginViewOO()
     @StateObject var user = UserOO()
 
-
     @State private var selectedTab = 0
 
     var body: some View {
         if loginData.loginStatus {
-
             TabView(selection: $selectedTab) {
                 //MARK: TAB 1
                 NavigationStack {
@@ -29,7 +27,6 @@ struct LauncherView: View {
                     Text("Fortune")
                 }
                     .tag(0)
-
 
                 //MARK: TAB 2
                 NavigationStack {
@@ -59,7 +56,6 @@ struct LauncherView: View {
 //                appearance.backgroundColor = UIColor(Color.marcanaBackground.opacity(0.2))
                 UITabBar.appearance().standardAppearance = appearance
                 UITabBar.appearance().scrollEdgeAppearance = appearance
-
             }
                 .onChange(of: selectedTab, perform: { _ in
                 UIImpactFeedbackGenerator(style: .light).impactOccurred()
@@ -68,9 +64,9 @@ struct LauncherView: View {
                 .accentColor(.text)
                 .preferredColorScheme(.dark)
                 .animation(.easeOut(duration: 0.2), value: selectedTab)
-                .fullScreenCover( // Launch user info flow conditionally
-                isPresented: $doUserInfoFlow,
-                content: GetUserInfoFlowView.init // init is necessary
+                .fullScreenCover(// Launch user info flow conditionally
+            isPresented: $doUserInfoFlow,
+                                 content: GetUserInfoFlowView.init // init is necessary
             )
         } else {
             LoginView(loginData: loginData)

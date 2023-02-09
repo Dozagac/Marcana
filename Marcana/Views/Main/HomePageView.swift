@@ -72,9 +72,7 @@ enum FortuneType: String, Codable {
 struct HomePageView: View {
     @AppStorage(wrappedValue: "", UserDataManager.UserKeys.userName.rawValue) var userName
     let appearance = UINavigationBarAppearance()
-    @AppStorage(wrappedValue: true, "doUserInfoFlow") var doUserInfoFlow
-    var userDataManager = UserDataManager()
-    
+
     // This is so that buttons can launch the same cover sheet with a different parameter value in it
     // which is the fortuneType
     @State var showingFortuneSheet1CardFortune = false
@@ -82,12 +80,7 @@ struct HomePageView: View {
 
     var body: some View {
         ZStack {
-//            BackgroundView()
-            Image("purpleVineBackground")
-                .resizable()
-                .scaledToFill()
-                .opacity(0.2)
-                .ignoresSafeArea(.all)
+            ImageBackgroundView(imageName: "PurpleVineBackground1")
 
             VStack(spacing: 24) {
                 FortuneTypeSelectionButton(
@@ -116,11 +109,6 @@ struct HomePageView: View {
             }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .navigationTitle("Welcome \(userName)")
-        }
-        .onAppear{
-            if userDataManager.thereIsMissingData {
-                doUserInfoFlow = true
-            }
         }
     }
 }

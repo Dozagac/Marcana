@@ -32,6 +32,17 @@ struct VideoBackgroundView: View {
     }
 }
 
+struct ImageBackgroundView: View{
+    let imageName: String
+    var body: some View{
+        Image(imageName)
+            .resizable()
+            .scaledToFill()
+            .opacity(0.2)
+            .ignoresSafeArea(.all)
+    }
+}
+
 
 struct BackgroundView: View {
     var body: some View {

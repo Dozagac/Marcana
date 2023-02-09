@@ -16,35 +16,35 @@ enum questionSuggestion: String {
 
     var questions: [String] {
         switch self {
-            case .love:
-                return ["Will my relationship/marriage improve?",
-                        "Will I find love in the near future?",
-                        "What do I need to know about a specific person in my life?"]
-            case .career:
-                return ["What does the future hold for my career?",
-                        "What can I do to advance in my career?",
-                        "What can I do to improve my financial situation?"]
-            case .personal:
-                return ["What can I do to bring more happiness into my life?",
-                        "What is the best path for my spiritual journey?",
-                        "What should I focus on to bring balance to my life?"]
-            case .health:
-                return ["What do I need to know about my health?",
-                        "Will I have any health concerns in the near future?",
-                        "How can I improve my overall well-being?"]
+        case .love:
+            return ["Will my relationship/marriage improve?",
+                    "Will I find love in the near future?",
+                    "What do I need to know about a specific person in my life?"]
+        case .career:
+            return ["What does the future hold for my career?",
+                    "What can I do to advance in my career?",
+                    "What can I do to improve my financial situation?"]
+        case .personal:
+            return ["What can I do to bring more happiness into my life?",
+                    "What is the best path for my spiritual journey?",
+                    "What should I focus on to bring balance to my life?"]
+        case .health:
+            return ["What do I need to know about my health?",
+                    "Will I have any health concerns in the near future?",
+                    "How can I improve my overall well-being?"]
         }
     }
 
     var iconName: String {
         switch self {
-            case .love:
-                return "heart.circle"
-            case .career:
-                return "briefcase"
-            case .personal:
-                return "brain"
-            case .health:
-                return "plus.circle"
+        case .love:
+            return "heart.circle"
+        case .career:
+            return "briefcase"
+        case .personal:
+            return "brain"
+        case .health:
+            return "plus.circle"
         }
     }
 }
@@ -59,15 +59,18 @@ struct GetFortuneQuestionView: View {
     @State private var animateViews = false
 
     @State var showRecommendations = false
-    
+
+    @AppStorage(wrappedValue: true, "doUserInfoFlow") var doUserInfoFlow
+    var userDataManager = UserDataManager()
+
     private var canContinue: Bool {
         question.isNotEmpty
     }
-    
+
     init(fortuneType: FortuneType, showingFortuneSheet: Binding<Bool>) {
         self.fortuneType = fortuneType
         self._showingFortuneSheet = showingFortuneSheet
-        
+
         // Clear out the background color of the textEditor
         // Only works earlier than iOS 16, after that
         // the modifier ".scrollContentBackground(.hidden)" does the same rick
@@ -98,21 +101,21 @@ struct GetFortuneQuestionView: View {
                             Divider()
                                 .frame(height: 2)
 
-                            ZStack{
+                            ZStack {
                                 BackgroundView()
                                 // Interacting with this breaks the live preview for some reason...
                                 //MARK: - Text Editor for Question
-                                    // https://www.hackingwithswift.com/quick-start/swiftui/how-to-change-the-background-color-of-list-texteditor-and-more
-                                    TextEditor(text: $question)
-                                        .scrollContentBackground(.hidden) // iOS 16
-                                        .background(.ultraThinMaterial)
-                                        .font(.customFontBody)
-                                        .multilineTextAlignment(.center)
-                                        .textFieldStyle(.plain)
-                                        .focused($focusTextField)
-                                        .frame(minHeight: 35, maxHeight: 70)
-                                        .fixedSize(horizontal: false, vertical: true)
-                                        .accentColor(.white)
+                                // https://www.hackingwithswift.com/quick-start/swiftui/how-to-change-the-background-color-of-list-texteditor-and-more
+                                TextEditor(text: $question)
+                                    .scrollContentBackground(.hidden) // iOS 16
+                                .background(.ultraThinMaterial)
+                                    .font(.customFontBody)
+                                    .multilineTextAlignment(.center)
+                                    .textFieldStyle(.plain)
+                                    .focused($focusTextField)
+                                    .frame(minHeight: 35, maxHeight: 70)
+                                    .fixedSize(horizontal: false, vertical: true)
+                                    .accentColor(.white)
                             }
 
                             Divider()
@@ -131,10 +134,10 @@ struct GetFortuneQuestionView: View {
                                     .shadow(radius: 8)
                                     .disabled(question.isNotEmpty)
                             }
-                            .sheet(isPresented: $showRecommendations) {
+                                .sheet(isPresented: $showRecommendations) {
                                 // The picker view
                                 QuestionListView(question: $question)
-                                    
+
                             }
 
                         }
@@ -181,6 +184,11 @@ struct GetFortuneQuestionView: View {
                 // this is necessary to make focus work
                 DispatchQueue.main.async { focusTextField = true }
                 animateViews = true
+
+                // Make sure that there is no missing user data for the fortune flow
+                if userDataManager.thereIsMissingData {
+                    doUserInfoFlow = true
+                }
             }
                 .modifier(customNavBackModifier())
         }
@@ -193,7 +201,7 @@ struct QuestionListView: View {
     let suggestionCategory: [questionSuggestion] = [.love, .career, .personal, .health]
     @Environment(\.dismiss) var dismiss
     var body: some View {
-        ZStack(alignment: .top){
+        ZStack(alignment: .top) {
             // MARK: - X button
             HStack() {
                 Button {
@@ -202,18 +210,18 @@ struct QuestionListView: View {
                     Image(systemName: "xmark")
                         .font(.title3.bold())
                         .foregroundColor(.text)
-                        
+
                 }
                 Spacer()
             }
-            .padding([.leading, .top], 20)
-            .zIndex(2)
-            
+                .padding([.leading, .top], 20)
+                .zIndex(2)
+
             List {
                 ForEach(suggestionCategory, id: \.self) { category in
-                    Section{
+                    Section {
                         ForEach(category.questions, id: \.self) { category in
-                            Button{
+                            Button {
                                 question = category
                                 dismiss()
                             } label: {
@@ -226,10 +234,10 @@ struct QuestionListView: View {
                     }
                 }
             }
-            .scrollContentBackground(.hidden)
-            .padding(.top, 24)
+                .scrollContentBackground(.hidden)
+                .padding(.top, 24)
         }
-        .background(BackgroundBlurView())
+            .background(BackgroundBlurView())
     }
 }
 

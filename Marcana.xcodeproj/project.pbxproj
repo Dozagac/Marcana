@@ -27,6 +27,7 @@
 		764FF8E52993BF760062E221 /* ToastManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764FF8E42993BF760062E221 /* ToastManager.swift */; };
 		764FF8E72993C9050062E221 /* UserDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764FF8E62993C9050062E221 /* UserDataManager.swift */; };
 		764FF8E92993E5B20062E221 /* MailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764FF8E82993E5B20062E221 /* MailView.swift */; };
+		764FF8ED299409800062E221 /* UIValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764FF8EC299409800062E221 /* UIValues.swift */; };
 		7653134A298544F000CF52A3 /* FortuneRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76531349298544F000CF52A3 /* FortuneRequester.swift */; };
 		765313512985519900CF52A3 /* NanumMyeongjo-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7653134D2985519900CF52A3 /* NanumMyeongjo-Bold.ttf */; };
 		765313522985519900CF52A3 /* NanumMyeongjo-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7653134E2985519900CF52A3 /* NanumMyeongjo-Regular.ttf */; };
@@ -90,6 +91,7 @@
 		764FF8E42993BF760062E221 /* ToastManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastManager.swift; sourceTree = "<group>"; };
 		764FF8E62993C9050062E221 /* UserDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataManager.swift; sourceTree = "<group>"; };
 		764FF8E82993E5B20062E221 /* MailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailView.swift; sourceTree = "<group>"; };
+		764FF8EC299409800062E221 /* UIValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIValues.swift; sourceTree = "<group>"; };
 		76531349298544F000CF52A3 /* FortuneRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FortuneRequester.swift; sourceTree = "<group>"; };
 		7653134D2985519900CF52A3 /* NanumMyeongjo-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NanumMyeongjo-Bold.ttf"; sourceTree = "<group>"; };
 		7653134E2985519900CF52A3 /* NanumMyeongjo-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NanumMyeongjo-Regular.ttf"; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 				76152A4C296FFE42001D5B8F /* PlayerView.swift */,
 				76B2E12E29365BD4004BCF46 /* Extensions.swift */,
 				76D5EF6129718BF600EF9C4A /* CustomViewElements.swift */,
+				764FF8EC299409800062E221 /* UIValues.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -447,6 +450,7 @@
 				76267D442955EA5900108612 /* GetUserRelationshipView.swift in Sources */,
 				76B2E12F29365BD4004BCF46 /* Extensions.swift in Sources */,
 				7675E44729326B2600ED17D5 /* HomePageView.swift in Sources */,
+				764FF8ED299409800062E221 /* UIValues.swift in Sources */,
 				7675E45F29336C3F00ED17D5 /* DeckInfoView.swift in Sources */,
 				76D5EF64297191A400EF9C4A /* PersistentDataManagerEfeExample.swift in Sources */,
 				76152A4D296FFE42001D5B8F /* PlayerView.swift in Sources */,

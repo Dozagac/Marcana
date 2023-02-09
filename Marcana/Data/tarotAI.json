@@ -1,0 +1,859 @@
+[
+    {
+        "id": 0,
+        "name": "The Fool",
+        "suite": "major",
+        "image": "maj_00",
+        "description": "The Fool represents new beginnings, unpredictability, and potential for growth. It symbolizes stepping outside of one's comfort zone and embracing change and adventure. The Fool card often indicates a time of taking risks and trusting one's instincts.",
+        "interpretation": {
+            "upright": "Beginnings, innocence, spontaneity, trust in oneself and the universe, taking a leap of faith, embracing new opportunities",
+            "reversed": "Fear of change, lack of trust in oneself or the universe, being stuck in old patterns, missed opportunities"
+        }
+    }
+    ,
+    {
+        "id": 1,
+        "name": "The Magician",
+        "suite": "major",
+        "image": "maj_01",
+        "description": "The Magician represents creativity, manifestation, and the power to turn ideas into reality. It symbolizes the mastery of skills and the ability to bring forth abundance and manifestation. The Magician card often indicates a time of taking action and using one's resources to achieve one's goals.",
+        "interpretation": {
+            "upright": "Manifestation, creativity, action, skillful use of resources, making the most of opportunities, communication",
+            "reversed": "Misuse of power, not taking action, lack of resources, miscommunication, blocked creativity"
+        }
+    },
+    {
+        "id": 2,
+        "name": "The High Priestess",
+        "suite": "major",
+        "image": "maj_02",
+        "description": "The High Priestess represents intuition, mystery, and secrets. It symbolizes the power of the unconscious mind and the ability to access inner knowledge. The High Priestess card often indicates a time of paying attention to one's intuition and exploring the unknown.",
+        "interpretation": {
+            "upright": "Intuition, mystery, inner knowledge, secrets, feminine power, receptiveness",
+            "reversed": "Suppressed intuition, shallow emotions, not trusting one's instincts, revealing secrets, lack of mystery"
+        }
+    },
+    {
+        "id": 3,
+        "name": "The Empress",
+        "suite": "major",
+        "image": "maj_03",
+        "description": "The Empress represents motherhood, nurturing, and abundance. It symbolizes the creation of life and the manifestation of wealth and abundance. The Empress card often indicates a time of growth, comfort, and security.",
+        "interpretation": {
+            "upright": "Nurturing, motherhood, abundance, comfort, growth, creativity, manifestation",
+            "reversed": "Lack of nurturing, barrenness, lack of growth, instability, material emptiness"
+        }
+    },
+    {
+        "id": 4,
+        "name": "The Emperor",
+        "suite": "major",
+        "image": "maj_04",
+        "description": "The Emperor represents stability, structure, and authority. It symbolizes the establishment of order and the use of power to maintain stability. The Emperor card often indicates a time of assertiveness and the use of one's power to achieve one's goals.",
+        "interpretation": {
+            "upright": "Stability, structure, authority, power, assertiveness, order, control",
+            "reversed": "Lack of stability, instability, loss of control, weak authority, assertiveness turned into aggression"
+        }
+    },
+    {
+        "id": 5,
+        "name": "The Hierophant",
+        "suite": "major",
+        "image": "maj_05",
+        "description": "The Hierophant represents tradition, religion, and spirituality. It symbolizes the search for meaning and the connection to a higher power. The Hierophant card often indicates a time of seeking guidance, tradition, and spiritual enlightenment.",
+        "interpretation": {
+            "upright": "Tradition, religion, spirituality, guidance, wisdom, meaning, connection to higher power",
+            "reversed": "Rebelling against tradition, rejecting spirituality, being disconnected from higher power, lack of guidance"
+        }
+    },
+    {
+        "id": 6,
+        "name": "The Lovers",
+        "suite": "major",
+        "image": "maj_06",
+        "description": "The Lovers represents love, romance, and relationships. It symbolizes the choices one makes in matters of the heart and the decisions that shape one's relationships. The Lovers card often indicates a time of making important decisions about love and relationships.",
+        "interpretation": {
+            "upright": "Love, romance, relationships, choices, decisions, commitment, passion",
+            "reversed": "Lack of love, rejection, indecision, lack of commitment, relationship problems"
+        }
+    },
+    {
+        "id": 7,
+        "name": "The Chariot",
+        "suite": "major",
+        "image": "maj_07",
+        "description": "The Chariot card represents movement, journey, control and victory. It symbolizes the charioteer who drives his chariot forward, representing the conscious mind in control of the unconscious. This card can indicate that a person is in control of their life and are moving forward with determination and confidence.",
+        "interpretation": {
+            "upright": "Control, determination, victory, journey, direction, will power, self-discipline, courage, confidence, assertiveness, progress",
+            "reversed": "Lack of control, inner conflict, delay, self-doubt, indecision, lack of discipline, reverse direction, defeat"
+        }
+    },
+    {
+        "id": 8,
+        "name": "Justice",
+        "suite": "major",
+        "image": "maj_08",
+        "description": "The Justice card represents fairness, balance, truth and morality. It symbolizes the idea of weighing options and making a fair decision. This card can indicate that a person is receiving what they deserve, and that they should trust in the fairness of the universe to balance things out in their favor.",
+        "interpretation": {
+            "upright": "Fairness, balance, truth, justice, legality, morality, cause and effect, decision making, responsibility, impartiality",
+            "reversed": "Inequality, imbalance, injustice, legal issues, unethical behavior, bias, irresponsibility, avoidance of accountability"
+        }
+    },
+    {
+        "id": 9,
+        "name": "The Hermit",
+        "suite": "major",
+        "image": "maj_09",
+        "description": "The Hermit card represents solitude, introspection, wisdom and guidance. It symbolizes the idea of seeking inner truth and guidance through meditation and contemplation. This card can indicate that a person needs to withdraw from society and seek inner wisdom and guidance, in order to find clarity and direction in their life.",
+        "interpretation": {
+            "upright": "Solitude, introspection, guidance, wisdom, inner truth, self-discovery, independence, caution, search for meaning",
+            "reversed": "Isolation, loneliness, abandonment, loss of direction, lack of guidance, avoidance of the truth, fear of being alone"
+        }
+    },
+    {
+        "id": 10,
+        "name": "Wheel of Fortune",
+        "suite": "major",
+        "image": "maj_10",
+        "description": "The Wheel of Fortune card represents the idea of change and the cyclical nature of life. It symbolizes the idea that life is always changing and that things are never permanent. This card can indicate that a person is going through a change in their life, and that they should embrace this change as an opportunity for growth and evolution.",
+        "interpretation": {
+            "upright": "Change, cycles, destiny, fate, karmic change, evolution, growth, opportunity, improvement, good luck",
+            "reversed": "Stagnation, delay, lack of change, resistance to change, entrapment, downfall, bad luck, negative change"
+        }
+    },
+    {
+        "id": 11,
+        "name": "Justice",
+        "suite": "major",
+        "image": "maj_11",
+        "description": "Justice represents fairness, balance, and the consequences of our actions. This card suggests that you should make decisions based on what is right and just, rather than what is easiest or most convenient.",
+        "interpretation": {
+            "upright": "Justice, fairness, balance, truth, impartiality, consequences, responsibility",
+            "reversed": "Inequality, imbalance, injustice, deceit, avoidance of responsibility"
+        }
+    },
+    {
+        "id": 12,
+        "name": "The Hanged Man",
+        "suite": "major",
+        "image": "maj_12",
+        "description": "The Hanged Man represents sacrifice, patience, and the power of letting go. This card suggests that you may need to take a step back and see things from a different perspective in order to find a solution.",
+        "interpretation": {
+            "upright": "Sacrifice, patience, letting go, release, new perspectives, enlightenment",
+            "reversed": "Stagnation, indecision, lack of progress, resistance to change"
+        }
+    },
+    {
+        "id": 13,
+        "name": "Death",
+        "suite": "major",
+        "image": "maj_13",
+        "description": "Death represents change and transformation, and is often interpreted as a symbol of endings and beginnings. This card suggests that you may be facing a major life change, but that it is an opportunity for growth and renewal.",
+        "interpretation": {
+            "upright": "Change, transformation, endings, beginnings, growth, renewal, liberation",
+            "reversed": "Resistance to change, fear of the unknown, stagnation, lack of progress"
+        }
+    },
+    {
+        "id": 14,
+        "name": "Temperance",
+        "suite": "major",
+        "image": "maj_14",
+        "description": "Temperance represents balance, moderation, and the importance of finding a middle ground. This card suggests that you should strive for harmony in your life, and seek to find a balance between opposing forces.",
+        "interpretation": {
+            "upright": "Balance, moderation, harmony, patience, control, stability, finding a middle ground",
+            "reversed": "Imbalance, excess, impulsive behavior, lack of control"
+        }
+    },
+    {
+    "id": 15,
+    "name": "The Devil",
+    "suite": "major",
+    "image": "maj_15",
+    "description": "The Devil card represents temptation, bondage, and materialism. It is a warning to be mindful of negative influences and addictive behaviors that may be hindering personal growth and freedom.",
+    "interpretation": {
+    "upright": "Bondage, addiction, materialism, temptation, lack of personal freedom",
+    "reversed": "Breaking free from negative influences, release from addiction, liberation"
+    }
+    },
+    {
+        "id": 16,
+        "name": "The Tower",
+        "suite": "major",
+        "image": "maj_15",
+        "description": "The Tower is a card of sudden change and upheaval, symbolizing the collapse of outdated structures and beliefs. It often signals a turning point in the querent's life, one that may be painful and chaotic but ultimately leads to growth and liberation.",
+        "interpretation": {
+            "upright": "Sudden change, upheaval, shock, crisis, danger, unexpected events, loss of stability, upheaval of established structures",
+            "reversed": "Mitigated crisis, delay of negative events, milder challenges, resistance to change, fear of change, avoidance of growth"
+        }
+    },
+    {
+        "id": 17,
+        "name": "The Star",
+        "suite": "major",
+        "image": "maj_16",
+        "description": "The Star is a card of hope and inspiration, symbolizing the querent's deepest desires and aspirations. It represents a time of healing, renewal and regeneration, and signals the arrival of new opportunities and positive changes in the future.",
+        "interpretation": {
+            "upright": "Hope, inspiration, renewal, healing, positive change, new opportunities, inner peace, spiritual fulfillment",
+            "reversed": "Loss of hope, disappointment, lack of inspiration, self-doubt, depression, hopelessness, negative change"
+        }
+    },
+    {
+        "id": 18,
+        "name": "The Moon",
+        "suite": "major",
+        "image": "maj_17",
+        "description": "The Moon is a card of intuition, emotions, and the subconscious mind. It symbolizes the querent's deepest fears and anxieties, and signals a time of confusion, uncertainty and insecurity. It suggests that the querent should trust their instincts and pay attention to their dreams and emotions.",
+        "interpretation": {
+            "upright": "Intuition, emotions, subconscious, dreams, imagination, confusion, uncertainty, insecurity, fear",
+            "reversed": "Lack of intuition, rational thinking, emotional stability, clarity, groundedness, control over emotions and subconscious"
+        }
+    },
+    {
+        "id": 19,
+        "name": "The Sun",
+        "suite": "major",
+        "image": "maj_18",
+        "description": "The Sun is a card of joy, success and abundance. It symbolizes the querent's hopes, dreams and desires coming to fruition, and signals a time of happiness, success and fulfillment. The Sun is a reminder to celebrate life, enjoy the present moment and bask in the warmth of the sun's rays.",
+        "interpretation": {
+            "upright": "Joy, success, abundance, happiness, fulfillment, growth, good health, creativity, optimism",
+            "reversed": "Lack of success, dissatisfaction, frustration, pessimism, disappointment, negative changes, blockages"
+        }
+    },
+    {
+        "id": 20,
+        "name": "Judgement",
+        "suite": "major",
+        "image": "maj_20",
+        "description": "The Judgement card represents judgement, reflection, and accountability. It symbolizes a call to action, a time to reflect on one's past actions and make amends, and a time to be held accountable for one's actions. This card may indicate a time for self-reflection and a call to action to make positive changes.",
+        "interpretation": {
+            "upright": "reflection, judgement, accountability, renewal, rebirth, positive change",
+            "reversed": "avoiding responsibility, inaction, self-doubt, negative self-judgement"
+        }
+    },
+    {
+        "id": 21,
+        "name": "The World",
+        "suite": "major",
+        "image": "maj_21",
+        "description": "The World card represents completion, achievement, and fulfillment. It symbolizes the attainment of one's goals, the realization of dreams, and a sense of wholeness and unity. It is a time for celebration and acknowledgement of one's achievements.",
+        "interpretation": {
+            "upright": "completion, achievement, fulfillment, unity, wholeness, success",
+            "reversed": "incompletion, unfulfillment, lack of unity, failure"
+        }
+    },
+    {
+        "id": 22,
+        "name": "King of Wands",
+        "suite": "wands",
+        "image": "min_w_ki",
+        "description": "The King of Wands represents a charismatic and confident individual. He is a natural leader and embodies courage, creativity, and inspiration. This card often indicates a time of success, progress, and growth.",
+        "interpretation": {
+            "upright": "charisma, confidence, leadership, courage, creativity, inspiration, success, progress, growth",
+            "reversed": "arrogance, lack of focus, poor leadership, fear of success"
+        }
+    },
+    {
+        "id": 23,
+        "name": "Queen of Wands",
+        "suite": "wands",
+        "image": "min_w_qu",
+        "description": "The Queen of Wands is a strong, confident, and creative individual. She represents leadership, determination, and a passion for life. This card often indicates a time of great personal power and success.",
+        "interpretation": {
+            "upright": "confidence, leadership, determination, passion, personal power, success",
+            "reversed": "lack of confidence, poor leadership, indecision, lack of passion"
+        }
+    },
+    {
+        "id": 24,
+        "name": "Knight of Wands",
+        "suite": "wands",
+        "image": "min_w_kn",
+        "description": "The Knight of Wands represents action, confidence and passion. This card shows that you are ready to take bold and decisive action, and that you have the energy and drive to see it through.",
+        "interpretation": {
+            "upright": "Energy, action, courage, determination",
+            "reversed": "Impatience, recklessness, impulsiveness"
+        }
+    },
+    {
+        "id": 25,
+        "name": "Page of Wands",
+        "suite": "wands",
+        "image": "min_w_pa",
+        "description": "The Page of Wands represents new beginnings, adventure and creativity. This card shows that you are eager to explore new opportunities and ideas, and that you have the energy and drive to make them a reality.",
+        "interpretation": {
+            "upright": "Enthusiasm, inspiration, courage, exploration",
+            "reversed": "Lack of focus, impulsiveness, fear of failure"
+        }
+    },
+    {
+        "id": 26,
+        "name": "Ten of Wands",
+        "suite": "wands",
+        "image": "min_w_10",
+        "description": "The Ten of Wands represents burden, responsibility and burnout. This card shows that you may be feeling weighed down by responsibilities and tasks that you have taken on. It is a reminder to prioritize and delegate, so as to not become overwhelmed.",
+        "interpretation": {
+            "upright": "Overburden, responsibility, obligation, stress",
+            "reversed": "Release, relief, ease, freedom"
+        }
+    },
+    {
+        "id": 27,
+        "name": "Nine of Wands",
+        "suite": "wands",
+        "image": "min_w_09",
+        "description": "The Nine of Wands represents resilience, persistence and determination. This card shows that you are close to achieving your goals but may face challenges along the way. It is a reminder to stay strong and keep pushing forward.",
+        "interpretation": {
+            "upright": "Endurance, persistence, preparedness, defense",
+            "reversed": "Fear, insecurity, over-caution, weakness"
+        }
+    },
+    {
+        "id": 28,
+        "name": "Eight of Wands",
+        "suite": "wands",
+        "image": "min_w_08",
+        "description": "The Eight of Wands represents swift action, movement, and change. Eight wands are shown crossing through the sky at high speed, indicating a fast-paced and dynamic energy. The energy of this card is energetic, adventurous, and spontaneous.",
+        "interpretation": {
+            "upright": "Action, movement, change, speed, progress, growth, adventure, excitement, spontaneity, momentum",
+            "reversed": "Delay, stagnation, procrastination, lack of progress, confusion, frustration, unpredictability, unpredictability, unpredictability, unpredictability"
+        }
+    },
+    {
+        "id": 29,
+        "name": "Seven of Wands",
+        "suite": "wands",
+        "image": "min_w_07",
+        "description": "The Seven of Wands represents challenge, competition, and defending one's position. A lone figure holds a wand, facing off against six attacking wands. The energy of this card is defensive, determined, and assertive.",
+        "interpretation": {
+            "upright": "Challenge, competition, defense, protection, courage, determination, perseverance, resilience, confidence, bravery",
+            "reversed": "Insecurity, self-doubt, surrender, defeat, cowardice, lack of courage, indecision, passiveness, vulnerability, weakness"
+        }
+    },
+    {
+        "id": 30,
+        "name": "Six of Wands",
+        "suite": "wands",
+        "image": "min_w_06",
+        "description": "The Six of Wands represents victory, triumph, and success. A rider on horseback holds a wand high in the air, surrounded by a cheering crowd. The energy of this card is confident, proud, and optimistic.",
+        "interpretation": {
+            "upright": "Success, victory, triumph, recognition, honor, advancement, applause, support, encouragement, confidence",
+            "reversed": "Delay, disappointment, setbacks, lack of recognition, self-doubt, insecurity, humiliation, opposition, criticism"
+        }
+    },
+    {
+        "id": 31,
+        "name": "Five of Wands",
+        "suite": "wands",
+        "image": "min_w_05",
+        "description": "The Five of Wands represents conflict, competition, and struggles. In this card, five wand-bearing figures engage in a free-for-all battle, each trying to claim dominance. The energy of this card is aggressive, intense, and sometimes chaotic.",
+        "interpretation": {
+            "upright": "Competition, strife, conflict, battles, tension, argument, discord, opposition, rivalry",
+            "reversed": "Inner turmoil, self-doubt, confusion, lack of focus, indecision, frustration, delay, obstacles, setbacks"
+        }
+    },
+    {
+        "id": 32,
+        "name": "Four of Wands",
+        "suite": "wands",
+        "image": "min_w_04",
+        "description": "The Four of Wands represents celebration, happiness, and success. It symbolizes a time of joy and festivities, of coming together with others to celebrate achievements and milestones. This card may indicate a time for celebration, enjoyment, and recognition of one's successes.",
+        "interpretation": {
+            "upright": "celebration, happiness, success, community, togetherness, recognition",
+            "reversed": "lack of celebration, unhappiness, failure, isolation, neglect"
+        }
+    },
+    {
+        "id": 33,
+        "name": "Three of Wands",
+        "suite": "wands",
+        "image": "min_w_03",
+        "description": "The Three of Wands represents growth, expansion, and exploration. It symbolizes the desire to venture out into new territories, both literally and figuratively. This card may indicate a time for exploring new opportunities, expanding one's horizons, and embracing growth and change.",
+        "interpretation": {
+            "upright": "growth, expansion, exploration, adventure, opportunity, forward-thinking",
+            "reversed": "stagnation, lack of growth, limited vision, fear of change"
+        }
+    },
+    {
+        "id": 34,
+        "name": "Two of Wands",
+        "suite": "wands",
+        "image": "min_w_02",
+        "description": "The Two of Wands represents planning, vision, and decision-making. It symbolizes the process of setting goals and considering options, as well as making decisions about the future. This card may indicate a time for taking charge of one's life, setting goals, and making decisions about the future.",
+        "interpretation": {
+            "upright": "planning, vision, decision-making, control, leadership, future-oriented",
+            "reversed": "indecision, lack of vision, inability to plan, confusion"
+        }
+    },
+    {
+        "id": 35,
+        "name": "Ace of Wands",
+        "suite": "wands",
+        "image": "min_w_ac",
+        "description": "The Ace of Wands represents new beginnings, inspiration, and creative potential. It symbolizes the spark of an idea, the start of a new project, and a newfound sense of excitement and enthusiasm. This card is a sign of new beginnings and the potential for growth and success.",
+        "interpretation": {
+            "upright": "new beginnings, inspiration, creativity, potential, excitement, enthusiasm",
+            "reversed": "lack of inspiration, inability to start, creative block"
+        }
+    },
+    {
+        "id": 36,
+        "name": "King of Cups",
+        "suite": "cups",
+        "image": "min_c_ki",
+        "description": "The King of Cups symbolizes emotional intelligence, balance, and leadership. He is able to understand and manage his own emotions, as well as those of others. This card represents someone who is able to make decisions based on their heart, as well as their head.",
+        "interpretation": {
+            "upright": "Emotional intelligence, balance, leadership, empathy",
+            "reversed": "Emotional instability, indecision, lack of control, avoidance of responsibility"
+        }
+    },
+    {
+        "id": 37,
+        "name": "Queen of Cups",
+        "suite": "cups",
+        "image": "min_c_qu",
+        "description": "The Queen of Cups represents emotions, nurturing, and intuition. She is in touch with her feelings and can offer compassion and understanding to those around her. This card symbolizes someone who is able to balance their emotions with their intellect and make wise decisions.",
+        "interpretation": {
+            "upright": "Emotional stability, intuition, compassion, caring",
+            "reversed": "Emotional instability, indecision, lack of empathy, fear of vulnerability"
+        }
+    },
+    {
+        "id": 38,
+        "name": "Knight of Cups",
+        "suite": "cups",
+        "image": "min_c_kn",
+        "description": "The Knight of Cups is a card of romantic idealism and emotional exploration. It represents a time for following one's heart and embracing new emotional experiences.",
+        "interpretation": {
+            "upright": "Romantic idealism, emotional exploration, following one's heart, embracing new emotional experiences",
+            "reversed": "Emotional instability, unrealistic expectations, lack of emotional commitment, being led astray by emotions"
+        }
+    },
+    {
+        "id": 39,
+        "name": "Page of Cups",
+        "suite": "cups",
+        "image": "min_c_pa",
+        "description": "The Page of Cups is a card of new emotions and creativity. It represents a time for exploring one's feelings, and for tapping into the imaginative and intuitive aspects of one's life.",
+        "interpretation": {
+            "upright": "New emotions, creativity, exploration of feelings, imagination, intuition",
+            "reversed": "Emotional immaturity, lack of creativity, poor communication, unfulfilled emotional needs"
+        }
+    },
+    {
+        "id": 40,
+        "name": "Ten of Cups",
+        "suite": "cups",
+        "image": "min_c_10",
+        "description": "The Ten of Cups is a card of love, family, and contentment. It symbolizes a deep emotional connection and the achievement of one's hopes and dreams.",
+        "interpretation": {
+            "upright": "Love, family, contentment, emotional connection, achievement of hopes and dreams",
+            "reversed": "Emotional instability, broken relationships, family problems, disappointment, loss of emotional connection"
+        }
+    },
+    {
+        "id": 41,
+        "name": "Nine of Cups",
+        "suite": "cups",
+        "image": "min_c_09",
+        "description": "The Nine of Cups is also known as the “Wish Card”, symbolizing happiness, satisfaction, and contentment. It represents emotional fulfillment and the attainment of one's desires.",
+        "interpretation": {
+            "upright": "Happiness, satisfaction, contentment, emotional fulfillment, attainment of desires",
+            "reversed": "Unhappiness, dissatisfaction, emotional emptiness, unrealistic expectations, overindulgence"
+        }
+    },
+    {
+        "id": 42,
+        "name": "Eight of Cups",
+        "suite": "cups",
+        "image": "min_c_08",
+        "description": "The Eight of Cups is a card of emotional detachment and moving on from a situation that no longer serves you. It often signifies the end of a phase or relationship, and represents a time to let go of old feelings and start fresh.",
+        "interpretation": {
+            "upright": "Letting go, emotional detachment, moving on, seeking new emotional experiences",
+            "reversed": "Holding on, fear of change, indecision, emotional instability"
+        }
+    },
+    {
+        "id": 43,
+        "name": "Seven of Cups",
+        "suite": "cups",
+        "image": "min_c_07",
+        "description": "The Seven of Cups is a card of choices, illusions, and daydreaming. It represents a time when someone is faced with many options and may be feeling overwhelmed by the choices available to them. This card warns against getting too caught up in one's daydreams and losing sight of reality.",
+        "interpretation": {
+            "upright": "Choices, illusions, daydreaming, creativity, abundance, being overwhelmed by options",
+            "reversed": "Making realistic choices, finding clarity, breaking away from illusions, coming back to reality"
+        }
+    },
+    {
+        "id": 44,
+        "name": "Six of Cups",
+        "suite": "cups",
+        "image": "min_c_06",
+        "description": "The Six of Cups is a card of nostalgia, childhood memories, and warm emotions. It represents a time when someone is feeling sentimental and longing for the past. This may be a good time to reflect on one's own childhood memories and to remember the good times.",
+        "interpretation": {
+            "upright": "Nostalgia, childhood memories, warm emotions, revisiting the past, innocence, finding joy in simple things",
+            "reversed": "Not being able to let go of the past, living in the past, ignoring the present, emotional immaturity"
+        }
+    },
+    {
+        "id": 45,
+        "name": "Five of Cups",
+        "suite": "cups",
+        "image": "min_c_05",
+        "description": "The Five of Cups is a card of disappointment, loss, and grief. It represents a time when someone is feeling let down or disillusioned with a situation in their life. This may be due to a failed relationship, loss of a loved one, or disappointment in a business venture.",
+        "interpretation": {
+            "upright": "Disappointment, loss, grief, rejection, feelings of inadequacy, letting go of past relationships",
+            "reversed": "Recovery from loss, finding hope, moving on from the past, coming to terms with feelings of inadequacy"
+        }
+    },
+    {
+        "id": 46,
+        "name": "Four of Cups",
+        "suite": "cups",
+        "image": "min_c_04",
+        "description": "The Four of Cups is a card of introspection, emotional disappointment, and feeling unfulfilled. It represents a time of feeling discontent and bored, even when surrounded by abundance. This card signifies a need to look inward and to question what it is that is truly missing from one's life.",
+        "interpretation": {
+            "upright": "Introspection, emotional boredom, feeling unfulfilled, dissatisfaction, lack of satisfaction, emotional detachment",
+            "reversed": "Rediscovery of joy, emotional renewal, release from emotional boredom, increased emotional fulfillment, improved relationships"
+        }
+    },
+    {
+        "id": 47,
+        "name": "Three of Cups",
+        "suite": "cups",
+        "image": "min_c_03",
+        "description": "The Three of Cups is a card of celebration, joy, and unity. It represents a time of coming together with friends and loved ones to share in good times and to raise a toast to life's many blessings. This card signifies a time of abundance, happiness, and a feeling of being connected to others.",
+        "interpretation": {
+            "upright": "Celebration, joy, unity, community, friendship, group activities, creative expression, abundance",
+            "reversed": "Overindulgence, emotional excess, lack of moderation, lack of stability, solitude, isolation"
+        }
+    },
+    {
+        "id": 48,
+        "name": "Two of Cups",
+        "suite": "cups",
+        "image": "min_c_02",
+        "description": "The Two of Cups is a card of partnership and balance. It represents the harmonious coming together of two individuals to form a union, whether that be in a romantic, professional, or spiritual sense. This card symbolizes a meeting of the minds and hearts and the start of a beautiful relationship.",
+        "interpretation": {
+            "upright": "Love, partnership, balance, harmony, mutual understanding, cooperation, attraction, commitment",
+            "reversed": "Disharmony, imbalance, separation, communication breakdown, broken partnerships, power struggles"
+        }
+    },
+    {
+        "id": 49,
+        "name": "Ace of Cups",
+        "suite": "cups",
+        "image": "min_c_ac",
+        "description": "The Ace of Cups is a card of emotions, love, and relationships. It represents new beginnings and the start of a journey of the heart. This card signifies happiness and fulfillment in matters of the heart and an abundance of emotional energy.",
+        "interpretation": {
+            "upright": "New emotional beginnings, love, joy, contentment, inner peace, relationships, emotional fulfillment",
+            "reversed": "Emotional drought, fear of emotional involvement, emotional instability, blocked emotions, unrequited love"
+        }
+    },
+    {
+        "id": 50,
+        "name": "King of Swords",
+        "suite": "swords",
+        "image": "min_s_ki",
+        "description": "The King of Swords represents a mature and intellectual individual who is a skilled communicator and decision maker. They are knowledgeable and confident, and can be relied on to make sound judgments. In a reading, the King of Swords may indicate a need for clear, logical thinking and decisive action.",
+        "interpretation": {
+            "upright": "Intelligence, logic, clear thinking, decision making, authority, communication, independence, impartiality, justice",
+            "reversed": "Harsh judgment, blunt communication, abuse of power, cruelty, tyranny, instability, dishonesty, obsession, manipulation"
+        }
+    },
+    {
+        "id": 51,
+        "name": "Queen of Swords",
+        "suite": "swords",
+        "image": "min_s_qu",
+        "description": "The Queen of Swords represents a woman who is confident, intelligent, and independent. She is a skilled communicator and is able to see things objectively. In a reading, the Queen of Swords may indicate the need for clear thinking, decisive action, and emotional detachment.",
+        "interpretation": {
+            "upright": "Intelligence, clarity, objectivity, independence, honesty, communication, freedom, justice, detachment",
+            "reversed": "Emotional instability, cruelty, dishonesty, isolation, anger, frustration, sadness, depression, fear"
+        }
+    },
+    {
+        "id": 52,
+        "name": "Knight of Swords",
+        "suite": "swords",
+        "image": "min_s_kn",
+        "description": "The Knight of Swords represents a young, bold and daring individual who acts quickly and decisively. They are confident and enthusiastic, and are not afraid to take risks. In a reading, the Knight of Swords may indicate a need for action, courage, and quick thinking.",
+        "interpretation": {
+            "upright": "Action, courage, quick thinking, enthusiasm, determination, confidence, impulsiveness, boldness, risk-taking",
+            "reversed": "Impulsive actions, recklessness, overconfidence, instability, arrogance, frustration, anger, confusion, anxiety"
+        }
+    },
+    {
+        "id": 53,
+        "name": "Page of Swords",
+        "suite": "swords",
+        "image": "min_s_pa",
+        "description": "The Page of Swords represents a young person who is curious and eager to learn. They are quick-witted and perceptive, and have the ability to think on their feet. In a reading, the Page of Swords may indicate a need for new ideas, communication, and learning.",
+        "interpretation": {
+            "upright": "Curiosity, learning, communication, news, new ideas, quick-wittedness, perceptive, adaptable, energetic",
+            "reversed": "Fear, anxiety, confusion, dishonesty, instability, frustration, immaturity, cruelty, deceit"
+        }
+    },
+    {
+        "id": 54,
+        "name": "Ten of Swords",
+        "suite": "swords",
+        "image": "min_s_10",
+        "description": "The Ten of Swords is a card of endings and betrayal. It represents a major emotional loss or disappointment, and a sense of betrayal or rejection. This card suggests that a relationship or situation has come to an end and that you are now facing a period of recovery and healing.",
+        "interpretation": {
+            "upright": "Betrayal, emotional loss, heartbreak, defeat, abandonment, end of a situation",
+            "reversed": "Recovery, healing, hope, forgiveness, growth, a new beginning"
+        }
+    },
+    {
+        "id": 55,
+        "name": "Nine of Swords",
+        "suite": "swords",
+        "image": "min_s_09",
+        "description": "The Nine of Swords is a card of fear and anxiety. It represents the manifestation of inner fears and worries, and can indicate a sense of guilt or shame. This card suggests that you may be experiencing a period of intense anxiety and that it is important to confront and overcome your fears.",
+        "interpretation": {
+            "upright": "Fear, anxiety, guilt, shame, nightmares, worry, self-doubt",
+            "reversed": "Recovery, peace, hope, self-forgiveness, acceptance, courage"
+        }
+    },
+    {
+        "id": 56,
+        "name": "Eight of Swords",
+        "suite": "swords",
+        "image": "min_s_08",
+        "description": "The Eight of Swords is a card of restriction and self-imposed limitations. It represents a sense of feeling trapped and helpless, and a fear of taking action. This card suggests that you may be feeling trapped in a situation or relationship, and that it is important to identify and break free from any limiting beliefs or thought patterns.",
+        "interpretation": {
+            "upright": "Restriction, self-imposed limitations, fear, feeling trapped, indecision",
+            "reversed": "Break free, liberation, empowerment, courage, self-awareness, action"
+        }
+    },
+    {
+        "id": 57,
+        "name": "Seven of Swords",
+        "suite": "swords",
+        "image": "min_s_07",
+        "description": "The Seven of Swords is a card of cunning and deception. It represents a sense of stealth, deceit, and a desire to get ahead at any cost. This card suggests that you may be feeling a need to hide your true intentions or motivations, or that you may be engaging in dishonest or unethical behavior.",
+        "interpretation": {
+            "upright": "Deception, cunning, betrayal, secrets, unethical behavior, dishonesty",
+            "reversed": "Transparency, honesty, integrity, fairness, accountability, restoration"
+        }
+    },
+    {
+        "id": 58,
+        "name": "Six of Swords",
+        "suite": "swords",
+        "image": "min_s_06",
+        "description": "The Six of Swords card is associated with a journey, both literally and metaphorically. This journey may be one of physical relocation or a journey of the mind, where the individual is moving from a place of pain to one of hope and healing. The figure in the card is seen crossing a body of water, which symbolizes a transition from one state of being to another. This card represents a time of change, when the individual must trust in the journey ahead and have faith that they will reach their destination safely.",
+        "interpretation": {
+            "upright": "Journey, change, transition, moving forward, leaving the past behind, hope",
+            "reversed": "Stagnation, fear of change, indecision, delay, regret, holding onto the past"
+        }
+    },
+    {
+        "id": 59,
+        "name": "Five of Swords",
+        "suite": "swords",
+        "image": "min_s_05",
+        "description": "The Five of Swords card is associated with conflict, defeat, and loss. The individual in the card is seen walking away from a battlefield, having lost the fight. The three swords laid on the ground symbolize the losses sustained. This card represents a time of defeat, where the individual may feel as though they have lost a battle. However, it is important to remember that this is only a temporary setback, and that better times are ahead.",
+        "interpretation": {
+            "upright": "Defeat, loss, conflict, competition, power struggles, humility",
+            "reversed": "Victory, reclaiming power, standing up for oneself, moving on from conflict, resilience"
+        }  },
+    {
+        "id": 60,
+        "name": "Four of Swords",
+        "suite": "swords",
+        "image": "min_s_04",
+        "description": "The Four of Swords card is associated with rest and recuperation. The individual in the card is seen lying in a state of repose, surrounded by three swords which symbolize protection. This card represents a time of rest, where the individual may need to take a break from the chaos of everyday life and recharge their batteries. It is important for the individual to listen to their body and allow themselves the time they need to recover.",
+        "interpretation": {
+            "upright": "Rest, recuperation, retreat, peace, solitude, protection",
+            "reversed": "Stress, exhaustion, overwork, neglecting self-care, burnout, conflict"
+        }
+    },
+    {
+        "id": 61,
+        "name": "Three of Swords",
+        "suite": "swords",
+        "image": "min_s_03",
+        "description": "The Three of Swords represents heartbreak, betrayal, and emotional pain. This card often signifies a deep wound that has caused emotional suffering and a loss of trust. It can also indicate feelings of anger, jealousy, and resentment.",
+        "interpretation": {
+            "upright": "Heartbreak, betrayal, emotional pain, loss of trust, anger, jealousy, resentment",
+            "reversed": "Recovery, forgiveness, moving on, letting go of the past, hope for the future"
+        }
+    },
+    {
+        "id": 62,
+        "name": "Two of Swords",
+        "suite": "swords",
+        "image": "min_s_02",
+        "description": "The Two of Swords represents a choice between two conflicting paths or ideas. This card often signifies a dilemma or decision that must be made, and suggests a need for balance, fairness, and objectivity. It can also indicate indecision, avoidance, and a lack of clarity.",
+        "interpretation": {
+            "upright": "Choice, dilemma, decision, balance, fairness, objectivity, indecision, avoidance, lack of clarity",
+            "reversed": "Breaking free from indecision, finding clarity, making a choice, moving forward"
+        }
+    },
+    {
+        "id": 63,
+        "name": "Ace of Swords",
+        "suite": "swords",
+        "image": "min_s_ac",
+        "description": "The Ace of Swords represents a new beginning, clarity of thought, and the power of the mind. This card often signifies a new idea, a sudden insight, or a moment of inspiration. It can also indicate the ability to cut through confusion, overcome obstacles, and make quick decisions.",
+        "interpretation": {
+            "upright": "New beginning, clarity of thought, power of the mind, new idea, sudden insight, moment of inspiration, cutting through confusion, overcoming obstacles, quick decisions",
+            "reversed": "Confusion, lack of clarity, inability to make decisions, obstacles blocking progress"
+        }
+    },
+    {
+        "id": 64,
+        "name": "King of Pentacles",
+        "suite": "pentacles",
+        "image": "min_p_ki",
+        "description": "The King of Pentacles is a mature, steady and reliable individual. They are someone who takes great pride in their material possessions and their achievements. They are well-off financially and take good care of their resources. This King represents material stability, prosperity and abundance.",
+        "interpretation": {
+            "upright": "Financial stability, success, abundance, leadership, responsibility, practicality, stability, focus, hard work, generosity, trustworthiness",
+            "reversed": "Greed, over-indulgence, materialism, selfishness, avarice, lack of self-control, neglect of responsibilities, over-confidence, stagnation"
+        }
+    },
+    {
+        "id": 65,
+        "name": "Queen of Pentacles",
+        "suite": "pentacles",
+        "image": "min_p_qu",
+        "description": "The Queen of Pentacles is a nurturing and grounding figure. She represents comfort, security, and stability, and is often depicted holding a pentacle in her hand. She is practical, resourceful and takes care of her loved ones and her material possessions. This Queen embodies comfort, stability, and abundance.",
+        "interpretation": {
+            "upright": "Nurturance, comfort, abundance, stability, practicality, sensuality, resourcefulness, generosity, motherhood, homemaking, grounding",
+            "reversed": "Over-indulgence, materialism, neglect of responsibilities, apathy, lack of motivation, laziness, self-centeredness, wastefulness, unrealistic expectations"
+        }
+    },
+    {
+        "id": 66,
+        "name": "Knight of Pentacles",
+        "suite": "pentacles",
+        "image": "min_p_kn",
+        "description": "The Knight of Pentacles is a hardworking, practical and methodical individual. They are someone who is dedicated and determined to achieve their goals and material success. This Knight embodies stability, persistence and practicality. He is often depicted riding a slow and steady horse, symbolizing his determination and focus.",
+        "interpretation": {
+            "upright": "Stability, determination, hard work, persistence, focus, practicality, dedication, material success, slow and steady progress, patience",
+            "reversed": "Stagnation, boredom, sloth, lack of motivation, materialism, laziness, lack of progress, inactivity, lethargy, boredom"
+        }
+    },
+    {
+        "id": 67,
+        "name": "Page of Pentacles",
+        "suite": "pentacles",
+        "image": "min_p_pa",
+        "description": "The Page of Pentacles represents new beginnings, learning, and exploration in the realm of material and financial stability. This card signifies taking steps towards stability, and the careful consideration of resources and opportunities.",
+        "interpretation": {
+            "upright": "youthful energy, new beginnings, education, practicality, focus, stability, potential",
+            "reversed": "lack of focus, stagnation, disinterest, impulsiveness, carelessness, unpreparedness"
+        }
+    },
+    {
+        "id": 68,
+        "name": "Ten of Pentacles",
+        "suite": "pentacles",
+        "image": "min_p_10",
+        "description": "The Ten of Pentacles represents family, tradition, and material success. This card suggests a strong foundation, stability, and prosperity in both personal and professional realms.",
+        "interpretation": {
+            "upright": "family, tradition, stability, prosperity, material success, inheritance, comfort, security",
+            "reversed": "disruption of family, instability, loss of material success, lack of stability, uncertainty"
+        }
+    },
+    {
+        "id": 69,
+        "name": "Nine of Pentacles",
+        "suite": "pentacles",
+        "image": "min_p_09",
+        "description": "The Nine of Pentacles represents self-sufficiency, independence, and comfort. This card suggests enjoying the fruits of one's labors, and finding comfort and security in one's own abilities and resources.",
+        "interpretation": {
+            "upright": "self-sufficiency, independence, comfort, material success, hard work, luxury, satisfaction",
+            "reversed": "dependence, instability, dissatisfaction, overindulgence, extravagance, recklessness"
+        }
+    },
+    {
+        "id": 70,
+        "name": "Eight of Pentacles",
+        "suite": "pentacles",
+        "image": "min_p_08",
+        "description": "The Eight of Pentacles represents focus, determination, and hard work in the pursuit of one's goals and passions. This card suggests putting in the time and effort to hone one's skills and achieve success.",
+        "interpretation": {
+            "upright": "hard work, dedication, focus, skill, craftsmanship, determination, perseverance",
+            "reversed": "lack of focus, carelessness, distraction, lack of determination, difficulty in starting, slow progress"
+        }
+    },
+    {
+        "id": 71,
+        "name": "Seven of Pentacles",
+        "suite": "pentacles",
+        "image": "min_p_07",
+        "description": "The Seven of Pentacles represents growth, progress, and hard-won rewards. This card suggests taking the time to reflect on one's progress and considering the next steps towards success.",
+        "interpretation": {
+            "upright": "evaluation, reflection, progress, growth, patience, perseverance, reward",
+            "reversed": "uncertainty, stagnation, lack of progress, impulsiveness, dissatisfaction, confusion"
+        }
+    },
+    {
+        "id": 72,
+        "name": "Six of Pentacles",
+        "suite": "pentacles",
+        "image": "min_p_06",
+        "description": "The Six of Pentacles shows a figure, often depicted as a merchant, holding a balance scale and offering one pentacle to a beggar or someone in need. This card represents the act of giving and receiving, both materially and emotionally. It suggests a balanced exchange of resources, whether that be in the form of money, time, or love.",
+        "interpretation": {
+            "upright": "generosity, sharing, fairness, reciprocation",
+            "reversed": "imbalance, stinginess, exploitation, lack of compassion"
+        }
+    },
+    {
+        "id": 73,
+        "name": "Five of Pentacles",
+        "suite": "pentacles",
+        "image": "min_p_05",
+        "description": "The Five of Pentacles shows two figures, often depicted as homeless or destitute, outside a stained glass window of a church. This card represents the feeling of being left out, of being without resources or support, of being lost or disconnected. It suggests a need to find inner strength and resilience to overcome difficulties and to rediscover a sense of belonging and security.",
+        "interpretation": {
+            "upright": "loss, hardship, poverty, rejection",
+            "reversed": "recovery, improvement, renewal, reintegration"
+        }
+    },
+    {
+        "id": 74,
+        "name": "Four of Pentacles",
+        "suite": "pentacles",
+        "image": "min_p_04",
+        "description": "The Four of Pentacles shows a figure holding onto four pentacles, often depicted as coins, tightly and protectively. This card represents the desire for stability, security, and material abundance, but also a fear of losing what one has. It suggests a need to let go of material attachments and to trust in the universe to provide for one's needs.",
+        "interpretation": {
+            "upright": "possessiveness, materialism, conservatism, stability",
+            "reversed": "release, letting go, generosity, liberation"
+        }
+    },
+    {
+        "id": 75,
+        "name": "Three of Pentacles",
+        "suite": "pentacles",
+        "image": "min_p_03",
+        "description": "The Three of Pentacles shows a figure, often depicted as a master craftsman, working on a project with two assistants. This card represents the idea of collaboration, teamwork, and the creation of something beautiful and valuable. It suggests the importance of learning from others and working together to achieve common goals.",
+        "interpretation": {
+            "upright": "collaboration, teamwork, craftsmanship, growth",
+            "reversed": "lack of cooperation, individualism, poor workmanship, lack of progress"
+        }
+    },
+    {
+        "id": 76,
+        "name": "Two of Pentacles",
+        "suite": "pentacles",
+        "image": "min_p_02",
+        "description": "The Two of Pentacles is about juggling and balancing multiple responsibilities, priorities, and aspects of life. It suggests adaptability, resourcefulness, and the ability to manage change. The figure on the card is often seen spinning multiple pentacles, symbolizing the need to balance different aspects of life.",
+        "interpretation": {
+            "upright": "Balancing, versatility, flexibility, adaptation, change, juggling responsibilities, multitasking, stability, harmony.",
+            "reversed": "Imbalance, disorganization, indecision, scattered energy, instability, confusion, stress."    }
+    },
+    {
+        "id": 77,
+        "name": "Ace of Pentacles",
+        "suite": "pentacles",
+        "image": "min_p_ac",
+        "description": "The Ace of Pentacles is a card of manifestation, abundance, and new opportunities. It represents a new beginning in a material or financial aspect of life, and suggests growth, prosperity, and success. The pentacle in the card symbolizes material wealth, while the hand reaching out to receive it represents openness to new opportunities.",
+        "interpretation": {
+            "upright": "Abundance, new beginnings, manifestation, prosperity, success, growth, financial stability, material wealth.",
+            "reversed": "Lack, blocked opportunities, delay, financial instability, greed, materialism."
+        }
+    }
+]

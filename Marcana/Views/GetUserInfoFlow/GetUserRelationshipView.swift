@@ -43,7 +43,7 @@ struct GetUserRelationshipView: View {
                         ForEach(Relationship.allCases, id: \.self) { status in
                             Button {
                                 userRelationship = status.rawValue
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
                                     doUserInfoFlow = false // this dismisses the userInfoFlow sheet
                                     dismiss() // so the view can be dismissed when accessed from the settings
                                 }

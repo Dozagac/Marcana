@@ -7,13 +7,51 @@
 
 import SwiftUI
 
+enum PricePoint {
+    case weekly, monthly, yearly
+    
+    var price: Double {
+        switch self {
+        case .weekly:
+            return 3.99
+        case .monthly :
+            return 9.99
+        case .yearly:
+            return 19.99
+        }
+    }
+    
+    var denominator: String{
+        switch self {
+        case .weekly:
+            return "week"
+        case .monthly :
+            return "month"
+        case .yearly:
+            return "year"
+        }
+    }
+    
+    var freeDays: Int {
+        switch self {
+        case .weekly:
+            return 3
+        case .monthly :
+            return 3
+        case .yearly:
+            return 3
+        }
+    }
+}
+
+
 struct PaywallView: View {
     @AppStorage(wrappedValue: true, "doOnboarding") var doOnboarding
     @Binding var showingPaywall: Bool
     @State private var animatingViews = false
 
+    
     private let monthlyPrice = 9.99
-    var VPadding: CGFloat = 24
     var currencyCode = "EUR"
     var body: some View {
         GeometryReader { proxy in
@@ -32,8 +70,8 @@ struct PaywallView: View {
                     }
                     Spacer()
                 }
-                .animation(.default.delay(2.5), value: animatingViews)
-                .padding([.leading, .top], 20)
+                    .animation(.default.delay(2.5), value: animatingViews)
+                    .padding([.leading, .top], 20)
                     .zIndex(2)
 
 
@@ -90,16 +128,16 @@ struct PaywallView: View {
                             .multilineTextAlignment(.leading)
                             .foregroundColor(.text)
                     }
-                        .padding(.horizontal, VPadding)
+                        .padding(.horizontal, UIValues.bigButtonHPadding)
 
                     Spacer()
 
 
                     // MARK: - Pricing Box
                     VStack(alignment: .leading, spacing: 0) {
-                        Text("\(monthlyPrice, format: .currency(code: currencyCode))/month, cancel anytime")
+                        Text("\(PricePoint.yearly.price, format: .currency(code: currencyCode))/\(PricePoint.yearly.denominator), cancel anytime")
                             .font(.customFontBody)
-                        Text("First 7 days free")
+                        Text("First \(PricePoint.yearly.freeDays) days free")
                             .font(.customFontFootnote)
                     }
                         .padding()
@@ -109,7 +147,7 @@ struct PaywallView: View {
                         RoundedRectangle(cornerRadius: 12)
                             .stroke(Color.green, lineWidth: 2)
                     )
-                        .padding(.horizontal, VPadding)
+                        .padding(.horizontal, UIValues.bigButtonHPadding)
 
 
                     Spacer()
@@ -128,7 +166,7 @@ struct PaywallView: View {
                                 .foregroundColor(.black)
                                 .background(.white)
                                 .cornerRadius(50)
-                                .padding(.horizontal, VPadding)
+                                .padding(.horizontal, UIValues.bigButtonHPadding)
                         }
 
                         // Assurance text

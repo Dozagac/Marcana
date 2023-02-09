@@ -36,7 +36,7 @@ struct FortuneReadingView: View {
 
 
     var body: some View {
-        GeometryReader { metric in
+        GeometryReader { geo in
             BackgroundView()
 
             // MARK: - Page View
@@ -58,7 +58,7 @@ struct FortuneReadingView: View {
                 
 
 
-                // MARK: - Scrollview: Cards + Fortune Text Body
+                // MARK: - Scrollview: Cards + Buttons + Fortune Text Body
                 ZStack(alignment: .bottom) {
                     ScrollView(showsIndicators: false) {
                         //MARK: - Cards appear here
@@ -67,12 +67,10 @@ struct FortuneReadingView: View {
                                 Button {
                                     showingSheet.toggle()
                                 } label: {
-
                                     VStack(spacing: 0) {
                                         Image(card.Card.image)
                                             .resizable()
                                             .scaledToFit()
-                                            .frame(height: 200)
                                             .cornerRadius(8)
                                             .rotationEffect(card.Orientation == Orientation.upright ? .degrees(0) : .degrees(180))
                                             .padding(.bottom, 4)
@@ -90,6 +88,7 @@ struct FortuneReadingView: View {
                                             .font(.customFontCallout.italic())
 
                                     }
+                                    .frame(width: geo.size.width/3 * 0.9)
 
                                 }
                                     .offset(y: animatingViews ? 0 : -100)
@@ -171,6 +170,23 @@ struct FortuneReadingView: View {
                             .frame(height: 2)
                             .overlay(.thinMaterial)
                             .padding(.vertical, 8)
+                        
+                        HStack{
+                            Image(systemName: "questionmark.bubble.fill")
+                                .frame(width: 24, height: 24)
+                            Text(fortuneReading.fortuneQuestion)
+                            Spacer()
+                        }
+                        .font(.customFontBody)
+                        .offset(x: animatingViews ? 0 : 200)
+                        .opacity(animatingViews ? 1 : 0)
+                        .animation(.easeInOut(duration: 1).delay(animationDelay),
+                                   value: animatingViews)
+                        
+                        Divider()
+                            .frame(height: 2)
+                            .overlay(.thinMaterial)
+                            .padding(.vertical, 8)
 
                         // MARK: - Main Text Body
                         Text(fortuneReading.fortuneText)
@@ -179,11 +195,10 @@ struct FortuneReadingView: View {
                             .opacity(animatingViews ? 1 : 0)
                             .animation(.easeInOut(duration: 1).delay(animationDelay),
                                        value: animatingViews)
+                            .padding(.bottom, 45) // so the entire text is visible
                         // This doesn't work in multiline and I can't fix it...
                         // AnimateText<ATOpacityEffect>($response, type: type, userInfo: userInfo)
-                        
-                        Spacer()
-                            .frame(height: 30)
+
                     }
                         .foregroundColor(.text)
                         .padding(12)
@@ -191,16 +206,8 @@ struct FortuneReadingView: View {
                     .cornerRadius(24)
 
                     ScrollerTextBottomGradientEffectView(effectColor: Color.marcanaBackground)
-                
-
                 }
-                    .edgesIgnoringSafeArea(.bottom)
-
             }
-            // this should be an onappear animation
-//            .animation(.easeOut(duration: 2), value: fortuneRequester.waitingForAPIResponse)
-            .padding(.bottom)
-
         }
             .edgesIgnoringSafeArea(.bottom)
             .navigationBarBackButtonHidden(true)

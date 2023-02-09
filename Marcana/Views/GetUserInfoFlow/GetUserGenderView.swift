@@ -57,7 +57,7 @@ struct GetUserGenderView: View {
                                 Button(action: {
                                     userGender = gender.rawValue
                                 
-                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
                                         withAnimation(.spring()) {
                                             getUserInfoStep += 1
                                         }
