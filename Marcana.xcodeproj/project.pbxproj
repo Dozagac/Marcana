@@ -28,6 +28,9 @@
 		764FF8E72993C9050062E221 /* UserDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764FF8E62993C9050062E221 /* UserDataManager.swift */; };
 		764FF8E92993E5B20062E221 /* MailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764FF8E82993E5B20062E221 /* MailView.swift */; };
 		764FF8ED299409800062E221 /* UIValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764FF8EC299409800062E221 /* UIValues.swift */; };
+		764FF8EF299539750062E221 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 764FF8EE299539750062E221 /* LaunchScreen.storyboard */; };
+		764FF8F12995484F0062E221 /* MusicPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764FF8F02995484F0062E221 /* MusicPlayer.swift */; };
+		764FF8F32995486E0062E221 /* MysticMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 764FF8F22995486E0062E221 /* MysticMusic.mp3 */; };
 		7653134A298544F000CF52A3 /* FortuneRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76531349298544F000CF52A3 /* FortuneRequester.swift */; };
 		765313512985519900CF52A3 /* NanumMyeongjo-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7653134D2985519900CF52A3 /* NanumMyeongjo-Bold.ttf */; };
 		765313522985519900CF52A3 /* NanumMyeongjo-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7653134E2985519900CF52A3 /* NanumMyeongjo-Regular.ttf */; };
@@ -92,6 +95,9 @@
 		764FF8E62993C9050062E221 /* UserDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataManager.swift; sourceTree = "<group>"; };
 		764FF8E82993E5B20062E221 /* MailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailView.swift; sourceTree = "<group>"; };
 		764FF8EC299409800062E221 /* UIValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIValues.swift; sourceTree = "<group>"; };
+		764FF8EE299539750062E221 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		764FF8F02995484F0062E221 /* MusicPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPlayer.swift; sourceTree = "<group>"; };
+		764FF8F22995486E0062E221 /* MysticMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = MysticMusic.mp3; sourceTree = "<group>"; };
 		76531349298544F000CF52A3 /* FortuneRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FortuneRequester.swift; sourceTree = "<group>"; };
 		7653134D2985519900CF52A3 /* NanumMyeongjo-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NanumMyeongjo-Bold.ttf"; sourceTree = "<group>"; };
 		7653134E2985519900CF52A3 /* NanumMyeongjo-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NanumMyeongjo-Regular.ttf"; sourceTree = "<group>"; };
@@ -153,6 +159,7 @@
 		7612CE0C298AB95C00838B3E /* Misc */ = {
 			isa = PBXGroup;
 			children = (
+				764FF8EE299539750062E221 /* LaunchScreen.storyboard */,
 				7654E7FD2933C67A00F9FDAB /* CardDetailView.swift */,
 				7612CE10298B235A00838B3E /* ProgressStepperView.swift */,
 				766F59F92941342700A328E4 /* BackGroundView.swift */,
@@ -181,6 +188,7 @@
 				76B2E12E29365BD4004BCF46 /* Extensions.swift */,
 				76D5EF6129718BF600EF9C4A /* CustomViewElements.swift */,
 				764FF8EC299409800062E221 /* UIValues.swift */,
+				764FF8F02995484F0062E221 /* MusicPlayer.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -287,6 +295,7 @@
 				7653134B2985517100CF52A3 /* Fonts */,
 				76D5EF652971A58900EF9C4A /* tarotTableVideo.mp4 */,
 				76760C7B297AB64900D9C5D2 /* candleVideo.mp4 */,
+				764FF8F22995486E0062E221 /* MysticMusic.mp3 */,
 				7675E44829326B2700ED17D5 /* Assets.xcassets */,
 			);
 			path = Marcana;
@@ -427,6 +436,8 @@
 				765313512985519900CF52A3 /* NanumMyeongjo-Bold.ttf in Resources */,
 				76760C7C297AB64900D9C5D2 /* candleVideo.mp4 in Resources */,
 				76760C70297A87EB00D9C5D2 /* GoogleService-Info.plist in Resources */,
+				764FF8EF299539750062E221 /* LaunchScreen.storyboard in Resources */,
+				764FF8F32995486E0062E221 /* MysticMusic.mp3 in Resources */,
 				760E9A7329916F3E00023F79 /* tarotAI.json in Resources */,
 				765313542985519900CF52A3 /* NanumMyeongjo-ExtraBold.ttf in Resources */,
 				7675E44929326B2700ED17D5 /* Assets.xcassets in Resources */,
@@ -475,6 +486,7 @@
 				7612CE09298A8AC300838B3E /* FortuneLoadingView.swift in Sources */,
 				7612CE11298B235A00838B3E /* ProgressStepperView.swift in Sources */,
 				763D8554298851E80040611F /* SelectOneCardView.swift in Sources */,
+				764FF8F12995484F0062E221 /* MusicPlayer.swift in Sources */,
 				764FF8E52993BF760062E221 /* ToastManager.swift in Sources */,
 				7689C3BE2985B93E002A8314 /* SettingsView.swift in Sources */,
 				7653134A298544F000CF52A3 /* FortuneRequester.swift in Sources */,
@@ -616,6 +628,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = Marcana/Marcana.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
@@ -627,9 +640,10 @@
 				INFOPLIST_FILE = Marcana/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_UIUserInterfaceStyle = "";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -650,6 +664,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = Marcana/Marcana.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
@@ -661,9 +676,10 @@
 				INFOPLIST_FILE = Marcana/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_UIUserInterfaceStyle = "";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

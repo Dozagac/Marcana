@@ -47,5 +47,6 @@ class FortuneHistory: ObservableObject {
     
     func eraseAllHistory() {
         fortunes = [FortuneReading]()
+        saveFortunes()
     }
 }

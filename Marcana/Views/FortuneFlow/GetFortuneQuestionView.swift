@@ -61,6 +61,7 @@ struct GetFortuneQuestionView: View {
     @State var showRecommendations = false
 
     @AppStorage(wrappedValue: true, "doUserInfoFlow") var doUserInfoFlow
+    
     var userDataManager = UserDataManager()
 
     private var canContinue: Bool {

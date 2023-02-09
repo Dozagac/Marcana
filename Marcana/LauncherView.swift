@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct LauncherView: View {
+    
     @AppStorage(wrappedValue: true, "doUserInfoFlow") var doUserInfoFlow
     // Last step of the userInfoFlow should this to false
     @StateObject var loginData = LoginViewOO()

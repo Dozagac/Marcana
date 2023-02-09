@@ -125,7 +125,21 @@ struct SettingsView: View {
                         }
                     }
 
+//     @AppStorage(wrappedValue: true, "playBackgroundMusic") var playBackgroundMusic
+//                    // MARK: - Preferences
+//                    Section(header: Text("Preferences").font(.customFontFootnote).foregroundColor(.secondary)) {
+//                        HStack{
+//                            Image(systemName: "headphones")
+//                                .modifier(SettingButtonIconModifier())
+//                            Toggle("Background Music", isOn: $playBackgroundMusic)
+//                        }
+//                        .foregroundColor(.text)
+//                        .padding(.vertical, elementVerticalPadding)
+//                    }
+                    
+                    
 
+                    
                     // MARK: - Explore Deck
                     Section(header: Text("Explore Cards").font(.customFontFootnote).foregroundColor(.secondary)) {
                         NavigationLink {

@@ -93,7 +93,7 @@ struct FortuneReadingView: View {
                                 }
                                     .offset(y: animatingViews ? 0 : -100)
                                     .opacity(animatingViews ? 1 : 0)
-                                    .animation(.easeInOut(duration: 1).delay(Double(index) * animationDelay),
+                                    .animation(.easeOut(duration: 1).delay(Double(index) * animationDelay),
                                                value: animatingViews)
                                     .sheet(isPresented: $showingSheet) {
                                     CardDetailView(card: card.Card)
@@ -122,7 +122,7 @@ struct FortuneReadingView: View {
                                 .cornerRadius(12)
                                 .offset(x: animatingViews ? 0 : -100)
                                 .opacity(animatingViews ? 1 : 0)
-                                .animation(.easeInOut(duration: 1).delay(animationDelay),
+                                .animation(.easeOut(duration: 1).delay(animationDelay),
                                            value: animatingViews)
                             Spacer()
                             // MARK: - Action Buttons
@@ -162,7 +162,7 @@ struct FortuneReadingView: View {
                             }
                                 .offset(x: animatingViews ? 0 : 100)
                                 .opacity(animatingViews ? 1 : 0)
-                                .animation(.easeInOut(duration: 1).delay(animationDelay),
+                                .animation(.easeOut(duration: 1).delay(animationDelay),
                                            value: animatingViews)
                         }
 
@@ -180,7 +180,7 @@ struct FortuneReadingView: View {
                         .font(.customFontBody)
                         .offset(x: animatingViews ? 0 : 200)
                         .opacity(animatingViews ? 1 : 0)
-                        .animation(.easeInOut(duration: 1).delay(animationDelay),
+                        .animation(.easeOut(duration: 1).delay(animationDelay),
                                    value: animatingViews)
                         
                         Divider()
@@ -193,7 +193,7 @@ struct FortuneReadingView: View {
                             .font(.customFontHeadline)
                             .offset(y: animatingViews ? 0 : 200)
                             .opacity(animatingViews ? 1 : 0)
-                            .animation(.easeInOut(duration: 1).delay(animationDelay),
+                            .animation(.easeOut(duration: 1).delay(animationDelay),
                                        value: animatingViews)
                             .padding(.bottom, 45) // so the entire text is visible
                         // This doesn't work in multiline and I can't fix it...
@@ -202,8 +202,6 @@ struct FortuneReadingView: View {
                     }
                         .foregroundColor(.text)
                         .padding(12)
-                    //                    .background(.ultraThinMaterial)
-                    .cornerRadius(24)
 
                     ScrollerTextBottomGradientEffectView(effectColor: Color.marcanaBackground)
                 }

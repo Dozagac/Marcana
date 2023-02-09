@@ -41,7 +41,6 @@ The High Priestess represents your current state of being; this card often indic
 Finally we come to the 7 of Cups which signifies your future path ahead. This card often appears when there are multiple options available but not all will bring desired results; take time to really think about what each option brings before making any decisions as they can have long lasting effects on your life going forward. In addition, it could also indicate that love is coming into play soon - if Hugo loves you then he may appear again in due course so keep an open heart ready for him! As for whether Hugo loves you specifically: my advice would be to look within yourself first - do YOU love him? That answer lies deep within...
 """
 
-
     
     func prepareAPIPrompt1Card() -> String {
         print("PROMPT SENT TO AI")
