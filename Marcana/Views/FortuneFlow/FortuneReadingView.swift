@@ -26,15 +26,15 @@ struct FortuneReadingView: View {
     @State var loadingText: String = ""
     @State var type: ATUnitType = .letters // The type used to split text.
     @State var userInfo: Any? = nil // Custom user info for the effect.
-
-    @State var showingSheet = false
-
+    
     @StateObject var toastManager = ToastManager()
 
     @State var animatingViews = false
     var animationDelay = 0.25
 
     @State private var renderedShareImage: Image?
+    
+    @State private var tappedCard: Card? = nil
 
     var body: some View {
         GeometryReader { geo in
@@ -65,19 +65,19 @@ struct FortuneReadingView: View {
                     ScrollView(showsIndicators: false) {
                         //MARK: - Cards appear here
                         HStack(alignment: .top, spacing: 8) {
-                            ForEach(Array(fortuneReading.fortuneCards.enumerated()), id: \.offset) { index, card in
+                            ForEach(Array(fortuneReading.fortuneCards.enumerated()), id: \.offset) { index, drawnCard in
                                 Button {
-                                    showingSheet.toggle()
+                                    self.tappedCard = drawnCard.Card
                                 } label: {
                                     VStack(spacing: 0) {
-                                        Image(card.Card.image)
+                                        Image(drawnCard.Card.image)
                                             .resizable()
                                             .scaledToFit()
                                             .cornerRadius(8)
-                                            .rotationEffect(card.Orientation == Orientation.upright ? .degrees(0) : .degrees(180))
+                                            .rotationEffect(drawnCard.Orientation == Orientation.upright ? .degrees(0) : .degrees(180))
                                             .padding(.bottom, 4)
 
-                                        Text(card.Card.name)
+                                        Text(drawnCard.Card.name)
                                             .foregroundColor(.text)
                                             .font(.customFontBody.bold())
                                             .minimumScaleFactor(0.5)
@@ -85,25 +85,23 @@ struct FortuneReadingView: View {
 
                                         Spacer()
 
-                                        Text(card.Orientation.rawValue)
+                                        Text(drawnCard.Orientation.rawValue)
                                             .foregroundColor(.text)
                                             .font(.customFontCallout.italic())
-
                                     }
                                         .frame(width: geo.size.width / 3 * 0.9)
+                                        .sheet(item: $tappedCard) { tappedCard in
+                                            CardDetailView(card: tappedCard)
+                                        }
 
                                 }
                                     .offset(y: animatingViews ? 0 : -100)
                                     .opacity(animatingViews ? 1 : 0)
                                     .animation(.easeOut(duration: 1).delay(Double(index) * animationDelay),
                                                value: animatingViews)
-                                    .sheet(isPresented: $showingSheet) {
-                                    CardDetailView(card: card.Card)
-                                }
                             }
                         }
                             .padding(.bottom, 4)
-
 
                         Divider()
                             .frame(height: 2)

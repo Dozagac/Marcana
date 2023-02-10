@@ -8,7 +8,7 @@
 import Foundation
 
 struct UIValues {
-    static let HPadding: CGFloat = 24
+    static let HPadding: CGFloat = 16
     static let bigButtonHPadding: CGFloat = 24
 }
 

@@ -32,17 +32,30 @@ struct VideoBackgroundView: View {
     }
 }
 
+//struct ImageBackgroundView: View{
+//    let imageName: String
+//    var body: some View{
+//        Image(imageName)
+//            .resizable()
+//            .scaledToFill()
+//            .opacity(0.2)
+//            .ignoresSafeArea(.all)
+//    }
+//}
+
 struct ImageBackgroundView: View{
     let imageName: String
     var body: some View{
         Image(imageName)
             .resizable()
-            .scaledToFill()
-            .opacity(0.2)
+//            .scaledToFill()
+//            .frame(maxWidth: UIScreen.main.bounds.width,
+//                    maxHeight: UIScreen.main.bounds.height)
             .ignoresSafeArea(.all)
+        
+            .opacity(0.2)
     }
 }
-
 
 struct BackgroundView: View {
     var body: some View {
@@ -53,12 +66,10 @@ struct BackgroundView: View {
     }
 }
 
-
-
 struct BackgroundView_Previews: PreviewProvider {
     static var previews: some View {
 //        VideoBackgroundView(videoFileName: "candleVideo", playRate: 0.8)
-        BackgroundView()
+        ImageBackgroundView(imageName: "Vine2")
     }
 }
 

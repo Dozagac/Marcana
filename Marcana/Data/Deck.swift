@@ -39,7 +39,7 @@ class Deck {
         self.wandsCards = allCards.filter({ $0.suite == .wands })
     }
 
-    // This is a skewed random where i can assign different changes to .upright and .reversed cases
+    // This is a "cheated" random where i can assign different changes to .upright and .reversed cases
     // I want .reversed to appear less
     func randomOrientation() -> Orientation {
         let randomNumber = Double.random(in: 0...1)

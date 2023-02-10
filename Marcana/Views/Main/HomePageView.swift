@@ -14,8 +14,6 @@ import SwiftUIVisualEffects
 
 struct HomePageView: View {
     @AppStorage(wrappedValue: "", UserDataManager.UserKeys.userName.rawValue) var userName
-    let appearance = UINavigationBarAppearance()
-
     // This is so that buttons can launch the same cover sheet with a different parameter value in it
     // which is the fortuneType
     @State var showingFortuneSheet1CardFortune = false
@@ -26,22 +24,15 @@ struct HomePageView: View {
     var body: some View {
         GeometryReader { geo in
             ZStack {
-                ImageBackgroundView(imageName: "PurpleVineBackground1")
-                    .fixedSize()
-                    .frame(width: geo.size.width, height: geo.size.height)
+                ImageBackgroundView(imageName: "Vine4")
 
                 VStack(spacing: 24) {
 
                     // MARK: - Welcome text
                     HStack {
-                        Text("Welcome \(userName)")
-//                            .font(.customFontTitle2)
-                            .font(.custom("Palatino-Bold", size: 34)) // too custom?
-                            .fontWeight(.black)
+                        CustomLargeNavTitleText(text: "Welcome \(userName)")
 
                         Spacer()
-                    
-                        
 
                         //MARK: - Music control button
                         Button {
@@ -54,8 +45,8 @@ struct HomePageView: View {
                                     Color.clear
                                         .blurEffect() // from SwiftUIVisualEffects, looks better than ultrathin
                                 )
-                                
-                                .cornerRadius(12)
+
+                                    .cornerRadius(12)
                                     .foregroundColor(.white)
 
                                 Text("Music")
@@ -67,10 +58,9 @@ struct HomePageView: View {
                         .padding(.top)
                         .padding(.horizontal, UIValues.HPadding)
                         .sheet(isPresented: $showingVolumeControlSheet) {
-                            MusicVolumeControlView(geoProxy: geo)
+                        MusicVolumeControlView(geoProxy: geo)
                             .presentationDetents([.fraction(0.15), .fraction(0.15)])
                     }
-
 
                     Spacer()
 
@@ -199,9 +189,9 @@ struct MusicVolumeControlView: View {
                     .accentColor(.marcanaBlue)
                 Image(systemName: "speaker.wave.3")
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity) // needs this volume for backgroun blur effect
-            
-            .background(BackgroundBlurView())
+                .frame(maxWidth: .infinity, maxHeight: .infinity) // needs this volume for backgroun blur effect
+
+                .background(BackgroundBlurView())
         }
     }
 }
@@ -266,6 +256,15 @@ enum FortuneType: String, Codable {
     }
 }
 
+struct CustomLargeNavTitleText: View {
+var text: String
+    var body: some View {
+        Text(text)
+            .font(.custom("Palatino-Bold", size: 34)) // too custom?
+            .fontWeight(.black)
+    }
+}
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
@@ -277,5 +276,7 @@ struct ContentView_Previews: PreviewProvider {
         }
     }
 }
+
+
 
 

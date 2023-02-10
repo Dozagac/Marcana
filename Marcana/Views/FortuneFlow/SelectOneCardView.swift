@@ -51,10 +51,10 @@ struct SelectOneCardView: View {
                     .frame(height: 100)
 
                 //MARK: - Card to pick
-                ClosedCardView(
+                FlippingCardView(
+                    isCardOpen: $cardOpen,
                     width: 200,
                     height: 300,
-                    cardOpen: $cardOpen,
                     shownCard: fortuneCards[0],
                     positionText: "")
                     .scaleEffect(cardOpen ? 1 : animateViews ? 1.05 : 1)

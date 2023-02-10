@@ -32,11 +32,10 @@ struct SettingsView: View {
 
     let elementVerticalPadding: CGFloat = 8
     var body: some View {
-        GeometryReader { geo in
-            ZStack {
-                ImageBackgroundView(imageName: "PurpleVineBackground2")
-                    .fixedSize()
-                    .frame(width: geo.size.width, height: geo.size.height)
+        ZStack(alignment: .top) {
+                ImageBackgroundView(imageName: "Vine3")
+
+                
                 List {
                     Section(header: Text("User Info").font(.customFontFootnote).foregroundColor(.secondary)) {
                         //MARK: - Name
@@ -269,7 +268,7 @@ struct SettingsView: View {
                 .onDisappear{
                     animating = false
                 }
-        }
+        
     }
 }
 

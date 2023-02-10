@@ -58,23 +58,23 @@ struct SelectThreeCardsView: View {
 
                 //MARK: - Cards to pick
                 HStack(alignment: .top, spacing: 24) {
-                    ClosedCardView(
-                        cardOpen: $card1Open,
+                    FlippingCardView(
+                        isCardOpen: $card1Open,
                         shownCard: fortuneCards[0],
                         positionText: "Past")
                         .scaleEffect(allCardsClosed ? 1 : animateViews ? 1.05 : 1)
                         .shadow(color: allCardsClosed ? .gray : animateViews ? .white : .gray, radius: 10, x: 0, y: 0)
                         .animation(.easeInOut(duration: 1.5).repeatForever(autoreverses: true), value: animateViews)
 
-                    ClosedCardView(
-                        cardOpen: $card2Open,
+                    FlippingCardView(
+                        isCardOpen: $card2Open,
                         shownCard: fortuneCards[1],
                         positionText: "Present")
                         .offset(y: -50)
                         .shadow(color: Color.gray, radius: 8, x: 0, y: 0)
 
-                    ClosedCardView(
-                        cardOpen: $card3Open,
+                    FlippingCardView(
+                        isCardOpen: $card3Open,
                         shownCard: fortuneCards[2],
                         positionText: "Future")
                         .shadow(color: Color.gray, radius: 8, x: 0, y: 0)
@@ -132,15 +132,36 @@ struct SelectThreeCardsView: View {
 }
 
 
-struct ClosedCardView: View {
+struct FlippingCardView: View {
+    // From: https://www.youtube.com/watch?v=7rxaRn-XK28
+    @State var backDegree = 0.0
+    @State var frontDegree = -90.0
+    let durationAndDelay: CGFloat = 0.3
+
+    @Binding var isCardOpen: Bool
     var width: CGFloat = 100
     var height: CGFloat = 150
-
-    @State private var showingSheet = false
-    @Binding var cardOpen: Bool
     var shownCard: DrawnCard
-
+    @State private var showingSheet = false
     let positionText: String
+    
+    func flipCard(isCardOpen: Bool) {
+        if isCardOpen {
+            withAnimation(.linear(duration: durationAndDelay)) {
+                backDegree = 90
+            }
+            withAnimation(.linear(duration: durationAndDelay).delay(durationAndDelay)){
+                frontDegree = 0
+            }
+        } else {
+            withAnimation(.linear(duration: durationAndDelay)) {
+                frontDegree = -90
+            }
+            withAnimation(.linear(duration: durationAndDelay).delay(durationAndDelay)){
+                backDegree = 0
+            }
+        }
+    }
 
     var body: some View {
         VStack(spacing: 12) {
@@ -148,26 +169,26 @@ struct ClosedCardView: View {
             Text(positionText)
                 .font(.customFontHeadline)
                 .frame(width: 98, height: 24)
-                .foregroundColor(cardOpen ? Color.gray : Color.text)
+                .foregroundColor(isCardOpen ? Color.gray : Color.text)
                 .padding(.vertical, 0) // to narrow down the default spacing for Text, if needed
             
             //MARK: Flipping Card
-            Image(cardOpen ? shownCard.Card.image : "facedownCard")
-                .resizable()
-                .rotationEffect(shownCard.Orientation == Orientation.upright ? .degrees(0) : .degrees(180))
-                .frame(width: width, height: height)
-                .clipShape(RoundedRectangle(cornerRadius: 8))
-//                .shadow(color: Color.gray, radius: 8, x: 0, y: 0)
+            ZStack{
+                CardFront(shownCard: shownCard, width: width, height: height, degree: $frontDegree)
+                CardBack(width: width, height: height, degree: $backDegree)
+            }
+                
             .onTapGesture {
                 withAnimation(.easeIn(duration: 1.0)) {
                     // Haptic feedback
                     UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
                     // show card explanation on tap if card is open
-                    if cardOpen {
+                    if isCardOpen {
                         self.showingSheet.toggle()
                     } else {
                         // open the card if the card was not open
-                        self.cardOpen = true
+                        self.isCardOpen = true
+                        flipCard(isCardOpen: self.isCardOpen)
                     }
                 }
             }
@@ -175,9 +196,8 @@ struct ClosedCardView: View {
                 CardDetailView(card: shownCard.Card)
             }
             
-            
             //MARK: - Revealed Card Text
-            if cardOpen {
+            if isCardOpen {
                 withAnimation(.linear(duration: 1.0)) {
                     VStack(spacing: 0) {
                         //MARK: Card Name
@@ -196,6 +216,40 @@ struct ClosedCardView: View {
                     }
                 }
             }
+        }
+    }
+    
+    struct CardFront : View {
+        var shownCard: DrawnCard
+        let width: CGFloat
+        let height: CGFloat
+        @Binding var degree :Double
+        
+        var body: some View {
+            ZStack{
+                Image(shownCard.Card.image)
+                    .resizable()
+                    .rotationEffect(shownCard.Orientation == Orientation.upright ? .degrees(0) : .degrees(180))
+                    .frame(width: width, height: height)
+                    .clipShape(RoundedRectangle(cornerRadius: 8)) // this may need to change for the big card?
+            }
+            .rotation3DEffect(.degrees(degree), axis: (x: 0, y: 1, z: 0))
+        }
+    }
+
+    struct CardBack : View {
+        let width: CGFloat
+        let height: CGFloat
+        @Binding var degree :Double
+        
+        var body: some View {
+            ZStack{
+                Image("facedownCard")
+                    .resizable()
+                    .frame(width: width, height: height)
+                    .clipShape(RoundedRectangle(cornerRadius: 8))
+            }
+            .rotation3DEffect(.degrees(degree), axis: (x: 0, y: 1, z: 0))
         }
     }
 }

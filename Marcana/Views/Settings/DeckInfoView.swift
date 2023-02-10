@@ -25,45 +25,46 @@ struct DeckInfoView: View {
     private static let topId = "topIdHere"
 
     var body: some View {
-        ZStack {
-            BackgroundView()
-        
+        GeometryReader { geo in
+            ZStack {
+                ImageBackgroundView(imageName: "Vine1")
 
-            VStack(spacing: 24) {
-                ScrollViewReader { reader in
-                    ScrollView(showsIndicators: false) {
-                        VStack(spacing: 24) {
-                            //MARK: TEXT FIELD
-                            ClearableTextField("Card Search", text: $searchedString)
-                                .onChange(of: searchedString) { newValue in
-                                filterDeck(with: searchedString)
-                            }
-                                .id(Self.topId)
-                            //MARK: GRID VIEW
-                            LazyVGrid (columns: columns, spacing: 24) {
-                                ForEach(searchFilteredList) { card in
-                                    CardItemView(card: card)
-                                        .onTapGesture {
-                                        self.sheetCard = card
-                                    }
+                VStack(spacing: 24) {
+                    ScrollViewReader { reader in
+                        ScrollView(showsIndicators: false) {
+                            VStack(spacing: 24) {
+                                //MARK: TEXT FIELD
+                                ClearableTextField("Card Search", text: $searchedString)
+                                    .onChange(of: searchedString) { newValue in
+                                    filterDeck(with: searchedString)
                                 }
-                                    .sheet(item: $sheetCard) { card in
-                                    CardDetailView(card: card)
+                                    .id(Self.topId)
+                                //MARK: GRID VIEW
+                                LazyVGrid (columns: columns, spacing: 24) {
+                                    ForEach(searchFilteredList) { card in
+                                        CardItemView(card: card)
+                                            .onTapGesture {
+                                            self.sheetCard = card
+                                        }
+                                    }
+                                        .sheet(item: $sheetCard) { card in
+                                        CardDetailView(card: card)
+                                    }
                                 }
                             }
                         }
-                    }
-                    .onChange(of: shouldScrollToTop) { _ in
-                        withAnimation { // add animation for scroll to top
-                            reader.scrollTo(Self.topId, anchor: .top) // scroll
+                        .onChange(of: shouldScrollToTop) { _ in
+                            withAnimation { // add animation for scroll to top
+                                reader.scrollTo(Self.topId, anchor: .top) // scroll
+                            }
                         }
                     }
                 }
+                    .frame(maxWidth: .infinity)
+                    .padding(.horizontal, 24)
             }
-                .frame(maxWidth: .infinity)
-                .padding(.horizontal, 24)
-        }
             .navigationTitle("All Cards")
+        }
     }
 
     func filterDeck(with input: String) -> Void {
@@ -73,8 +74,6 @@ struct DeckInfoView: View {
         } else {
             searchFilteredList = deck.allCards.filter { $0.name.lowercased().contains(input.lowercased()) }
         }
-
-
     }
 }
 
@@ -124,7 +123,6 @@ struct CardItemView: View {
                 .resizable()
                 .aspectRatio(2 / 3, contentMode: .fill)
                 .cornerRadius(4)
-
             Text(card.name)
                 .frame(height: 20, alignment: .top)
                 .font(.footnote.bold())
