@@ -11,8 +11,7 @@ import SwiftUI
 struct GetUserInfoFlowView: View {
     //Transitions
     let transition: AnyTransition = .push(from: .trailing)
-
-    @StateObject var user = UserOO()
+    
     @State var getUserInfoStep: Int = 0
 
     var body: some View {
@@ -52,7 +51,6 @@ struct GetUserInfoFlowView: View {
             }
             .padding(.horizontal, 16) // Equal lateral spacing is given to all views here.
                 .zIndex(1) // This is needed to enable transition out animations. It's a bug: https://sarunw.com/posts/how-to-fix-zstack-transition-animation-in-swiftui/
-            .environmentObject(user)
                 .accentColor(.text)
                 .preferredColorScheme(.dark)
         }

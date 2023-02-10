@@ -20,6 +20,9 @@ class MusicPlayer {
     var player: AVAudioPlayer?
 
     private init() {
+        
+        // read the volume @AppStorage("backgroundMusicVolume") var musicVolume: Double = 0.5 in the initialization
+        
         let path = Bundle.main.path(forResource: "MysticMusic.mp3", ofType: nil)!
         let url = URL(fileURLWithPath: path)
 
@@ -27,6 +30,12 @@ class MusicPlayer {
             player = try AVAudioPlayer(contentsOf: url)
             player?.numberOfLoops = -1
             player?.prepareToPlay()
+            
+            let savedVolume = UserDefaults.standard.double(forKey: "backgroundMusicVolume")
+            player?.volume = Float(savedVolume)
+            
+            // so it plays in silent mode as well
+            try AVAudioSession.sharedInstance().setCategory(.playback)
         } catch {
             print("Could not create AVAudioPlayer:", error)
         }

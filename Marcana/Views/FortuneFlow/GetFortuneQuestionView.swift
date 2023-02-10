@@ -41,6 +41,7 @@ enum questionSuggestion: String {
             return "heart.circle"
         case .career:
             return "briefcase"
+            return "briefcase"
         case .personal:
             return "brain"
         case .health:
@@ -86,38 +87,27 @@ struct GetFortuneQuestionView: View {
                 VStack {
                     //MARK: Content
                     VStack {
-                        VStack(spacing: 24) {
+                        VStack(spacing: 16) {
                             QuestionText(text: "Ask your question to fate")
 
-
-                            VStack(spacing: 12) {
+                            VStack(spacing: 4) {
                                 Text("Yes, you can ask anything")
                                 Text("There are no wrong questions")
                             }
                                 .frame(maxHeight: .infinity)
                                 .fixedSize(horizontal: false, vertical: true)
-                                .font(.customFontBody)
+                                .font(.customFontFootnote)
                                 .multilineTextAlignment(.center)
 
                             Divider()
                                 .frame(height: 2)
 
-                            ZStack {
-                                BackgroundView()
-                                // Interacting with this breaks the live preview for some reason...
-                                //MARK: - Text Editor for Question
-                                // https://www.hackingwithswift.com/quick-start/swiftui/how-to-change-the-background-color-of-list-texteditor-and-more
-                                TextEditor(text: $question)
-                                    .scrollContentBackground(.hidden) // iOS 16
-                                .background(.ultraThinMaterial)
-                                    .font(.customFontBody)
-                                    .multilineTextAlignment(.center)
-                                    .textFieldStyle(.plain)
-                                    .focused($focusTextField)
-                                    .frame(minHeight: 35, maxHeight: 70)
-                                    .fixedSize(horizontal: false, vertical: true)
-                                    .accentColor(.white)
-                            }
+                            TextField("", text: $question, axis:.vertical)
+                                .lineLimit(2...4)
+                                .font(.customFontBody)
+                                .multilineTextAlignment(.center)
+                                .focused($focusTextField)
+                                .accentColor(.white) // changes cursor color
 
                             Divider()
                                 .frame(height: 2)
@@ -126,9 +116,10 @@ struct GetFortuneQuestionView: View {
                             Button {
                                 showRecommendations = true
                             } label: {
-                                Text("Need ideas ?")
+                                Text("Need ideas?")
                                     .font(.customFontSubheadline)
-                                    .padding()
+                                    .padding(.vertical, 8)
+                                    .padding(.horizontal, 12)
                                     .background(.white)
                                     .foregroundColor(.black)
                                     .cornerRadius(100)
@@ -147,10 +138,6 @@ struct GetFortuneQuestionView: View {
                             .padding(24)
                             .background(.ultraThinMaterial)
                             .cornerRadius(48)
-
-
-                        Spacer()
-                        Spacer()
                     }
 
                     //MARK: Continue Button
@@ -236,7 +223,7 @@ struct QuestionListView: View {
                 }
             }
                 .scrollContentBackground(.hidden)
-                .padding(.top, 24)
+                .padding(.top, 32)
         }
             .background(BackgroundBlurView())
     }

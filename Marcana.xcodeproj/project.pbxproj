@@ -60,6 +60,7 @@
 		7689C3C42987CD9A002A8314 /* FortuneHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7689C3C32987CD9A002A8314 /* FortuneHistory.swift */; };
 		7689C3C62987D33A002A8314 /* FortuneHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7689C3C52987D33A002A8314 /* FortuneHistoryView.swift */; };
 		76B2E12F29365BD4004BCF46 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B2E12E29365BD4004BCF46 /* Extensions.swift */; };
+		76D4F1F929964732003A6851 /* SwiftUIVisualEffects in Frameworks */ = {isa = PBXBuildFile; productRef = 76D4F1F829964732003A6851 /* SwiftUIVisualEffects */; };
 		76D5EF6029718BC300EF9C4A /* AnimatedCipherStroke.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D5EF5F29718BC300EF9C4A /* AnimatedCipherStroke.swift */; };
 		76D5EF6229718BF600EF9C4A /* CustomViewElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D5EF6129718BF600EF9C4A /* CustomViewElements.swift */; };
 		76D5EF64297191A400EF9C4A /* PersistentDataManagerEfeExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D5EF63297191A400EF9C4A /* PersistentDataManagerEfeExample.swift */; };
@@ -67,7 +68,6 @@
 		76D5EF6B2972B83800EF9C4A /* AnimateText in Frameworks */ = {isa = PBXBuildFile; productRef = 76D5EF6A2972B83800EF9C4A /* AnimateText */; };
 		76DB3FD029903D740011FC06 /* PaywallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DB3FCF29903D740011FC06 /* PaywallView.swift */; };
 		76EC8A2129830D7900F5CD89 /* TextToSpeechTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EC8A2029830D7900F5CD89 /* TextToSpeechTest.swift */; };
-		76F72ACB2967518F009E7501 /* UserOO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F72ACA2967518F009E7501 /* UserOO.swift */; };
 		76F72ACD2967FC3E009E7501 /* LauncherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F72ACC2967FC3E009E7501 /* LauncherView.swift */; };
 		76F72BBF296D85E7009E7501 /* LocalDataStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F72BBE296D85E7009E7501 /* LocalDataStrings.swift */; };
 		76F72BC3296D9DF0009E7501 /* TestingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F72BC2296D9DF0009E7501 /* TestingView.swift */; };
@@ -134,7 +134,6 @@
 		76D5EF652971A58900EF9C4A /* tarotTableVideo.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = tarotTableVideo.mp4; sourceTree = "<group>"; };
 		76DB3FCF29903D740011FC06 /* PaywallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallView.swift; sourceTree = "<group>"; };
 		76EC8A2029830D7900F5CD89 /* TextToSpeechTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextToSpeechTest.swift; sourceTree = "<group>"; };
-		76F72ACA2967518F009E7501 /* UserOO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserOO.swift; sourceTree = "<group>"; };
 		76F72ACC2967FC3E009E7501 /* LauncherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LauncherView.swift; sourceTree = "<group>"; };
 		76F72BBE296D85E7009E7501 /* LocalDataStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataStrings.swift; sourceTree = "<group>"; };
 		76F72BC2296D9DF0009E7501 /* TestingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingView.swift; sourceTree = "<group>"; };
@@ -150,6 +149,7 @@
 				76D5EF6B2972B83800EF9C4A /* AnimateText in Frameworks */,
 				76760C74297A8D0500D9C5D2 /* FirebaseAuth in Frameworks */,
 				7612CE07298A77CC00838B3E /* SimpleToast in Frameworks */,
+				76D4F1F929964732003A6851 /* SwiftUIVisualEffects in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -316,7 +316,6 @@
 			isa = PBXGroup;
 			children = (
 				760E9A7229916F3E00023F79 /* tarotAI.json */,
-				76F72ACA2967518F009E7501 /* UserOO.swift */,
 				76760C77297A8E1A00D9C5D2 /* LoginViewOO.swift */,
 				7675E45229326B6300ED17D5 /* Card.swift */,
 				7675E45829326EF500ED17D5 /* Deck.swift */,
@@ -383,6 +382,7 @@
 				76D5EF6A2972B83800EF9C4A /* AnimateText */,
 				76760C73297A8D0500D9C5D2 /* FirebaseAuth */,
 				7612CE06298A77CC00838B3E /* SimpleToast */,
+				76D4F1F829964732003A6851 /* SwiftUIVisualEffects */,
 			);
 			productName = Marcana;
 			productReference = 7675E44129326B2600ED17D5 /* Marcana.app */;
@@ -418,6 +418,7 @@
 				76D5EF692972B83800EF9C4A /* XCRemoteSwiftPackageReference "AnimateText" */,
 				76760C72297A8D0500D9C5D2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				7612CE05298A77CC00838B3E /* XCRemoteSwiftPackageReference "SimpleToast" */,
+				76D4F1F729964732003A6851 /* XCRemoteSwiftPackageReference "swiftui-visual-effects" */,
 			);
 			productRefGroup = 7675E44229326B2600ED17D5 /* Products */;
 			projectDirPath = "";
@@ -479,7 +480,6 @@
 				76DB3FD029903D740011FC06 /* PaywallView.swift in Sources */,
 				7689C3C42987CD9A002A8314 /* FortuneHistory.swift in Sources */,
 				76EC8A2129830D7900F5CD89 /* TextToSpeechTest.swift in Sources */,
-				76F72ACB2967518F009E7501 /* UserOO.swift in Sources */,
 				76588C2129902D89003E3530 /* OnboardingView.swift in Sources */,
 				76760C76297A8E0B00D9C5D2 /* LoginView.swift in Sources */,
 				76F72ACD2967FC3E009E7501 /* LauncherView.swift in Sources */,
@@ -743,6 +743,14 @@
 				kind = branch;
 			};
 		};
+		76D4F1F729964732003A6851 /* XCRemoteSwiftPackageReference "swiftui-visual-effects" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/lucasbrown/swiftui-visual-effects";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		76D5EF692972B83800EF9C4A /* XCRemoteSwiftPackageReference "AnimateText" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/jasudev/AnimateText";
@@ -776,6 +784,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 76760C72297A8D0500D9C5D2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAuth;
+		};
+		76D4F1F829964732003A6851 /* SwiftUIVisualEffects */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 76D4F1F729964732003A6851 /* XCRemoteSwiftPackageReference "swiftui-visual-effects" */;
+			productName = SwiftUIVisualEffects;
 		};
 		76D5EF6A2972B83800EF9C4A /* AnimateText */ = {
 			isa = XCSwiftPackageProductDependency;

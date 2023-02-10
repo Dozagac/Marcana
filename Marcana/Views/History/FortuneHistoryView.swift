@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct FortuneHistoryView: View {
-    @StateObject var fortuneHistory = FortuneHistory()
-    @State private var showingFortuneSheet = false
-    @State private var showingFortuneHistoryItem = false
+    @StateObject var fortuneHistory = FortuneHistory.shared
+    @State private var showingFortuneSheet = false // starts a fortune reading flow
+    @State private var showingFortuneHistoryItem = false // to each history element
 
     var body: some View {
         GeometryReader { geo in
@@ -24,7 +24,7 @@ struct FortuneHistoryView: View {
                 if fortuneHistory.fortunes.isNotEmpty {
                     List {
                         // COMMENT IN FOR TESTING
-    //                    ForEach(FortuneHistory.dummyFortunes) { fortune in
+                        //                    ForEach(FortuneHistory.dummyFortunes) { fortune in
                         ForEach(fortuneHistory.fortunes) { fortune in
                             Button {
                                 showingFortuneHistoryItem = true
@@ -36,7 +36,7 @@ struct FortuneHistoryView: View {
                                         .frame(width: fortune.fortuneType == FortuneType.with1card ? 24 : 44,
                                                height: fortune.fortuneType == FortuneType.with1card ? 24 : 44)
                                         .frame(width: 44, height: 44)
-                                    
+
                                     VStack(alignment: .leading, spacing: 0) {
                                         Text(fortune.userName)
                                         Text(fortune.fortuneQuestion)
@@ -52,7 +52,7 @@ struct FortuneHistoryView: View {
                                     }
                                         .font(.customFontFootnote)
                                 }
-                                .fullScreenCover(isPresented: $showingFortuneHistoryItem){
+                                    .fullScreenCover(isPresented: $showingFortuneHistoryItem) {
                                     FortuneReadingView(showingFortuneSheet: $showingFortuneHistoryItem,
                                                        fortuneReading: fortune)
                                 }
@@ -60,13 +60,10 @@ struct FortuneHistoryView: View {
                         }
 
                             .onDelete { indexSet in
-                            fortuneHistory.fortunes.remove(atOffsets: indexSet)
+                                fortuneHistory.fortunes.remove(atOffsets: indexSet)
                         }
                     }
-                    .onAppear{
-                        fortuneHistory.loadFortunes()
-                    }
-                    .scrollContentBackground(.hidden)
+                        .scrollContentBackground(.hidden)
                         .toolbar {
                         EditButton()
                     }
@@ -95,13 +92,13 @@ struct FortuneHistoryView: View {
                         }
                     }
                         .fullScreenCover(isPresented: $showingFortuneSheet) {
-                            // Default selection is the 1 card reader.
+                        // Default selection is the 1 card reader.
                         GetFortuneQuestionView(fortuneType: .with1card,
                                                showingFortuneSheet: $showingFortuneSheet)
                     }
                 }
             }
-            .navigationTitle("History")
+                .navigationTitle("History")
         }
     }
 }

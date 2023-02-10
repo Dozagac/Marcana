@@ -5,6 +5,7 @@
 //  Created by Deniz Ozagac on 28/01/2023.
 //
 
+import SwiftUI
 import Foundation
 import OpenAISwift
 
@@ -26,11 +27,13 @@ class FortuneRequester: ObservableObject {
 
     private let openAPI = OpenAISwift(authToken: "")
 
+//    @StateObject var fortuneHistory = FortuneHistory.shared
     @Published var fortuneReading: FortuneReading
-    var fortuneHistory = FortuneHistory()
-
-
-    @Published var waitingForAPIResponse = false
+    @Published var waitingForAPIResponse = false {
+        didSet{
+            print ("waitingForAPIResponse: \(waitingForAPIResponse)")
+        }
+    }
     @Published private(set) var response = ""
 
     static let dummyResponse = """
@@ -156,7 +159,7 @@ Finally we come to the 7 of Cups which signifies your future path ahead. This ca
                     let responseText = response.choices.first?.text ?? "Sorry, something went wrong."
                     self.response = responseText.trimmingCharacters(in: .whitespacesAndNewlines)
                     self.fortuneReading.fortuneText = self.response
-                    self.fortuneHistory.addFortune(
+                    FortuneHistory.shared.addFortune(
                         self.fortuneReading
                     )
                     print("Fortune added to history")

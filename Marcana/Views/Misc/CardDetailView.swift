@@ -13,14 +13,6 @@ struct CardDetailView: View {
 
     var body: some View {
         ZStack(alignment: .top) {
-//            BlurBackgroundView()  // doesnt work with sheet :(
-//            BackgroundView()
-
-            Divider()
-                .frame(width: 120, height: 4)
-                .background(Color.text)
-                .cornerRadius(100)
-                .padding(.top, 8)
 
             VStack {
                 //MARK: Dismiss Button
@@ -38,7 +30,6 @@ struct CardDetailView: View {
                         .padding([.leading, .top], 20)
                         .background(.clear)
                 }
-
 
                 ZStack(alignment: .bottom) {
                     ScrollView(showsIndicators: false) {

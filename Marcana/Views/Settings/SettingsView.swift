@@ -27,12 +27,14 @@ struct SettingsView: View {
     @State private var isShowingMailView = false
 
     @State private var showingAccountSettings = false
+    
+    @State private var animating = false
 
     let elementVerticalPadding: CGFloat = 8
     var body: some View {
         GeometryReader { geo in
             ZStack {
-                ImageBackgroundView(imageName: "PurpleVineBackground1")
+                ImageBackgroundView(imageName: "PurpleVineBackground2")
                     .fixedSize()
                     .frame(width: geo.size.width, height: geo.size.height)
                 List {
@@ -170,7 +172,7 @@ struct SettingsView: View {
                                     .modifier(SettingButtonIconModifier())
                                 VStack(alignment: .leading) {
                                     Text("Send us an email")
-                                    Text(verbatim: "contact@mantra.app")
+                                    Text(verbatim: "contact@marcana.app")
                                         .font(.customFontCaption)
                                         .foregroundColor(.secondary)
                                 }
@@ -191,7 +193,7 @@ struct SettingsView: View {
                                     .modifier(SettingButtonIconModifier())
                                 VStack(alignment: .leading) {
                                     Text("Report a bug")
-                                    Text(verbatim: "contact@mantra.app")
+                                    Text(verbatim: "contact@marcana.app")
                                         .font(.customFontCaption)
                                         .foregroundColor(.secondary)
                                 }
@@ -205,51 +207,51 @@ struct SettingsView: View {
                         }
                     }
 
-
-                    Section(header: Text("Account").font(.customFontFootnote).foregroundColor(.secondary)) {
-
-                        //MARK: - Account Settings
-                        NavigationLink() {
-                            AccountSettingsView(selectedTab: $selectedTab, elementVerticalPadding: elementVerticalPadding)
-                        } label: {
-                            HStack {
-                                Image(systemName: "person")
-                                    .modifier(SettingButtonIconModifier())
-                                Text("Account Settings")
-                            }
-                                .padding(.vertical, elementVerticalPadding)
-                                .foregroundColor(.white)
-                        }
-
-                        //MARK: - Logout button
-                        Button() {
-                            // Log out
-                            DispatchQueue.global(qos: .background).async {
-                                try? Auth.auth().signOut()
-                            }
-                            // Set the view back to login
-                            withAnimation(.easeInOut) {
-                                isPresentingConfirm = true
-                            }
-                        } label: {
-                            HStack {
-                                Image(systemName: "delete.left.fill")
-                                    .modifier(SettingButtonIconModifier())
-                                Text("Log Out")
-                            }
-                                .padding(.vertical, elementVerticalPadding)
-                                .foregroundColor(.red)
-                        }
-                            .confirmationDialog("Are you sure you want to log out?",
-                                                isPresented: $isPresentingConfirm) {
-                            Button("Log Out?", role: .destructive) {
-                                loginStatus = false
-                                selectedTab = 0
-                            }
-                        } message: {
-                            Text("Are you sure you want to log out?")
-                        }
-                    }
+// MARK: - DISABLED UNTIL LOGIN IS ENABLED
+//                    Section(header: Text("Account").font(.customFontFootnote).foregroundColor(.secondary)) {
+//
+//                        //MARK: - Account Settings
+//                        NavigationLink() {
+//                            AccountSettingsView(selectedTab: $selectedTab, elementVerticalPadding: elementVerticalPadding)
+//                        } label: {
+//                            HStack {
+//                                Image(systemName: "person")
+//                                    .modifier(SettingButtonIconModifier())
+//                                Text("Account Settings")
+//                            }
+//                                .padding(.vertical, elementVerticalPadding)
+//                                .foregroundColor(.white)
+//                        }
+//
+//                        //MARK: - Logout button
+//                        Button() {
+//                            // Log out
+//                            DispatchQueue.global(qos: .background).async {
+//                                try? Auth.auth().signOut()
+//                            }
+//                            // Set the view back to login
+//                            withAnimation(.easeInOut) {
+//                                isPresentingConfirm = true
+//                            }
+//                        } label: {
+//                            HStack {
+//                                Image(systemName: "delete.left.fill")
+//                                    .modifier(SettingButtonIconModifier())
+//                                Text("Log Out")
+//                            }
+//                                .padding(.vertical, elementVerticalPadding)
+//                                .foregroundColor(.red)
+//                        }
+//                            .confirmationDialog("Are you sure you want to log out?",
+//                                                isPresented: $isPresentingConfirm) {
+//                            Button("Log Out?", role: .destructive) {
+//                                loginStatus = false
+//                                selectedTab = 0
+//                            }
+//                        } message: {
+//                            Text("Are you sure you want to log out?")
+//                        }
+//                    }
                 }
                     .scrollContentBackground(.hidden)
                     .listStyle(.insetGrouped)
@@ -257,6 +259,16 @@ struct SettingsView: View {
                 .font(.customFontBody)
                 .foregroundColor(.text)
                 .navigationTitle("Settings")
+            // this fake animation mbelowakes it so that the appstorage changes from the
+            //   USER INFO section are reflected onto the view by "refresing" the page
+                .opacity(animating ? 1: 0.99)
+                .animation(.easeOut, value: animating)
+                .onAppear{
+                    animating = true
+                }
+                .onDisappear{
+                    animating = false
+                }
         }
     }
 }

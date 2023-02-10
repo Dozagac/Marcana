@@ -77,7 +77,6 @@ struct CollectUserInfoView_Previews: PreviewProvider {
     @State static var getUserInfoStep = 1
     static var previews: some View {
         GetUserNameView(getUserInfoStep: $getUserInfoStep)
-            .environmentObject(MockUserOO())
             .preferredColorScheme(.dark)
     }
 }

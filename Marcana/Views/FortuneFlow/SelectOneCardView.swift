@@ -122,7 +122,6 @@ struct SelectOneCardView_Previews: PreviewProvider {
         NavigationStack {
             SelectOneCardView(showingFortuneSheet: .constant(true),
                               fortuneQuestion: "This is a dummy question")
-                .environmentObject(MockUserOO())
                 .preferredColorScheme(.dark)
         }
     }

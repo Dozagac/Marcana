@@ -8,6 +8,44 @@
 import Foundation
 import SwiftUI
 
+
+extension View {
+    // Allows separate corner rounding
+    func cornerRadius(_ radius: CGFloat, corners: UIRectCorner) -> some View {
+        clipShape(RoundedCorner(radius: radius, corners: corners))
+    }
+    
+    func onFirstAppear(_ action: @escaping () -> ()) -> some View {
+        modifier(FirstAppear(action: action))
+    }
+
+//    // https://stackoverflow.com/questions/69712759/swiftui-fullscreencover-with-no-animation
+//    func withoutAnimation(action: @escaping () -> Void) {
+//        var transaction = Transaction()
+//        transaction.disablesAnimations = true
+//        withTransaction(transaction) {
+//            action()
+//        }
+//    }
+}
+
+// for onFirstAppear View extension
+private struct FirstAppear: ViewModifier {
+    let action: () -> ()
+    
+    // Use this to only fire your block one time
+    @State private var hasAppeared = false
+    
+    func body(content: Content) -> some View {
+        // And then, track it here
+        content.onAppear {
+            guard !hasAppeared else { return }
+            hasAppeared = true
+            action()
+        }
+    }
+}
+
 // custom perfix operator for being ablt to add not (!) operator to Bool Binding
 prefix func ! (value: Binding<Bool>) -> Binding<Bool> {
     Binding<Bool>(
@@ -43,23 +81,6 @@ struct RoundedCorner: Shape {
         return Path(path.cgPath)
     }
 }
-
-
-extension View {
-    func cornerRadius(_ radius: CGFloat, corners: UIRectCorner) -> some View {
-        clipShape(RoundedCorner(radius: radius, corners: corners))
-    }
-
-//    // https://stackoverflow.com/questions/69712759/swiftui-fullscreencover-with-no-animation
-//    func withoutAnimation(action: @escaping () -> Void) {
-//        var transaction = Transaction()
-//        transaction.disablesAnimations = true
-//        withTransaction(transaction) {
-//            action()
-//        }
-//    }
-}
-
 
 
 extension Date {

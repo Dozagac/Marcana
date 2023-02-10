@@ -144,10 +144,17 @@ struct ClosedCardView: View {
 
     var body: some View {
         VStack(spacing: 12) {
+            //MARK: - Card Time Indicator Text
+            Text(positionText)
+                .font(.customFontHeadline)
+                .frame(width: 98, height: 24)
+                .foregroundColor(cardOpen ? Color.gray : Color.text)
+                .padding(.vertical, 0) // to narrow down the default spacing for Text, if needed
+            
             //MARK: Flipping Card
             Image(cardOpen ? shownCard.Card.image : "facedownCard")
                 .resizable()
-                .scaledToFit()
+                .rotationEffect(shownCard.Orientation == Orientation.upright ? .degrees(0) : .degrees(180))
                 .frame(width: width, height: height)
                 .clipShape(RoundedRectangle(cornerRadius: 8))
 //                .shadow(color: Color.gray, radius: 8, x: 0, y: 0)
@@ -167,12 +174,13 @@ struct ClosedCardView: View {
                 .sheet(isPresented: $showingSheet) {
                 CardDetailView(card: shownCard.Card)
             }
-
-            //MARK: Revealed Card Text
+            
+            
+            //MARK: - Revealed Card Text
             if cardOpen {
                 withAnimation(.linear(duration: 1.0)) {
                     VStack(spacing: 0) {
-                        //MARK: Card NAme
+                        //MARK: Card Name
                         Text(shownCard.Card.name)
                             .font(.customFontHeadline)
                             .foregroundColor(.text)
@@ -180,15 +188,14 @@ struct ClosedCardView: View {
                             .frame(width: 98, height: 24)
                             .minimumScaleFactor(0.2)
                             .lineLimit(2)
+                        
+                        // MARK: Card Orientation Text
+                        Text(shownCard.Orientation.rawValue)
+                            .foregroundColor(.text)
+                            .font(.customFontCallout.italic())
                     }
                 }
             }
-
-            Text(positionText)
-                .font(.customFontHeadline)
-                .frame(width: 98, height: 24)
-                .foregroundColor(cardOpen ? Color.gray : Color.text)
-                .padding(.vertical, 0) // to narrow down the default spacing for Text, if needed
         }
     }
 }
@@ -199,7 +206,6 @@ struct SelectThreeCardsView_Previews: PreviewProvider {
         NavigationStack {
             SelectThreeCardsView(showingFortuneSheet: .constant(true),
                                  fortuneQuestion: "This is a dummy question")
-                .environmentObject(MockUserOO())
                 .preferredColorScheme(.dark)
         }
     }

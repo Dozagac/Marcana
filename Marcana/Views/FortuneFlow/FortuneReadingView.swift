@@ -28,12 +28,13 @@ struct FortuneReadingView: View {
     @State var userInfo: Any? = nil // Custom user info for the effect.
 
     @State var showingSheet = false
-    
+
     @StateObject var toastManager = ToastManager()
 
     @State var animatingViews = false
     var animationDelay = 0.25
 
+    @State private var renderedShareImage: Image?
 
     var body: some View {
         GeometryReader { geo in
@@ -41,8 +42,10 @@ struct FortuneReadingView: View {
 
             // MARK: - Page View
             VStack(spacing: 0) {
-                // MARK: - X button
+
+                // MARK: - Top bar buttons
                 HStack {
+                    // MARK: - X button
                     Button {
                         showingFortuneSheet.toggle() // this sends us back to the home screen from fortune flow
                         dismiss() // goes back in the navigation from the history view
@@ -50,13 +53,12 @@ struct FortuneReadingView: View {
                         Image(systemName: "xmark")
                             .font(.title3)
                             .foregroundColor(.text)
-                            
+
                     }
+
                     Spacer()
                 }
-                .padding([.leading, .top], 20)
-                
-
+                    .padding([.horizontal, .top], 20)
 
                 // MARK: - Scrollview: Cards + Buttons + Fortune Text Body
                 ZStack(alignment: .bottom) {
@@ -88,7 +90,7 @@ struct FortuneReadingView: View {
                                             .font(.customFontCallout.italic())
 
                                     }
-                                    .frame(width: geo.size.width/3 * 0.9)
+                                        .frame(width: geo.size.width / 3 * 0.9)
 
                                 }
                                     .offset(y: animatingViews ? 0 : -100)
@@ -111,7 +113,7 @@ struct FortuneReadingView: View {
 
                         // MARK: - Date info
                         HStack {
-                            HStack{
+                            HStack {
                                 Image(systemName: "calendar")
                                 Text(fortuneReading.fortuneDate.formatted())
                                     .minimumScaleFactor(0.5)
@@ -119,7 +121,7 @@ struct FortuneReadingView: View {
                             }
                                 .font(.customFontHeadline)
 //
-                                .cornerRadius(12)
+                            .cornerRadius(12)
                                 .offset(x: animatingViews ? 0 : -100)
                                 .opacity(animatingViews ? 1 : 0)
                                 .animation(.easeOut(duration: 1).delay(animationDelay),
@@ -127,6 +129,25 @@ struct FortuneReadingView: View {
                             Spacer()
                             // MARK: - Action Buttons
                             HStack {
+                                // MARK: - Share button
+                                if let renderedShareImage{
+                                    // See end of the video for example
+                                    // https://www.youtube.com/watch?v=rM_2i5YobF4
+                                    ShareLink(item: renderedShareImage,
+                                              subject: Text("My Tarot Fortune - Marcana App"),
+                                              message: Text(fortuneReading.fortuneText),
+                                              preview: SharePreview("My Tarot Fortune - Marcana App", image: "AppIcon")) { // image doesn't work
+                                        // label
+                                        Image(systemName: "square.and.arrow.up")
+                                            .frame(width: 44, height: 44)
+                                            .background(.ultraThinMaterial)
+                                            .cornerRadius(12)
+                                            .foregroundColor(Color.text)
+                                    }
+
+                                }
+
+                                // MARK: - Info button
                                 NavigationLink {
                                     FortuneUserInfoView(fortuneReading: fortuneReading)
                                 } label: {
@@ -136,7 +157,11 @@ struct FortuneReadingView: View {
                                     .background(.ultraThinMaterial)
                                     .cornerRadius(12)
                                     .foregroundColor(Color.text)
+                                    .opacity(animatingViews ? 1 : 0)
+                                    .animation(.easeOut(duration: 1).delay(animationDelay * 1.5),
+                                               value: animatingViews)
 
+                                
                                 // MARK: TODO - Favorite button
                                 Button {
                                     // this will let the user to like it. IDK what to do with this
@@ -147,42 +172,38 @@ struct FortuneReadingView: View {
                                     .background(.ultraThinMaterial)
                                     .cornerRadius(12)
                                     .foregroundColor(Color.text)
+                                    .opacity(animatingViews ? 1 : 0)
+                                    .animation(.easeOut(duration: 1).delay(animationDelay * 2),
+                                               value: animatingViews)
 
-                                // MARK: Copy to clipboard button
-                                Button {
-                                    UIPasteboard.general.string = fortuneReading.fortuneText
-                                    toastManager.showingToast = true
-                                } label: {
-                                    Image(systemName: "doc.on.doc")
-                                }
-                                    .frame(width: 44, height: 44)
-                                    .background(.ultraThinMaterial)
-                                    .cornerRadius(12)
-                                    .foregroundColor(Color.text)
                             }
-                                .offset(x: animatingViews ? 0 : 100)
-                                .opacity(animatingViews ? 1 : 0)
-                                .animation(.easeOut(duration: 1).delay(animationDelay),
-                                           value: animatingViews)
+                            // TODO: Offset animation does not work but opacity does. for the if let conditioned view...
+                            // Also, opacity only works on it if it's here on the parent. So it is put here and the other buttons in the
+                            // view are animated with their own modifiers.
+//                                .offset(x: animatingViews ? 0 : 100)
+                            .opacity(animatingViews ? 1 : 0)
+                            .animation(.easeOut(duration: 1).delay(animationDelay),
+                                       value: animatingViews)
+
                         }
 
                         Divider()
                             .frame(height: 2)
                             .overlay(.thinMaterial)
                             .padding(.vertical, 8)
-                        
-                        HStack{
+
+                        HStack {
                             Image(systemName: "questionmark.bubble.fill")
                                 .frame(width: 24, height: 24)
                             Text(fortuneReading.fortuneQuestion)
                             Spacer()
                         }
-                        .font(.customFontBody)
-                        .offset(x: animatingViews ? 0 : 200)
-                        .opacity(animatingViews ? 1 : 0)
-                        .animation(.easeOut(duration: 1).delay(animationDelay),
-                                   value: animatingViews)
-                        
+                            .font(.customFontBody)
+                            .offset(x: animatingViews ? 0 : 200)
+                            .opacity(animatingViews ? 1 : 0)
+                            .animation(.easeOut(duration: 1).delay(animationDelay),
+                                       value: animatingViews)
+
                         Divider()
                             .frame(height: 2)
                             .overlay(.thinMaterial)
@@ -195,15 +216,39 @@ struct FortuneReadingView: View {
                             .opacity(animatingViews ? 1 : 0)
                             .animation(.easeOut(duration: 1).delay(animationDelay),
                                        value: animatingViews)
-                            .padding(.bottom, 45) // so the entire text is visible
-                        // This doesn't work in multiline and I can't fix it...
-                        // AnimateText<ATOpacityEffect>($response, type: type, userInfo: userInfo)
+                            .padding(.bottom, 24) // so the entire text is visible
+
+                        // MARK: - BOTTOM Share button
+                        if let renderedShareImage {
+                            // See end of the video for example
+                            // https://www.youtube.com/watch?v=rM_2i5YobF4
+                            ShareLink(
+                                "Share",
+                                item: renderedShareImage,
+                                subject: Text("My Tarot Fortune - Marcana App"),
+                                message: Text(fortuneReading.fortuneText),
+                                preview: SharePreview("My Tarot Fortune - Marcana App", image: "AppIcon")) // image doesn't work
+                                .padding()
+                                .background(.ultraThinMaterial)
+                                .cornerRadius(12)
+                                .foregroundColor(Color.text)
+                                .padding(.bottom, 24) // so the entire text is visible
+                        }
 
                     }
                         .foregroundColor(.text)
                         .padding(12)
 
                     ScrollerTextBottomGradientEffectView(effectColor: Color.marcanaBackground)
+                }
+            }
+                .onAppear {
+                // See end of the video for example
+                // https://www.youtube.com/watch?v=rM_2i5YobF4
+                let renderer = ImageRenderer(content: ShareCardsImageView(fortuneReading: fortuneReading))
+                renderer.scale = 1
+                if let image = renderer.cgImage {
+                    renderedShareImage = Image(decorative: image, scale: 1)
                 }
             }
         }
@@ -221,6 +266,41 @@ struct FortuneReadingView: View {
                 .background(.ultraThinMaterial)
                 .cornerRadius(12)
         }
+    }
+}
+
+
+
+struct ShareCardsImageView: View {
+    // See end of the video for example
+    // https://www.youtube.com/watch?v=rM_2i5YobF4
+    var fortuneReading: FortuneReading
+    var body: some View {
+        HStack(alignment: .top, spacing: 8) {
+            ForEach(Array(fortuneReading.fortuneCards.enumerated()), id: \.offset) { index, card in
+                VStack(spacing: 0) {
+                    Image(card.Card.image)
+                        .resizable()
+                        .scaledToFit()
+                        .cornerRadius(8)
+                        .rotationEffect(card.Orientation == Orientation.upright ? .degrees(0) : .degrees(180))
+                        .padding(.bottom, 4)
+                    Text(card.Card.name)
+                        .foregroundColor(.text)
+                        .font(.customFontBody.bold())
+                        .minimumScaleFactor(0.5)
+                        .lineLimit(2)
+                    Spacer()
+                    Text(card.Orientation.rawValue)
+                        .foregroundColor(.text)
+                        .font(.customFontCallout.italic())
+                }
+                    .frame(width: 200)
+            }
+        }
+            .padding(12)
+            .background(Color.marcanaBackground)
+            .cornerRadius(12)
     }
 }
 

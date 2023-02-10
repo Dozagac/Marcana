@@ -13,8 +13,8 @@ import Firebase
 struct AccountSettingsView: View {
     @Binding var selectedTab: Int
     var elementVerticalPadding: CGFloat
-    var fortuneHistory = FortuneHistory() // does this need to be a stateobject? prob not
 
+    @StateObject var fortuneHistory = FortuneHistory.shared
     @State var errorText: String = ""
     @State private var isPresentingEraseHistoryAlert = false
     @State private var isPresentingDeleteUserAlert = false

@@ -86,7 +86,6 @@ struct GetUserBirthdayView_Previews: PreviewProvider {
     @State static var getUserInfoStep = 2
     static var previews: some View {
         GetUserBirthdayView(getUserInfoStep: $getUserInfoStep)
-            .environmentObject(MockUserOO())
             .preferredColorScheme(.dark)
     }
 }

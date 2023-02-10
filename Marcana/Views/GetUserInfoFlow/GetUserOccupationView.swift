@@ -10,6 +10,7 @@ import SwiftUI
 struct GetUserOccupationView: View {
     @Binding var getUserInfoStep: Int
     @AppStorage(UserDataManager.UserKeys.userOccupation.rawValue) var userOccupation = ""
+    
     @FocusState private var focusTextField
 
     private var canContinue: Bool {
@@ -72,7 +73,6 @@ struct GetUserOccupationView_Previews: PreviewProvider {
     @State static var getUserInfoStep = 3
     static var previews: some View {
         GetUserOccupationView(getUserInfoStep: $getUserInfoStep)
-            .environmentObject(MockUserOO())
             .preferredColorScheme(.dark)
     }
 }

@@ -88,7 +88,6 @@ struct GetUserRelationshipView_Previews: PreviewProvider {
     @State static var getUserInfoStep = 4
     static var previews: some View {
         GetUserRelationshipView(getUserInfoStep: $getUserInfoStep)
-            .environmentObject(MockUserOO())
             .preferredColorScheme(.dark)
     }
 }

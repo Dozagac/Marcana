@@ -39,12 +39,24 @@ class Deck {
         self.wandsCards = allCards.filter({ $0.suite == .wands })
     }
 
+    // This is a skewed random where i can assign different changes to .upright and .reversed cases
+    // I want .reversed to appear less
+    func randomOrientation() -> Orientation {
+        let randomNumber = Double.random(in: 0...1)
+        if randomNumber < 0.25 {
+            return .reversed
+        } else {
+            return .upright
+        }
+    }
+    
     // Draws a
     func DrawCards(n: Int) -> [DrawnCard] {
         var drawnCards = [DrawnCard]()
+        var shuffled = allCards.shuffled() // this has to be above the for loop for unique picks to work
         for i in (0..<n) {
-            drawnCards.append(DrawnCard(Card: allCards.shuffled()[i] ,
-                                        Orientation: Orientation.allCases.randomElement()!))
+            drawnCards.append(DrawnCard(Card: shuffled[i] ,
+                                        Orientation: randomOrientation()))
         }
         return drawnCards
     }

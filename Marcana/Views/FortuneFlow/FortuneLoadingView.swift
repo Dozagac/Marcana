@@ -22,10 +22,15 @@ struct FortuneLoadingView: View {
                                   "...Unveiling the Unknown..."]
 
     @State var loadingText: String = ""
+    
+    @State var animating = false
 
     var body: some View {
         ZStack {
             BackgroundView()
+                .onAppear{
+                    animating = true
+                }
 
             // MARK: - Loading Animation
             ZStack(alignment: .center) {
@@ -34,7 +39,7 @@ struct FortuneLoadingView: View {
                 VStack(spacing: 24){
                     FlowerView()
                         .padding(24)
-                        .frame(width: 400,height: 400)
+                        .frame(width: 250,height: 250)
                     AnimateText<ATOpacityEffect>($loadingText, type: .letters, userInfo: nil)
                         .font(.customFontBody)
                         .onAppear {
@@ -46,19 +51,15 @@ struct FortuneLoadingView: View {
                 }
 
             }
+            .opacity(animating ? 1 : 0)
+            .animation(.easeOut(duration: 1).delay(1), value: animating)
+
             .navigationDestination(isPresented: !$fortuneRequester.waitingForAPIResponse){
                 FortuneReadingView(
                     showingFortuneSheet: $showingFortuneSheet,
                     fortuneReading: fortuneRequester.fortuneReading
                 )
             }
-
-            // TODO: here
-// Trigger navigation once the animation completes
-//            if fortuneRequester.waitingForAPIResponse
-//            // MARK: - Page View
-//            FortuneReadingView()
-
         }
             .navigationBarBackButtonHidden(true)
     }
