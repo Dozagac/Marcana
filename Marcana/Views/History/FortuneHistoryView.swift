@@ -18,14 +18,17 @@ struct FortuneHistoryView: View {
             ImageBackgroundView(imageName: "Vine2")
 
             // COMMENT IN FOR TESTING
-            //            if FortuneHistory.dummyFortunes.isNotEmpty {
+//                        if FortuneHistory.dummyFortunes.isNotEmpty {
             if fortuneHistory.fortunes.isNotEmpty {
                 List {
                     // COMMENT IN FOR TESTING
-                    //                    ForEach(FortuneHistory.dummyFortunes) { fortune in
+//                                        ForEach(FortuneHistory.dummyFortunes) { fortune in
                     ForEach(fortuneHistory.fortunes) { fortune in
                         Button {
-                            tappedFortuneHistoryItem = fortune
+                            DispatchQueue.main.async{
+                                tappedFortuneHistoryItem = fortune
+                            }
+                        
                         } label: {
                             HStack(spacing: 8) {
                                 Image(fortune.fortuneType.iconName)
@@ -55,6 +58,8 @@ struct FortuneHistoryView: View {
                                                    fortuneReading: tappedFortuneHistoryItem)
                             }
                         }
+                        .listRowBackground(UIValues.listRowBackroundColor)
+                        .foregroundColor(.text)
                     }
 
                         .onDelete { indexSet in

@@ -9,7 +9,11 @@ import Foundation
 import SwiftUI
 
 class FortuneHistory: ObservableObject {
-    @Published var fortunes: [FortuneReading] = [FortuneReading]()
+    @Published var fortunes: [FortuneReading] = [FortuneReading]() {
+        didSet{
+            saveFortunes()
+        }
+    }
 
     static let dummyFortunes: [FortuneReading] = [
         FortuneReading(fortuneQuestion: "Very long Dummy 1 card question, because why not, you gotta test everything you know?", fortuneText: FortuneRequester.dummyResponse, fortuneType: .with1card, fortuneCards: Deck().DrawCards(n: 1), userName: "Deniz", userGender: GenderPronoun.him.rawValue, userBirthday: 0, userOccupation: "Developer", userRelationship: Relationship.relationship.rawValue),
@@ -24,9 +28,7 @@ class FortuneHistory: ObservableObject {
 
 
     func addFortune(_ fortune: FortuneReading) {
-        fortunes.insert(fortune, at: 0) // so it appears it correct order in history    
-        saveFortunes()
-        loadFortunes() // has to be here since this is used as a singleton.
+        fortunes.insert(fortune, at: 0) // so it appears it correct order in history
     }
 
     func saveFortunes() {
@@ -48,7 +50,5 @@ class FortuneHistory: ObservableObject {
     
     func eraseAllHistory() {
         fortunes = [FortuneReading]()
-        saveFortunes()
-        loadFortunes() // has to be here since this is used as a singleton.
     }
 }

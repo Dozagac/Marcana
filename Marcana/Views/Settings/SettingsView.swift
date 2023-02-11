@@ -116,30 +116,16 @@ struct SettingsView: View {
                                 Image(systemName: "arrow.counterclockwise.circle.fill")
                                     .modifier(SettingButtonIconModifier())
                                 VStack(alignment: .leading) {
-                                    Text("Reset User Info")
+                                    Text("Reset All User Info")
                                     Text("Re-enter all user data above")
                                         .font(.customFontCaption)
                                 }
                             }
-                                .foregroundColor(.cyan)
+                            .foregroundColor(.text)
                                 .padding(.vertical, elementVerticalPadding)
                         }
                     }
-
-//     @AppStorage(wrappedValue: true, "playBackgroundMusic") var playBackgroundMusic
-//                    // MARK: - Preferences
-//                    Section(header: Text("Preferences").font(.customFontFootnote).foregroundColor(.secondary)) {
-//                        HStack{
-//                            Image(systemName: "headphones")
-//                                .modifier(SettingButtonIconModifier())
-//                            Toggle("Background Music", isOn: $playBackgroundMusic)
-//                        }
-//                        .foregroundColor(.text)
-//                        .padding(.vertical, elementVerticalPadding)
-//                    }
-                    
-                    
-
+                    .listRowBackground(UIValues.listRowBackroundColor)
                     
                     // MARK: - Explore Deck
                     Section(header: Text("Explore Cards").font(.customFontFootnote).foregroundColor(.secondary)) {
@@ -159,6 +145,7 @@ struct SettingsView: View {
                             .foregroundColor(.text)
                             .padding(.vertical, elementVerticalPadding)
                     }
+                    .listRowBackground(UIValues.listRowBackroundColor)
 
                     // MARK: - Contact
                     Section(header: Text("Contact Us").font(.customFontFootnote).foregroundColor(.secondary)) {
@@ -205,6 +192,8 @@ struct SettingsView: View {
                                 .font(.body) // mail screen uses regular sf font
                         }
                     }
+                    .listRowBackground(UIValues.listRowBackroundColor)
+                    
 
 // MARK: - DISABLED UNTIL LOGIN IS ENABLED
 //                    Section(header: Text("Account").font(.customFontFootnote).foregroundColor(.secondary)) {
@@ -252,6 +241,7 @@ struct SettingsView: View {
 //                        }
 //                    }
                 }
+            
                     .scrollContentBackground(.hidden)
                     .listStyle(.insetGrouped)
             }

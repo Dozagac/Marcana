@@ -67,7 +67,7 @@ struct HomePageView: View {
                     VStack(spacing: 24) {
                         FortuneTypeSelectionButton(
                             fortuneType: .with1card,
-                            colors: [.marcanaPink, .marcanaPink.opacity(0.8)],
+                            colors: [.marcanaPink, .marcanaPink.opacity(0.7)],
                             showingFortuneSheet: $showingFortuneSheet1CardFortune,
                             geoProxy: geo
                         )
@@ -80,7 +80,7 @@ struct HomePageView: View {
 
                         FortuneTypeSelectionButton(
                             fortuneType: .with3cards,
-                            colors: [.marcanaBlue, .marcanaBlue.opacity(0.8)],
+                            colors: [.marcanaBlue, .marcanaBlue.opacity(0.7)],
                             showingFortuneSheet: $showingFortuneSheet3CardFortune,
                             geoProxy: geo
                         )

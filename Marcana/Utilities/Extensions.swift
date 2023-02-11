@@ -62,6 +62,7 @@ extension Collection {
 }
 
 extension Color {
+    static let marcanaLicorice = Color("MarcanaLicorice")
     static let marcanaBackground = Color("MarcanaBackground")
     static let marcanaPink = Color("MarcanaPink")
     static let marcanaBlue = Color("MarcanaBlue")

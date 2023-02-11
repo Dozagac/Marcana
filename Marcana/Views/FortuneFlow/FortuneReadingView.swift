@@ -13,7 +13,7 @@ import SimpleToast
 struct FortuneReadingView: View {
     @Binding var showingFortuneSheet: Bool
     @Environment(\.dismiss) var dismiss
-    var fortuneReading: FortuneReading
+    @ObservedObject var fortuneReading: FortuneReading
 
     let loadingTexts: [String] = ["...Harnessing Mystic Powers...",
                                   "...Consulting the Cards...",
@@ -163,13 +163,17 @@ struct FortuneReadingView: View {
                                 // MARK: TODO - Favorite button
                                 Button {
                                     // this will let the user to like it. IDK what to do with this
+                                    fortuneReading.ToggleFavorited()
+                                    
+                                    print("Favorited: \(fortuneReading.isFavorited)")
                                 } label: {
-                                    Image(systemName: "heart")
+                                    Image(systemName: fortuneReading.isFavorited ? "heart.fill" : "heart")
                                 }
                                     .frame(width: 44, height: 44)
                                     .background(.ultraThinMaterial)
                                     .cornerRadius(12)
-                                    .foregroundColor(Color.text)
+                                    .foregroundColor(fortuneReading.isFavorited ? Color.red : Color.text)
+                                    .animation(.linear, value: fortuneReading.isFavorited)
                                     .opacity(animatingViews ? 1 : 0)
                                     .animation(.easeOut(duration: 1).delay(animationDelay * 2),
                                                value: animatingViews)
