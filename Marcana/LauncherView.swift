@@ -61,10 +61,10 @@ struct LauncherView: View {
         }
         // Internet check and error
         .alert(isPresented: $alertManager.showNoInternetAlert) {
-            Alert(title: Text("No Internet Connection"), message: Text("Marcana needs internet connection to work:( Please check your internet connection and try again."), dismissButton: .default(Text("OK")))
+            Alert(title: Text("No Internet Connection"), message: Text("Marcana needs internet connection to function.\nPlease check your internet connection and try again."), dismissButton: .default(Text("OK")))
         }
             .onAppear {
-            // view book pg 415
+            // view book pg 415, customizing tab bar
             let appearance = UITabBarAppearance()
 //                appearance.backgroundEffect = UIBlurEffect(style: .systemUltraThinMaterialDark)
 //                appearance.backgroundColor = UIColor(Color.marcanaBackground.opacity(0.2))

@@ -15,7 +15,6 @@ class FortuneHistory: ObservableObject {
         }
     }
     
-    // make this a set
     @Published var favoriteFortunes: [FortuneReading] = [FortuneReading]() {
         didSet{
             saveFortunes()

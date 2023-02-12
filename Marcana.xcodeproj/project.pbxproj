@@ -26,6 +26,7 @@
 		763FDF5F2998D952007B7B77 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763FDF5E2998D952007B7B77 /* NotificationManager.swift */; };
 		763FDF612998D9A3007B7B77 /* OnboardingNotificationAskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763FDF602998D9A3007B7B77 /* OnboardingNotificationAskView.swift */; };
 		763FDF632998DCB4007B7B77 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763FDF622998DCB4007B7B77 /* AlertManager.swift */; };
+		763FDF652998F10E007B7B77 /* HeartLikePopAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763FDF642998F10E007B7B77 /* HeartLikePopAnimation.swift */; };
 		764FF8E32993BAD70062E221 /* AccountSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764FF8E22993BAD70062E221 /* AccountSettingsView.swift */; };
 		764FF8E52993BF760062E221 /* ToastManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764FF8E42993BF760062E221 /* ToastManager.swift */; };
 		764FF8E72993C9050062E221 /* UserDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764FF8E62993C9050062E221 /* UserDataManager.swift */; };
@@ -96,6 +97,7 @@
 		763FDF5E2998D952007B7B77 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		763FDF602998D9A3007B7B77 /* OnboardingNotificationAskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingNotificationAskView.swift; sourceTree = "<group>"; };
 		763FDF622998DCB4007B7B77 /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
+		763FDF642998F10E007B7B77 /* HeartLikePopAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartLikePopAnimation.swift; sourceTree = "<group>"; };
 		764FF8E22993BAD70062E221 /* AccountSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingsView.swift; sourceTree = "<group>"; };
 		764FF8E42993BF760062E221 /* ToastManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastManager.swift; sourceTree = "<group>"; };
 		764FF8E62993C9050062E221 /* UserDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataManager.swift; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 				764FF8EC299409800062E221 /* UIValues.swift */,
 				764FF8F02995484F0062E221 /* MusicPlayer.swift */,
 				763FDF622998DCB4007B7B77 /* AlertManager.swift */,
+				763FDF642998F10E007B7B77 /* HeartLikePopAnimation.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -466,6 +469,7 @@
 			files = (
 				76F72BC3296D9DF0009E7501 /* TestingView.swift in Sources */,
 				76D5EF6029718BC300EF9C4A /* AnimatedCipherStroke.swift in Sources */,
+				763FDF652998F10E007B7B77 /* HeartLikePopAnimation.swift in Sources */,
 				7675E45929326EF500ED17D5 /* Deck.swift in Sources */,
 				7675E45329326B6300ED17D5 /* Card.swift in Sources */,
 				76267D442955EA5900108612 /* GetUserRelationshipView.swift in Sources */,

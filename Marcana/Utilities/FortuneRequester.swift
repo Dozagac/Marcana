@@ -170,7 +170,7 @@ Finally we come to the 7 of Cups which signifies your future path ahead. This ca
                 print(error.localizedDescription)
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { // delay is so that the flow doesn't get bugged when an instant fail happens.
                     self.response = error.localizedDescription
-                    self.fortuneReading.fortuneText = "Oops!\n\nIt looks like our servers are taking a break right now. Please try again in a bit. In the meantime, grab a cup of coffee and enjoy the moment. \n\nThank you for your patience:) \n\nError: \(self.response)"
+                    self.fortuneReading.fortuneText = "Oops!\n\nIt looks like our servers are taking a break right now. \nPlease try again in a bit. In the meantime, grab a cup of coffee and enjoy the moment ☕️. \n\nThank you for your patience 🤍. \n\nError: \(self.response)"
                     self.waitingForAPIResponse = false
                 }
             }
