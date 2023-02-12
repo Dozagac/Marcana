@@ -134,7 +134,24 @@ struct FortuneTypeSelectionButton: View {
                             .font(.customFontCallout.bold())
                             .foregroundColor(.secondary)
                             .lineLimit(1)
-                            .minimumScaleFactor(0.5) }
+                            .minimumScaleFactor(0.5)
+                        
+                        //MARK: - Complexity Text
+                        HStack(alignment: .top, spacing: 0){
+                            Text("Detail Level: ")
+                                
+                            ForEach(1..<fortuneType.detailLevel){_ in
+                                Image(systemName: "star.fill")
+                            }
+                            .foregroundColor(.yellow)
+                            
+                        }
+                        .font(.customFontCallout)
+                        .foregroundColor(.secondary)
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.5)
+                    }
+                    
                     Spacer()
                 }
                     .frame(height: 200)
@@ -149,10 +166,11 @@ struct FortuneTypeSelectionButton: View {
                             Spacer()
                             HStack {
                                 HStack(spacing: 2) {
-                                    Image(systemName: "magnifyingglass")
-                                    Text(fortuneType.durationText)
-                                        .fontWeight(.bold)
-                                }
+                                    HStack{
+                                        Image(systemName: "magnifyingglass")
+                                        Text(fortuneType.durationText)
+                                            .fontWeight(.bold)
+                                    }
                                     .foregroundColor(.text)
                                     .font(.customFontCaption2)
                                     .padding(2)
@@ -161,6 +179,10 @@ struct FortuneTypeSelectionButton: View {
                                     .padding(.vertical, 12)
                                     .padding(.horizontal, 36)
                                     .preferredColorScheme(.light)
+                                    
+                                    Spacer()
+                                }
+                                
                                 Spacer()
                             }
 
@@ -229,7 +251,7 @@ enum FortuneType: String, Codable {
         case .with3cards:
             return "Past - Present - Future"
         case .with5cards:
-            return "Full Spread???"
+            return "5 - Card Spread"
         }
     }
 
@@ -241,6 +263,17 @@ enum FortuneType: String, Codable {
             return "Pick 3 cards"
         case .with5cards:
             return "Pick 5 cards"
+        }
+    }
+    
+    var detailLevel: Int {
+        switch self {
+        case .with1card:
+            return 1 + 1
+        case .with3cards:
+            return 2 + 1
+        case .with5cards:
+            return 3 // update these when implementing 5 card reader
         }
     }
 

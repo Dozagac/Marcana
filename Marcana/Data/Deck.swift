@@ -53,7 +53,7 @@ class Deck {
     // Draws a
     func DrawCards(n: Int) -> [DrawnCard] {
         var drawnCards = [DrawnCard]()
-        var shuffled = allCards.shuffled() // this has to be above the for loop for unique picks to work
+        let shuffled = allCards.shuffled() // this has to be above the for loop for unique picks to work
         for i in (0..<n) {
             drawnCards.append(DrawnCard(Card: shuffled[i] ,
                                         Orientation: randomOrientation()))

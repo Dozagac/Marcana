@@ -41,7 +41,6 @@ enum questionSuggestion: String {
             return "heart.circle"
         case .career:
             return "briefcase"
-            return "briefcase"
         case .personal:
             return "brain"
         case .health:

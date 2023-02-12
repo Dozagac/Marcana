@@ -9,7 +9,7 @@ import SwiftUI
 import Foundation
 import OpenAISwift
 
-class FortuneRequester: ObservableObject {
+@MainActor class FortuneRequester: ObservableObject {
     init(fortuneQuestion: String, fortuneType: FortuneType, fortuneCards: [DrawnCard]) {
         // read data from userdefaults/appstorage
         self.fortuneReading = FortuneReading(
@@ -25,7 +25,7 @@ class FortuneRequester: ObservableObject {
         )
     }
 
-    private let openAPI = OpenAISwift(authToken: "")
+
 
 //    @StateObject var fortuneHistory = FortuneHistory.shared
     @Published var fortuneReading: FortuneReading
@@ -146,6 +146,7 @@ Finally we come to the 7 of Cups which signifies your future path ahead. This ca
 
 
     func sendAPIRequest(AIPrompt: String) {
+        let openAPI = OpenAISwift(authToken: RemoteConfigManager.shared.getApiKey())
         // There are mode API parameters but this library doesnt accept them yet
         // https://beta.openai.com/docs/api-reference/completions/create
         openAPI.sendCompletion(with: AIPrompt,
