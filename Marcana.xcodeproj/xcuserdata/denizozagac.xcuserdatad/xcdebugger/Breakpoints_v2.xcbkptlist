@@ -522,8 +522,8 @@
             filePath = "Marcana/Data/FortuneHistory.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "46"
-            endingLineNumber = "46"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
             landmarkName = "loadFortunes()"
             landmarkType = "7">
          </BreakpointContent>
@@ -935,10 +935,58 @@
             filePath = "Marcana/Data/FortuneReading.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "29"
-            endingLineNumber = "29"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
             landmarkName = "ToggleFavorited()"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8561A667-DCE3-48DA-9177-01A4D3C80089"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Marcana/Views/Onboarding/OnboardingNotificationAskView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "17"
+            endingLineNumber = "17"
+            landmarkName = "body"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "8561A667-DCE3-48DA-9177-01A4D3C80089 - 315ee724b09cbc91"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Marcana.OnboardingNotificationAskView.body.getter : some"
+                  moduleName = "Marcana"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/denizozagac/Desktop/Projects/Marcana/Marcana/Views/Onboarding/OnboardingNotificationAskView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "348">
+               </Location>
+               <Location
+                  uuid = "8561A667-DCE3-48DA-9177-01A4D3C80089 - fc190b1b0ee1ab1b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.datePickerStyle&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.DatePickerStyle&gt;(&#x3c4;_1_0) -&gt; some&gt;&gt;.0, SwiftUI.Button&lt;&lt;&lt;opaque return type of SwiftUI.View.cornerRadius(_: CoreGraphics.CGFloat, antialiased: Swift.Bool) -&gt; some&gt;&gt;.0&gt;, SwiftUI.Button&lt;&lt;&lt;opaque return type of SwiftUI.View.cornerRadius(_: CoreGraphics.CGFloat, antialiased: Swift.Bool) -&gt; some&gt;&gt;.0&gt;)&gt; in Marcana.OnboardingNotificationAskView.body.getter : some"
+                  moduleName = "Marcana"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/denizozagac/Desktop/Projects/Marcana/Marcana/Views/Onboarding/OnboardingNotificationAskView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "18"
+                  endingLineNumber = "18"
+                  offsetFromSymbolStart = "1156">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

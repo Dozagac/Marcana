@@ -25,7 +25,12 @@ class FortuneReading: ObservableObject, Codable, Identifiable {
     
     func ToggleFavorited() {
         self.isFavorited.toggle()
-        FortuneHistory.shared.saveFortunes() // can't put his in didSet for some reason
+        // I can't put this in didSet of isFavorited for some reason
+        if self.isFavorited{
+            FortuneHistory.shared.addToFavoriteFortunes(self)
+        } else {
+            FortuneHistory.shared.removeFromFavoriteFortunes(self)
+        }
     }
     
     init(fortuneQuestion: String, fortuneText: String, fortuneType: FortuneType, fortuneCards: [DrawnCard], userName: String, userGender: String, userBirthday: Double, userOccupation: String, userRelationship: String) {

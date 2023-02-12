@@ -17,97 +17,133 @@ struct FortuneHistoryView: View {
         ZStack {
             ImageBackgroundView(imageName: "Vine2")
 
+
             // COMMENT IN FOR TESTING
 //                        if FortuneHistory.dummyFortunes.isNotEmpty {
             if fortuneHistory.fortunes.isNotEmpty {
                 List {
-                    // COMMENT IN FOR TESTING
-//                                        ForEach(FortuneHistory.dummyFortunes) { fortune in
-                    ForEach(fortuneHistory.fortunes) { fortune in
-                        Button {
-                            DispatchQueue.main.async{
-                                tappedFortuneHistoryItem = fortune
-                            }
-                        
-                        } label: {
-                            HStack(spacing: 8) {
-                                Image(fortune.fortuneType.iconName)
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: fortune.fortuneType == FortuneType.with1card ? 24 : 44,
-                                           height: fortune.fortuneType == FortuneType.with1card ? 24 : 44)
-                                    .frame(width: 44, height: 44)
 
-                                VStack(alignment: .leading, spacing: 0) {
-                                    Text(fortune.userName)
-                                    Text(fortune.fortuneQuestion)
-                                        .lineLimit(1)
-                                }
-                                    .font(.customFontSubheadline)
-
-                                Spacer()
-
-                                VStack(spacing: 0) {
-                                    Text(fortune.fortuneDate.formatted(date: .abbreviated, time: .omitted))
-                                    Text(fortune.fortuneDate.formatted(date: .omitted, time: .shortened))
-                                }
-                                    .font(.customFontFootnote)
+                    if fortuneHistory.favoriteFortunes.isNotEmpty { // this is not published......
+                        Section {
+                            ForEach(fortuneHistory.favoriteFortunes) { favoritedFortune in
+                                FortuneHistoryListRowItems(fortune: favoritedFortune, tappedFortuneHistoryItem: $tappedFortuneHistoryItem, showingFortuneSheet: $showingFortuneSheet)
                             }
-                                .fullScreenCover(item: $tappedFortuneHistoryItem) { tappedFortuneHistoryItem in
-                                FortuneReadingView(showingFortuneSheet: $showingFortuneSheet,
-                                                   fortuneReading: tappedFortuneHistoryItem)
+                            .onDelete { indexSet in
+                                fortuneHistory.fortunes.remove(atOffsets: indexSet)
                             }
+                        } header: {
+                            Text("Favorites")
                         }
-                        .listRowBackground(UIValues.listRowBackroundColor)
-                        .foregroundColor(.text)
                     }
 
-                        .onDelete { indexSet in
-                        fortuneHistory.fortunes.remove(atOffsets: indexSet)
+                        Section {
+                            // COMMENT IN FOR TESTING
+//                            ForEach(FortuneHistory.dummyFortunes) { fortune in
+                            ForEach(fortuneHistory.fortunes) { fortune in
+                                FortuneHistoryListRowItems(fortune: fortune, tappedFortuneHistoryItem: $tappedFortuneHistoryItem, showingFortuneSheet: $showingFortuneSheet)
+                            }
+                                .onDelete { indexSet in
+                                fortuneHistory.fortunes.remove(atOffsets: indexSet)
+                            }
+                        } header: {
+                            Text("All")
+                        }
                     }
-                }
-                    .scrollContentBackground(.hidden)
-                    .toolbar {
-                    EditButton()
-                }
-            } else {
-                //MARK: - Empty History View
-                VStack(spacing: 24) {
+                        .scrollContentBackground(.hidden)
+                        .toolbar {
+                        EditButton()
+                    }
+                } else {
+                    //MARK: - Empty History View
+                    VStack(spacing: 24) {
 //                    Spacer()
 
-                    Image("EmptyHistoryPageImage")
-                        .resizable()
-                        .scaledToFill()
-                        .frame(width: 300, height: 300)
-                        .saturation(0)
+                        Image("EmptyHistoryPageImage")
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 300, height: 300)
+                            .saturation(0)
 
 
-                    Text("Your history is empty")
-                        .font(.customFontTitle3)
+                        Text("Your history is empty")
+                            .font(.customFontTitle3)
 
-                    Button {
-                        showingFortuneSheet.toggle()
-                    } label: {
-                        Text("Read Fortune")
-                            .frame(maxWidth: .infinity, maxHeight: 50)
-                            .background(Color.marcanaBlue)
-                            .cornerRadius(50)
-                            .foregroundColor(.text)
-                            .shadow(radius: 8)
-                            .padding(.horizontal, UIValues.bigButtonHPadding)
+                        Button {
+                            showingFortuneSheet.toggle()
+                        } label: {
+                            Text("Read Fortune")
+                                .frame(maxWidth: .infinity, maxHeight: 50)
+                                .background(Color.marcanaBlue)
+                                .cornerRadius(50)
+                                .foregroundColor(.text)
+                                .shadow(radius: 8)
+                                .padding(.horizontal, UIValues.bigButtonHPadding)
+                        }
+
                     }
-
-                }
-                    .fullScreenCover(isPresented: $showingFortuneSheet) {
-                    // Default selection is the 1 card reader.
-                    GetFortuneQuestionView(fortuneType: .with1card,
-                                           showingFortuneSheet: $showingFortuneSheet)
+                        .fullScreenCover(isPresented: $showingFortuneSheet) {
+                        // Default selection is the 1 card reader.
+                        GetFortuneQuestionView(fortuneType: .with1card,
+                                               showingFortuneSheet: $showingFortuneSheet)
+                    }
                 }
             }
+                .navigationTitle("History")
         }
-            .navigationTitle("History")
     }
-}
+
+    struct FortuneHistoryListRowItems: View {
+        var fortune: FortuneReading // published?
+        @Binding var tappedFortuneHistoryItem: FortuneReading?
+        @Binding var showingFortuneSheet: Bool
+
+        var body: some View {
+            Button {
+                DispatchQueue.main.async {
+                    tappedFortuneHistoryItem = fortune
+                }
+
+            } label: {
+                HStack(spacing: 8) {
+                    Image(fortune.fortuneType.iconName)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: fortune.fortuneType == FortuneType.with1card ? 24 : 44,
+                               height: fortune.fortuneType == FortuneType.with1card ? 24 : 44)
+                        .frame(width: 44, height: 44)
+
+                    VStack(alignment: .leading, spacing: 0) {
+                        HStack {
+                            Text(fortune.userName)
+                            if fortune.isFavorited {
+                                Image(systemName: "heart.fill")
+                                    .foregroundColor(.red)
+                            }
+                        }
+                        Text(fortune.fortuneQuestion)
+                            .lineLimit(1)
+                    }
+                        .font(.customFontSubheadline)
+
+
+                    VStack(spacing: 0) {
+                        Text(fortune.fortuneDate.formatted(date: .abbreviated, time: .omitted))
+                        Text(fortune.fortuneDate.formatted(date: .omitted, time: .shortened))
+                        
+                    }
+                        .font(.customFontCaption)
+                    
+                }
+                    .fullScreenCover(item: $tappedFortuneHistoryItem) { tappedFortuneHistoryItem in
+                    FortuneReadingView(showingFortuneSheet: $showingFortuneSheet,
+                                       fortuneReading: tappedFortuneHistoryItem)
+                }
+            }
+                .listRowBackground(UIValues.listRowBackroundColor)
+                .foregroundColor(.text)
+        }
+    }
+
 
 struct FortuneHistoryView_Previews: PreviewProvider {
     static var previews: some View {

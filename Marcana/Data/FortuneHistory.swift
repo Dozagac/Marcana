@@ -14,6 +14,27 @@ class FortuneHistory: ObservableObject {
             saveFortunes()
         }
     }
+    
+    // make this a set
+    @Published var favoriteFortunes: [FortuneReading] = [FortuneReading]() {
+        didSet{
+            saveFortunes()
+        }
+    }
+    
+    func addFortune(_ fortune: FortuneReading) {
+        fortunes.insert(fortune, at: 0) // so it appears it correct order in history
+    }
+
+    func addToFavoriteFortunes(_ fortune: FortuneReading) {
+        favoriteFortunes.insert(fortune, at: 0) // so it appears it correct order in history
+    }
+    
+    func removeFromFavoriteFortunes(_ fortune: FortuneReading) {
+        if let index = favoriteFortunes.firstIndex(where: { $0.id == fortune.id }) {
+                            favoriteFortunes.remove(at: index)
+                        }
+        }
 
     static let dummyFortunes: [FortuneReading] = [
         FortuneReading(fortuneQuestion: "Very long Dummy 1 card question, because why not, you gotta test everything you know?", fortuneText: FortuneRequester.dummyResponse, fortuneType: .with1card, fortuneCards: Deck().DrawCards(n: 1), userName: "Deniz", userGender: GenderPronoun.him.rawValue, userBirthday: 0, userOccupation: "Developer", userRelationship: Relationship.relationship.rawValue),
@@ -26,11 +47,7 @@ class FortuneHistory: ObservableObject {
         loadFortunes()
     }
 
-
-    func addFortune(_ fortune: FortuneReading) {
-        fortunes.insert(fortune, at: 0) // so it appears it correct order in history
-    }
-
+    
     func saveFortunes() {
         let encoder = JSONEncoder()
         if let encoded = try? encoder.encode(fortunes) {

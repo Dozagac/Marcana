@@ -15,6 +15,8 @@ struct LauncherView: View {
     @StateObject var fortuneHistory = FortuneHistory.shared
 
     @State private var selectedTab = 0
+    
+    @StateObject var alertManager = AlertManager.shared
 
     var body: some View {
 
@@ -56,6 +58,10 @@ struct LauncherView: View {
                 Text("Settings")
             }
                 .tag(2)
+        }
+        // Internet check and error
+        .alert(isPresented: $alertManager.showNoInternetAlert) {
+            Alert(title: Text("No Internet Connection"), message: Text("Marcana needs internet connection to work:( Please check your internet connection and try again."), dismissButton: .default(Text("OK")))
         }
             .onAppear {
             // view book pg 415
