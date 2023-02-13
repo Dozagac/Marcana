@@ -19,16 +19,16 @@ struct VideoBackgroundView: View {
     var body: some View {
         ZStack {
             GeometryReader { geo in
-                PlayerView(forResource: videoFileName, withExtension: "mp4" , playRate: playRate)
+                PlayerView(forResource: videoFileName, withExtension: "mp4", playRate: playRate)
 //                    .aspectRatio(contentMode: .fit)
-                    .frame(width: geo.size.width, height: geo.size.height + 100)
+                .frame(width: geo.size.width, height: geo.size.height + 100)
                     .edgesIgnoringSafeArea(.all)
                     .overlay(Color.black.opacity(myOpacity))
                     .blur(radius: myBlur)
                     .edgesIgnoringSafeArea(.all)
             }
         }
-        .ignoresSafeArea(.all)
+            .ignoresSafeArea(.all)
     }
 }
 
@@ -43,17 +43,23 @@ struct VideoBackgroundView: View {
 //    }
 //}
 
-struct ImageBackgroundView: View{
+struct ImageBackgroundView: View {
     let imageName: String
-    var body: some View{
+    let opacity: Double
+
+    init(imageName: String, opacity: Double = 0.2) {
+        self.imageName = imageName
+        self.opacity = opacity
+    }
+
+    var body: some View {
         Image(imageName)
             .resizable()
 //            .scaledToFill()
 //            .frame(maxWidth: UIScreen.main.bounds.width,
 //                    maxHeight: UIScreen.main.bounds.height)
-            .ignoresSafeArea(.all)
-        
-            .opacity(0.2)
+        .ignoresSafeArea(.all)
+            .opacity(opacity)
     }
 }
 
@@ -62,7 +68,7 @@ struct BackgroundView: View {
         ZStack {
             Color.marcanaBackground
         }
-        .ignoresSafeArea()
+            .ignoresSafeArea()
     }
 }
 

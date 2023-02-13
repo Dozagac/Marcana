@@ -15,10 +15,15 @@ class FortuneHistory: ObservableObject {
         }
     }
     
+    // make this a set
     @Published var favoriteFortunes: [FortuneReading] = [FortuneReading]() {
         didSet{
             saveFortunes()
         }
+    }
+    
+    func updateFavoriteFortunes() {
+        favoriteFortunes = fortunes.filter { $0.isFavorited }
     }
     
     func addFortune(_ fortune: FortuneReading) {
@@ -27,12 +32,14 @@ class FortuneHistory: ObservableObject {
 
     func addToFavoriteFortunes(_ fortune: FortuneReading) {
         favoriteFortunes.insert(fortune, at: 0) // so it appears it correct order in history
+        updateFavoriteFortunes()
     }
     
     func removeFromFavoriteFortunes(_ fortune: FortuneReading) {
         if let index = favoriteFortunes.firstIndex(where: { $0.id == fortune.id }) {
                             favoriteFortunes.remove(at: index)
                         }
+        updateFavoriteFortunes()
         }
 
     static let dummyFortunes: [FortuneReading] = [
@@ -60,6 +67,7 @@ class FortuneHistory: ObservableObject {
             let decoder = JSONDecoder()
             if let decodedFortunes = try? decoder.decode([FortuneReading].self, from: fortunesData) {
                 fortunes = decodedFortunes
+                updateFavoriteFortunes()
             }
         }
     }

@@ -83,8 +83,6 @@ struct GetFortuneQuestionView: View {
             ZStack(alignment: .top) {
                 ImageBackgroundView(imageName: "questionMarks")
                     .saturation(0.3)
-//                    .colorMultiply(.purple)
-                    .colorMultiply(.gray)
 
                 VStack {
                     //MARK: Content

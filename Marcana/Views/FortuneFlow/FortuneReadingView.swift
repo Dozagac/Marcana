@@ -48,7 +48,7 @@ struct FortuneReadingView: View {
                 HStack {
                     // MARK: - X button
                     Button {
-                        showingFortuneSheet.toggle() // this sends us back to the home screen from fortune flow
+                        showingFortuneSheet = false // this sends us back to the home screen from fortune flow
                         dismiss() // goes back in the navigation from the history view
                     } label: {
                         Image(systemName: "xmark")

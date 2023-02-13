@@ -13,6 +13,7 @@ struct FortuneHistoryView: View {
 
     @State private var tappedFortuneHistoryItem: FortuneReading? = nil // to each history element
 
+
     var body: some View {
         ZStack {
             ImageBackgroundView(imageName: "Vine2")
@@ -29,9 +30,7 @@ struct FortuneHistoryView: View {
                                 FortuneHistoryListRowItems(fortune: $favoritedFortune, tappedFortuneHistoryItem: $tappedFortuneHistoryItem, showingFortuneSheet: $showingFortuneSheet)
                             }
                                 .onDelete { indexSet in
-                                // remove from both lists
-                                fortuneHistory.fortunes.remove(atOffsets: indexSet)
-                                fortuneHistory.favoriteFortunes.remove(atOffsets: indexSet)
+                                    removeFromFortuneArrays(indexSet)
                             }
                         } header: {
                             Text("Favorites")
@@ -45,17 +44,7 @@ struct FortuneHistoryView: View {
                             FortuneHistoryListRowItems(fortune: $fortune, tappedFortuneHistoryItem: $tappedFortuneHistoryItem, showingFortuneSheet: $showingFortuneSheet)
                         }
                             .onDelete { indexSet in
-
-                            // remove from favorited list if its favorited
-                            for index in indexSet {
-                                let fortune = fortuneHistory.fortunes[index]
-                                if fortune.isFavorited {
-                                    fortuneHistory.fortunes.remove(at: index)
-                                }
-                            }
-                            // remove from regular fotunes list
-                            fortuneHistory.fortunes.remove(atOffsets: indexSet)
-
+                                removeFromFortuneArrays(indexSet)
                         }
                     } header: {
                         Text("All")
@@ -105,6 +94,23 @@ struct FortuneHistoryView: View {
 //            FortuneHistory.shared.loadFortunes()
 //        }
         .navigationTitle("History")
+    }
+    
+    func removeFromFortuneArrays(_ indexSet: IndexSet) {
+        for index in indexSet {
+            let fortune = fortuneHistory.fortunes[index]
+            
+            // get the id of the deleted fortune
+            var idToRemove = fortune.id
+            
+            // remove it from fortunes array
+            fortuneHistory.fortunes = fortuneHistory.fortunes.filter { $0.id != idToRemove }
+
+            // remove it from favorites if it was favorited
+            if fortune.isFavorited {
+                fortuneHistory.favoriteFortunes = fortuneHistory.favoriteFortunes.filter { $0.id != idToRemove }
+            }
+        }
     }
 }
 

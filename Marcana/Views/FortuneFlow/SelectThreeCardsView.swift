@@ -54,7 +54,8 @@ struct SelectThreeCardsView: View {
 
     var body: some View {
         ZStack {
-            ImageBackgroundView(imageName: "skyBackground2" )
+            ImageBackgroundView(imageName: "skyBackground2", opacity: 0.4 )
+            
 
             VStack(spacing: 24) {
                 Spacer()

@@ -27,173 +27,173 @@ struct SettingsView: View {
     @State private var isShowingMailView = false
 
     @State private var showingAccountSettings = false
-    
+
     @State private var animating = false
 
+    @State private var mailSubject : String? = nil
+    
     let elementVerticalPadding: CGFloat = 8
     var body: some View {
         ZStack(alignment: .top) {
-                ImageBackgroundView(imageName: "Vine3")
-
-                
-                List {
-                    Section(header: Text("User Info").font(.customFontFootnote).foregroundColor(.secondary)) {
-                        //MARK: - Name
-                        NavigationLink {
-                            GetUserNameView(getUserInfoStep: .constant(99)) // 99 is chosen to set button functionality, see the view
-                        } label: {
-                            HStack {
-                                Image(systemName: "pencil.line")
-                                    .modifier(SettingButtonIconModifier ())
-                                Text("Name").frame(width: 100, alignment: .leading)
-                                    .foregroundColor(.gray)
-                                Text(userName)
-                            }
-                                .padding(.vertical, elementVerticalPadding)
-                        }
-                        //MARK: - Gender
-                        NavigationLink {
-                            GetUserGenderView(getUserInfoStep: .constant(99)) // 99 is chosen to set button functionality, see the view
-                        } label: {
-                            HStack {
-                                Image(systemName: "person.fill")
-                                    .modifier(SettingButtonIconModifier())
-
-                                Text("Gender").frame(width: 100, alignment: .leading)
-                                    .foregroundColor(.gray)
-                                Text(userGender)
-                            }
-                                .padding(.vertical, elementVerticalPadding)
-                        }
-                        //MARK: - Birthday
-                        NavigationLink {
-                            GetUserBirthdayView(getUserInfoStep: .constant(99)) // 99 is chosen to set button functionality, see the view
-                        } label: {
-                            HStack {
-                                Image(systemName: "birthday.cake.fill")
-                                    .modifier(SettingButtonIconModifier())
-                                Text("Birthday").frame(width: 100, alignment: .leading)
-                                    .foregroundColor(.gray)
-                                Text(Date(timeIntervalSince1970: userBirthday).formatted(date: .abbreviated, time: .omitted))
-                            }
-                                .padding(.vertical, elementVerticalPadding)
-                        }
-                        //MARK: - Occupation
-                        NavigationLink {
-                            GetUserOccupationView(getUserInfoStep: .constant(99)) // 99 is chosen to set button functionality, see the view
-                        } label: {
-                            HStack {
-                                Image(systemName: "briefcase.fill")
-                                    .modifier(SettingButtonIconModifier())
-                                Text("Occupation").frame(width: 100, alignment: .leading)
-                                    .foregroundColor(.gray)
-                                Text(userOccupation)
-                            }
-                                .padding(.vertical, elementVerticalPadding)
-                        }
+            ImageBackgroundView(imageName: "Vine3")
 
 
-                        //MARK: - Relationship
-                        NavigationLink {
-                            GetUserRelationshipView(getUserInfoStep: .constant(99)) // 99 is chosen to set button functionality, see the view
-                        } label: {
-                            HStack {
-                                Image(systemName: "heart.circle")
-                                    .modifier(SettingButtonIconModifier())
-                                Text("Relationship").frame(width: 100, alignment: .leading)
-                                    .foregroundColor(.gray)
-                                Text(userRelationship)
-                            }
+            List {
+                Section(header: Text("User Info").font(.customFontFootnote).foregroundColor(.secondary)) {
+                    //MARK: - Name
+                    NavigationLink {
+                        GetUserNameView(getUserInfoStep: .constant(99)) // 99 is chosen to set button functionality, see the view
+                    } label: {
+                        HStack {
+                            Image(systemName: "pencil.line")
+                                .modifier(SettingButtonIconModifier ())
+                            Text("Name").frame(width: 100, alignment: .leading)
+                                .foregroundColor(.gray)
+                            Text(userName)
                         }
                             .padding(.vertical, elementVerticalPadding)
+                    }
+                    //MARK: - Gender
+                    NavigationLink {
+                        GetUserGenderView(getUserInfoStep: .constant(99)) // 99 is chosen to set button functionality, see the view
+                    } label: {
+                        HStack {
+                            Image(systemName: "person.fill")
+                                .modifier(SettingButtonIconModifier())
 
-                        //MARK: - Reset User Info
-                        Button() {
-                            UserDefaults.standard.resetUser()
-                            doUserInfoFlow = true
-                        } label: {
-                            HStack {
-                                Image(systemName: "arrow.counterclockwise.circle.fill")
-                                    .modifier(SettingButtonIconModifier())
-                                VStack(alignment: .leading) {
-                                    Text("Reset All User Info")
-                                    Text("Re-enter all user data above")
-                                        .font(.customFontCaption)
-                                }
-                            }
-                            .foregroundColor(.text)
-                                .padding(.vertical, elementVerticalPadding)
+                            Text("Gender").frame(width: 100, alignment: .leading)
+                                .foregroundColor(.gray)
+                            Text(userGender)
+                        }
+                            .padding(.vertical, elementVerticalPadding)
+                    }
+                    //MARK: - Birthday
+                    NavigationLink {
+                        GetUserBirthdayView(getUserInfoStep: .constant(99)) // 99 is chosen to set button functionality, see the view
+                    } label: {
+                        HStack {
+                            Image(systemName: "birthday.cake.fill")
+                                .modifier(SettingButtonIconModifier())
+                            Text("Birthday").frame(width: 100, alignment: .leading)
+                                .foregroundColor(.gray)
+                            Text(Date(timeIntervalSince1970: userBirthday).formatted(date: .abbreviated, time: .omitted))
+                        }
+                            .padding(.vertical, elementVerticalPadding)
+                    }
+                    //MARK: - Occupation
+                    NavigationLink {
+                        GetUserOccupationView(getUserInfoStep: .constant(99)) // 99 is chosen to set button functionality, see the view
+                    } label: {
+                        HStack {
+                            Image(systemName: "briefcase.fill")
+                                .modifier(SettingButtonIconModifier())
+                            Text("Occupation").frame(width: 100, alignment: .leading)
+                                .foregroundColor(.gray)
+                            Text(userOccupation)
+                        }
+                            .padding(.vertical, elementVerticalPadding)
+                    }
+
+
+                    //MARK: - Relationship
+                    NavigationLink {
+                        GetUserRelationshipView(getUserInfoStep: .constant(99)) // 99 is chosen to set button functionality, see the view
+                    } label: {
+                        HStack {
+                            Image(systemName: "heart.circle")
+                                .modifier(SettingButtonIconModifier())
+                            Text("Relationship").frame(width: 100, alignment: .leading)
+                                .foregroundColor(.gray)
+                            Text(userRelationship)
                         }
                     }
-                    .listRowBackground(UIValues.listRowBackroundColor)
-                    
-                    // MARK: - Explore Deck
-                    Section(header: Text("Explore Cards").font(.customFontFootnote).foregroundColor(.secondary)) {
-                        NavigationLink {
-                            DeckInfoView()
-                        } label: {
-                            HStack {
-                                Image("IconDeck")
-                                    .resizable()
-                                    .scaledToFit()
-                                    .modifier(SettingButtonIconModifier())
+                        .padding(.vertical, elementVerticalPadding)
 
-                                Text("Explore Tarot Deck").frame(alignment: .leading)
-                                    .foregroundColor(.text)
+                    //MARK: - Reset User Info
+                    Button() {
+                        UserDefaults.standard.resetUser()
+                        doUserInfoFlow = true
+                    } label: {
+                        HStack {
+                            Image(systemName: "arrow.counterclockwise.circle.fill")
+                                .modifier(SettingButtonIconModifier())
+                            VStack(alignment: .leading) {
+                                Text("Reset All User Info")
+                                Text("Re-enter all user data above")
+                                    .font(.customFontCaption)
                             }
                         }
                             .foregroundColor(.text)
                             .padding(.vertical, elementVerticalPadding)
                     }
+                }
                     .listRowBackground(UIValues.listRowBackroundColor)
 
-                    // MARK: - Contact
-                    Section(header: Text("Contact Us").font(.customFontFootnote).foregroundColor(.secondary)) {
-                        // MARK: - Mail us
-                        Button {
-                            isShowingMailView = true
-                        } label: {
-                            HStack {
-                                Image(systemName: "envelope.fill")
-                                    .modifier(SettingButtonIconModifier())
-                                VStack(alignment: .leading) {
-                                    Text("Send us an email")
-                                    Text(verbatim: "contact@marcana.app")
-                                        .font(.customFontCaption)
-                                        .foregroundColor(.secondary)
-                                }
-                            }
-                        }
-                            .padding(.vertical, elementVerticalPadding)
-                            .sheet(isPresented: $isShowingMailView) {
-                            MailView(result: self.$mailResult)
-                                .font(.body) // mail screen uses regular sf font
-                        }
+                // MARK: - Explore Deck
+                Section(header: Text("Explore Cards").font(.customFontFootnote).foregroundColor(.secondary)) {
+                    NavigationLink {
+                        DeckInfoView()
+                    } label: {
+                        HStack {
+                            Image("IconDeck")
+                                .resizable()
+                                .scaledToFit()
+                                .modifier(SettingButtonIconModifier())
 
-                        // MARK: - Report a Bug
-                        Button {
-                            isShowingMailView = true
-                        } label: {
-                            HStack {
-                                Image(systemName: "ladybug.fill")
-                                    .modifier(SettingButtonIconModifier())
-                                VStack(alignment: .leading) {
-                                    Text("Report a bug")
-                                    Text(verbatim: "contact@marcana.app")
-                                        .font(.customFontCaption)
-                                        .foregroundColor(.secondary)
-                                }
-                            }
-
-                        }
-                            .padding(.vertical, elementVerticalPadding)
-                            .sheet(isPresented: $isShowingMailView) {
-                            MailView(result: self.$mailResult, subject: "Reporting a Bug")
-                                .font(.body) // mail screen uses regular sf font
+                            Text("Explore Tarot Deck").frame(alignment: .leading)
+                                .foregroundColor(.text)
                         }
                     }
+                        .foregroundColor(.text)
+                        .padding(.vertical, elementVerticalPadding)
+                }
                     .listRowBackground(UIValues.listRowBackroundColor)
-                    
+
+                // MARK: - Contact
+                Section(header: Text("Contact Us").font(.customFontFootnote).foregroundColor(.secondary)) {
+                    // MARK: - Mail us
+                    Button {
+                        mailSubject = "Hello"
+                        isShowingMailView = true
+                    } label: {
+                        HStack {
+                            Image(systemName: "envelope.fill")
+                                .modifier(SettingButtonIconModifier())
+                            VStack(alignment: .leading) {
+                                Text("Send us an email")
+                                Text(verbatim: "contact@marcana.app")
+                                    .font(.customFontCaption)
+                                    .foregroundColor(.secondary)
+                            }
+                        }
+                    }
+                        .padding(.vertical, elementVerticalPadding)
+
+                    // MARK: - Report a Bug
+                    Button {
+                        mailSubject = "Report a bug"
+                        isShowingMailView = true
+                    } label: {
+                        HStack {
+                            Image(systemName: "ladybug.fill")
+                                .modifier(SettingButtonIconModifier())
+                            VStack(alignment: .leading) {
+                                Text("Report a bug")
+                                Text(verbatim: "contact@marcana.app")
+                                    .font(.customFontCaption)
+                                    .foregroundColor(.secondary)
+                            }
+                        }
+
+                    }
+                        .padding(.vertical, elementVerticalPadding)
+
+                }
+                    .listRowBackground(UIValues.listRowBackroundColor)
+                    .sheet(item: $mailSubject) { subject in
+                    MailView(result: self.$mailResult, subject: subject)
+                        .font(.body) // mail screen uses regular sf font
+                }
 
 // MARK: - DISABLED UNTIL LOGIN IS ENABLED
 //                    Section(header: Text("Account").font(.customFontFootnote).foregroundColor(.secondary)) {
@@ -240,25 +240,25 @@ struct SettingsView: View {
 //                            Text("Are you sure you want to log out?")
 //                        }
 //                    }
-                }
-            
-                    .scrollContentBackground(.hidden)
-                    .listStyle(.insetGrouped)
             }
-                .font(.customFontBody)
-                .foregroundColor(.text)
-                .navigationTitle("Settings")
-            // this fake animation mbelowakes it so that the appstorage changes from the
-            //   USER INFO section are reflected onto the view by "refresing" the page
-                .opacity(animating ? 1: 0.99)
-                .animation(.easeOut, value: animating)
-                .onAppear{
-                    animating = true
-                }
-                .onDisappear{
-                    animating = false
-                }
-        
+
+                .scrollContentBackground(.hidden)
+                .listStyle(.insetGrouped)
+        }
+            .font(.customFontBody)
+            .foregroundColor(.text)
+            .navigationTitle("Settings")
+        // this fake animation mbelowakes it so that the appstorage changes from the
+        //   USER INFO section are reflected onto the view by "refresing" the page
+        .opacity(animating ? 1 : 0.99)
+            .animation(.easeOut, value: animating)
+            .onAppear {
+            animating = true
+        }
+            .onDisappear {
+            animating = false
+        }
+
     }
 }
 

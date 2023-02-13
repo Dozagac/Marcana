@@ -29,6 +29,11 @@ extension View {
 //    }
 }
 
+// needed for the mailSubject to be passable to the .sheet in the settingsView
+extension String: Identifiable {
+  public var id: Self { self }
+}
+
 // for onFirstAppear View extension
 private struct FirstAppear: ViewModifier {
     let action: () -> ()
