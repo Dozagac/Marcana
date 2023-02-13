@@ -27,10 +27,11 @@ struct FortuneLoadingView: View {
 
     var body: some View {
         ZStack {
-            BackgroundView()
-                .onAppear{
-                    animating = true
-                }
+//            ImageBackgroundView(imageName: "blackHole2")
+//                .scaleEffect(1.5)
+//                .colorMultiply(.gray)
+            Color.black
+            
 
             // MARK: - Loading Animation
             ZStack(alignment: .center) {
@@ -61,6 +62,9 @@ struct FortuneLoadingView: View {
                 )
             }
         }
+        .onAppear{
+            animating = true
+        }
             .navigationBarBackButtonHidden(true)
     }
 }
@@ -68,7 +72,6 @@ struct FortuneLoadingView: View {
 struct FortuneLoadingView_Previews: PreviewProvider {
     static let randomFortuneCards = Deck().DrawCards(n: 3)
 
-    
     static var previews: some View {
         FortuneLoadingView(
             showingFortuneSheet: .constant(true),

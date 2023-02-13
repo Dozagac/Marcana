@@ -38,7 +38,8 @@ struct FortuneReadingView: View {
 
     var body: some View {
         GeometryReader { geo in
-            BackgroundView()
+//            BackgroundView()
+            Color.black
 
             // MARK: - Page View
             VStack(spacing: 0) {
@@ -264,7 +265,7 @@ struct FortuneReadingView: View {
                         .foregroundColor(.text)
                         .padding(12)
 
-                    ScrollerTextBottomGradientEffectView(effectColor: Color.marcanaBackground)
+                    ScrollerTextBottomGradientEffectView(effectColor: Color.black)
                 }
             }
             .overlay(

@@ -29,7 +29,9 @@ struct FortuneHistoryView: View {
                                 FortuneHistoryListRowItems(fortune: $favoritedFortune, tappedFortuneHistoryItem: $tappedFortuneHistoryItem, showingFortuneSheet: $showingFortuneSheet)
                             }
                                 .onDelete { indexSet in
+                                // remove from both lists
                                 fortuneHistory.fortunes.remove(atOffsets: indexSet)
+                                fortuneHistory.favoriteFortunes.remove(atOffsets: indexSet)
                             }
                         } header: {
                             Text("Favorites")
@@ -43,7 +45,17 @@ struct FortuneHistoryView: View {
                             FortuneHistoryListRowItems(fortune: $fortune, tappedFortuneHistoryItem: $tappedFortuneHistoryItem, showingFortuneSheet: $showingFortuneSheet)
                         }
                             .onDelete { indexSet in
+
+                            // remove from favorited list if its favorited
+                            for index in indexSet {
+                                let fortune = fortuneHistory.fortunes[index]
+                                if fortune.isFavorited {
+                                    fortuneHistory.fortunes.remove(at: index)
+                                }
+                            }
+                            // remove from regular fotunes list
                             fortuneHistory.fortunes.remove(atOffsets: indexSet)
+
                         }
                     } header: {
                         Text("All")

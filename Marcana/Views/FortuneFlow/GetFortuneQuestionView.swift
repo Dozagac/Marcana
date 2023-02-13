@@ -81,7 +81,10 @@ struct GetFortuneQuestionView: View {
     var body: some View {
         NavigationStack {
             ZStack(alignment: .top) {
-                BackgroundView()
+                ImageBackgroundView(imageName: "questionMarks")
+                    .saturation(0.3)
+//                    .colorMultiply(.purple)
+                    .colorMultiply(.gray)
 
                 VStack {
                     //MARK: Content

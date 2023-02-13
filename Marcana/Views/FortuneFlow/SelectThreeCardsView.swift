@@ -32,7 +32,7 @@ struct SelectThreeCardsView: View {
 
     @State private var continueIsPushed = false // triggers navigation view
 
-    @State private var animateViews = false
+
 
     @State private var card1Open = false
     @State private var card2Open = false
@@ -47,10 +47,14 @@ struct SelectThreeCardsView: View {
     private var allCardsClosed: Bool {
         card1Open || card2Open || card3Open
     }
+    
+    @State private var animateViews = false
+    let openingAnimationDelay = 0.5
+    let openingAnimationDuration = 1.0
 
     var body: some View {
         ZStack {
-            BackgroundView()
+            ImageBackgroundView(imageName: "skyBackground2" )
 
             VStack(spacing: 24) {
                 Spacer()
@@ -62,6 +66,9 @@ struct SelectThreeCardsView: View {
                         isCardOpen: $card1Open,
                         shownCard: fortuneCards[0],
                         positionText: "Past")
+                    .offset(y: animateViews ? 0 : -100)
+                    .opacity(animateViews ? 1 : 0)
+                    .animation(.easeOut(duration: openingAnimationDuration).delay(openingAnimationDelay), value: animateViews)
                         .scaleEffect(allCardsClosed ? 1 : animateViews ? 1.05 : 1)
                         .shadow(color: allCardsClosed ? .gray : animateViews ? .white : .gray, radius: 10, x: 0, y: 0)
                         .animation(.easeInOut(duration: 1.5).repeatForever(autoreverses: true), value: animateViews)
@@ -72,12 +79,20 @@ struct SelectThreeCardsView: View {
                         positionText: "Present")
                         .offset(y: -50)
                         .shadow(color: Color.gray, radius: 8, x: 0, y: 0)
+                        .offset(y: animateViews ? 0 : -100)
+                        .opacity(animateViews ? 1 : 0)
+                        .animation(.easeOut(duration: openingAnimationDuration).delay(openingAnimationDelay*2), value: animateViews)
+                            .scaleEffect(allCardsClosed ? 1 : animateViews ? 1.05 : 1)
 
                     FlippingCardView(
                         isCardOpen: $card3Open,
                         shownCard: fortuneCards[2],
                         positionText: "Future")
                         .shadow(color: Color.gray, radius: 8, x: 0, y: 0)
+                        .offset(y: animateViews ? 0 : -100)
+                        .opacity(animateViews ? 1 : 0)
+                        .animation(.easeOut(duration: openingAnimationDuration).delay(openingAnimationDelay*3), value: animateViews)
+                            .scaleEffect(allCardsClosed ? 1 : animateViews ? 1.05 : 1)
                 }
                     .padding(.horizontal, 24)
 
@@ -97,7 +112,7 @@ struct SelectThreeCardsView: View {
                     .frame(minHeight: 200)
             }
                 .onAppear {
-                withAnimation(Animation.easeOut(duration: 1.5).delay(0.5)) {
+                withAnimation(Animation.easeOut(duration: 1.5).delay(2.5)) {
                     animateViews.toggle()
                 }
             }

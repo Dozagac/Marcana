@@ -26,13 +26,14 @@ struct FlowerView: View {
     @State private var animate = false
 
 //    let colors: [Color] = [.red, .orange, .yellow, .green, .blue, .purple, .pink]
-    let colors: [Color] = [Color.marcanaPink,
-                           Color.marcanaBlue,
-                           Color.marcanaPink,
-                           Color.marcanaBlue,
-                           Color.marcanaPink,
-                           Color.marcanaBlue,
-                           Color.marcanaPink
+
+    let colors: [Color] = [Color.white,
+                           Color.black,
+                           Color.white,
+                           Color.black,
+                           Color.white,
+                           Color.black,
+                           Color.white
     ]
 
     var body: some View {
@@ -76,7 +77,7 @@ struct FlowerColor: View {
                            arc: self.animate ? petalWidth1 : petalWidth2,
                            length: self.animate ? self.length : self.length * 0.9)
                     .fill(RadialGradient(
-                    gradient: Gradient(colors: [self.color.opacity(0.2), self.color]),
+                    gradient: Gradient(colors: [self.color.opacity(1), self.color]),
                     center: UnitPoint(x: 0.5, y: 0.5),
                     startRadius: 0.1 * min(proxy.size.width, proxy.size.height) / 2.0,
                     endRadius: min(proxy.size.width, proxy.size.height) / 2.0)

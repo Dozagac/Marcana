@@ -3,7 +3,7 @@
 //  Marcana
 //
 //  Created by Deniz Ozagac on 12/02/2023.
-//
+// https://www.youtube.com/watch?v=Y_MKeWB8QmM&list=PPSV
 
 import Foundation
 import FirebaseRemoteConfig

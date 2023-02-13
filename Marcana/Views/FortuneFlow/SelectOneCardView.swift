@@ -33,6 +33,8 @@ struct SelectOneCardView: View {
     @State private var continueIsPushed = false // triggers navigation view
 
     @State private var animateViews = false
+    let openingAnimationDelay = 0.5
+    let openingAnimationDuration = 1.5
 
     @State private var cardOpen = false
 
@@ -44,7 +46,7 @@ struct SelectOneCardView: View {
 
     var body: some View {
         ZStack {
-            BackgroundView()
+            ImageBackgroundView(imageName: "skyBackground4" )
 
             VStack(spacing: 24) {
                 Spacer()
@@ -57,6 +59,9 @@ struct SelectOneCardView: View {
                     height: 300,
                     shownCard: fortuneCards[0],
                     positionText: "")
+                .offset(y: animateViews ? 0 : -200)
+                .opacity(animateViews ? 1 : 0)
+                .animation(.easeOut(duration: openingAnimationDuration).delay(openingAnimationDelay), value: animateViews)
                     .scaleEffect(cardOpen ? 1 : animateViews ? 1.05 : 1)
                     .shadow(color: cardOpen ? .gray : animateViews ? .white : .gray, radius: 15, x: 0, y: 0)
                     .animation(.easeInOut(duration: 1.5).repeatForever(autoreverses: true), value: animateViews)
@@ -77,7 +82,7 @@ struct SelectOneCardView: View {
                     .frame(minHeight: 200)
             }
                 .onAppear {
-                withAnimation(Animation.easeOut(duration: 1.5).delay(0.5)) {
+                withAnimation(Animation.easeOut(duration: 1.5).delay(2.5)) {
                     animateViews.toggle()
                 }
             }

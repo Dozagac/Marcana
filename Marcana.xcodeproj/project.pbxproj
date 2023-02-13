@@ -27,7 +27,7 @@
 		763FDF612998D9A3007B7B77 /* OnboardingNotificationAskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763FDF602998D9A3007B7B77 /* OnboardingNotificationAskView.swift */; };
 		763FDF632998DCB4007B7B77 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763FDF622998DCB4007B7B77 /* AlertManager.swift */; };
 		763FDF652998F10E007B7B77 /* HeartLikePopAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763FDF642998F10E007B7B77 /* HeartLikePopAnimation.swift */; };
-		763FDF6729994837007B7B77 /* FireBaseRemoteConfigManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763FDF6629994837007B7B77 /* FireBaseRemoteConfigManager.swift */; };
+		763FDF6729994837007B7B77 /* RemoteConfigManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763FDF6629994837007B7B77 /* RemoteConfigManager.swift */; };
 		763FDF6A29994C5D007B7B77 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 763FDF6929994C5D007B7B77 /* FirebaseAnalytics */; };
 		763FDF6C29994C5D007B7B77 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 763FDF6B29994C5D007B7B77 /* FirebaseAnalyticsOnDeviceConversion */; };
 		763FDF6E29994C5D007B7B77 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 763FDF6D29994C5D007B7B77 /* FirebaseAuth */; };
@@ -102,7 +102,7 @@
 		763FDF602998D9A3007B7B77 /* OnboardingNotificationAskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingNotificationAskView.swift; sourceTree = "<group>"; };
 		763FDF622998DCB4007B7B77 /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		763FDF642998F10E007B7B77 /* HeartLikePopAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartLikePopAnimation.swift; sourceTree = "<group>"; };
-		763FDF6629994837007B7B77 /* FireBaseRemoteConfigManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBaseRemoteConfigManager.swift; sourceTree = "<group>"; };
+		763FDF6629994837007B7B77 /* RemoteConfigManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteConfigManager.swift; sourceTree = "<group>"; };
 		764FF8E22993BAD70062E221 /* AccountSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingsView.swift; sourceTree = "<group>"; };
 		764FF8E42993BF760062E221 /* ToastManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastManager.swift; sourceTree = "<group>"; };
 		764FF8E62993C9050062E221 /* UserDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataManager.swift; sourceTree = "<group>"; };
@@ -207,7 +207,7 @@
 				764FF8F02995484F0062E221 /* MusicPlayer.swift */,
 				763FDF622998DCB4007B7B77 /* AlertManager.swift */,
 				763FDF642998F10E007B7B77 /* HeartLikePopAnimation.swift */,
-				763FDF6629994837007B7B77 /* FireBaseRemoteConfigManager.swift */,
+				763FDF6629994837007B7B77 /* RemoteConfigManager.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -520,7 +520,7 @@
 				7689C3C02986724D002A8314 /* GetUserBirthdayView.swift in Sources */,
 				7654E7FE2933C67A00F9FDAB /* CardDetailView.swift in Sources */,
 				7669FE8529886EC500DA06F8 /* LoadingPetalView.swift in Sources */,
-				763FDF6729994837007B7B77 /* FireBaseRemoteConfigManager.swift in Sources */,
+				763FDF6729994837007B7B77 /* RemoteConfigManager.swift in Sources */,
 				7689C3C62987D33A002A8314 /* FortuneHistoryView.swift in Sources */,
 				763D85522987FCD80040611F /* FortuneReadingView.swift in Sources */,
 				764FF8E32993BAD70062E221 /* AccountSettingsView.swift in Sources */,
