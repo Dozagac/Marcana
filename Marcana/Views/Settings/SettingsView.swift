@@ -40,6 +40,24 @@ struct SettingsView: View {
 
             List {
                 Section(header: Text("User Info").font(.customFontFootnote).foregroundColor(.secondary)) {
+                    //MARK: - Reset User Info
+                    Button() {
+                        UserDefaults.standard.resetUser()
+                        doUserInfoFlow = true
+                    } label: {
+                        HStack {
+                            Image(systemName: "arrow.counterclockwise.circle.fill")
+                                .modifier(SettingButtonIconModifier())
+                            VStack(alignment: .leading) {
+                                Text("Change User")
+                                Text("Re-enter all user data above")
+                                    .font(.customFontCaption)
+                            }
+                        }
+                            .foregroundColor(.text)
+                            .padding(.vertical, elementVerticalPadding)
+                    }
+                    
                     //MARK: - Name
                     NavigationLink {
                         GetUserNameView(getUserInfoStep: .constant(99)) // 99 is chosen to set button functionality, see the view
@@ -109,23 +127,6 @@ struct SettingsView: View {
                     }
                         .padding(.vertical, elementVerticalPadding)
 
-                    //MARK: - Reset User Info
-                    Button() {
-                        UserDefaults.standard.resetUser()
-                        doUserInfoFlow = true
-                    } label: {
-                        HStack {
-                            Image(systemName: "arrow.counterclockwise.circle.fill")
-                                .modifier(SettingButtonIconModifier())
-                            VStack(alignment: .leading) {
-                                Text("Reset All User Info")
-                                Text("Re-enter all user data above")
-                                    .font(.customFontCaption)
-                            }
-                        }
-                            .foregroundColor(.text)
-                            .padding(.vertical, elementVerticalPadding)
-                    }
                 }
                     .listRowBackground(UIValues.listRowBackroundColor)
 

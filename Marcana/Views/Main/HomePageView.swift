@@ -14,12 +14,16 @@ import SwiftUIVisualEffects
 
 struct HomePageView: View {
     @AppStorage(wrappedValue: "", UserDataManager.UserKeys.userName.rawValue) var userName
+    @AppStorage(wrappedValue: true, "doUserInfoFlow") var doUserInfoFlow
+
     // This is so that buttons can launch the same cover sheet with a different parameter value in it
     // which is the fortuneType
     @State var showingFortuneSheet1CardFortune = false
     @State var showingFortuneSheet3CardFortune = false
 
     @State var showingVolumeControlSheet = false
+
+    var userDataManager = UserDataManager()
 
     var body: some View {
         GeometryReader { geo in
@@ -39,8 +43,10 @@ struct HomePageView: View {
                             showingVolumeControlSheet = true
                         } label: {
                             VStack(spacing: 0) {
-                                Image(systemName: "headphones")
+                                Image("IconMusicNote")
+                                    .foregroundColor(.text)
                                     .frame(width: 44, height: 44)
+                                    
                                     .background(
                                     Color.clear
                                         .blurEffect() // from SwiftUIVisualEffects, looks better than ultrathin
@@ -96,6 +102,12 @@ struct HomePageView: View {
                 }
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
+                .onAppear {
+                // Make sure that there is no missing user data for the fortune flow
+                if userDataManager.thereIsMissingData {
+                    doUserInfoFlow = true
+                }
+            }
                 .onFirstAppear {
                 MusicPlayer.shared.play()
             }
@@ -135,23 +147,23 @@ struct FortuneTypeSelectionButton: View {
                             .foregroundColor(.secondary)
                             .lineLimit(1)
                             .minimumScaleFactor(0.5)
-                        
+
                         //MARK: - Complexity Text
-                        HStack(alignment: .top, spacing: 0){
+                        HStack(alignment: .top, spacing: 0) {
                             Text("Detail Level: ")
-                                
-                            ForEach(1..<fortuneType.detailLevel){_ in
+
+                            ForEach(1..<fortuneType.detailLevel) { _ in
                                 Image(systemName: "star.fill")
                             }
-                            .foregroundColor(.yellow)
-                            
+                                .foregroundColor(.yellow)
+
                         }
-                        .font(.customFontCallout)
-                        .foregroundColor(.secondary)
-                        .lineLimit(1)
-                        .minimumScaleFactor(0.5)
+                            .font(.customFontCallout)
+                            .foregroundColor(.secondary)
+                            .lineLimit(1)
+                            .minimumScaleFactor(0.5)
                     }
-                    
+
                     Spacer()
                 }
                     .frame(height: 200)
@@ -166,23 +178,23 @@ struct FortuneTypeSelectionButton: View {
                             Spacer()
                             HStack {
                                 HStack(spacing: 2) {
-                                    HStack{
+                                    HStack {
                                         Image(systemName: "magnifyingglass")
                                         Text(fortuneType.durationText)
                                             .fontWeight(.bold)
                                     }
-                                    .foregroundColor(.text)
-                                    .font(.customFontCaption2)
-                                    .padding(2)
-                                    .background(.black.opacity(0.2))
-                                    .cornerRadius(4)
-                                    .padding(.vertical, 12)
-                                    .padding(.horizontal, 36)
-                                    .preferredColorScheme(.light)
-                                    
+                                        .foregroundColor(.text)
+                                        .font(.customFontCaption2)
+                                        .padding(2)
+                                        .background(.black.opacity(0.2))
+                                        .cornerRadius(4)
+                                        .padding(.vertical, 12)
+                                        .padding(.horizontal, 36)
+                                        .preferredColorScheme(.light)
+
                                     Spacer()
                                 }
-                                
+
                                 Spacer()
                             }
 
@@ -265,7 +277,7 @@ enum FortuneType: String, Codable {
             return "Pick 5 cards"
         }
     }
-    
+
     var detailLevel: Int {
         switch self {
         case .with1card:
@@ -290,11 +302,11 @@ enum FortuneType: String, Codable {
 }
 
 struct CustomLargeNavTitleText: View {
-var text: String
+    var text: String
     var body: some View {
         Text(text)
             .font(.custom("Palatino-Bold", size: 34)) // too custom?
-            .fontWeight(.black)
+        .fontWeight(.black)
     }
 }
 

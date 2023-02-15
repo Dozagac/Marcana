@@ -46,8 +46,11 @@ struct UserDataManager {
             userName == UserDataManager.userNameDefault ||
             userOccupation == UserDataManager.userOccupationDefault ||
             userRelationship == UserDataManager.userRelationshipDefault {
+            
+            print("Missing data: true")
             return true
         } else {
+            print("Missing data: false")
             return false
         }
     }

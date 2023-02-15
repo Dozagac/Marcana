@@ -17,8 +17,8 @@ struct GetUserInfoFlowView: View {
     var body: some View {
 
         ZStack(alignment: .top) {
-//            VideoBackgroundView(videoFileName: "tarotTableVideo", playRate: 0.8)
-            BackgroundView()
+            ImageBackgroundView(imageName: "fieldWalk")
+                .saturation(0.5)
 
             ChevronBackButton(getUserInfoStep: $getUserInfoStep)
             

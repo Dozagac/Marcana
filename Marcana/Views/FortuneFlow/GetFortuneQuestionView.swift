@@ -60,10 +60,6 @@ struct GetFortuneQuestionView: View {
 
     @State var showRecommendations = false
 
-    @AppStorage(wrappedValue: true, "doUserInfoFlow") var doUserInfoFlow
-    
-    var userDataManager = UserDataManager()
-
     private var canContinue: Bool {
         question.isNotEmpty
     }
@@ -172,11 +168,6 @@ struct GetFortuneQuestionView: View {
                 // this is necessary to make focus work
                 DispatchQueue.main.async { focusTextField = true }
                 animateViews = true
-
-                // Make sure that there is no missing user data for the fortune flow
-                if userDataManager.thereIsMissingData {
-                    doUserInfoFlow = true
-                }
             }
                 .modifier(customNavBackModifier())
         }

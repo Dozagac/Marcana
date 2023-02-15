@@ -29,7 +29,7 @@ import FirebaseRemoteConfig
         } }
 
 
-    func getApiKey() -> String {
+    func getOpenAIApiKey() -> String {
         setupRemoteConfigDefaults()
         fetchRemoteConfig()
         let api_key = remoteConfig.configValue(forKey: "api_key").stringValue ?? ""

@@ -14,6 +14,7 @@
 		7612CE0F298AECFC00838B3E /* ScrollerTextBottomGradientEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7612CE0E298AECFC00838B3E /* ScrollerTextBottomGradientEffectView.swift */; };
 		7612CE11298B235A00838B3E /* ProgressStepperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7612CE10298B235A00838B3E /* ProgressStepperView.swift */; };
 		76152A4D296FFE42001D5B8F /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76152A4C296FFE42001D5B8F /* PlayerView.swift */; };
+		761DE0AB299CD58D00A542E5 /* Shimmer in Frameworks */ = {isa = PBXBuildFile; productRef = 761DE0AA299CD58D00A542E5 /* Shimmer */; };
 		76267D3B2955CDAE00108612 /* GetUserNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76267D3A2955CDAE00108612 /* GetUserNameView.swift */; };
 		76267D422955D60E00108612 /* GetUserOccupationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76267D412955D60E00108612 /* GetUserOccupationView.swift */; };
 		76267D442955EA5900108612 /* GetUserRelationshipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76267D432955EA5900108612 /* GetUserRelationshipView.swift */; };
@@ -32,6 +33,11 @@
 		763FDF6C29994C5D007B7B77 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 763FDF6B29994C5D007B7B77 /* FirebaseAnalyticsOnDeviceConversion */; };
 		763FDF6E29994C5D007B7B77 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 763FDF6D29994C5D007B7B77 /* FirebaseAuth */; };
 		763FDF7029994C5D007B7B77 /* FirebaseRemoteConfig in Frameworks */ = {isa = PBXBuildFile; productRef = 763FDF6F29994C5D007B7B77 /* FirebaseRemoteConfig */; };
+		763FDF73299A5E47007B7B77 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763FDF72299A5E47007B7B77 /* Constants.swift */; };
+		763FDF76299A621E007B7B77 /* ReceiptParser in Frameworks */ = {isa = PBXBuildFile; productRef = 763FDF75299A621E007B7B77 /* ReceiptParser */; };
+		763FDF78299A621E007B7B77 /* RevenueCat in Frameworks */ = {isa = PBXBuildFile; productRef = 763FDF77299A621E007B7B77 /* RevenueCat */; };
+		763FDF7A299A6381007B7B77 /* PurchasesDelegateHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763FDF79299A6381007B7B77 /* PurchasesDelegateHandler.swift */; };
+		763FDF7C299A6472007B7B77 /* UserSubscriptionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763FDF7B299A6471007B7B77 /* UserSubscriptionManager.swift */; };
 		764FF8E32993BAD70062E221 /* AccountSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764FF8E22993BAD70062E221 /* AccountSettingsView.swift */; };
 		764FF8E52993BF760062E221 /* ToastManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764FF8E42993BF760062E221 /* ToastManager.swift */; };
 		764FF8E72993C9050062E221 /* UserDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764FF8E62993C9050062E221 /* UserDataManager.swift */; };
@@ -103,6 +109,9 @@
 		763FDF622998DCB4007B7B77 /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		763FDF642998F10E007B7B77 /* HeartLikePopAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartLikePopAnimation.swift; sourceTree = "<group>"; };
 		763FDF6629994837007B7B77 /* RemoteConfigManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteConfigManager.swift; sourceTree = "<group>"; };
+		763FDF72299A5E47007B7B77 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		763FDF79299A6381007B7B77 /* PurchasesDelegateHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchasesDelegateHandler.swift; sourceTree = "<group>"; };
+		763FDF7B299A6471007B7B77 /* UserSubscriptionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSubscriptionManager.swift; sourceTree = "<group>"; };
 		764FF8E22993BAD70062E221 /* AccountSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingsView.swift; sourceTree = "<group>"; };
 		764FF8E42993BF760062E221 /* ToastManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastManager.swift; sourceTree = "<group>"; };
 		764FF8E62993C9050062E221 /* UserDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataManager.swift; sourceTree = "<group>"; };
@@ -157,10 +166,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				761DE0AB299CD58D00A542E5 /* Shimmer in Frameworks */,
 				763FDF7029994C5D007B7B77 /* FirebaseRemoteConfig in Frameworks */,
 				763DCC9C2944A77800D286C7 /* OpenAISwift in Frameworks */,
 				76F72BC6296DCD81009E7501 /* SwifterSwift in Frameworks */,
 				763FDF6A29994C5D007B7B77 /* FirebaseAnalytics in Frameworks */,
+				763FDF78299A621E007B7B77 /* RevenueCat in Frameworks */,
+				763FDF76299A621E007B7B77 /* ReceiptParser in Frameworks */,
 				763FDF6C29994C5D007B7B77 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */,
 				76D5EF6B2972B83800EF9C4A /* AnimateText in Frameworks */,
 				7612CE07298A77CC00838B3E /* SimpleToast in Frameworks */,
@@ -230,6 +242,16 @@
 				763D854F2987FCD80040611F /* FortuneReadingView.swift */,
 			);
 			path = FortuneFlow;
+			sourceTree = "<group>";
+		};
+		763FDF71299A5E2E007B7B77 /* RevenueCat */ = {
+			isa = PBXGroup;
+			children = (
+				763FDF72299A5E47007B7B77 /* Constants.swift */,
+				763FDF79299A6381007B7B77 /* PurchasesDelegateHandler.swift */,
+				763FDF7B299A6471007B7B77 /* UserSubscriptionManager.swift */,
+			);
+			path = RevenueCat;
 			sourceTree = "<group>";
 		};
 		7653134B2985517100CF52A3 /* Fonts */ = {
@@ -306,6 +328,7 @@
 				7629F6AC297088E900FC2D17 /* Marcana.entitlements */,
 				7675E44429326B2600ED17D5 /* MarcanaApp.swift */,
 				76F72ACC2967FC3E009E7501 /* LauncherView.swift */,
+				763FDF71299A5E2E007B7B77 /* RevenueCat */,
 				76F72ACF2968013B009E7501 /* Development */,
 				76B2E13229365E3A004BCF46 /* Data */,
 				7654E8032933D5E800F9FDAB /* Views */,
@@ -407,6 +430,9 @@
 				763FDF6B29994C5D007B7B77 /* FirebaseAnalyticsOnDeviceConversion */,
 				763FDF6D29994C5D007B7B77 /* FirebaseAuth */,
 				763FDF6F29994C5D007B7B77 /* FirebaseRemoteConfig */,
+				763FDF75299A621E007B7B77 /* ReceiptParser */,
+				763FDF77299A621E007B7B77 /* RevenueCat */,
+				761DE0AA299CD58D00A542E5 /* Shimmer */,
 			);
 			productName = Marcana;
 			productReference = 7675E44129326B2600ED17D5 /* Marcana.app */;
@@ -443,6 +469,8 @@
 				7612CE05298A77CC00838B3E /* XCRemoteSwiftPackageReference "SimpleToast" */,
 				76D4F1F729964732003A6851 /* XCRemoteSwiftPackageReference "swiftui-visual-effects" */,
 				763FDF6829994C5D007B7B77 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				763FDF74299A621D007B7B77 /* XCRemoteSwiftPackageReference "purchases-ios" */,
+				761DE0A9299CD58D00A542E5 /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */,
 			);
 			productRefGroup = 7675E44229326B2600ED17D5 /* Products */;
 			projectDirPath = "";
@@ -492,6 +520,7 @@
 				76D5EF64297191A400EF9C4A /* PersistentDataManagerEfeExample.swift in Sources */,
 				76152A4D296FFE42001D5B8F /* PlayerView.swift in Sources */,
 				764FF8E92993E5B20062E221 /* MailView.swift in Sources */,
+				763FDF7A299A6381007B7B77 /* PurchasesDelegateHandler.swift in Sources */,
 				7689C3C229867551002A8314 /* BirthdayTestView.swift in Sources */,
 				76267D3B2955CDAE00108612 /* GetUserNameView.swift in Sources */,
 				766F59FA2941342700A328E4 /* BackGroundView.swift in Sources */,
@@ -511,6 +540,7 @@
 				76F72ACD2967FC3E009E7501 /* LauncherView.swift in Sources */,
 				7612CE09298A8AC300838B3E /* FortuneLoadingView.swift in Sources */,
 				7612CE11298B235A00838B3E /* ProgressStepperView.swift in Sources */,
+				763FDF7C299A6472007B7B77 /* UserSubscriptionManager.swift in Sources */,
 				763D8554298851E80040611F /* SelectOneCardView.swift in Sources */,
 				764FF8F12995484F0062E221 /* MusicPlayer.swift in Sources */,
 				764FF8E52993BF760062E221 /* ToastManager.swift in Sources */,
@@ -532,6 +562,7 @@
 				763FDF5F2998D952007B7B77 /* NotificationManager.swift in Sources */,
 				765313582985587600CF52A3 /* FontsManager.swift in Sources */,
 				763D85512987FCD80040611F /* SelectThreeCardsView.swift in Sources */,
+				763FDF73299A5E47007B7B77 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -756,6 +787,14 @@
 				minimumVersion = 0.6.2;
 			};
 		};
+		761DE0A9299CD58D00A542E5 /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/markiv/SwiftUI-Shimmer";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		763DCC9A2944A77800D286C7 /* XCRemoteSwiftPackageReference "OpenAISwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/adamrushy/OpenAISwift.git";
@@ -770,6 +809,14 @@
 			requirement = {
 				branch = master;
 				kind = branch;
+			};
+		};
+		763FDF74299A621D007B7B77 /* XCRemoteSwiftPackageReference "purchases-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RevenueCat/purchases-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
 			};
 		};
 		76D4F1F729964732003A6851 /* XCRemoteSwiftPackageReference "swiftui-visual-effects" */ = {
@@ -804,6 +851,11 @@
 			package = 7612CE05298A77CC00838B3E /* XCRemoteSwiftPackageReference "SimpleToast" */;
 			productName = SimpleToast;
 		};
+		761DE0AA299CD58D00A542E5 /* Shimmer */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 761DE0A9299CD58D00A542E5 /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */;
+			productName = Shimmer;
+		};
 		763DCC9B2944A77800D286C7 /* OpenAISwift */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 763DCC9A2944A77800D286C7 /* XCRemoteSwiftPackageReference "OpenAISwift" */;
@@ -828,6 +880,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 763FDF6829994C5D007B7B77 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseRemoteConfig;
+		};
+		763FDF75299A621E007B7B77 /* ReceiptParser */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 763FDF74299A621D007B7B77 /* XCRemoteSwiftPackageReference "purchases-ios" */;
+			productName = ReceiptParser;
+		};
+		763FDF77299A621E007B7B77 /* RevenueCat */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 763FDF74299A621D007B7B77 /* XCRemoteSwiftPackageReference "purchases-ios" */;
+			productName = RevenueCat;
 		};
 		76D4F1F829964732003A6851 /* SwiftUIVisualEffects */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -90,9 +90,6 @@ struct FortuneHistoryView: View {
                 }
             }
         }
-//        .onAppear{
-//            FortuneHistory.shared.loadFortunes()
-//        }
         .navigationTitle("History")
     }
     
@@ -101,7 +98,7 @@ struct FortuneHistoryView: View {
             let fortune = fortuneHistory.fortunes[index]
             
             // get the id of the deleted fortune
-            var idToRemove = fortune.id
+            let idToRemove = fortune.id
             
             // remove it from fortunes array
             fortuneHistory.fortunes = fortuneHistory.fortunes.filter { $0.id != idToRemove }

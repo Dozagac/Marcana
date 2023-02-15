@@ -15,11 +15,11 @@ enum GenderPronoun: String, Equatable, CaseIterable {
     var icon: String {
         switch self {
         case .him:
-            return "GenderMale"
+            return "IconGenderMale"
         case .her:
-            return "GenderFemale"
+            return "IconGenderFemale"
         case .them:
-            return "GenderIntersex"
+            return "IconGenderIntersex"
         }
     }
 }
@@ -77,7 +77,6 @@ struct GetUserGenderView: View {
                                         .overlay(
                                         VStack {
                                             Image(gender.icon)
-                                                .renderingMode(.template)
                                             Text(gender.rawValue)
                                                 .font(.title2)
                                         }
