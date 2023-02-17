@@ -12,11 +12,11 @@ struct Interpretation: Codable {
     let reversed: String
     
     var uprightWordList: [String] {
-        upright.lowercased().components(separatedBy: ",").map { $0.trimmingCharacters(in: .whitespaces) }
+        upright.lowercased().components(separatedBy: ",").map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
     }
     
     var reveresedWordList: [String] {
-        reversed.lowercased().components(separatedBy: ",").map { $0.trimmingCharacters(in: .whitespaces) }
+        reversed.lowercased().components(separatedBy: ",").map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
     }
 }
 

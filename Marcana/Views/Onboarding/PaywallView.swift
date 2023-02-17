@@ -18,6 +18,9 @@ struct PaywallView: View {
     private(set) var offering: Offering? = UserSubscriptionManager.shared.offerings?.current
 
     @State var selectedPackage: Package?
+    
+    @StateObject var userSubscriptionManager = UserSubscriptionManager.shared
+    
 
     var body: some View {
         GeometryReader { proxy in
@@ -132,8 +135,13 @@ struct PaywallView: View {
                     HStack(spacing: 24) {
                         Button("Restore Purchase") {
                             // restore purchase action
-                            UserSubscriptionManager.shared.restorePurchases()
+                            userSubscriptionManager.restorePurchases()
                         }
+                        .alert(isPresented: $userSubscriptionManager.showingError) {
+                                 Alert(title: Text(userSubscriptionManager.errorTitle), message: Text(userSubscriptionManager.errorMessage), dismissButton: .default(Text("OK")) {
+                                     userSubscriptionManager.showingError = false
+                                 })
+                             }
                             .foregroundColor(.secondary)
                             .font(.customFontCaption)
 
@@ -245,7 +253,7 @@ struct PurchaseButton: View {
 //            dismissPaywall()
         }
         label: {
-            Text("Try Free & Subscribe")
+            Text("Start Free Trial") // Try Free & Subscribe
                 .font(.customFontBody)
                 .fontWeight(.semibold)
                 .frame(maxWidth: .infinity)

@@ -24,33 +24,20 @@ struct FortuneHistoryView: View {
             if fortuneHistory.fortunes.isNotEmpty {
                 List {
 
-                    if fortuneHistory.favoriteFortunes.isNotEmpty { // this is not published......
-                        Section {
-                            ForEach($fortuneHistory.favoriteFortunes) { $favoritedFortune in
-                                FortuneHistoryListRowItems(fortune: $favoritedFortune, tappedFortuneHistoryItem: $tappedFortuneHistoryItem, showingFortuneSheet: $showingFortuneSheet)
-                            }
-                                .onDelete { indexSet in
-                                    removeFromFortuneArrays(indexSet)
-                            }
-                        } header: {
-                            Text("Favorites")
-                        }
-                    }
-
                     Section {
                         // COMMENT IN FOR TESTING
 //                            ForEach(FortuneHistory.dummyFortunes) { fortune in
                         ForEach($fortuneHistory.fortunes) { $fortune in
-                            FortuneHistoryListRowItems(fortune: $fortune, tappedFortuneHistoryItem: $tappedFortuneHistoryItem, showingFortuneSheet: $showingFortuneSheet)
+                            FortuneHistoryListRowItems(fortune: $fortune)
                         }
                             .onDelete { indexSet in
-                                removeFromFortuneArrays(indexSet)
+                                fortuneHistory.deleteFromFortuneArrays(indexSet)
                         }
                     } header: {
-                        Text("All")
+                        Text("Past Readings")
                     }
                 }
-                    .listStyle(SidebarListStyle()) // Makes the sections collapsable
+//                    .listStyle(SidebarListStyle()) // Makes the sections collapsable
                 .scrollContentBackground(.hidden)
                     .toolbar {
                     EditButton()
@@ -93,35 +80,16 @@ struct FortuneHistoryView: View {
         .navigationTitle("History")
     }
     
-    func removeFromFortuneArrays(_ indexSet: IndexSet) {
-        for index in indexSet {
-            let fortune = fortuneHistory.fortunes[index]
-            
-            // get the id of the deleted fortune
-            let idToRemove = fortune.id
-            
-            // remove it from fortunes array
-            fortuneHistory.fortunes = fortuneHistory.fortunes.filter { $0.id != idToRemove }
 
-            // remove it from favorites if it was favorited
-            if fortune.isFavorited {
-                fortuneHistory.favoriteFortunes = fortuneHistory.favoriteFortunes.filter { $0.id != idToRemove }
-            }
-        }
-    }
 }
 
 struct FortuneHistoryListRowItems: View {
     @Binding var fortune: FortuneReading
-    @Binding var tappedFortuneHistoryItem: FortuneReading?
-    @Binding var showingFortuneSheet: Bool
 
     var body: some View {
-        Button {
-            DispatchQueue.main.async {
-                tappedFortuneHistoryItem = fortune
-            }
-
+        NavigationLink {
+            FortuneReadingView(showingFortuneSheet: .constant(true),
+                               fortuneReading: fortune)
         } label: {
             HStack(spacing: 8) {
                 Image(fortune.fortuneType.iconName)
@@ -151,10 +119,6 @@ struct FortuneHistoryListRowItems: View {
                 }
                     .font(.customFontCaption)
 
-            }
-                .fullScreenCover(item: $tappedFortuneHistoryItem) { tappedFortuneHistoryItem in
-                FortuneReadingView(showingFortuneSheet: $showingFortuneSheet,
-                                   fortuneReading: tappedFortuneHistoryItem)
             }
         }
             .listRowBackground(UIValues.listRowBackroundColor)

@@ -41,6 +41,23 @@ class FortuneHistory: ObservableObject {
                         }
         updateFavoriteFortunes()
         }
+    
+    func deleteFromFortuneArrays(_ indexSet: IndexSet) {
+        for index in indexSet {
+            let fortune = fortunes[index]
+            
+            // get the id of the deleted fortune
+            let idToRemove = fortune.id
+            
+            // remove it from fortunes array
+            fortunes = fortunes.filter { $0.id != idToRemove }
+
+            // remove it from favorites if it was favorited
+            if fortune.isFavorited {
+                favoriteFortunes = favoriteFortunes.filter { $0.id != idToRemove }
+            }
+        }
+    }
 
     static let dummyFortunes: [FortuneReading] = [
         FortuneReading(fortuneQuestion: "Very long Dummy 1 card question, because why not, you gotta test everything you know?", fortuneText: FortuneRequester.dummyResponse, fortuneType: .with1card, fortuneCards: Deck().DrawCards(n: 1), userName: "Deniz", userGender: GenderPronoun.him.rawValue, userBirthday: 0, userOccupation: "Developer", userRelationship: Relationship.relationship.rawValue),

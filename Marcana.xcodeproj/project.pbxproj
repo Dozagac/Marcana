@@ -53,6 +53,8 @@
 		765313542985519900CF52A3 /* NanumMyeongjo-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 765313502985519900CF52A3 /* NanumMyeongjo-ExtraBold.ttf */; };
 		765313582985587600CF52A3 /* FontsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765313572985587600CF52A3 /* FontsManager.swift */; };
 		7654E7FE2933C67A00F9FDAB /* CardDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7654E7FD2933C67A00F9FDAB /* CardDetailView.swift */; };
+		76584B03299F61530021F50B /* FavoriteFortunesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76584B02299F61530021F50B /* FavoriteFortunesView.swift */; };
+		76584B05299F6D540021F50B /* Archive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76584B04299F6D540021F50B /* Archive.swift */; };
 		76588C1D298F243F003E3530 /* FortuneReading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76588C1C298F243F003E3530 /* FortuneReading.swift */; };
 		76588C2129902D89003E3530 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76588C2029902D89003E3530 /* OnboardingView.swift */; };
 		7668BF0A297026CA00019E14 /* GetUserInfoFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7668BF09297026CA00019E14 /* GetUserInfoFlowView.swift */; };
@@ -128,6 +130,8 @@
 		765313562985581400CF52A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		765313572985587600CF52A3 /* FontsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontsManager.swift; sourceTree = "<group>"; };
 		7654E7FD2933C67A00F9FDAB /* CardDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailView.swift; sourceTree = "<group>"; };
+		76584B02299F61530021F50B /* FavoriteFortunesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteFortunesView.swift; sourceTree = "<group>"; };
+		76584B04299F6D540021F50B /* Archive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Archive.swift; sourceTree = "<group>"; };
 		76588C1C298F243F003E3530 /* FortuneReading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FortuneReading.swift; sourceTree = "<group>"; };
 		76588C2029902D89003E3530 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		7668BF09297026CA00019E14 /* GetUserInfoFlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserInfoFlowView.swift; sourceTree = "<group>"; };
@@ -351,6 +355,7 @@
 				7675E45E29336C3F00ED17D5 /* DeckInfoView.swift */,
 				764FF8E22993BAD70062E221 /* AccountSettingsView.swift */,
 				764FF8E82993E5B20062E221 /* MailView.swift */,
+				76584B02299F61530021F50B /* FavoriteFortunesView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -400,6 +405,7 @@
 				76F72BC2296D9DF0009E7501 /* TestingView.swift */,
 				7689C3C129867551002A8314 /* BirthdayTestView.swift */,
 				76D5EF63297191A400EF9C4A /* PersistentDataManagerEfeExample.swift */,
+				76584B04299F6D540021F50B /* Archive.swift */,
 			);
 			path = Development;
 			sourceTree = "<group>";
@@ -529,6 +535,7 @@
 				76F72BBF296D85E7009E7501 /* LocalDataStrings.swift in Sources */,
 				76267D462955EC3F00108612 /* GetUserGenderView.swift in Sources */,
 				76267D422955D60E00108612 /* GetUserOccupationView.swift in Sources */,
+				76584B05299F6D540021F50B /* Archive.swift in Sources */,
 				76588C1D298F243F003E3530 /* FortuneReading.swift in Sources */,
 				76760C78297A8E1A00D9C5D2 /* LoginViewOO.swift in Sources */,
 				76DB3FD029903D740011FC06 /* PaywallView.swift in Sources */,
@@ -540,6 +547,7 @@
 				76F72ACD2967FC3E009E7501 /* LauncherView.swift in Sources */,
 				7612CE09298A8AC300838B3E /* FortuneLoadingView.swift in Sources */,
 				7612CE11298B235A00838B3E /* ProgressStepperView.swift in Sources */,
+				76584B03299F61530021F50B /* FavoriteFortunesView.swift in Sources */,
 				763FDF7C299A6472007B7B77 /* UserSubscriptionManager.swift in Sources */,
 				763D8554298851E80040611F /* SelectOneCardView.swift in Sources */,
 				764FF8F12995484F0062E221 /* MusicPlayer.swift in Sources */,

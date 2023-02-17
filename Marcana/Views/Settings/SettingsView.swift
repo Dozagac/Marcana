@@ -30,8 +30,12 @@ struct SettingsView: View {
 
     @State private var animating = false
 
-    @State private var mailSubject : String? = nil
-    
+    @State private var mailSubject: String? = nil
+
+    @StateObject var userSubscriptionManager = UserSubscriptionManager.shared
+
+
+
     let elementVerticalPadding: CGFloat = 8
     var body: some View {
         ZStack(alignment: .top) {
@@ -50,14 +54,14 @@ struct SettingsView: View {
                                 .modifier(SettingButtonIconModifier())
                             VStack(alignment: .leading) {
                                 Text("Change User")
-                                Text("Re-enter all user data above")
+                                Text("Re-enter user info")
                                     .font(.customFontCaption)
                             }
                         }
                             .foregroundColor(.text)
                             .padding(.vertical, elementVerticalPadding)
                     }
-                    
+
                     //MARK: - Name
                     NavigationLink {
                         GetUserNameView(getUserInfoStep: .constant(99)) // 99 is chosen to set button functionality, see the view
@@ -130,6 +134,21 @@ struct SettingsView: View {
                 }
                     .listRowBackground(UIValues.listRowBackroundColor)
 
+                Section {
+                    NavigationLink {
+                        FavoriteFortunesView()
+                    } label: {
+                        HStack {
+                            Image(systemName: "heart.fill")
+                                .modifier(SettingButtonIconModifier())
+                            Text("Your Favorites").frame(alignment: .leading)
+                        }
+                    }
+                        .padding(.vertical, elementVerticalPadding)
+                }
+                    .listRowBackground(UIValues.listRowBackroundColor)
+
+
                 // MARK: - Explore Deck
                 Section(header: Text("Explore Cards").font(.customFontFootnote).foregroundColor(.secondary)) {
                     NavigationLink {
@@ -197,7 +216,31 @@ struct SettingsView: View {
                 }
 
 // MARK: - DISABLED UNTIL LOGIN IS ENABLED
-//                    Section(header: Text("Account").font(.customFontFootnote).foregroundColor(.secondary)) {
+                Section(header: Text("Account").font(.customFontFootnote).foregroundColor(.secondary)) {
+
+                    Button {
+                        // restore purchase action
+                        userSubscriptionManager.restorePurchases()
+                    } label: {
+
+
+                        HStack {
+                            Image(systemName: "gearshape.arrow.triangle.2.circlepath")
+                                .modifier(SettingButtonIconModifier())
+                            VStack(alignment: .leading) {
+                                Text("Restore Purchase")
+                                Text(verbatim: "Re-claim an existing subscription")
+                                    .font(.customFontCaption)
+                                    .foregroundColor(.secondary)
+                            }
+                        }
+                    }
+                        .alert(isPresented: $userSubscriptionManager.showingError) {
+                        Alert(title: Text(userSubscriptionManager.errorTitle), message: Text(userSubscriptionManager.errorMessage), dismissButton: .default(Text("OK")) {
+                            userSubscriptionManager.showingError = false
+                        })
+                    }
+
 //
 //                        //MARK: - Account Settings
 //                        NavigationLink() {
@@ -240,14 +283,15 @@ struct SettingsView: View {
 //                        } message: {
 //                            Text("Are you sure you want to log out?")
 //                        }
-//                    }
+                }
+                    .listRowBackground(UIValues.listRowBackroundColor)
             }
 
                 .scrollContentBackground(.hidden)
                 .listStyle(.insetGrouped)
         }
-            .font(.customFontBody)
-            .foregroundColor(.text)
+            .font(.customFontBody) // font for all the text in this view unless overwritten at child
+        .foregroundColor(.text)
             .navigationTitle("Settings")
         // this fake animation mbelowakes it so that the appstorage changes from the
         //   USER INFO section are reflected onto the view by "refresing" the page

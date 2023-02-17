@@ -21,7 +21,7 @@ struct MarcanaApp: App {
 //        UINavigationBar.appearance().largeTitleTextAttributes = [.font : UIFont(name: FontsManager.NanumMyeongjo.extraBold, size: 34)!]
         UINavigationBar.appearance().largeTitleTextAttributes = [.font: UIFont(name: "Palatino-Bold", size: 34)!]
 
-        Purchases.logLevel = .debug // just to see more informative messages
+        Purchases.logLevel = .warn // just to see more informative messages
         Purchases.configure(
             with:
                 Configuration.Builder(withAPIKey: Constants.apiKey)

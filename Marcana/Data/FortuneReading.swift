@@ -34,7 +34,7 @@ class FortuneReading: ObservableObject, Codable, Identifiable {
     }
     
     init(fortuneQuestion: String, fortuneText: String, fortuneType: FortuneType, fortuneCards: [DrawnCard], userName: String, userGender: String, userBirthday: Double, userOccupation: String, userRelationship: String) {
-        self.fortuneQuestion = fortuneQuestion
+        self.fortuneQuestion = fortuneQuestion.trimmingCharacters(in: .whitespacesAndNewlines)
         self.fortuneText = fortuneText
         self.fortuneType = fortuneType
         self.fortuneCards = fortuneCards

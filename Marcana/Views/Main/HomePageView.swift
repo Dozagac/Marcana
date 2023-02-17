@@ -21,9 +21,10 @@ struct HomePageView: View {
     @State var showingFortuneSheet1CardFortune = false
     @State var showingFortuneSheet3CardFortune = false
 
-    @State var showingVolumeControlSheet = false
-
     var userDataManager = UserDataManager()
+    
+    @StateObject var musicPlayer = MusicPlayer.shared
+    @State var isPlaying = false
 
     var body: some View {
         GeometryReader { geo in
@@ -40,18 +41,18 @@ struct HomePageView: View {
 
                         //MARK: - Music control button
                         Button {
-                            showingVolumeControlSheet = true
+                            musicPlayer.togglePlayPause()
+                            isPlaying = musicPlayer.player.isPlaying
+                            print("Music Playing: \(isPlaying)")
                         } label: {
                             VStack(spacing: 0) {
-                                Image("IconMusicNote")
-                                    .foregroundColor(.text)
+                                Image(systemName: isPlaying ? "speaker.wave.2.fill" :  "speaker.slash.fill")
+                                    .foregroundColor(isPlaying ? .text : .gray)
                                     .frame(width: 44, height: 44)
-                                    
                                     .background(
                                     Color.clear
                                         .blurEffect() // from SwiftUIVisualEffects, looks better than ultrathin
                                 )
-
                                     .cornerRadius(12)
                                     .foregroundColor(.white)
 
@@ -63,10 +64,6 @@ struct HomePageView: View {
                     }
                         .padding(.top)
                         .padding(.horizontal, UIValues.HPadding)
-                        .sheet(isPresented: $showingVolumeControlSheet) {
-                        MusicVolumeControlView(geoProxy: geo)
-                            .presentationDetents([.fraction(0.15), .fraction(0.15)])
-                    }
 
                     Spacer()
 
@@ -108,9 +105,6 @@ struct HomePageView: View {
                     doUserInfoFlow = true
                 }
             }
-                .onFirstAppear {
-                MusicPlayer.shared.play()
-            }
         }
     }
 }
@@ -132,7 +126,7 @@ struct FortuneTypeSelectionButton: View {
                     Image(fortuneType.imageName)
                         .resizable()
                         .scaledToFit()
-                        .frame(width: 150)
+                        .frame(height: 120)
                         .shadow(radius: 5)
                     VStack(alignment: .center, spacing: 0) {
                         //MARK: CARD TITLE
@@ -202,30 +196,6 @@ struct FortuneTypeSelectionButton: View {
                     }
                 }
             }
-        }
-    }
-}
-
-
-struct MusicVolumeControlView: View {
-    // https://www.donnywals.com/presenting-a-partially-visible-bottom-sheet-in-swiftui-on-ios-16/
-    @AppStorage("backgroundMusicVolume") var musicVolume: Double = 0.5
-    let geoProxy: GeometryProxy
-    var body: some View {
-        ZStack {
-            HStack {
-                Image(systemName: "speaker.wave.1")
-                Slider(value: $musicVolume, in: 0...1)
-                    .onReceive([self.musicVolume].publisher.first()) { value in
-                    MusicPlayer.shared.player?.volume = Float(value)
-                }
-                    .frame(width: geoProxy.size.width * 0.6)
-                    .accentColor(.marcanaBlue)
-                Image(systemName: "speaker.wave.3")
-            }
-                .frame(maxWidth: .infinity, maxHeight: .infinity) // needs this volume for backgroun blur effect
-
-                .background(BackgroundBlurView())
         }
     }
 }
