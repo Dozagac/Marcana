@@ -27,7 +27,7 @@ enum GenderPronoun: String, Equatable, CaseIterable {
 struct GetUserGenderView: View {
     @Environment(\.dismiss) var dismiss
     @Binding var getUserInfoStep: Int
-    
+
     // Gender
     @AppStorage(wrappedValue: "", UserDataManager.UserKeys.userGender.rawValue) var userGender
 
@@ -44,31 +44,30 @@ struct GetUserGenderView: View {
                             .font(.largeTitle)
 
                         QuestionText(text: "How should we call you?")
- 
+
                         Text("Your personal information is solely used for generating personalized fortune tellings and will be kept confidential.")
                             .multilineTextAlignment(.center)
                             .font(.customFontFootnote)
                             .padding(.horizontal)
-                            
+
 
                         //MARK: Gender Buttons
                         HStack(spacing: 16) {
                             ForEach(GenderPronoun.allCases, id: \.self) { gender in
-                                Button(action: {
+                                Button{
                                     userGender = gender.rawValue
-                                
+
                                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
                                         withAnimation(.spring()) {
                                             getUserInfoStep += 1
                                         }
-                                        
+
                                         if getUserInfoStep == 99 {
                                             dismiss() // so the view can be dismissed when accessed from the settings
                                         }
-                                        
+
                                     }
-                                }
-                                ) {
+                                } label: {
                                     RoundedRectangle(cornerRadius: 20)
                                         .fill(userGender == gender.rawValue ? Color.text : .clear)
                                         .frame(width: 95, height: 95)
@@ -82,26 +81,26 @@ struct GetUserGenderView: View {
                                         }
                                             .foregroundColor(userGender == gender.rawValue ? Color.black : .text))
                                 }
+                                }
                             }
+                                .padding(.top)
                         }
-                        .padding(.top)
                     }
+                        .padding(.vertical, 24)
+                        .background(.ultraThinMaterial)
+                        .cornerRadius(48)
+
+                    Spacer()
                 }
-                .padding(.vertical, 24)
-                    .background(.ultraThinMaterial)
-                    .cornerRadius(48)
-                
-                Spacer()
             }
         }
     }
-}
 
 
-struct GetUserGenderAndBirthdayView_Previews: PreviewProvider {
-    @State static var getUserInfoStep = 2
-    static var previews: some View {
-        GetUserGenderView(getUserInfoStep: $getUserInfoStep)
-            .preferredColorScheme(.dark)
+    struct GetUserGenderAndBirthdayView_Previews: PreviewProvider {
+        @State static var getUserInfoStep = 2
+        static var previews: some View {
+            GetUserGenderView(getUserInfoStep: $getUserInfoStep)
+                .preferredColorScheme(.dark)
+        }
     }
-}

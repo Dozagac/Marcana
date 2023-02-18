@@ -12,6 +12,7 @@ struct UIValues {
     static let HPadding: CGFloat = 16
     static let bigButtonHPadding: CGFloat = 24
     static let listRowBackroundColor: Color = Color.marcanaLicorice.opacity(0.75)
+    static let listElementVerticalPadding: CGFloat = 8
 }
 
 

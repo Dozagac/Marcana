@@ -35,7 +35,7 @@ struct CardDetailView: View {
                     ScrollView(showsIndicators: false) {
                         // MARK: Card Image
                         ZStack {
-                            CardDisplayImageView(image: "facedownCard")
+                            CardDisplayImageView(image: "facedownCard2")
                                 .shadow(color: Color.gray, radius: 4, x: 0, y: 0)
                                 .padding(.top, 30)
                                 .padding(.bottom, 16)
@@ -49,7 +49,7 @@ struct CardDetailView: View {
                                 .padding(.bottom, 16)
                                 .zIndex(1)
 
-                            CardDisplayImageView(image: "facedownCard")
+                            CardDisplayImageView(image: "facedownCard2")
                                 .shadow(color: Color.gray, radius: 4, x: 0, y: 0)
                                 .padding(.top, 30)
                                 .padding(.bottom, 16)

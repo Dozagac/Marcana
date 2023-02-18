@@ -17,7 +17,7 @@ struct GetUserInfoFlowView: View {
     var body: some View {
 
         ZStack(alignment: .top) {
-            ImageBackgroundView(imageName: "fieldWalk")
+            ImageBackgroundView(imageName: "ValleyWalk")
                 .saturation(0.5)
 
             ChevronBackButton(getUserInfoStep: $getUserInfoStep)

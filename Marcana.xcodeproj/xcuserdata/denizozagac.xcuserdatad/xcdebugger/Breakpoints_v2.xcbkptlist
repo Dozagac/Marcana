@@ -903,8 +903,8 @@
             filePath = "Marcana/Views/Main/HomePageView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "208"
-            endingLineNumber = "208"
+            startingLineNumber = "311"
+            endingLineNumber = "311"
             landmarkName = "iconName"
             landmarkType = "24">
          </BreakpointContent>
@@ -969,7 +969,7 @@
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "17"
                   endingLineNumber = "17"
-                  offsetFromSymbolStart = "248">
+                  offsetFromSymbolStart = "348">
                </Location>
                <Location
                   uuid = "8561A667-DCE3-48DA-9177-01A4D3C80089 - fc190b1b0ee1ab1b"
@@ -984,7 +984,7 @@
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "18"
                   endingLineNumber = "18"
-                  offsetFromSymbolStart = "836">
+                  offsetFromSymbolStart = "1156">
                </Location>
             </Locations>
          </BreakpointContent>

@@ -260,7 +260,7 @@ struct FlippingCardView: View {
         
         var body: some View {
             ZStack{
-                Image("facedownCard")
+                Image("facedownCard2")
                     .resizable()
                     .frame(width: width, height: height)
                     .clipShape(RoundedRectangle(cornerRadius: 8))
