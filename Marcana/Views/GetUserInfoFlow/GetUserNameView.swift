@@ -11,7 +11,7 @@ import SwiftUI
 struct GetUserNameView: View {
     @Binding var getUserInfoStep: Int
     @FocusState private var focusTextField
-
+    @AppStorage(wrappedValue: true, DefaultKeys.userNameIsNew) var userNameIsNew
     @AppStorage(wrappedValue: "", UserDataManager.UserKeys.userName.rawValue) var userName
     private var canContinue: Bool {
         userName.isNotEmpty
@@ -41,6 +41,7 @@ struct GetUserNameView: View {
                         .focused($focusTextField)
                         .onSubmit {
                         if userName.isNotEmpty {
+                            userNameIsNew = true
                             getUserInfoStep += 1
                             focusTextField = false
                         }

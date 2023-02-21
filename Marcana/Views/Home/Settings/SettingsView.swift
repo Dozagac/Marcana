@@ -13,8 +13,8 @@ import SwiftUI
 struct SettingsView: View {
     @State var isPresentingConfirm = false
     var userDataManager = UserDataManager()
-    @AppStorage(wrappedValue: false, "loginStatus") var loginStatus
-    @AppStorage(wrappedValue: true, "doUserInfoFlow") var doUserInfoFlow
+    @AppStorage(wrappedValue: false, DefaultKeys.loginStatus) var loginStatus
+    @AppStorage(wrappedValue: true, DefaultKeys.doUserInfoFlow) var doUserInfoFlow
 
     @AppStorage(wrappedValue: "", UserDataManager.UserKeys.userName.rawValue) var userName
     @AppStorage(wrappedValue: "", UserDataManager.UserKeys.userGender.rawValue) var userGender

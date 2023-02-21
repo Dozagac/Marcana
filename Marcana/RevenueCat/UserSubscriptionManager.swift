@@ -17,7 +17,7 @@ class UserSubscriptionManager: ObservableObject {
     @Published var customerInfo: CustomerInfo? {
         didSet {
             // checks if the subscription is active 12:10 in the video
-            subscriptionActive = customerInfo?.entitlements[Constants.entitlementID]?.isActive == true
+            subscriptionActive = customerInfo?.entitlements[RevCatConstants.entitlementID]?.isActive == true
         }
     }
     
@@ -34,7 +34,7 @@ class UserSubscriptionManager: ObservableObject {
 
     func restorePurchases() {
         Purchases.shared.restorePurchases { customerInfo, error in
-            if let entitlement = customerInfo?.entitlements[Constants.entitlementID], entitlement.isActive {
+            if let entitlement = customerInfo?.entitlements[RevCatConstants.entitlementID], entitlement.isActive {
                 // The entitlement is now active for the user
                 // TODO: show an alert
             } else if let error = error {

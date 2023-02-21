@@ -10,7 +10,7 @@ import RevenueCat
 import Shimmer
 
 struct PaywallView: View {
-    @AppStorage(wrappedValue: true, "doOnboarding") var doOnboarding
+    @AppStorage(wrappedValue: true, DefaultKeys.doOnboarding) var doOnboarding
     @Binding var showingPaywall: Bool
     @State private var animatingViews = false
 
@@ -246,7 +246,7 @@ struct PurchaseButton: View {
             guard let selectedPackage = selectedPackage else { return }
             // puchase action
             Purchases.shared.purchase(package: selectedPackage) { (transaction, customerInfo, error, userCancelled) in
-                if UserSubscriptionManager.shared.customerInfo?.entitlements[Constants.entitlementID]?.isActive == true {
+                if UserSubscriptionManager.shared.customerInfo?.entitlements[RevCatConstants.entitlementID]?.isActive == true {
                     // Unlock that great "pro" content
                 }
             }

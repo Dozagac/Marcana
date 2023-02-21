@@ -26,7 +26,6 @@ import OpenAISwift
     }
 
 
-
 //    @StateObject var fortuneHistory = FortuneHistory.shared
     @Published var fortuneReading: FortuneReading
     @Published var waitingForAPIResponse = false {
@@ -46,32 +45,35 @@ Finally we come to the 7 of Cups which signifies your future path ahead. This ca
 
     
     func prepareAPIPrompt1Card() -> String {
-        print("PROMPT SENT TO AI")
+        var userReGreetingText = ""
+        let userNameIsNew = UserDefaults.standard.bool(forKey: DefaultKeys.userNameIsNew)
+        
+        if userNameIsNew {
+            userReGreetingText = "This is not our first session, greet me by welcoming me back"
+        }
 
         let AIprompt = """
-        Act as a mystical fortune teller named Marcana that uses tarot cards to tell highly personalized fortune tellings.
-        
-        I will give you general information about myself and the 1 tarot card I have chosen.
-        I will also ask a personal question that you should provide a fortune reading for.
-        Interpret the tarot in the context of the question that I ask.
-        Try to answer the question in a definitive way, avoid giving an ambiguous answer.
-        Try to reference the general information I give about myself in the answer you give.
-        For example, you can connect the card interpretations to my occupation, relationship status, or my astrological star sign.
-        Use the cards I pick to make interpretations and create fortune tellings for my daily fortune reading.
-            
+        Act as a spiritually attuned tarot reader named Marcana that tellS highly personalized tarot readings.
+        \(userReGreetingText)
+        I will give you general information about myself and the 1 tarot cards I have chosen.
+        I will also ask a personal question that sets the context for the fortune reading session.
+
+        Use the cards I chose to make interpretations and create "1 card spread" tarot reading.
+         
+        Try to make references to the general information I give about myself in the answer you give.
+        You can also make references to my star sign, which you know from my birthday.
+        Try to answer the question in a definitive way, and avoid giving an ambiguous answer.
+         
         As a part of your fortune reading, ask at least one question that will make the reader curious.
-        Don't just tell the meaning of the cards, make it personal to the reader by connecting card interpretations to the asked question.
-        Provide the answer in the tone of a mystical and spiritually attuned fortune teller.
-        Give answers that provoke curiosity, wonder, and mystery.
-        Prioritize using words that convey emotion and feelings.
+        Don't just tell the meaning of the cards, make it personal to the reader by connecting their meaning to the asked question.
+        The answer should be customised to the person so they don't feel like you say the same interpretations to everyone.
+        Prioritise using words that convey emotion and feelings.
+        Give answers that provoke curiosity and wonder.
+
+        Try to answer the question in a definitive way, avoid giving an ambiguous answer.
         You can use risky statements, it will feel more personal, which is good.
-        
-        Provide at least one paragraph per 3 card and the questions answer.
+
         Provide your answer in paragraphs for better readability.
-        
-        Constraints:
-        Do not include anything that is not written as a fortune teller.
-        Do not repeat this prompt back.
 
         Here is my personal information:
         Name: \(self.fortuneReading.userName)
@@ -87,30 +89,42 @@ Finally we come to the 7 of Cups which signifies your future path ahead. This ca
         
         Welcome!
         """
+        
+        UserDefaults.standard.set(false, forKey: DefaultKeys.userNameIsNew)
+        
+        print("PROMPT SENT TO AI")
         return AIprompt
     }
 
     func prepareAPIPrompt3Cards() -> String {
-        print("PROMPT SENT TO AI")
+        var userReGreetingText = ""
+        let userNameIsNew = UserDefaults.standard.bool(forKey: DefaultKeys.userNameIsNew)
+        
+        if userNameIsNew {
+            userReGreetingText = "This is not our first session, greet me by welcoming me back"
+        }
 
         let AIprompt = """
-        Act as a mystical fortune teller named Marcana that uses tarot cards to tell highly personalized fortune tellings.
-        
+        Act as a spiritually attuned tarot reader named Marcana that tellS highly personalized tarot readings.
+        \(userReGreetingText)
         I will give you general information about myself and the 3 tarot cards I have chosen.
-        I will also ask a personal question for which you should provide a fortune reading.
-        Interpret the tarot in the context of the question that I ask.
-        Try to answer the question in a definitive way, and avoid giving an ambiguous answer.
-        Try to reference the general information I give about myself in the answer you give.
-        For example, you can connect the card interpretations to my occupation, relationship status, or my astrological star sign.
-        Use the cards I pick to make interpretations and create fortune tellings for my past, present, and future.
+        I will also ask a personal question that sets the context for the fortune reading session.
 
+        Use the cards I chose to make interpretations and create a "3 card spread" tarot reading for my past, present and future.
+         
+        Try to make references to the general information I give about myself in the answer you give.
+        You can also make references to my star sign, which you know from my birthday.
+        Try to answer the question in a definitive way, and avoid giving an ambiguous answer.
+         
         As a part of your fortune reading, ask at least one question that will make the reader curious.
-        Don't just tell the meaning of the cards, make it personal to the reader by connecting card interpretations to the asked question.
-        Provide the answer in the tone of a mystical and spiritually attuned fortune teller.
-        Give answers that provoke curiosity, wonder, and mystery.
-        Prioritize using words that convey emotion and feelings.
+        Don't just tell the meaning of the cards, make it personal to the reader by connecting their meaning to the asked question.
+        The answer should be customised to the person so they don't feel like you say the same interpretations to everyone.
+        Prioritise using words that convey emotion and feelings.
+        Give answers that provoke curiosity and wonder.
+
+        Try to answer the question in a definitive way, avoid giving an ambiguous answer.
         You can use risky statements, it will feel more personal, which is good.
-        
+
         Provide your answer in paragraphs for better readability.
         
         Constraints:
@@ -135,7 +149,10 @@ Finally we come to the 7 of Cups which signifies your future path ahead. This ca
         
         Welcome!
         """
-
+        
+        UserDefaults.standard.set(false, forKey: DefaultKeys.userNameIsNew)
+        
+        print("PROMPT SENT TO AI")
         return AIprompt
     }
 
@@ -171,8 +188,9 @@ Finally we come to the 7 of Cups which signifies your future path ahead. This ca
                 print(error.localizedDescription)
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { // delay is so that the flow doesn't get bugged when an instant fail happens.
                     self.response = error.localizedDescription
-                    self.fortuneReading.fortuneText = "Oops!\n\nIt looks like our servers are taking a break right now. \nPlease try again in a bit. In the meantime, why not grab a cup of coffee and give a call to a loved one ☕️. \n\nThank you for your patience 🤍. \n\nError: \(self.response)"
+                    self.fortuneReading.fortuneText = "Oops!\n\nIt looks like our servers are taking a break right now. \nPlease try again in a bit. In the meantime, why not grab a cup of coffee ☕️ and give a call to a loved one 🤍? \n\nThank you for your patience 🙏."
                     self.waitingForAPIResponse = false
+                    print("API ERROR: \(self.response)")
                 }
             }
         }

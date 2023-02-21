@@ -13,7 +13,7 @@ import SwiftUI
 
 class LoginViewOO: ObservableObject {
     @Published var nonce = ""
-    @AppStorage(wrappedValue: false, "loginStatus") var loginStatus
+    @AppStorage(wrappedValue: false, DefaultKeys.loginStatus) var loginStatus
     @AppStorage(wrappedValue: false, "anonymousUser") var anonymousUser
 
     @AppStorage(wrappedValue: "", UserDataManager.UserKeys.userName.rawValue) var userName

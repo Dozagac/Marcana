@@ -16,7 +16,7 @@ struct AccountSettingsView: View {
     @State private var isPresentingEraseHistoryAlert = false
     @State private var isPresentingDeleteUserAlert = false
     @StateObject var toastManager = ToastManager()
-    @AppStorage(wrappedValue: false, "loginStatus") var loginStatus
+    @AppStorage(wrappedValue: false, DefaultKeys.loginStatus) var loginStatus
 
     var body: some View {
         ZStack {

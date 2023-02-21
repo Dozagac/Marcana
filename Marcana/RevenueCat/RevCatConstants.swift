@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Constants {
+struct RevCatConstants {
     
     // from the RevenueCat dashboard
     static let apiKey = "appl_UVEbnqMClEbQKrjrUMWIISJtweo"

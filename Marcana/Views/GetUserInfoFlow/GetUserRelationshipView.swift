@@ -21,7 +21,7 @@ struct GetUserRelationshipView: View {
     @Environment(\.dismiss) var dismiss
     
     @AppStorage(UserDataManager.UserKeys.userRelationship.rawValue) var userRelationship : String?
-    @AppStorage(wrappedValue: true, "doUserInfoFlow") var doUserInfoFlow
+    @AppStorage(wrappedValue: true, DefaultKeys.doUserInfoFlow) var doUserInfoFlow
 
     var body: some View {
         ZStack(alignment: .top) {

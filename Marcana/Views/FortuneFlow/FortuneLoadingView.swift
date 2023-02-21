@@ -13,16 +13,20 @@ struct FortuneLoadingView: View {
     @Environment(\.dismiss) var dismiss
     @ObservedObject var fortuneRequester: FortuneRequester
 
-    let loadingTexts: [String] = ["...Harnessing Mystic Powers...",
-                                  "...Consulting the Cards...",
-                                  "...Unlocking Secrets...",
-                                  "...Scrying the Unknown...",
-                                  "...Exploring the Unseen...",
-                                  "...Uncovering Mysteries...",
-                                  "...Unveiling the Unknown..."]
+    let loadingTexts: [String] = [
+        "...Feel the energy around you...",
+        "...Visualize your card...",
+        "...Take a deep breath...",
+        "...Clear your mind...",
+        "...Open your heart...",
+        "...Release any doubts or fears...",
+        "...Awaken your senses...",
+        "...Focus your intention..."
+    ]
+
 
     @State var loadingText: String = ""
-    
+
     @State var animating = false
 
     var body: some View {
@@ -31,16 +35,16 @@ struct FortuneLoadingView: View {
 //                .scaleEffect(1.5)
 //                .colorMultiply(.gray)
             Color.black
-            
+
 
             // MARK: - Loading Animation
             ZStack(alignment: .center) {
 //                AnimatedCipherStroke(minSize: 300, maxSize: 330)
 //                    .padding()
-                VStack(spacing: 24){
+                VStack(spacing: 24) {
                     FlowerView()
                         .padding(24)
-                        .frame(width: 250,height: 250)
+                        .frame(width: 250, height: 250)
                     AnimateText<ATOpacityEffect>($loadingText, type: .letters, userInfo: nil)
                         .font(.customFontBody)
                         .onAppear {
@@ -52,17 +56,17 @@ struct FortuneLoadingView: View {
                 }
 
             }
-            .opacity(animating ? 1 : 0)
-            .animation(.easeOut(duration: 1).delay(1), value: animating)
+                .opacity(animating ? 1 : 0)
+                .animation(.easeOut(duration: 1).delay(1), value: animating)
 
-            .navigationDestination(isPresented: !$fortuneRequester.waitingForAPIResponse){
+                .navigationDestination(isPresented: !$fortuneRequester.waitingForAPIResponse) {
                 FortuneReadingView(
                     showingFortuneSheet: $showingFortuneSheet,
                     fortuneReading: fortuneRequester.fortuneReading
                 )
             }
         }
-        .onAppear{
+            .onAppear {
             animating = true
         }
             .navigationBarBackButtonHidden(true)
@@ -81,6 +85,6 @@ struct FortuneLoadingView_Previews: PreviewProvider {
                 fortuneCards: randomFortuneCards
             )
         )
-        .preferredColorScheme(.dark)
+            .preferredColorScheme(.dark)
     }
 }

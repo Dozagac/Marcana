@@ -14,7 +14,7 @@ import SwiftUIVisualEffects
 
 struct HomePageView: View {
     @AppStorage(wrappedValue: "", UserDataManager.UserKeys.userName.rawValue) var userName
-    @AppStorage(wrappedValue: true, "doUserInfoFlow") var doUserInfoFlow
+    @AppStorage(wrappedValue: true, DefaultKeys.doUserInfoFlow) var doUserInfoFlow
 
     // This is so that buttons can launch the same cover sheet with a different parameter value in it
     // which is the fortuneType

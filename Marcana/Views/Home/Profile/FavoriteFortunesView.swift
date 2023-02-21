@@ -23,7 +23,10 @@ struct FavoriteFortunesView: View {
                                 .listRowBackground(UIValues.listRowBackroundColor)
                         }
                             .onDelete { indexSet in
-                            fortuneHistory.deleteFromFortuneArrays(indexSet)
+                            for index in indexSet {
+                                let favoritedFortune = fortuneHistory.favoriteFortunes[index]
+                                fortuneHistory.removeFromFavoriteFortunes(favoritedFortune)
+                            }
                         }
                     } header: {
                         Text("Favorites")

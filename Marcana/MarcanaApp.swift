@@ -13,7 +13,7 @@ import RevenueCat
 struct MarcanaApp: App {
     // Calling Delegate
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
-    @AppStorage(wrappedValue: true, "doOnboarding") var doOnboarding
+    @AppStorage(wrappedValue: true, DefaultKeys.doOnboarding) var doOnboarding
     @State private var showingPaywall = false
 
     //MARK: - Custom Navigation title font for the whole app
@@ -24,7 +24,7 @@ struct MarcanaApp: App {
         Purchases.logLevel = .warn // just to see more informative messages
         Purchases.configure(
             with:
-                Configuration.Builder(withAPIKey: Constants.apiKey)
+                Configuration.Builder(withAPIKey: RevCatConstants.apiKey)
                 .with(usesStoreKit2IfAvailable: true)
                 .build()
         )

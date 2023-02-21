@@ -17,7 +17,7 @@ struct HeartLikeExampleView: View {
         Button {
             liked.toggle()
         } label: {
-            Image("facedownCard2")
+            Image(Constants.cardBackImage)
                 .resizable()
                 .frame(width: 200, height: 300)
         }
