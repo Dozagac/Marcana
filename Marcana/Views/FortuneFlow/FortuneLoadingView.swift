@@ -49,7 +49,7 @@ struct FortuneLoadingView: View {
                         .font(.customFontBody)
                         .onAppear {
                         loadingText = loadingTexts.randomElement()!
-                        Timer.scheduledTimer(withTimeInterval: 4, repeats: true) { _ in
+                        Timer.scheduledTimer(withTimeInterval: 6, repeats: true) { _ in
                             loadingText = loadingTexts.randomElement()!
                         }
                     }

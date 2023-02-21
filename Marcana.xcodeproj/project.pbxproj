@@ -361,7 +361,6 @@
 				7689C3BD2985B93E002A8314 /* SettingsView.swift */,
 				764FF8E22993BAD70062E221 /* AccountSettingsView.swift */,
 				764FF8E82993E5B20062E221 /* MailView.swift */,
-				7688130129A03611005C92B2 /* CardBackSelectionView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -369,6 +368,7 @@
 		76B2E13229365E3A004BCF46 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				7688130129A03611005C92B2 /* CardBackSelectionView.swift */,
 				760E9A7229916F3E00023F79 /* tarotAI.json */,
 				76760C77297A8E1A00D9C5D2 /* LoginViewOO.swift */,
 				7675E45229326B6300ED17D5 /* Card.swift */,

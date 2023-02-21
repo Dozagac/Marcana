@@ -65,6 +65,26 @@ struct HomePageView: View {
 
                         Spacer()
 
+                        //MARK: - Music control button
+                        Button {
+                            musicPlayer.togglePlayPause()
+                            isPlaying = musicPlayer.player.isPlaying
+                        } label: {
+                            VStack(spacing: 0) {
+                                Image(systemName: isPlaying ? "speaker.wave.2.fill" : "speaker.slash.fill")
+                                    .foregroundColor(isPlaying ? .text : .gray)
+                                    .frame(width: 44, height: 44)
+                                    .background(
+                                    Color.clear
+                                        .blurEffect() // from SwiftUIVisualEffects, looks better than ultrathin
+                                )
+                                    .cornerRadius(12)
+                                    .foregroundColor(.white)
+
+//                                Text("Music")
+//                                    .font(.customFontCaption)
+                            }
+                        }
 
                         //MARK: - Settings button
                         NavigationLink {
@@ -81,8 +101,8 @@ struct HomePageView: View {
                                     .cornerRadius(12)
                                     .foregroundColor(.white)
 
-                                Text("Settings")
-                                    .font(.customFontCaption)
+//                                Text("Settings")
+//                                    .font(.customFontCaption)
                             }
                         }
                     }
@@ -159,27 +179,6 @@ struct HomePageView: View {
                                     .foregroundColor(.white)
                                     .foregroundColor(.text)
                                 Text("History")
-                                    .font(.customFontCaption)
-                            }
-                        }
-
-                        //MARK: - Music control button
-                        Button {
-                            musicPlayer.togglePlayPause()
-                            isPlaying = musicPlayer.player.isPlaying
-                        } label: {
-                            VStack(spacing: 0) {
-                                Image(systemName: isPlaying ? "speaker.wave.2.fill" : "speaker.slash.fill")
-                                    .foregroundColor(isPlaying ? .text : .gray)
-                                    .frame(width: 44, height: 44)
-                                    .background(
-                                    Color.clear
-                                        .blurEffect() // from SwiftUIVisualEffects, looks better than ultrathin
-                                )
-                                    .cornerRadius(12)
-                                    .foregroundColor(.white)
-
-                                Text("Music")
                                     .font(.customFontCaption)
                             }
                         }
@@ -273,7 +272,7 @@ struct FortuneTypeSelectionButton: View {
                     .frame(width: geoProxy.size.width * 0.8, height: 500)
                     .overlay(
                     RoundedRectangle(cornerRadius: 24)
-                        .stroke(Color.text, lineWidth: 2)
+                        .stroke(Color.text, lineWidth: 0.5)
                 )
 
                 //MARK: - Fortune time indicator overlay
@@ -324,7 +323,7 @@ enum FortuneType: String, Codable {
     var title: String {
         switch self {
         case .with1card:
-            return "Daily Fortune"
+            return "Daily Tarot Reading"
         case .with3cards:
             return "Past - Present - Future"
         case .with5cards:

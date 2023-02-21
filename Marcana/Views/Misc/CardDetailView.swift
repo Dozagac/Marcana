@@ -92,6 +92,7 @@ struct CardDetailView: View {
                         Text(card.description)
                             .font(.customFontBody)
                             .lineLimit(nil)
+                            .multilineTextAlignment(.leading)
                             .padding(.bottom, 45) // so the entire text is visible
                     }
                         .frame(maxWidth: .infinity, alignment: .leading)

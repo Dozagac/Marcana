@@ -26,14 +26,14 @@ struct FortuneReadingView: View {
     @State var loadingText: String = ""
     @State var type: ATUnitType = .letters // The type used to split text.
     @State var userInfo: Any? = nil // Custom user info for the effect.
-    
+
     @StateObject var toastManager = ToastManager()
 
     @State var animatingViews = false
     var animationDelay = 0.25
 
     @State private var renderedShareImage: Image?
-    
+
     @State private var tappedCard: Card? = nil
 
     var body: some View {
@@ -92,8 +92,8 @@ struct FortuneReadingView: View {
                                     }
                                         .frame(width: geo.size.width / 3 * 0.9)
                                         .sheet(item: $tappedCard) { tappedCard in
-                                            CardDetailView(card: tappedCard)
-                                        }
+                                        CardDetailView(card: tappedCard)
+                                    }
 
                                 }
                                     .offset(y: animatingViews ? 0 : -100)
@@ -129,7 +129,7 @@ struct FortuneReadingView: View {
                             // MARK: - Action Buttons
                             HStack {
                                 // MARK: - Share button
-                                if let renderedShareImage{
+                                if let renderedShareImage {
                                     // See end of the video for example
                                     // https://www.youtube.com/watch?v=rM_2i5YobF4
                                     ShareLink(item: renderedShareImage,
@@ -160,12 +160,12 @@ struct FortuneReadingView: View {
                                     .animation(.easeOut(duration: 1).delay(animationDelay * 1.5),
                                                value: animatingViews)
 
-                                
+
                                 // MARK: TODO - Favorite button
                                 Button {
                                     // this will let the user to like it. IDK what to do with this
                                     fortuneReading.ToggleFavorited()
-                                    
+
                                     print("Favorited: \(fortuneReading.isFavorited)")
                                 } label: {
                                     Image(systemName: fortuneReading.isFavorited ? "heart.fill" : "heart")
@@ -185,8 +185,8 @@ struct FortuneReadingView: View {
                             // view are animated with their own modifiers.
 //                                .offset(x: animatingViews ? 0 : 100)
                             .opacity(animatingViews ? 1 : 0)
-                            .animation(.easeOut(duration: 1).delay(animationDelay),
-                                       value: animatingViews)
+                                .animation(.easeOut(duration: 1).delay(animationDelay),
+                                           value: animatingViews)
 
                         }
 
@@ -222,7 +222,7 @@ struct FortuneReadingView: View {
                             .padding(.bottom, 24) // so the entire text is visible
 
                         // MARK: Bottom buttons
-                        HStack(spacing: 24){
+                        HStack(spacing: 24) {
                             // MARK: - BOTTOM Share button
                             if let renderedShareImage {
                                 // See end of the video for example
@@ -233,33 +233,34 @@ struct FortuneReadingView: View {
                                     subject: Text("My Tarot Fortune - Marcana App"),
                                     message: Text(fortuneReading.fortuneText),
                                     preview: SharePreview("My Tarot Fortune - Marcana App", image: "AppIcon")) // image doesn't work
-                                    .padding()
+                                .padding()
                                     .background(.ultraThinMaterial)
                                     .cornerRadius(12)
                                     .foregroundColor(Color.text)
                             }
-                            
-                            
+
+
                             // MARK: BOTTOM Favorite button
                             Button {
                                 // this will let the user to like it. IDK what to do with this
                                 fortuneReading.ToggleFavorited()
-                                
+
                                 print("Favorited: \(fortuneReading.isFavorited)")
                             } label: {
                                 Label("Like", systemImage: fortuneReading.isFavorited ? "heart.fill" : "heart")
+                                    .padding()
+                                    .background(.ultraThinMaterial)
+                                    .cornerRadius(12)
+                                    .foregroundColor(fortuneReading.isFavorited ? Color.red : Color.text)
+                                    .animation(.linear, value: fortuneReading.isFavorited)
+                                    .opacity(animatingViews ? 1 : 0)
+                                    .animation(.easeOut(duration: 1).delay(animationDelay * 2),
+                                               value: animatingViews)
                             }
-                            .padding()
-                                .background(.ultraThinMaterial)
-                                .cornerRadius(12)
-                                .foregroundColor(fortuneReading.isFavorited ? Color.red : Color.text)
-                                .animation(.linear, value: fortuneReading.isFavorited)
-                                .opacity(animatingViews ? 1 : 0)
-                                .animation(.easeOut(duration: 1).delay(animationDelay * 2),
-                                           value: animatingViews)
+
                         }
-                        
-                        .padding(.bottom, 24) // so the entire text is visible
+
+                            .padding(.bottom, 24) // so the entire text is visible
 
                     }
                         .foregroundColor(.text)
@@ -268,7 +269,7 @@ struct FortuneReadingView: View {
                     ScrollerTextBottomGradientEffectView(effectColor: Color.black)
                 }
             }
-            .overlay(
+                .overlay(
                 HeartLikePopAnimation(isLiked: $fortuneReading.isFavorited)
             )
                 .onAppear {

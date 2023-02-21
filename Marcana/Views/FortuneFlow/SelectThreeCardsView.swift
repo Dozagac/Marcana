@@ -83,7 +83,6 @@ struct SelectThreeCardsView: View {
                         .offset(y: animateViews ? 0 : -100)
                         .opacity(animateViews ? 1 : 0)
                         .animation(.easeOut(duration: openingAnimationDuration).delay(openingAnimationDelay*2), value: animateViews)
-                            .scaleEffect(allCardsClosed ? 1 : animateViews ? 1.05 : 1)
 
                     FlippingCardView(
                         isCardOpen: $card3Open,
@@ -93,7 +92,6 @@ struct SelectThreeCardsView: View {
                         .offset(y: animateViews ? 0 : -100)
                         .opacity(animateViews ? 1 : 0)
                         .animation(.easeOut(duration: openingAnimationDuration).delay(openingAnimationDelay*3), value: animateViews)
-                            .scaleEffect(allCardsClosed ? 1 : animateViews ? 1.05 : 1)
                 }
                     .padding(.horizontal, 24)
 

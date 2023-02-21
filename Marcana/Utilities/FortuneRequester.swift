@@ -29,7 +29,7 @@ import OpenAISwift
 //    @StateObject var fortuneHistory = FortuneHistory.shared
     @Published var fortuneReading: FortuneReading
     @Published var waitingForAPIResponse = false {
-        didSet{
+        didSet {
             print ("waitingForAPIResponse: \(waitingForAPIResponse)")
         }
     }
@@ -43,20 +43,23 @@ The High Priestess represents your current state of being; this card often indic
 Finally we come to the 7 of Cups which signifies your future path ahead. This card often appears when there are multiple options available but not all will bring desired results; take time to really think about what each option brings before making any decisions as they can have long lasting effects on your life going forward. In addition, it could also indicate that love is coming into play soon - if Hugo loves you then he may appear again in due course so keep an open heart ready for him! As for whether Hugo loves you specifically: my advice would be to look within yourself first - do YOU love him? That answer lies deep within...
 """
 
-    
+
     func prepareAPIPrompt1Card() -> String {
         var userReGreetingText = ""
         let userNameIsNew = UserDefaults.standard.bool(forKey: DefaultKeys.userNameIsNew)
-        
-        if userNameIsNew {
-            userReGreetingText = "This is not our first session, greet me by welcoming me back"
+        print("Welcome back prompt active: \(!userNameIsNew)")
+
+        if !userNameIsNew {
+            userReGreetingText = "Greet me as if we have already met before"
         }
 
         let AIprompt = """
         Act as a spiritually attuned tarot reader named Marcana that tellS highly personalized tarot readings.
-        \(userReGreetingText)
         I will give you general information about myself and the 1 tarot cards I have chosen.
         I will also ask a personal question that sets the context for the fortune reading session.
+        
+        Start your response by warmly welcoming me in the tone of a mystically attuned tarot reader and fortune teller.
+        \(userReGreetingText)
 
         Use the cards I chose to make interpretations and create "1 card spread" tarot reading.
          
@@ -89,9 +92,9 @@ Finally we come to the 7 of Cups which signifies your future path ahead. This ca
         
         Welcome!
         """
-        
+
         UserDefaults.standard.set(false, forKey: DefaultKeys.userNameIsNew)
-        
+
         print("PROMPT SENT TO AI")
         return AIprompt
     }
@@ -99,16 +102,19 @@ Finally we come to the 7 of Cups which signifies your future path ahead. This ca
     func prepareAPIPrompt3Cards() -> String {
         var userReGreetingText = ""
         let userNameIsNew = UserDefaults.standard.bool(forKey: DefaultKeys.userNameIsNew)
-        
-        if userNameIsNew {
-            userReGreetingText = "This is not our first session, greet me by welcoming me back"
+        print("Welcome back prompt active: \(!userNameIsNew)")
+
+        if !userNameIsNew {
+            userReGreetingText = "Greet me as if we have already met before"
         }
 
         let AIprompt = """
-        Act as a spiritually attuned tarot reader named Marcana that tellS highly personalized tarot readings.
-        \(userReGreetingText)
+        Act as a spiritually attuned tarot reader named Marcana that tells highly personalized tarot readings.
         I will give you general information about myself and the 3 tarot cards I have chosen.
         I will also ask a personal question that sets the context for the fortune reading session.
+        
+        Start your response by warmly welcoming me in the tone of a mystically attuned tarot reader and fortune teller.
+        \(userReGreetingText)
 
         Use the cards I chose to make interpretations and create a "3 card spread" tarot reading for my past, present and future.
          
@@ -126,6 +132,7 @@ Finally we come to the 7 of Cups which signifies your future path ahead. This ca
         You can use risky statements, it will feel more personal, which is good.
 
         Provide your answer in paragraphs for better readability.
+
         
         Constraints:
         Do not include anything that is not written as a fortune teller.
@@ -149,9 +156,9 @@ Finally we come to the 7 of Cups which signifies your future path ahead. This ca
         
         Welcome!
         """
-        
+
         UserDefaults.standard.set(false, forKey: DefaultKeys.userNameIsNew)
-        
+
         print("PROMPT SENT TO AI")
         return AIprompt
     }
@@ -188,7 +195,7 @@ Finally we come to the 7 of Cups which signifies your future path ahead. This ca
                 print(error.localizedDescription)
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { // delay is so that the flow doesn't get bugged when an instant fail happens.
                     self.response = error.localizedDescription
-                    self.fortuneReading.fortuneText = "Oops!\n\nIt looks like our servers are taking a break right now. \nPlease try again in a bit. In the meantime, why not grab a cup of coffee ☕️ and give a call to a loved one 🤍? \n\nThank you for your patience 🙏."
+                    self.fortuneReading.fortuneText = "Oops!\n\nIt looks like our servers are taking a break right now... \nPlease try again in a bit. \nIn the meantime, why not grab a cup of coffee ☕️ and give a call to a loved one? \n\n🤍\n\nThank you for your patience 🙏"
                     self.waitingForAPIResponse = false
                     print("API ERROR: \(self.response)")
                 }

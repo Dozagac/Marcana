@@ -39,9 +39,12 @@ struct GetUserNameView: View {
                         .multilineTextAlignment(.center)
                         .textFieldStyle(.plain)
                         .focused($focusTextField)
+                        .onChange(of: userName) { _ in
+                            userNameIsNew = true
+                            print("Welcome back prompt active (name change): \(userNameIsNew)")
+                        }
                         .onSubmit {
                         if userName.isNotEmpty {
-                            userNameIsNew = true
                             getUserInfoStep += 1
                             focusTextField = false
                         }

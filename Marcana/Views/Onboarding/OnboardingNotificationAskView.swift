@@ -9,19 +9,26 @@ import SwiftUI
 
 struct OnboardingNotificationAskView: View {
     @State private var date = Calendar.current.date(bySettingHour: 19, minute: 0, second: 0, of: Date()) ?? Date()
-    @State private var message = "Don't forget to check your daily fortune reading! 🔮"
+    @State private var message = "Don't forget to check your daily tarot reading! 🔮"
 
     let notificationManager = NotificationManager()
 
     var body: some View {
         VStack {
-            Text("Don't forget to check your daily fortune reading! 🔮")
-                .font(.title)
+            Text("Set your daily Tarot reading reminder")
+                .font(.customFontTitle2)
+                .multilineTextAlignment(.center)
                 .padding()
+            
+            Text("Don't worry, you can change this later.")
+                .font(.customFontCallout)
+                .multilineTextAlignment(.center)
 
-            DatePicker("", selection: $date, displayedComponents: .hourAndMinute)
-                .labelsHidden()
-                .datePickerStyle(WheelDatePickerStyle())
+//            DatePicker("", selection: $date, displayedComponents: .hourAndMinute)
+//                .labelsHidden()
+//                .datePickerStyle(WheelDatePickerStyle())
+            
+            
 
             Button(action: {
                 self.notificationManager.requestPermission()
