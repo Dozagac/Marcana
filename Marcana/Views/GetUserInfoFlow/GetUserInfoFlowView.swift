@@ -17,13 +17,12 @@ struct GetUserInfoFlowView: View {
     var body: some View {
 
         ZStack(alignment: .top) {
-            ImageBackgroundView(imageName: "ValleyWalk")
-                .saturation(0.5)
+            ImageBackgroundView(imageName: "skyBackground1", opacity: 0.5)
 
             ChevronBackButton(getUserInfoStep: $getUserInfoStep)
             
             ProgressStepperView(stepperColor: Color.white,
-                                progressStep: $getUserInfoStep)
+                                progressStep: getUserInfoStep + 1)
                 .zIndex(2)
                 .padding(.top)
 
@@ -140,7 +139,6 @@ struct ChevronBackButton: View {
                 .opacity(getUserInfoStep == 0 ? 0 : 1)
             Spacer()
         }
-            .padding()
     }
 }
 

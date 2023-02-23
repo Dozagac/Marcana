@@ -18,15 +18,19 @@ struct UserProfileView: View {
     @AppStorage(wrappedValue: "", UserDataManager.UserKeys.userOccupation.rawValue) var userOccupation
     @AppStorage(wrappedValue: "", UserDataManager.UserKeys.userRelationship.rawValue) var userRelationship
     
+//    @Environment(\.dismiss) var dismiss
+    
     var body: some View {
         ZStack(alignment: .top) {
             ImageBackgroundView(imageName: "Vine3")
             List {
                 Section(header: Text("User Info").font(.customFontFootnote).foregroundColor(.secondary)) {
+                    
                     //MARK: - Reset User Info
                     Button() {
                         UserDefaults.standard.resetUser()
                         doUserInfoFlow = true
+//                        dismiss()
                     } label: {
                         HStack {
                             Image(systemName: "arrow.counterclockwise.circle.fill")
@@ -127,7 +131,6 @@ struct UserProfileView: View {
                 }
                     .listRowBackground(UIValues.listRowBackroundColor)
             }
-
                 .scrollContentBackground(.hidden)
                 .listStyle(.insetGrouped)
         }

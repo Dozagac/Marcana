@@ -14,14 +14,17 @@ struct MarcanaApp: App {
     // Calling Delegate
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     @AppStorage(wrappedValue: true, DefaultKeys.doOnboarding) var doOnboarding
-    @State private var showingPaywall = false
+    @AppStorage(wrappedValue: "", DefaultKeys.openAIAPIKey) var openAIAPIKey
+    
+    @AppStorage(wrappedValue: true, DefaultKeys.doUserInfoFlow) var doUserInfoFlow
+    
+    var userDataManager = UserDataManager()
 
     //MARK: - Custom Navigation title font for the whole app
     init () {
-//        UINavigationBar.appearance().largeTitleTextAttributes = [.font : UIFont(name: FontsManager.NanumMyeongjo.extraBold, size: 34)!]
         UINavigationBar.appearance().largeTitleTextAttributes = [.font: UIFont(name: "Palatino-Bold", size: 34)!]
 
-        Purchases.logLevel = .warn // just to see more informative messages
+        Purchases.logLevel = .debug // just to see more informative messages
         Purchases.configure(
             with:
                 Configuration.Builder(withAPIKey: RevCatConstants.apiKey)
@@ -37,24 +40,32 @@ struct MarcanaApp: App {
         WindowGroup {
             ZStack {
                 if doOnboarding {
-                    OnboardingView(showingPaywall: $showingPaywall)
-                        .preferredColorScheme(.dark)
+//                if true {
+                    NavigationStack {
+                        OnboardingViewWelcome()
+                    }
+                        .onDisappear {
+                        // Make sure that there is no missing user data for the fortune flow
+                        if userDataManager.thereIsMissingData {
+                            doUserInfoFlow = true
+                        }
+                    }
                 } else {
                     LauncherView()
-                        .preferredColorScheme(.dark)
                 }
             }
-            .preferredColorScheme(.dark )
-                .fullScreenCover(isPresented: $showingPaywall) {
-                PaywallView(showingPaywall: $showingPaywall)
+                .onAppear {
+                openAIAPIKey = RemoteConfigManager.shared.getOpenAIApiKey()
+                print("Got the API key! : \(openAIAPIKey)")
             }
+            .preferredColorScheme(.dark)
                 .task { // get Packages info from RevenueCat
-                    do{
-                        UserSubscriptionManager.shared.offerings = try await Purchases.shared.offerings()
-                    } catch {
-                        print("Error fetching the offerings \(error)")
-                    }
+                do {
+                    UserSubscriptionManager.shared.offerings = try await Purchases.shared.offerings()
+                } catch {
+                    print("Error fetching the offerings \(error)")
                 }
+            }
         }
     }
 }
@@ -65,6 +76,9 @@ struct MarcanaApp: App {
 class AppDelegate: NSObject, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
         FirebaseApp.configure()
+
+        saveDownloadVersion()
+
         return true
     }
 }

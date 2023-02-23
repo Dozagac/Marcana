@@ -170,7 +170,9 @@ Finally we come to the 7 of Cups which signifies your future path ahead. This ca
 
 
     func sendAPIRequest(AIPrompt: String) {
-        let openAPI = OpenAISwift(authToken: RemoteConfigManager.shared.getOpenAIApiKey())
+        guard let openAIAPIKey = UserDefaults.standard.string(forKey: DefaultKeys.openAIAPIKey) else {return}
+        
+        let openAPI = OpenAISwift(authToken: openAIAPIKey)
         // There are mode API parameters but this library doesnt accept them yet
         // https://beta.openai.com/docs/api-reference/completions/create
         openAPI.sendCompletion(with: AIPrompt,

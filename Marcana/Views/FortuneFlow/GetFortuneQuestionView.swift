@@ -64,16 +64,6 @@ struct GetFortuneQuestionView: View {
         question.isNotEmpty
     }
 
-    init(fortuneType: FortuneType, showingFortuneSheet: Binding<Bool>) {
-        self.fortuneType = fortuneType
-        self._showingFortuneSheet = showingFortuneSheet
-
-        // Clear out the background color of the textEditor
-        // Only works earlier than iOS 16, after that
-        // the modifier ".scrollContentBackground(.hidden)" does the same rick
-        UITextView.appearance().backgroundColor = .clear
-    }
-
     var body: some View {
         NavigationStack {
             ZStack(alignment: .top) {

@@ -8,8 +8,8 @@
 import Foundation
 import SwiftUI
 
-struct FontsManager{
-    struct NanumMyeongjo{
+struct FontsManager {
+    struct NanumMyeongjo {
         static let regular = "NanumMyeongjo"
         static let bold = "NanumMyeongjoBold"
         static let extraBold = "NanumMyeongjoExtraBold"
@@ -24,7 +24,7 @@ extension Font {
     static let customFontHeadline = Font.custom("Avenir", size: Font.TextStyle.headline.size, relativeTo: .headline)
     static let customFontBody = Font.custom("Avenir", size: Font.TextStyle.body.size, relativeTo: .body)
     static let customFontCallout = Font.custom("Avenir", size: Font.TextStyle.callout.size, relativeTo: .body)
-    
+
     static let customFontSubheadline = Font.custom("Avenir", size: Font.TextStyle.subheadline.size, relativeTo: .body)
     static let customFontFootnote = Font.custom("Avenir", size: Font.TextStyle.footnote.size, relativeTo: .body)
     static let customFontCaption = Font.custom("Avenir", size: Font.TextStyle.caption.size, relativeTo: .body)
@@ -34,12 +34,14 @@ extension Font {
 extension Font.TextStyle {
     var size: CGFloat {
         switch self {
-        case .largeTitle: return 60
-        case .title: return 48
-        case .title2: return 34
-        case .title3: return 24
-        case .headline, .body: return 18
-        case .subheadline, .callout: return 16
+        case .largeTitle: return 34
+        case .title: return 28
+        case .title2: return 24
+        case .title3: return 20
+        case .headline: return 18
+        case .body: return 17
+        case .callout: return 16
+        case .subheadline: return 15
         case .footnote: return 14
         case .caption: return 12
         case .caption2: return 10

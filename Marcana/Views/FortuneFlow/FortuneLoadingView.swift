@@ -31,11 +31,7 @@ struct FortuneLoadingView: View {
 
     var body: some View {
         ZStack {
-//            ImageBackgroundView(imageName: "blackHole2")
-//                .scaleEffect(1.5)
-//                .colorMultiply(.gray)
-            Color.black
-
+            BackgroundView()
 
             // MARK: - Loading Animation
             ZStack(alignment: .center) {

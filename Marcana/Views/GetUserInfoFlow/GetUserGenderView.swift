@@ -77,7 +77,7 @@ struct GetUserGenderView: View {
                                         VStack {
                                             Image(gender.icon)
                                             Text(gender.rawValue)
-                                                .font(.title2)
+                                                .font(.customFontTitle3)
                                         }
                                             .foregroundColor(userGender == gender.rawValue ? Color.black : .text))
                                 }

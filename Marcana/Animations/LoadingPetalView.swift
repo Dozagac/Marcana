@@ -28,11 +28,11 @@ struct FlowerView: View {
 //    let colors: [Color] = [.red, .orange, .yellow, .green, .blue, .purple, .pink]
 
     let colors: [Color] = [Color.white,
-                           Color.black,
+                           Color.marcanaBackground,
                            Color.white,
-                           Color.black,
+                           Color.marcanaBackground,
                            Color.white,
-                           Color.black,
+                           Color.marcanaBackground,
                            Color.white
     ]
 

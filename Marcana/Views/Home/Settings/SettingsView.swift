@@ -33,9 +33,7 @@ struct SettingsView: View {
         ZStack(alignment: .top) {
             ImageBackgroundView(imageName: "Vine3")
 
-
             List {
-
                 // MARK: - Nofitications
                 Section(header: Text("Notifications").font(.customFontFootnote).foregroundColor(.secondary)) {
                     NavigationLink {

@@ -11,8 +11,8 @@ import Shimmer
 
 struct PaywallView: View {
     @AppStorage(wrappedValue: true, DefaultKeys.doOnboarding) var doOnboarding
-    @Binding var showingPaywall: Bool
     @State private var animatingViews = false
+    @Environment(\.dismiss) var dismiss
 
     // offerings hold each of the packages that we are presenting to the user
     private(set) var offering: Offering? = UserSubscriptionManager.shared.offerings?.current
@@ -44,7 +44,6 @@ struct PaywallView: View {
                     .animation(.default.delay(2.5), value: animatingViews)
                     .padding([.leading, .top], 20)
                     .zIndex(2)
-
 
                 VStack(spacing: 0) {
                     // MARK: - Fortune Teller Image
@@ -147,7 +146,7 @@ struct PaywallView: View {
 
                         Button("Terms & Conditions") {
                             // restore purchase action
-                            guard let url = URL(string: "https://www.marcana.app/privacy-policy") else { return }
+                            guard let url = URL(string: "https://www.marcana.app/terms-of-use") else { return }
                             UIApplication.shared.open(url)
                         }
                             .foregroundColor(.secondary)
@@ -155,7 +154,7 @@ struct PaywallView: View {
 
                         Button("Privacy") {
                             // restore purchase action
-                            guard let url = URL(string: "https://www.marcana.app/terms-of-use") else { return }
+                            guard let url = URL(string: "https://www.marcana.app/privacy-policy") else { return }
                             UIApplication.shared.open(url)
                         }
                             .foregroundColor(.secondary)
@@ -167,14 +166,15 @@ struct PaywallView: View {
                     .preferredColorScheme(.dark)
             }
         }
+        .navigationBarBackButtonHidden(true)
             .onAppear {
             animatingViews = true
         }
     }
 
     func dismissPaywall() {
-        showingPaywall = false
         doOnboarding = false
+        dismiss() // so it can dismiss itself when called from anywhere
     }
 }
 
@@ -187,20 +187,49 @@ struct PackageCellView: View {
             selectedPackage = package
         } label: {
             VStack(alignment: .leading) {
-                Text("\(package.storeProduct.localizedPriceString)/\(PricePoint.yearly.denominator), cancel anytime ")
-                    .font(.customFontBody)
-
-                Text("First \(PricePoint.yearly.freeDays) days free") // TODO this should come from revenuecat
-                .font(.customFontCallout)
+                Text(periodName(for: package))
+                    .font(.customFontTitle3)
+                    .fontWeight(.black)
+                VStack{
+                    Text("\(package.storeProduct.localizedPriceString)") +
+                    Text("/\(PricePoint.yearly.denominator),")
+                    Text("cancel anytime")
+                }
+                .font(.customFontCaption)
             }
-                .padding()
-                .frame(maxWidth: .infinity, alignment: .leading)
+                .frame(width: 300, height: 125)
+                .cornerRadius(12)
                 .foregroundColor(.text)
                 .background(
                 RoundedRectangle(cornerRadius: 12)
-                    .stroke(selectedPackage == package ? Color.green : Color.gray, lineWidth: 2)
+                    .stroke(selectedPackage == package ? Color.green : Color.gray, lineWidth: selectedPackage == package ? 2 : 0.3)
             )
         }
+    }
+    
+    func periodName(for package: Package) -> String {
+        switch package.storeProduct.subscriptionPeriod!.unit.rawValue {
+        case 0:
+            return "Daily"
+        case 1:
+            return "Weekly"
+        case 2:
+            return "Monthly"
+        case 3:
+            return "Annually"
+        default:
+            return "unknown period"
+        }
+        
+        // from the descriotion of Unit in revenuecat code
+//        /// A subscription period unit of a day.
+//        case day = 0
+//        /// A subscription period unit of a week.
+//        case week = 1
+//        /// A subscription period unit of a month.
+//        case month = 2
+//        /// A subscription period unit of a year.
+//        case year = 3
     }
 }
 
@@ -230,14 +259,6 @@ enum PricePoint {
     }
 }
 
-struct PaywallView_Previews: PreviewProvider {
-    static var previews: some View {
-        PaywallView(showingPaywall: .constant(false))
-            .preferredColorScheme(.dark)
-    }
-}
-
-
 
 struct PurchaseButton: View {
     let selectedPackage: Package?
@@ -255,7 +276,7 @@ struct PurchaseButton: View {
         label: {
             Text("Start Free Trial") // Try Free & Subscribe
                 .font(.customFontBody)
-                .fontWeight(.semibold)
+                .fontWeight(.bold)
                 .frame(maxWidth: .infinity)
                 .padding()
                 .foregroundColor(.black)
@@ -263,5 +284,12 @@ struct PurchaseButton: View {
                 .cornerRadius(50)
                 .padding(.horizontal, UIValues.bigButtonHPadding)
         }
+    }
+}
+
+struct PaywallView_Previews: PreviewProvider {
+    static var previews: some View {
+        PaywallView()
+            .preferredColorScheme(.dark)
     }
 }

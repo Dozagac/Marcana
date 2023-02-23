@@ -14,14 +14,11 @@ import SwiftUIVisualEffects
 
 struct HomePageView: View {
     @AppStorage(wrappedValue: "", UserDataManager.UserKeys.userName.rawValue) var userName
-    @AppStorage(wrappedValue: true, DefaultKeys.doUserInfoFlow) var doUserInfoFlow
 
     // This is so that buttons can launch the same cover sheet with a different parameter value in it
     // which is the fortuneType
     @State var showingFortuneSheet1CardFortune = false
     @State var showingFortuneSheet3CardFortune = false
-
-    var userDataManager = UserDataManager()
 
     @StateObject var musicPlayer = MusicPlayer.shared
     @State var isPlaying = false // this is necessary, musicPlayer.player.isPlaying is not working for some reason
@@ -117,7 +114,6 @@ struct HomePageView: View {
                         HStack(spacing: 12) {
                             FortuneTypeSelectionButton(
                                 fortuneType: .with1card,
-//                                colors: [.marcanaPink, .marcanaPink.opacity(0.7)],
                                 showingFortuneSheet: $showingFortuneSheet1CardFortune,
                                 geoProxy: geo
                             )
@@ -130,7 +126,6 @@ struct HomePageView: View {
 
                             FortuneTypeSelectionButton(
                                 fortuneType: .with3cards,
-//                                colors: [.marcanaBlue, .marcanaBlue.opacity(0.7)],
                                 showingFortuneSheet: $showingFortuneSheet3CardFortune,
                                 geoProxy: geo
                             )
@@ -189,12 +184,6 @@ struct HomePageView: View {
                         .padding(.bottom, 40)
                 }
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
-            }
-                .onAppear {
-                // Make sure that there is no missing user data for the fortune flow
-                if userDataManager.thereIsMissingData {
-                    doUserInfoFlow = true
-                }
             }
         }
 //        .navigationTitle("")

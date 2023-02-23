@@ -90,7 +90,6 @@ struct RoundedCorner: Shape {
 
 
 extension Date {
-
     func toString(format: String = "yyyy-MM-dd") -> String {
         let formatter = DateFormatter()
         formatter.dateStyle = .short
