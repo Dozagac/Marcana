@@ -53,6 +53,7 @@ struct GetUserInfoFlowView: View {
                 .accentColor(.text)
                 .preferredColorScheme(.dark)
         }
+        .navigationBarBackButtonHidden(true)
     }
 }
 

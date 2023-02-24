@@ -9,7 +9,6 @@ import Firebase
 import MessageUI
 import SwiftUI
 
-
 struct SettingsView: View {
     @State var isPresentingConfirm = false
     var userDataManager = UserDataManager()
@@ -34,23 +33,21 @@ struct SettingsView: View {
             ImageBackgroundView(imageName: "Vine3")
 
             List {
-                // MARK: - Nofitications
+                // MARK: - Reminder Notifications
                 Section(header: Text("Notifications").font(.customFontFootnote).foregroundColor(.secondary)) {
-                    NavigationLink {
-                        Text("TODO NOTIFICATION SETTINGS")
-                    } label: {
                         HStack {
                             Image(systemName: "bubble.left.fill")
                                 .modifier(SettingButtonIconModifier())
-                            VStack(alignment: .leading) {
-                                Text("Notifications")
-                            }
+
+                                Text("Daily reminder")
+                            
+                            Spacer()
+                            ReminderTimePickerView()
                         }
-                    }
+                    
                     .padding(.vertical, UIValues.listElementVerticalPadding)
                 }
                     .listRowBackground(UIValues.listRowBackroundColor)
-
 
                 // MARK: - Contact
                 Section(header: Text("Contact Us").font(.customFontFootnote).foregroundColor(.secondary)) {

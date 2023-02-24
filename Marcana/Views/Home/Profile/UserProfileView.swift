@@ -18,7 +18,8 @@ struct UserProfileView: View {
     @AppStorage(wrappedValue: "", UserDataManager.UserKeys.userOccupation.rawValue) var userOccupation
     @AppStorage(wrappedValue: "", UserDataManager.UserKeys.userRelationship.rawValue) var userRelationship
     
-//    @Environment(\.dismiss) var dismiss
+//    @Environment(\.dismiss) var dismiss //
+    @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
         ZStack(alignment: .top) {
@@ -29,8 +30,10 @@ struct UserProfileView: View {
                     //MARK: - Reset User Info
                     Button() {
                         UserDefaults.standard.resetUser()
-                        doUserInfoFlow = true
 //                        dismiss()
+                        doUserInfoFlow = true
+                        self.presentationMode.wrappedValue.dismiss()
+
                     } label: {
                         HStack {
                             Image(systemName: "arrow.counterclockwise.circle.fill")

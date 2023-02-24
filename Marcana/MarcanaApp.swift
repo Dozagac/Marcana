@@ -15,16 +15,16 @@ struct MarcanaApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     @AppStorage(wrappedValue: true, DefaultKeys.doOnboarding) var doOnboarding
     @AppStorage(wrappedValue: "", DefaultKeys.openAIAPIKey) var openAIAPIKey
-    
+
     @AppStorage(wrappedValue: true, DefaultKeys.doUserInfoFlow) var doUserInfoFlow
-    
+
     var userDataManager = UserDataManager()
 
     //MARK: - Custom Navigation title font for the whole app
     init () {
         UINavigationBar.appearance().largeTitleTextAttributes = [.font: UIFont(name: "Palatino-Bold", size: 34)!]
 
-        Purchases.logLevel = .debug // just to see more informative messages
+        Purchases.logLevel = .warn // .debug just to see more informative messages
         Purchases.configure(
             with:
                 Configuration.Builder(withAPIKey: RevCatConstants.apiKey)
@@ -44,21 +44,32 @@ struct MarcanaApp: App {
                     NavigationStack {
                         OnboardingViewWelcome()
                     }
-                        .onDisappear {
-                        // Make sure that there is no missing user data for the fortune flow
-                        if userDataManager.thereIsMissingData {
-                            doUserInfoFlow = true
+                } else {
+                    // Make sure that there is no missing user data for the fortune flow
+                    if userDataManager.thereIsMissingData && doUserInfoFlow {
+                        GetUserInfoFlowView()
+                    } else {
+                        LauncherView()
+                            .onAppear {
+                            // Make sure that there is no missing user data for the fortune flow (in case they quit while editing for example)
+                            if userDataManager.thereIsMissingData {
+                                doUserInfoFlow = true
+                            }
                         }
                     }
-                } else {
-                    LauncherView()
                 }
             }
+                .onReceive(NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification), perform: { _ in
+                    // This is triggered when app is opened, when it was at the background, or opened for the first time etc..
+                    let notificationManager = NotificationManager.shared
+                    // turn off notification badges when app is opened
+                notificationManager.resetNotificationBadges()
+            })
                 .onAppear {
                 openAIAPIKey = RemoteConfigManager.shared.getOpenAIApiKey()
                 print("Got the API key! : \(openAIAPIKey)")
             }
-            .preferredColorScheme(.dark)
+                .preferredColorScheme(.dark)
                 .task { // get Packages info from RevenueCat
                 do {
                     UserSubscriptionManager.shared.offerings = try await Purchases.shared.offerings()
@@ -72,12 +83,14 @@ struct MarcanaApp: App {
 
 
 // Initializing Firebase
-
 class AppDelegate: NSObject, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
         FirebaseApp.configure()
 
         saveDownloadVersion()
+
+        // initialize this so the private init triggers
+        let _ = MusicPlayerManager.shared
 
         return true
     }

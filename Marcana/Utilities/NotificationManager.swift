@@ -7,29 +7,69 @@
 
 import Foundation
 import UserNotifications
+import SwiftUI
 
-class NotificationManager {
-    let notificationCenter = UNUserNotificationCenter.current()
+// Conforms to these two so it can become assigned as the delegate
+class NotificationManager: NSObject, UNUserNotificationCenterDelegate {
     
-    func scheduleFortuneReminder(at date: Date, message: String) {
+    override private init(){
+        super.init()
+        notificationCenter.delegate = self
+    }
+    
+    // Adding this made so the banner shows even if the app is open
+    // Automatically called because of UNUserNotificationCenterDelegate
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.banner])
+        // if I want the banner comletion to trigger something, is should go here
+    }
+    
+    static let shared = NotificationManager() // Singleton
+
+    let notificationCenter = UNUserNotificationCenter.current()
+
+    func resetNotificationBadges() {
+        UIApplication.shared.applicationIconBadgeNumber = 0
+    }
+
+    // TESTING ONLY, REMOVE LATER
+    func scheduleTESTINGNOTIFICATION(seconds: Double = 3.0) {
         let content = UNMutableNotificationContent()
-        content.title = "Daily Fortune Reading Reminder"
-        content.body = message
+//        content.title = "Daily Tarot Reading"
+        content.body = "Don't forget to check your daily tarot reading! 🤍"
         content.sound = UNNotificationSound.default
-        
+        content.badge = 1
+
+        //3 seconds
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: seconds, repeats: false)
+
+        let request = UNNotificationRequest(identifier: "TESTNOTIFICATION", content: content, trigger: trigger)
+
+        notificationCenter.add(request)
+    }
+
+
+    func scheduleDailyReminder(at date: Date) {
+        let content = UNMutableNotificationContent()
+//        content.title = "Daily Tarot Reading"
+        content.body = "Don't forget to check your daily tarot reading! 🤍"
+        content.sound = UNNotificationSound.default
+        content.badge = 1
+
         let trigger = UNCalendarNotificationTrigger(dateMatching: Calendar.current.dateComponents([.hour, .minute], from: date), repeats: true)
-        
-        let request = UNNotificationRequest(identifier: "FortuneReminder", content: content, trigger: trigger)
-        
+
+        let request = UNNotificationRequest(identifier: NotificationKeys.dailyReminder, content: content, trigger: trigger)
+
         notificationCenter.add(request) { (error) in
             if let error = error {
                 print("Error adding notification: \(error)")
             } else {
-                print("Notification added successfully!")
+                let components = Calendar.current.dateComponents([.hour, .minute], from: date)
+                print("NOTIFICATION ADDED SUCCESSFULLY! hour: \(components.hour!) minute: \(components.minute!)")
             }
         }
     }
-    
+
     func requestNotificationPermission(completion: @escaping (Bool) -> Void) {
         notificationCenter.requestAuthorization(options: [.alert, .sound, .badge]) { (granted, error) in
             if let error = error {

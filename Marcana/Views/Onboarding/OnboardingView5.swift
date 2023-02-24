@@ -8,12 +8,14 @@
 import SwiftUI
 
 struct OnboardingView5: View {
-    @State private var date = Calendar.current.date(bySettingHour: 10, minute: 30, second: 0, of: Date()) ?? Date()
-    @State private var message = "Don't forget to check your daily tarot reading! 🤍"
+    @State private var reminderTime = Calendar.current.date(bySettingHour: 10, minute: 30, second: 0, of: Date()) ?? Date()
+    @AppStorage(wrappedValue: 10, DefaultKeys.dailyReminderNotificationHour) var reminderHour
+    @AppStorage(wrappedValue: 30, DefaultKeys.dailyReminderNotificationMinute) var reminderMinute
+    
 //    @State private var notificationPermissionStatus: UNAuthorizationStatus?
-    @State private var notificationAllowed = false
+    @State private var notificationPermissionChoiceMade = false
 
-    let notificationManager = NotificationManager()
+    let notificationManager = NotificationManager.shared
 
     var body: some View {
         ZStack(alignment: .top) {
@@ -51,7 +53,7 @@ struct OnboardingView5: View {
                 Spacer()
 
 //                 MARK: - Notification Time Picker
-                DatePicker("", selection: $date, displayedComponents: .hourAndMinute)
+                DatePicker("", selection: $reminderTime, displayedComponents: .hourAndMinute)
                     .labelsHidden()
                     .datePickerStyle(WheelDatePickerStyle())
 
@@ -59,14 +61,21 @@ struct OnboardingView5: View {
 
                 // MARK: - ASK NOTIFICATION PERMISSION
                 Button {
-//                    notificationManager.requestPermission()
+                    // Its named granted, but it always returns true. I use this to trigger transition to the next view.
                     notificationManager.requestNotificationPermission { granted in
                         DispatchQueue.main.async {
-                            notificationAllowed = granted
+                            notificationPermissionChoiceMade = granted
                         }
                     }
                     
-                    notificationManager.scheduleFortuneReminder(at: self.date, message: self.message)
+                    // Save the notification hour and minute
+                    let calendar = Calendar.current
+                    reminderHour = calendar.component(.hour, from: reminderTime)
+                    reminderMinute = calendar.component(.minute, from: reminderTime)
+                    
+                    // Schedule the reminder
+                    notificationManager.scheduleDailyReminder(at: self.reminderTime)
+                    
                 } label: {
                     Text("Turn On Notifications")
                         .font(.customFontTitle3)
@@ -79,7 +88,7 @@ struct OnboardingView5: View {
 //                        .padding(.horizontal, 24)
                     .shadow(radius: 8)
                 }
-                    .navigationDestination(isPresented: $notificationAllowed, destination: {
+                    .navigationDestination(isPresented: $notificationPermissionChoiceMade, destination: {
                     OnboardingEndTransitionView()
                 })
                     .padding(.bottom, 35)

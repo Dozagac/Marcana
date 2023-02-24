@@ -38,14 +38,16 @@
 		763FDF78299A621E007B7B77 /* RevenueCat in Frameworks */ = {isa = PBXBuildFile; productRef = 763FDF77299A621E007B7B77 /* RevenueCat */; };
 		763FDF7A299A6381007B7B77 /* PurchasesDelegateHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763FDF79299A6381007B7B77 /* PurchasesDelegateHandler.swift */; };
 		763FDF7C299A6472007B7B77 /* UserSubscriptionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763FDF7B299A6471007B7B77 /* UserSubscriptionManager.swift */; };
+		76410D3429A7E60C00E17990 /* ReminderSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76410D3329A7E60C00E17990 /* ReminderSettingsView.swift */; };
 		7641B3BE29A5802D000CFC30 /* OnboardingView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7641B3BD29A5802D000CFC30 /* OnboardingView2.swift */; };
 		764FF8E32993BAD70062E221 /* AccountSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764FF8E22993BAD70062E221 /* AccountSettingsView.swift */; };
 		764FF8E52993BF760062E221 /* ToastManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764FF8E42993BF760062E221 /* ToastManager.swift */; };
 		764FF8E72993C9050062E221 /* UserDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764FF8E62993C9050062E221 /* UserDataManager.swift */; };
 		764FF8E92993E5B20062E221 /* MailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764FF8E82993E5B20062E221 /* MailView.swift */; };
 		764FF8EF299539750062E221 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 764FF8EE299539750062E221 /* LaunchScreen.storyboard */; };
-		764FF8F12995484F0062E221 /* MusicPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764FF8F02995484F0062E221 /* MusicPlayer.swift */; };
+		764FF8F12995484F0062E221 /* MusicPlayerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764FF8F02995484F0062E221 /* MusicPlayerManager.swift */; };
 		764FF8F32995486E0062E221 /* MysticMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 764FF8F22995486E0062E221 /* MysticMusic.mp3 */; };
+		7651C2DA29A7ED68001BCFB4 /* test2view.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7651C2D929A7ED68001BCFB4 /* test2view.swift */; };
 		7653134A298544F000CF52A3 /* FortuneRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76531349298544F000CF52A3 /* FortuneRequester.swift */; };
 		765313512985519900CF52A3 /* NanumMyeongjo-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7653134D2985519900CF52A3 /* NanumMyeongjo-Bold.ttf */; };
 		765313522985519900CF52A3 /* NanumMyeongjo-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7653134E2985519900CF52A3 /* NanumMyeongjo-Regular.ttf */; };
@@ -91,6 +93,7 @@
 		76D5EF64297191A400EF9C4A /* PersistentDataManagerEfeExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D5EF63297191A400EF9C4A /* PersistentDataManagerEfeExample.swift */; };
 		76D5EF662971A58900EF9C4A /* tarotTableVideo.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 76D5EF652971A58900EF9C4A /* tarotTableVideo.mp4 */; };
 		76D5EF6B2972B83800EF9C4A /* AnimateText in Frameworks */ = {isa = PBXBuildFile; productRef = 76D5EF6A2972B83800EF9C4A /* AnimateText */; };
+		76DA2B7B29A91FEB00C2A4F3 /* ReminderTimePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DA2B7A29A91FEB00C2A4F3 /* ReminderTimePickerView.swift */; };
 		76DB3FD029903D740011FC06 /* PaywallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DB3FCF29903D740011FC06 /* PaywallView.swift */; };
 		76EC8A2129830D7900F5CD89 /* TextToSpeechTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EC8A2029830D7900F5CD89 /* TextToSpeechTest.swift */; };
 		76F72ACD2967FC3E009E7501 /* LauncherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F72ACC2967FC3E009E7501 /* LauncherView.swift */; };
@@ -123,14 +126,16 @@
 		763FDF72299A5E47007B7B77 /* RevCatConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RevCatConstants.swift; sourceTree = "<group>"; };
 		763FDF79299A6381007B7B77 /* PurchasesDelegateHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchasesDelegateHandler.swift; sourceTree = "<group>"; };
 		763FDF7B299A6471007B7B77 /* UserSubscriptionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSubscriptionManager.swift; sourceTree = "<group>"; };
+		76410D3329A7E60C00E17990 /* ReminderSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderSettingsView.swift; sourceTree = "<group>"; };
 		7641B3BD29A5802D000CFC30 /* OnboardingView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView2.swift; sourceTree = "<group>"; };
 		764FF8E22993BAD70062E221 /* AccountSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingsView.swift; sourceTree = "<group>"; };
 		764FF8E42993BF760062E221 /* ToastManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastManager.swift; sourceTree = "<group>"; };
 		764FF8E62993C9050062E221 /* UserDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataManager.swift; sourceTree = "<group>"; };
 		764FF8E82993E5B20062E221 /* MailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailView.swift; sourceTree = "<group>"; };
 		764FF8EE299539750062E221 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
-		764FF8F02995484F0062E221 /* MusicPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPlayer.swift; sourceTree = "<group>"; };
+		764FF8F02995484F0062E221 /* MusicPlayerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPlayerManager.swift; sourceTree = "<group>"; };
 		764FF8F22995486E0062E221 /* MysticMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = MysticMusic.mp3; sourceTree = "<group>"; };
+		7651C2D929A7ED68001BCFB4 /* test2view.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test2view.swift; sourceTree = "<group>"; };
 		76531349298544F000CF52A3 /* FortuneRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FortuneRequester.swift; sourceTree = "<group>"; };
 		7653134D2985519900CF52A3 /* NanumMyeongjo-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NanumMyeongjo-Bold.ttf"; sourceTree = "<group>"; };
 		7653134E2985519900CF52A3 /* NanumMyeongjo-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NanumMyeongjo-Regular.ttf"; sourceTree = "<group>"; };
@@ -176,6 +181,7 @@
 		76D5EF6129718BF600EF9C4A /* CustomViewElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViewElements.swift; sourceTree = "<group>"; };
 		76D5EF63297191A400EF9C4A /* PersistentDataManagerEfeExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentDataManagerEfeExample.swift; sourceTree = "<group>"; };
 		76D5EF652971A58900EF9C4A /* tarotTableVideo.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = tarotTableVideo.mp4; sourceTree = "<group>"; };
+		76DA2B7A29A91FEB00C2A4F3 /* ReminderTimePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderTimePickerView.swift; sourceTree = "<group>"; };
 		76DB3FCF29903D740011FC06 /* PaywallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallView.swift; sourceTree = "<group>"; };
 		76EC8A2029830D7900F5CD89 /* TextToSpeechTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextToSpeechTest.swift; sourceTree = "<group>"; };
 		76F72ACC2967FC3E009E7501 /* LauncherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LauncherView.swift; sourceTree = "<group>"; };
@@ -240,7 +246,7 @@
 				76152A4C296FFE42001D5B8F /* PlayerView.swift */,
 				76B2E12E29365BD4004BCF46 /* Extensions.swift */,
 				76D5EF6129718BF600EF9C4A /* CustomViewElements.swift */,
-				764FF8F02995484F0062E221 /* MusicPlayer.swift */,
+				764FF8F02995484F0062E221 /* MusicPlayerManager.swift */,
 				7616670A29A777D800CFAA72 /* Utilities.swift */,
 				763FDF622998DCB4007B7B77 /* AlertManager.swift */,
 				763FDF642998F10E007B7B77 /* HeartLikePopAnimation.swift */,
@@ -331,6 +337,7 @@
 		7675E43829326B2600ED17D5 = {
 			isa = PBXGroup;
 			children = (
+				76410D3329A7E60C00E17990 /* ReminderSettingsView.swift */,
 				7675E44329326B2600ED17D5 /* Marcana */,
 				7675E44229326B2600ED17D5 /* Products */,
 			);
@@ -373,6 +380,7 @@
 			children = (
 				7689C3BD2985B93E002A8314 /* SettingsView.swift */,
 				764FF8E22993BAD70062E221 /* AccountSettingsView.swift */,
+				76DA2B7A29A91FEB00C2A4F3 /* ReminderTimePickerView.swift */,
 				764FF8E82993E5B20062E221 /* MailView.swift */,
 			);
 			path = Settings;
@@ -440,6 +448,7 @@
 				76D5EF63297191A400EF9C4A /* PersistentDataManagerEfeExample.swift */,
 				76584B04299F6D540021F50B /* Archive.swift */,
 				76D4E672299FC38100E333AD /* TestingView.swift */,
+				7651C2D929A7ED68001BCFB4 /* test2view.swift */,
 				76760C75297A8E0B00D9C5D2 /* LoginView.swift */,
 			);
 			path = Development;
@@ -555,6 +564,7 @@
 				7675E45929326EF500ED17D5 /* Deck.swift in Sources */,
 				7675E45329326B6300ED17D5 /* Card.swift in Sources */,
 				76267D442955EA5900108612 /* GetUserRelationshipView.swift in Sources */,
+				7651C2DA29A7ED68001BCFB4 /* test2view.swift in Sources */,
 				76B2E12F29365BD4004BCF46 /* Extensions.swift in Sources */,
 				7675E44729326B2600ED17D5 /* HomePageView.swift in Sources */,
 				7688130429A4AA70005C92B2 /* Constants.swift in Sources */,
@@ -587,10 +597,11 @@
 				76F72ACD2967FC3E009E7501 /* LauncherView.swift in Sources */,
 				7612CE09298A8AC300838B3E /* FortuneLoadingView.swift in Sources */,
 				7612CE11298B235A00838B3E /* ProgressStepperView.swift in Sources */,
+				76410D3429A7E60C00E17990 /* ReminderSettingsView.swift in Sources */,
 				76584B03299F61530021F50B /* FavoriteFortunesView.swift in Sources */,
 				763FDF7C299A6472007B7B77 /* UserSubscriptionManager.swift in Sources */,
 				763D8554298851E80040611F /* SelectOneCardView.swift in Sources */,
-				764FF8F12995484F0062E221 /* MusicPlayer.swift in Sources */,
+				764FF8F12995484F0062E221 /* MusicPlayerManager.swift in Sources */,
 				764FF8E52993BF760062E221 /* ToastManager.swift in Sources */,
 				7689C3BE2985B93E002A8314 /* SettingsView.swift in Sources */,
 				76D4E673299FC38100E333AD /* TestingView.swift in Sources */,
@@ -599,6 +610,7 @@
 				7689C3C02986724D002A8314 /* GetUserBirthdayView.swift in Sources */,
 				7654E7FE2933C67A00F9FDAB /* CardDetailView.swift in Sources */,
 				7669FE8529886EC500DA06F8 /* LoadingPetalView.swift in Sources */,
+				76DA2B7B29A91FEB00C2A4F3 /* ReminderTimePickerView.swift in Sources */,
 				763FDF6729994837007B7B77 /* RemoteConfigManager.swift in Sources */,
 				7689C3C62987D33A002A8314 /* FortuneHistoryView.swift in Sources */,
 				763D85522987FCD80040611F /* FortuneReadingView.swift in Sources */,

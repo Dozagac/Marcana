@@ -20,8 +20,10 @@ struct HomePageView: View {
     @State var showingFortuneSheet1CardFortune = false
     @State var showingFortuneSheet3CardFortune = false
 
-    @StateObject var musicPlayer = MusicPlayer.shared
+    @StateObject var musicPlayer = MusicPlayerManager.shared
     @State var isPlaying = false // this is necessary, musicPlayer.player.isPlaying is not working for some reason
+    @AppStorage(DefaultKeys.isMusicPlaying) var isMusicPlaying: Bool = false
+    
 
     var body: some View {
         GeometryReader { geo in
@@ -59,17 +61,16 @@ struct HomePageView: View {
                             Text("\(userName)")
                                 .font(.customFontBody)
                         }
-
                         Spacer()
 
                         //MARK: - Music control button
                         Button {
                             musicPlayer.togglePlayPause()
-                            isPlaying = musicPlayer.player.isPlaying
+                            
                         } label: {
                             VStack(spacing: 0) {
-                                Image(systemName: isPlaying ? "speaker.wave.2.fill" : "speaker.slash.fill")
-                                    .foregroundColor(isPlaying ? .text : .gray)
+                                Image(systemName: isMusicPlaying ? "speaker.wave.2.fill" : "speaker.slash.fill")
+                                    .foregroundColor(isMusicPlaying ? .text : .gray)
                                     .frame(width: 44, height: 44)
                                     .background(
                                     Color.clear
@@ -77,9 +78,6 @@ struct HomePageView: View {
                                 )
                                     .cornerRadius(12)
                                     .foregroundColor(.white)
-
-//                                Text("Music")
-//                                    .font(.customFontCaption)
                             }
                         }
 

@@ -6,7 +6,7 @@
 //
 
 import AVFoundation
-
+import SwiftUI
 
 //@AppStorage(wrappedValue: true, "playBackgroundMusic") var playBackgroundMusic
 //if playBackgroundMusic {
@@ -14,22 +14,28 @@ import AVFoundation
 //    MusicPlayer.shared.restart()
 //}
 
-class MusicPlayer: ObservableObject {
-    static let shared = MusicPlayer()
+class MusicPlayerManager: ObservableObject {
+    static let shared = MusicPlayerManager()
 
     @Published var player: AVAudioPlayer
+    @AppStorage(DefaultKeys.isMusicPlaying) var isMusicPlaying: Bool = false // add user defaults to store the music player state
 
     private init() {
-        
-        // read the volume @AppStorage("backgroundMusicVolume") var musicVolume: Double = 0.5 in the initialization
-        
         let path = Bundle.main.path(forResource: "MysticMusic.mp3", ofType: nil)!
         let url = URL(fileURLWithPath: path)
 
         do {
             player = try! AVAudioPlayer(contentsOf: url)  //  MysticMusic.mp3 has to exist.
             player.numberOfLoops = -1 // infinite loop
-//            player.prepareToPlay()
+            player.prepareToPlay()
+            
+            print("isMusicPlaying: \(isMusicPlaying)")
+            // set the initial player state based on the user defaults
+            if isMusicPlaying {
+                player.play()
+            } else {
+                player.pause()
+            }
             
             // so it plays in silent mode as well
             try AVAudioSession.sharedInstance().setCategory(.playback)
@@ -40,22 +46,27 @@ class MusicPlayer: ObservableObject {
 
     func play() {
         player.play()
+        isMusicPlaying = true // update user defaults
+        print("isMusicPlaying: \(isMusicPlaying)")
     }
 
     func pause() {
         player.pause()
+        isMusicPlaying = false // update user defaults
+        print("isMusicPlaying: \(isMusicPlaying)")
     }
     
     func restart() {
         player.currentTime = 0
-        player.play()
+        self.play()
+        isMusicPlaying = true // update user defaults
     }
 
     func togglePlayPause() {
-        if player.isPlaying == true {
-            player.pause()
+        if player.isPlaying {
+            self.pause()
         } else {
-            player.play()
+            self.play()
         }
     }
 }

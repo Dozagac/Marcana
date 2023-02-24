@@ -63,6 +63,8 @@ struct GetFortuneQuestionView: View {
     private var canContinue: Bool {
         question.isNotEmpty
     }
+    
+    let notificationManager = NotificationManager.shared
 
     var body: some View {
         NavigationStack {

@@ -134,12 +134,12 @@ struct UserGoalQuestionView: View {
 }
 
 struct OnboardingCustomBackButton: View {
-    @Environment(\.dismiss) var dismiss
+//    @Environment(\.dismiss) var dismiss
     var body: some View {
         HStack {
             VStack {
                 Button {
-                    dismiss()
+//                    dismiss()
                 } label: {
                     Image(systemName: "chevron.left")
                         .frame(width: 40, height: 40)
