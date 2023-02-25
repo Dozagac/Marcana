@@ -108,18 +108,8 @@ struct SelectThreeCardsView: View {
                     .offset(x: 0, y: allCardsClosed ? 100 : animateViews ? 0 : 150)
 
                 Spacer()
-                    .frame(minHeight: 200)
-            }
-                .onAppear {
-                withAnimation(Animation.easeOut(duration: 1.5).delay(2.5)) {
-                    animateViews.toggle()
-                }
-            }
-
-            //MARK: - Continue Button
-            VStack {
-                Spacer()
-                Spacer()
+                
+                //MARK: - Continue Button
                 Button {
                     continueIsPushed.toggle()
                     UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
@@ -130,18 +120,25 @@ struct SelectThreeCardsView: View {
                 } label: {
                     Text("Read Fortune")
                         .modifier(GetUserInfoContinueButtonModifier(canContinue: canContinue))
+                        .padding(.horizontal, UIValues.bigButtonHPadding)
                 }
                     .navigationDestination(isPresented: $continueIsPushed) {
                     FortuneLoadingView(showingFortuneSheet: $showingFortuneSheet, fortuneRequester: fortuneRequester)
                 }
+                    .opacity(canContinue && !fortuneRequester.waitingForAPIResponse ? 1 : 0)
+                    .animation(.easeIn(duration: 0.5), value: canContinue)
+                
+                Spacer()
                 Spacer()
             }
-                .opacity(canContinue && !fortuneRequester.waitingForAPIResponse ? 1 : 0)
-                .animation(.easeIn(duration: 0.3), value: canContinue)
-
+                .onAppear {
+                withAnimation(Animation.easeOut(duration: 1.5).delay(2.5)) {
+                    animateViews.toggle()
+                }
+            }
         }
             .modifier(customNavBackModifier())
-            .navigationTitle("Reveal Your Cards")
+//            .navigationTitle("Reveal Your Cards")
     }
 }
 

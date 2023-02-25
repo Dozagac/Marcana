@@ -8,46 +8,6 @@
 import Foundation
 import SwiftUI
 
-enum questionSuggestion: String {
-    case love = "Love"
-    case career = "Career"
-    case personal = "Personal"
-    case health = "health"
-
-    var questions: [String] {
-        switch self {
-        case .love:
-            return ["Will my relationship/marriage improve?",
-                    "Will I find love in the near future?",
-                    "What do I need to know about a specific person in my life?"]
-        case .career:
-            return ["What does the future hold for my career?",
-                    "What can I do to advance in my career?",
-                    "What can I do to improve my financial situation?"]
-        case .personal:
-            return ["What can I do to bring more happiness into my life?",
-                    "What is the best path for my spiritual journey?",
-                    "What should I focus on to bring balance to my life?"]
-        case .health:
-            return ["What do I need to know about my health?",
-                    "Will I have any health concerns in the near future?",
-                    "How can I improve my overall well-being?"]
-        }
-    }
-
-    var iconName: String {
-        switch self {
-        case .love:
-            return "heart.circle"
-        case .career:
-            return "briefcase"
-        case .personal:
-            return "brain"
-        case .health:
-            return "plus.circle"
-        }
-    }
-}
 
 struct GetFortuneQuestionView: View {
     var fortuneType: FortuneType
@@ -63,7 +23,7 @@ struct GetFortuneQuestionView: View {
     private var canContinue: Bool {
         question.isNotEmpty
     }
-    
+
     let notificationManager = NotificationManager.shared
 
     var body: some View {
@@ -90,8 +50,9 @@ struct GetFortuneQuestionView: View {
                             Divider()
                                 .frame(height: 2)
 
-                            TextField("", text: $question, axis:.vertical)
-                                .lineLimit(2...4)
+                            TextField("", text: $question, axis: .vertical)
+                                .fixedSize(horizontal: false, vertical: true)
+                                .lineLimit(1...4)
                                 .font(.customFontBody)
                                 .multilineTextAlignment(.center)
                                 .focused($focusTextField)
@@ -108,7 +69,7 @@ struct GetFortuneQuestionView: View {
                                     .font(.customFontSubheadline)
                                     .padding(.vertical, 8)
                                     .padding(.horizontal, 12)
-                                    .background(.white)
+                                    .background(Color.text)
                                     .foregroundColor(.black)
                                     .cornerRadius(100)
                                     .shadow(radius: 8)
@@ -116,7 +77,7 @@ struct GetFortuneQuestionView: View {
                             }
                                 .sheet(isPresented: $showRecommendations) {
                                 // The picker view
-                                QuestionListView(question: $question)
+                                    QuestionListView(fortuneType:fortuneType, question: $question)
 
                             }
 
@@ -168,8 +129,8 @@ struct GetFortuneQuestionView: View {
 
 
 struct QuestionListView: View {
+    let fortuneType : FortuneType
     @Binding var question: String
-    let suggestionCategory: [questionSuggestion] = [.love, .career, .personal, .health]
     @Environment(\.dismiss) var dismiss
     var body: some View {
         ZStack(alignment: .top) {
@@ -181,7 +142,6 @@ struct QuestionListView: View {
                     Image(systemName: "xmark")
                         .font(.title3.bold())
                         .foregroundColor(.text)
-
                 }
                 Spacer()
             }
@@ -189,7 +149,7 @@ struct QuestionListView: View {
                 .zIndex(2)
 
             List {
-                ForEach(suggestionCategory, id: \.self) { category in
+                ForEach(fortuneType.questionSuggestionCategories, id: \.self) { category in
                     Section {
                         ForEach(category.questions, id: \.self) { category in
                             Button {
@@ -209,6 +169,65 @@ struct QuestionListView: View {
                 .padding(.top, 32)
         }
             .background(BackgroundBlurView())
+    }
+}
+
+
+enum QuestionSuggestion: String {
+    case daily = "Daily"
+    case love = "Love"
+    case career = "Career"
+    case personal = "Personal"
+    case health = "health"
+
+    var questions: [String] {
+        switch self {
+        case .daily:
+            return [
+                "What should I focus on today?",
+                "What challenges may I face today?",
+                "What opportunities should I look out for today?"
+            ]
+        case .love:
+            return [
+                "What do I need to know about my current romantic relationship?",
+                "What is blocking me from finding true love?",
+                "What can I do to improve my relationship with my partner?"
+            ]
+        case .career:
+            return [
+                "What do I need to focus on to advance my career?",
+                "What is holding me back from achieving my professional goals?",
+                "What steps can I take to improve my work-life balance?"
+            ]
+        case .personal:
+            return [
+                "What do I need to focus on to improve myself?",
+                "What is blocking me from achieving my personal goals?",
+                "How can I best develop my spiritual and emotional self?"
+            ]
+        case .health:
+            return [
+                "What can I do to improve my physical health?",
+                "What is the root cause of my current health issue?",
+                "How can I best take care of my mental health and well-being?"
+            ]
+        }
+    }
+
+    var iconName: String {
+        switch self {
+        case .daily:
+            return "sun.and.horizon.fill"
+        case .love:
+            return "heart.circle"
+        case .career:
+            return "briefcase"
+        case .personal:
+            return "brain"
+        case .health:
+            return "plus.circle"
+        }
     }
 }
 

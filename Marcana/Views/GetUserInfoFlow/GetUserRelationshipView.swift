@@ -78,6 +78,7 @@ struct GetUserRelationshipView: View {
                 
                 Spacer()
             }
+            .padding(.horizontal, UIValues.bigButtonHPadding)
         }
     }
 }

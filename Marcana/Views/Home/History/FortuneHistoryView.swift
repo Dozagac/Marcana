@@ -13,17 +13,14 @@ struct FortuneHistoryView: View {
 
     @State private var tappedFortuneHistoryItem: FortuneReading? = nil // to each history element
 
-
     var body: some View {
         ZStack {
             ImageBackgroundView(imageName: "Vine2")
-
 
             // COMMENT IN FOR TESTING
 //                        if FortuneHistory.dummyFortunes.isNotEmpty {
             if fortuneHistory.fortunes.isNotEmpty {
                 List {
-
                     Section {
                         // COMMENT IN FOR TESTING
 //                            ForEach(FortuneHistory.dummyFortunes) { fortune in
@@ -53,19 +50,14 @@ struct FortuneHistoryView: View {
                         .frame(width: 300, height: 300)
                         .saturation(0)
 
-
                     Text("Your history is empty")
                         .font(.customFontTitle3)
 
                     Button {
-                        showingFortuneSheet.toggle()
+                        showingFortuneSheet = true
                     } label: {
                         Text("Read Fortune")
-                            .frame(maxWidth: .infinity, maxHeight: 50)
-                            .background(Color.marcanaBlue)
-                            .cornerRadius(50)
-                            .foregroundColor(.text)
-                            .shadow(radius: 8)
+                            .modifier(GetUserInfoContinueButtonModifier(canContinue: true))
                             .padding(.horizontal, UIValues.bigButtonHPadding)
                     }
 
@@ -78,6 +70,7 @@ struct FortuneHistoryView: View {
             }
         }
         .navigationTitle("History")
+        .modifier(customNavBackModifier())
 //        .navigationBarTitleDisplayMode(.large)
     }
 }

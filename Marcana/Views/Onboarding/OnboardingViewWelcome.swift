@@ -39,19 +39,28 @@ struct OnboardingViewWelcome: View {
                     OnboardingView1()
                 } label: {
                     Text("Continue")
-                        .font(.customFontTitle3)
-                        .fontWeight(.semibold)
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        .background(Color.white)
-                        .foregroundColor(.marcanaBackground)
-                        .cornerRadius(50)
-                        .padding(.horizontal, 24)
-                        .shadow(radius: 8)
+                        .modifier(OnboardingContinueButtonModifier(canContinue: true))
                 }
                     .padding(.bottom, 35)
             }
         }
+    }
+}
+
+
+//MARK: Custom modifier for the continue navigation button
+struct OnboardingContinueButtonModifier: ViewModifier {
+    var canContinue: Bool
+    func body(content: Content) -> some View {
+        content
+            .font(.customFontTitle3)
+            .fontWeight(.semibold)
+            .frame(height: 55) // so the button stays same size even if text in it changes/disappears
+            .frame(maxWidth: .infinity)
+            .background(canContinue ? .white : .gray)
+            .foregroundColor(.marcanaBackground)
+            .cornerRadius(50)
+            .shadow(radius: 8)
     }
 }
 

@@ -20,7 +20,8 @@ struct customNavBackModifier: ViewModifier {
             dismiss()
         }) {
             Image(systemName: "chevron.left")
-                .frame(width: 24, height: 24)
+                .font(.customFontHeadline)
+                .frame(width: 40, height: 40)
         })
         .foregroundColor(.text)
     }

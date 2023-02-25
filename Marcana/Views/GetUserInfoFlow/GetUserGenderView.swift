@@ -92,6 +92,7 @@ struct GetUserGenderView: View {
 
                     Spacer()
                 }
+            .padding(.horizontal, UIValues.bigButtonHPadding)
             }
         }
     }

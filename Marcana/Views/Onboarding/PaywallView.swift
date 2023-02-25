@@ -14,13 +14,9 @@ struct PaywallView: View {
     @State private var animatingViews = false
     @Environment(\.dismiss) var dismiss
 
-    // offerings hold each of the packages that we are presenting to the user
-    private(set) var offering: Offering? = UserSubscriptionManager.shared.offerings?.current
-
     @State var selectedPackage: Package?
-    
+
     @StateObject var userSubscriptionManager = UserSubscriptionManager.shared
-    
 
     var body: some View {
         GeometryReader { proxy in
@@ -37,9 +33,9 @@ struct PaywallView: View {
                             .foregroundColor(.text)
                             .opacity(animatingViews ? 1 : 0)
                     }
-                    
+
                     Spacer()
-                    
+
                 }
                     .animation(.default.delay(2.5), value: animatingViews)
                     .padding([.leading, .top], 20)
@@ -48,7 +44,7 @@ struct PaywallView: View {
                 VStack(spacing: 0) {
                     // MARK: - Fortune Teller Image
 
-                    Image("ExtendedHeadFortuneTellerWoman")
+                    Image("FortuneTellerWoman")
                         .resizable()
                         .scaledToFit()
                         .frame(width: proxy.size.width)
@@ -69,7 +65,7 @@ struct PaywallView: View {
                         endPoint: .top
                     ))
 
-                    Spacer()
+//                    Spacer()
 
                     // MARK: - Bullet points
                     VStack(alignment: .leading, spacing: 8) {
@@ -84,14 +80,14 @@ struct PaywallView: View {
                             Image(systemName: "checkmark")
                                 .font(.body.bold())
                                 .foregroundColor(.green)
-                            Text("Personal Tarot Wisdom")
+                            Text("Personally created Tarot Wisdom")
                                 .font(.customFontBody)
                         }
                         HStack(alignment: .top) {
                             Image(systemName: "checkmark")
                                 .font(.body.bold())
                                 .foregroundColor(.green)
-                            Text("Most personal readings of any app out there. Try for yourself.")
+                            Text("Most personal tarot readings of any app! Try for yourself.")
                                 .font(.customFontBody)
 
                         }
@@ -101,17 +97,25 @@ struct PaywallView: View {
                         .padding(.horizontal, UIValues.bigButtonHPadding)
 
                     Spacer()
+                    Spacer()
 
-                    VStack(alignment: .leading, spacing: 0) {
-                        ForEach(offering?.availablePackages ?? []) { package in
-                            // MARK: - Pricing Box
-                            PackageCellView(package: package, selectedPackage: $selectedPackage)
-                            // A package is pre-selected with onAppear
-                            .onAppear {
-                                selectedPackage = package
+                    HStack(spacing: 10) {
+                        // offerings hold each of the packages that we are presenting to the user
+                        if let offering = userSubscriptionManager.offerings?.current {
+                            ForEach(offering.availablePackages) { package in
+                                // MARK: - Pricing Box
+                                PackageCellView(package: package, selectedPackage: $selectedPackage)
+                                // A package is pre-selected with onAppear
+                                .onAppear {
+                                    // 1 is weekly package
+                                    if package.storeProduct.subscriptionPeriod?.unit.rawValue == 1 {
+                                        selectedPackage = package
+                                    }
+                                }
                             }
+                        } else {
+                            ProgressView()
                         }
-
                     }
                         .padding(.horizontal, UIValues.bigButtonHPadding)
 
@@ -119,14 +123,21 @@ struct PaywallView: View {
 
                     // MARK: - Trial Start Button
                     VStack {
-                        PurchaseButton(selectedPackage: selectedPackage)
-
                         // Assurance text
                         Text("Payment billed at trial end. Cancel anytime.")
                             .foregroundColor(.secondary)
                             .font(.customFontCaption)
                             .lineLimit(1)
                             .minimumScaleFactor(0.5)
+                        
+                        PurchaseButton(selectedPackage: selectedPackage)
+                        
+                        Text("By tapping above, you agree to the [Terms of Service](https://www.marcana.app/terms-of-use) and [Privacy Policy](https://www.marcana.app/privacy-policy)")
+                            .foregroundColor(.secondary)
+                            .font(.customFontCaption)
+                            .lineLimit(1)
+                            .minimumScaleFactor(0.5)
+                            .padding(.horizontal)
                     }
                         .padding(.bottom, 12)
 
@@ -136,26 +147,10 @@ struct PaywallView: View {
                             // restore purchase action
                             userSubscriptionManager.restorePurchases()
                         }
-                        .alert(isPresented: $userSubscriptionManager.showingError) {
-                                 Alert(title: Text(userSubscriptionManager.errorTitle), message: Text(userSubscriptionManager.errorMessage), dismissButton: .default(Text("OK")) {
-                                     userSubscriptionManager.showingError = false
-                                 })
-                             }
-                            .foregroundColor(.secondary)
-                            .font(.customFontCaption)
-
-                        Button("Terms & Conditions") {
-                            // restore purchase action
-                            guard let url = URL(string: "https://www.marcana.app/terms-of-use") else { return }
-                            UIApplication.shared.open(url)
-                        }
-                            .foregroundColor(.secondary)
-                            .font(.customFontCaption)
-
-                        Button("Privacy") {
-                            // restore purchase action
-                            guard let url = URL(string: "https://www.marcana.app/privacy-policy") else { return }
-                            UIApplication.shared.open(url)
+                            .alert(isPresented: $userSubscriptionManager.showingError) {
+                            Alert(title: Text(userSubscriptionManager.errorTitle), message: Text(userSubscriptionManager.errorMessage), dismissButton: .default(Text("OK")) {
+                                userSubscriptionManager.showingError = false
+                            })
                         }
                             .foregroundColor(.secondary)
                             .font(.customFontCaption)
@@ -166,7 +161,7 @@ struct PaywallView: View {
                     .preferredColorScheme(.dark)
             }
         }
-        .navigationBarBackButtonHidden(true)
+            .navigationBarBackButtonHidden(true)
             .onAppear {
             animatingViews = true
         }
@@ -186,27 +181,66 @@ struct PackageCellView: View {
         Button {
             selectedPackage = package
         } label: {
-            VStack(alignment: .leading) {
+            VStack(spacing: 8) {
                 Text(periodName(for: package))
-                    .font(.customFontTitle3)
+                    .font(.customFontBody)
                     .fontWeight(.black)
-                VStack{
-                    Text("\(package.storeProduct.localizedPriceString)") +
-                    Text("/\(PricePoint.yearly.denominator),")
-                    Text("cancel anytime")
+                VStack() {
+                    Text("\(3) ").bold() +
+                        Text("days free ").bold() // +
+//                        Text("then")
+                    Text("\(package.storeProduct.localizedPriceString)").bold() +
+                        Text(" / \(periodDenominator(for: package))")
+                    Text("Cancel anytime")
                 }
-                .font(.customFontCaption)
+                    .lineSpacing(0)
+                    .font(.customFontCaption)
             }
-                .frame(width: 300, height: 125)
+                .padding(.horizontal, 4)
+                .frame(height: 135)
+                .frame(maxWidth: .infinity)
                 .cornerRadius(12)
                 .foregroundColor(.text)
                 .background(
                 RoundedRectangle(cornerRadius: 12)
-                    .stroke(selectedPackage == package ? Color.green : Color.gray, lineWidth: selectedPackage == package ? 2 : 0.3)
+                    .stroke(selectedPackage == package ? Color.marcanaLightGreen : Color.gray, lineWidth: selectedPackage == package ? 2 : 0.3)
+                    .if(periodName(for: package).lowercased() == "weekly") { view in
+                    // Show most selected for "weekly" package
+                    view.overlay(alignment: .top) {
+                        Text("Most Selected").bold()
+                            .padding(.vertical, 6)
+                            .font(.caption)
+//                            .frame(height: 30)
+                        .frame(maxWidth: .infinity)
+                            .background(Color.marcanaLightGreen)
+                            .foregroundColor(.white)
+                            .cornerRadius(12)
+                            .offset(y: -10)
+                            .lineLimit(1)
+                            .minimumScaleFactor(0.5)
+                            .scaleEffect(1.015)
+                    }
+                }
             )
         }
     }
-    
+
+    func periodDenominator(for package: Package) -> String {
+        switch package.storeProduct.subscriptionPeriod!.unit.rawValue {
+        case 0:
+            return "day"
+        case 1:
+            return "week"
+        case 2:
+            return "month"
+        case 3:
+            return "year"
+        default:
+            return "unknown period"
+        }
+    }
+
+
     func periodName(for package: Package) -> String {
         switch package.storeProduct.subscriptionPeriod!.unit.rawValue {
         case 0:
@@ -220,7 +254,8 @@ struct PackageCellView: View {
         default:
             return "unknown period"
         }
-        
+
+        // if you inspect .unit in the first line:
         // from the descriotion of Unit in revenuecat code
 //        /// A subscription period unit of a day.
 //        case day = 0
@@ -233,55 +268,44 @@ struct PackageCellView: View {
     }
 }
 
-enum PricePoint {
-    case weekly, monthly, yearly
-
-    var denominator: String {
-        switch self {
-        case .weekly:
-            return "week"
-        case .monthly:
-            return "month"
-        case .yearly:
-            return "year"
-        }
-    }
-
-    var freeDays: Int {
-        switch self {
-        case .weekly:
-            return 3
-        case .monthly:
-            return 3
-        case .yearly:
-            return 3
-        }
-    }
-}
-
 
 struct PurchaseButton: View {
+    @AppStorage(wrappedValue: true, DefaultKeys.doOnboarding) var doOnboarding
+    @State private var animatingViews = false
+    @Environment(\.dismiss) var dismiss
+    @State private var isWaiting = false
+    @AppStorage(wrappedValue: "Subscribe", DefaultKeys.paywallButtonText) var paywallButtonText
+
     let selectedPackage: Package?
     var body: some View {
         Button {
             guard let selectedPackage = selectedPackage else { return }
-            // puchase action
+            // Set the waiting state to true
+            isWaiting = true
+            // purchase action completion handler
             Purchases.shared.purchase(package: selectedPackage) { (transaction, customerInfo, error, userCancelled) in
                 if UserSubscriptionManager.shared.customerInfo?.entitlements[RevCatConstants.entitlementID]?.isActive == true {
                     // Unlock that great "pro" content
                 }
+                isWaiting = false
+                doOnboarding = false
+                //            dismiss() // so it can dismiss itself when called from anywhere
             }
-//            dismissPaywall()
         }
         label: {
-            Text("Start Free Trial") // Try Free & Subscribe
-                .font(.customFontBody)
-                .fontWeight(.bold)
-                .frame(maxWidth: .infinity)
-                .padding()
-                .foregroundColor(.black)
-                .background(.white)
-                .cornerRadius(50)
+            Group {
+                if isWaiting {
+                    ProgressView()
+                        .progressViewStyle(CircularProgressViewStyle())
+                        .tint(.black)
+                } else {
+                    Group {
+                            Text(paywallButtonText)
+                    }
+                        .font(.customFontTitle3)
+                }
+            }
+                .modifier(OnboardingContinueButtonModifier(canContinue: true))
                 .padding(.horizontal, UIValues.bigButtonHPadding)
         }
     }

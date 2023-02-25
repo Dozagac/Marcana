@@ -7,13 +7,14 @@
 
 import SwiftUI
 import AnimateText
-import SimpleToast
+import StoreKit
 
 
 struct FortuneReadingView: View {
     @Binding var showingFortuneSheet: Bool
     @Environment(\.dismiss) var dismiss
     @ObservedObject var fortuneReading: FortuneReading
+    @Environment(\.requestReview) var requestReview
 
     let loadingTexts: [String] = ["...Harnessing Mystic Powers...",
                                   "...Consulting the Cards...",
@@ -26,8 +27,6 @@ struct FortuneReadingView: View {
     @State var loadingText: String = ""
     @State var type: ATUnitType = .letters // The type used to split text.
     @State var userInfo: Any? = nil // Custom user info for the effect.
-
-    @StateObject var toastManager = ToastManager()
 
     @State var animatingViews = false
     var animationDelay = 0.25
@@ -53,7 +52,6 @@ struct FortuneReadingView: View {
                         Image(systemName: "xmark")
                             .font(.title3)
                             .foregroundColor(.text)
-
                     }
 
                     Spacer()
@@ -133,7 +131,7 @@ struct FortuneReadingView: View {
                                     // https://www.youtube.com/watch?v=rM_2i5YobF4
                                     ShareLink(item: renderedShareImage,
                                               subject: Text("My Tarot Fortune - Marcana App"),
-                                              message: Text(fortuneReading.fortuneText),
+                                              message: Text("Check out my Tarot Reading from Marcana App! \n\n ⭐️ \n\n\(fortuneReading.fortuneText)"),
                                               preview: SharePreview("My Tarot Fortune - Marcana App", image: "AppIcon")) { // image doesn't work
                                         // label
                                         Image(systemName: "square.and.arrow.up")
@@ -164,7 +162,8 @@ struct FortuneReadingView: View {
                                 Button {
                                     // this will let the user to like it. IDK what to do with this
                                     fortuneReading.ToggleFavorited()
-
+                                    // Ask for a review when the user likes a reading
+                                    requestReview()
                                     print("Favorited: \(fortuneReading.isFavorited)")
                                 } label: {
                                     Image(systemName: fortuneReading.isFavorited ? "heart.fill" : "heart")
@@ -230,7 +229,7 @@ struct FortuneReadingView: View {
                                     "Share",
                                     item: renderedShareImage,
                                     subject: Text("My Tarot Fortune - Marcana App"),
-                                    message: Text(fortuneReading.fortuneText),
+                                    message: Text("Check out my Tarot Reading from Marcana App! \n\n ⭐️ \n\n\(fortuneReading.fortuneText)"),
                                     preview: SharePreview("My Tarot Fortune - Marcana App", image: "AppIcon")) // image doesn't work
                                 .padding()
                                     .background(.ultraThinMaterial)
@@ -241,10 +240,11 @@ struct FortuneReadingView: View {
 
                             // MARK: BOTTOM Favorite button
                             Button {
-                                // this will let the user to like it. IDK what to do with this
+                                // this will let the user to like it
                                 fortuneReading.ToggleFavorited()
-
                                 print("Favorited: \(fortuneReading.isFavorited)")
+                                // Ask for a review when the user likes a reading
+                                requestReview()
                             } label: {
                                 Label("Like", systemImage: fortuneReading.isFavorited ? "heart.fill" : "heart")
                                     .padding()
@@ -286,20 +286,9 @@ struct FortuneReadingView: View {
             .onAppear {
             animatingViews = true
         }
-            .simpleToast(isPresented: $toastManager.showingToast,
-                         options: toastManager.toastOptions) {
-            Text("Text Copied")
-                .foregroundColor(.text)
-                .font(.customFontBody)
-                .padding(8)
-                .background(.ultraThinMaterial)
-                .cornerRadius(12)
-        }
     }
 }
-
-
-
+    
 struct ShareCardsImageView: View {
     // See end of the video for example
     // https://www.youtube.com/watch?v=rM_2i5YobF4

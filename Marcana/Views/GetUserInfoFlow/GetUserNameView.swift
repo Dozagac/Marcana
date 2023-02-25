@@ -58,6 +58,7 @@ struct GetUserNameView: View {
                 
                 Spacer()
             }
+            .padding(.horizontal, UIValues.bigButtonHPadding)
 
             //MARK: Continue Button
             VStack {
@@ -67,6 +68,7 @@ struct GetUserNameView: View {
                     focusTextField = false
                 })
             }
+            .padding(.horizontal, UIValues.bigButtonHPadding)
         }
             .onAppear {
             // this is necessary to make focus work

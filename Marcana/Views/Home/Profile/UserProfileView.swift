@@ -137,7 +137,8 @@ struct UserProfileView: View {
                 .scrollContentBackground(.hidden)
                 .listStyle(.insetGrouped)
         }
-            .font(.customFontBody) // font for all the text in this view unless overwritten at child
+            .font(.customFontBody) // font for all the text in this view unless overwritten at child view
+            .modifier(customNavBackModifier())
         .foregroundColor(.text)
             .navigationTitle("Profile")
 //            .navigationBarTitleDisplayMode(.large)

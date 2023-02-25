@@ -50,15 +50,7 @@ struct OnboardingView4: View {
                         OnboardingView5()
                     } label: {
                         Text("Continue")
-                            .font(.customFontTitle3)
-                            .fontWeight(.semibold)
-                            .padding()
-                            .frame(maxWidth: .infinity)
-                            .background(Color.white)
-                            .foregroundColor(.marcanaBackground)
-                            .cornerRadius(50)
-                        //                        .padding(.horizontal, 24)
-                        .shadow(radius: 8)
+                            .modifier(OnboardingContinueButtonModifier(canContinue: true))
                     }
                         .padding(.bottom, 35)
                 }

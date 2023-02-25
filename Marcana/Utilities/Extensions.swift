@@ -19,6 +19,22 @@ extension View {
         modifier(FirstAppear(action: action))
     }
 
+    //MARK: Conditional modifier, used in paywall
+    // https://www.avanderlee.com/swiftui/conditional-view-modifier/
+    /// Applies the given transform if the given condition evaluates to `true`.
+    /// - Parameters:
+    ///   - condition: The condition to evaluate.
+    ///   - transform: The transform to apply to the source `View`.
+    /// - Returns: Either the original `View` or the modified `View` if the condition is `true`.
+    @ViewBuilder func `if`<Content: View>(_ condition: Bool, transform: (Self) -> Content) -> some View {
+        if condition {
+            transform(self)
+        } else {
+            self
+        }
+    }
+
+    
 //    // https://stackoverflow.com/questions/69712759/swiftui-fullscreencover-with-no-animation
 //    func withoutAnimation(action: @escaping () -> Void) {
 //        var transaction = Transaction()
@@ -71,6 +87,7 @@ extension Color {
     static let marcanaBackground = Color("MarcanaBackground")
     static let marcanaPink = Color("MarcanaPink")
     static let marcanaBlue = Color("MarcanaBlue")
+    static let marcanaLightGreen = Color("MarcanaLightGreen")
     static let icon = Color("Icon")
     static let iconUnselected = Color("IconUnselected")
     static let text = Color("Text")

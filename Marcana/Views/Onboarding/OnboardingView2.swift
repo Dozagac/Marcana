@@ -32,15 +32,7 @@ struct OnboardingView2: View {
                     OnboardingView3()
                 } label: {
                     Text("Continue")
-                        .font(.customFontTitle3)
-                        .fontWeight(.semibold)
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        .background(userTarotExperience == nil ? .gray : .white)
-                        .foregroundColor(.marcanaBackground)
-                        .cornerRadius(50)
-//                        .padding(.horizontal, 24)
-                        .shadow(radius: 8)
+                        .modifier(OnboardingContinueButtonModifier(canContinue: userTarotExperience != nil))
                 }
                 .disabled(userTarotExperience == nil)
                     .padding(.bottom, 35)

@@ -59,13 +59,14 @@ struct SelectOneCardView: View {
                     height: 300,
                     shownCard: fortuneCards[0],
                     positionText: "")
-                .offset(y: animateViews ? 0 : -200)
-                .opacity(animateViews ? 1 : 0)
-                .animation(.easeOut(duration: openingAnimationDuration).delay(openingAnimationDelay), value: animateViews)
+                    .offset(y: animateViews ? 0 : -200)
+                    .opacity(animateViews ? 1 : 0)
+                    .animation(.easeOut(duration: openingAnimationDuration).delay(openingAnimationDelay), value: animateViews)
                     .scaleEffect(cardOpen ? 1 : animateViews ? 1.05 : 1)
                     .shadow(color: cardOpen ? .gray : animateViews ? .white : .gray, radius: 15, x: 0, y: 0)
                     .animation(.easeInOut(duration: 1.5).repeatForever(autoreverses: true), value: animateViews)
 
+                
                 // MARK: Activation Prompt for user
                 HStack {
                     Image(systemName: "hand.tap.fill")
@@ -79,19 +80,8 @@ struct SelectOneCardView: View {
                     .offset(x: 0, y: cardOpen ? 100 : animateViews ? 0 : 150)
 
                 Spacer()
-                    .frame(minHeight: 200)
-            }
-                .onAppear {
-                withAnimation(Animation.easeOut(duration: 1.5).delay(2.5)) {
-                    animateViews.toggle()
-                }
-            }
-
-            //MARK: - Continue Button
-            VStack {
-                Spacer()
-                Spacer()
-
+                
+                //MARK: - Continue Button
                 Button {
                     continueIsPushed.toggle()
                     UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
@@ -102,6 +92,7 @@ struct SelectOneCardView: View {
                 } label: {
                     Text("Read Fortune")
                         .modifier(GetUserInfoContinueButtonModifier(canContinue: canContinue))
+                        .padding(.horizontal, UIValues.bigButtonHPadding)
                 }
                     .navigationDestination(isPresented: $continueIsPushed, destination: {
                     FortuneLoadingView(
@@ -109,14 +100,21 @@ struct SelectOneCardView: View {
                         fortuneRequester: fortuneRequester
                     )
                 })
+
+                    .opacity(canContinue && !fortuneRequester.waitingForAPIResponse ? 1 : 0)
+                    .animation(.easeIn(duration: 0.5), value: canContinue)
+
+                Spacer()
                 Spacer()
             }
-                .opacity(canContinue && !fortuneRequester.waitingForAPIResponse ? 1 : 0)
-                .animation(.easeIn(duration: 0.3), value: canContinue)
-
+                .onAppear {
+                withAnimation(Animation.easeOut(duration: 1.5).delay(2.5)) {
+                    animateViews.toggle()
+                }
+            }
         }
             .modifier(customNavBackModifier())
-            .navigationTitle("Reveal Your Cards")
+//            .navigationTitle("Reveal Your Cards")
     }
 }
 

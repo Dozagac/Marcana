@@ -31,15 +31,7 @@ struct OnboardingView1: View {
                     OnboardingView2()
                 } label: {
                     Text("Continue")
-                        .font(.customFontTitle3)
-                        .fontWeight(.semibold)
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        .background(selectedGoals.isEmpty ? .gray : .white)
-                        .foregroundColor(.marcanaBackground)
-                        .cornerRadius(50)
-//                        .padding(.horizontal, 24)
-                    .shadow(radius: 8)
+                        .modifier(OnboardingContinueButtonModifier(canContinue: selectedGoals.isNotEmpty))
                 }
                 .disabled(selectedGoals.isEmpty)
                 .padding(.bottom, 35)
@@ -134,14 +126,15 @@ struct UserGoalQuestionView: View {
 }
 
 struct OnboardingCustomBackButton: View {
-//    @Environment(\.dismiss) var dismiss
+    @Environment(\.dismiss) var dismiss
     var body: some View {
         HStack {
             VStack {
                 Button {
-//                    dismiss()
+                    dismiss()
                 } label: {
                     Image(systemName: "chevron.left")
+                        .font(.customFontTitle3)
                         .frame(width: 40, height: 40)
                         .tint(Color.text)
                 }

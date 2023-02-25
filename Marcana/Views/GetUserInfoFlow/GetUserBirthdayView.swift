@@ -69,6 +69,7 @@ struct GetUserBirthdayView: View {
 
                 Spacer()
             }
+            .padding(.horizontal, UIValues.bigButtonHPadding)
 
             //MARK: Continue Button
             VStack {
@@ -77,6 +78,7 @@ struct GetUserBirthdayView: View {
                     .simultaneousGesture(TapGesture().onEnded {
                 })
             }
+            .padding(.horizontal, UIValues.bigButtonHPadding)
         }
     }
 }

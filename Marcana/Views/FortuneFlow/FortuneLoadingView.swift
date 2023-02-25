@@ -10,7 +10,6 @@ import AnimateText
 
 struct FortuneLoadingView: View {
     @Binding var showingFortuneSheet: Bool
-    @Environment(\.dismiss) var dismiss
     @ObservedObject var fortuneRequester: FortuneRequester
 
     let loadingTexts: [String] = [
@@ -23,7 +22,6 @@ struct FortuneLoadingView: View {
         "...Awaken your senses...",
         "...Focus your intention..."
     ]
-
 
     @State var loadingText: String = ""
 

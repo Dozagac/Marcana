@@ -14,8 +14,6 @@ struct MarcanaApp: App {
     // Calling Delegate
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     @AppStorage(wrappedValue: true, DefaultKeys.doOnboarding) var doOnboarding
-    @AppStorage(wrappedValue: "", DefaultKeys.openAIAPIKey) var openAIAPIKey
-
     @AppStorage(wrappedValue: true, DefaultKeys.doUserInfoFlow) var doUserInfoFlow
 
     var userDataManager = UserDataManager()
@@ -41,6 +39,7 @@ struct MarcanaApp: App {
             ZStack {
                 if doOnboarding {
 //                if true {
+//                    PaywallView()
                     NavigationStack {
                         OnboardingViewWelcome()
                     }
@@ -60,19 +59,19 @@ struct MarcanaApp: App {
                 }
             }
                 .onReceive(NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification), perform: { _ in
-                    // This is triggered when app is opened, when it was at the background, or opened for the first time etc..
-                    let notificationManager = NotificationManager.shared
-                    // turn off notification badges when app is opened
+                // This is triggered when app is opened, when it was at the background, or opened for the first time etc..
+                let notificationManager = NotificationManager.shared
+                // turn off notification badges when app is opened
                 notificationManager.resetNotificationBadges()
+
+                // Get the most recent remote config values from remote config
+                RemoteConfigManager.shared.saveRemoteConfigValuesToUserDefaults()
             })
-                .onAppear {
-                openAIAPIKey = RemoteConfigManager.shared.getOpenAIApiKey()
-                print("Got the API key! : \(openAIAPIKey)")
-            }
                 .preferredColorScheme(.dark)
                 .task { // get Packages info from RevenueCat
                 do {
                     UserSubscriptionManager.shared.offerings = try await Purchases.shared.offerings()
+                    print("Got the offerings \(String(describing: UserSubscriptionManager.shared.offerings?.debugDescription))")
                 } catch {
                     print("Error fetching the offerings \(error)")
                 }
@@ -88,6 +87,11 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         FirebaseApp.configure()
 
         saveDownloadVersion()
+
+        // Set the api key from remote config
+        RemoteConfigManager.shared.saveRemoteConfigValuesToUserDefaults()
+
+//        remoteConfig.configValue(forKey: RemoteConfigKeys.OpenAIAPIKeyKey).stringValue ?? ""
 
         // initialize this so the private init triggers
         let _ = MusicPlayerManager.shared

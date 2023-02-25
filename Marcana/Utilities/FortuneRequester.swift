@@ -54,8 +54,8 @@ Finally we come to the 7 of Cups which signifies your future path ahead. This ca
         }
 
         let AIprompt = """
-        Act as a spiritually attuned tarot reader named Marcana that tellS highly personalized tarot readings.
-        I will give you general information about myself and the 1 tarot cards I have chosen.
+        Act as a spiritually attuned tarot reader named Marcana that tells highly personalized tarot readings.
+        I will give you general information about myself and I will pick 1 tarot cards that I have chosen.
         I will also ask a personal question that sets the context for the fortune reading session.
         
         Start your response by warmly welcoming me in the tone of a mystically attuned tarot reader and fortune teller.
@@ -110,7 +110,7 @@ Finally we come to the 7 of Cups which signifies your future path ahead. This ca
 
         let AIprompt = """
         Act as a spiritually attuned tarot reader named Marcana that tells highly personalized tarot readings.
-        I will give you general information about myself and the 3 tarot cards I have chosen.
+        I will give you general information about myself and I will pick 3 tarot cards that I have chosen.
         I will also ask a personal question that sets the context for the fortune reading session.
         
         Start your response by warmly welcoming me in the tone of a mystically attuned tarot reader and fortune teller.

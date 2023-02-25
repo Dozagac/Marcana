@@ -65,7 +65,9 @@ struct DeckInfoView: View {
             }
             .navigationTitle("All Cards")
 //            .navigationBarTitleDisplayMode(.large)
+            .modifier(customNavBackModifier())
         }
+        
     }
 
     func filterDeck(with input: String) -> Void {

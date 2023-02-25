@@ -11,7 +11,7 @@ struct OnboardingView5: View {
     @State private var reminderTime = Calendar.current.date(bySettingHour: 10, minute: 30, second: 0, of: Date()) ?? Date()
     @AppStorage(wrappedValue: 10, DefaultKeys.dailyReminderNotificationHour) var reminderHour
     @AppStorage(wrappedValue: 30, DefaultKeys.dailyReminderNotificationMinute) var reminderMinute
-    
+
 //    @State private var notificationPermissionStatus: UNAuthorizationStatus?
     @State private var notificationPermissionChoiceMade = false
 
@@ -67,26 +67,18 @@ struct OnboardingView5: View {
                             notificationPermissionChoiceMade = granted
                         }
                     }
-                    
+
                     // Save the notification hour and minute
                     let calendar = Calendar.current
                     reminderHour = calendar.component(.hour, from: reminderTime)
                     reminderMinute = calendar.component(.minute, from: reminderTime)
-                    
+
                     // Schedule the reminder
                     notificationManager.scheduleDailyReminder(at: self.reminderTime)
-                    
+
                 } label: {
                     Text("Turn On Notifications")
-                        .font(.customFontTitle3)
-                        .fontWeight(.semibold)
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        .background(Color.white)
-                        .foregroundColor(.marcanaBackground)
-                        .cornerRadius(50)
-//                        .padding(.horizontal, 24)
-                    .shadow(radius: 8)
+                        .modifier(OnboardingContinueButtonModifier(canContinue: true))
                 }
                     .navigationDestination(isPresented: $notificationPermissionChoiceMade, destination: {
                     OnboardingEndTransitionView()

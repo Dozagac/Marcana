@@ -350,6 +350,18 @@ enum FortuneType: String, Codable {
             return "5 MIN"
         }
     }
+    
+    var questionSuggestionCategories: [QuestionSuggestion] {
+        switch self {
+        case .with1card:
+            return [.daily, .love, .career, .personal, .health]
+        case .with3cards:
+            return [.love, .career, .personal, .health]
+        case .with5cards:
+            return [.love, .career, .personal, .health]
+        }
+    }
+    
 }
 
 

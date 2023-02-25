@@ -31,21 +31,20 @@ struct SettingsView: View {
     var body: some View {
         ZStack(alignment: .top) {
             ImageBackgroundView(imageName: "Vine3")
-
             List {
                 // MARK: - Reminder Notifications
                 Section(header: Text("Notifications").font(.customFontFootnote).foregroundColor(.secondary)) {
-                        HStack {
-                            Image(systemName: "bubble.left.fill")
-                                .modifier(SettingButtonIconModifier())
+                    HStack {
+                        Image(systemName: "bubble.left.fill")
+                            .modifier(SettingButtonIconModifier())
 
-                                Text("Daily reminder")
-                            
-                            Spacer()
-                            ReminderTimePickerView()
-                        }
-                    
-                    .padding(.vertical, UIValues.listElementVerticalPadding)
+                        Text("Daily Reminder Time:")
+
+                        Spacer()
+                        ReminderTimePickerView()
+                    }
+
+                        .padding(.vertical, UIValues.listElementVerticalPadding)
                 }
                     .listRowBackground(UIValues.listRowBackroundColor)
 
@@ -170,8 +169,10 @@ struct SettingsView: View {
                 .scrollContentBackground(.hidden)
                 .listStyle(.insetGrouped)
         }
-            .font(.customFontBody) // font for all the text in this view unless overwritten at child
-        .foregroundColor(.text)
+
+            .font(.customFontBody) // font for all the text in this view unless overwritten at child view
+        .modifier(customNavBackModifier())
+            .foregroundColor(.text)
             .navigationTitle("Settings")
     }
 }

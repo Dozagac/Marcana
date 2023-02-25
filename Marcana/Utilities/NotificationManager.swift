@@ -3,7 +3,7 @@
 //  Marcana
 //
 //  Created by Deniz Ozagac on 12/02/2023.
-//
+// https://www.youtube.com/watch?v=mG9BVAs8AIo for some help, rest with chatgpt or efe
 
 import Foundation
 import UserNotifications
@@ -17,6 +17,7 @@ class NotificationManager: NSObject, UNUserNotificationCenterDelegate {
         notificationCenter.delegate = self
     }
     
+    // Efe helped writing this
     // Adding this made so the banner shows even if the app is open
     // Automatically called because of UNUserNotificationCenterDelegate
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {

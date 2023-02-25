@@ -51,6 +51,7 @@ struct GetUserOccupationView: View {
                 
                 Spacer()
             }
+            .padding(.horizontal, UIValues.bigButtonHPadding)
 
             //MARK: Continue Button
             VStack {
@@ -60,6 +61,7 @@ struct GetUserOccupationView: View {
                     focusTextField = false
                 })
             }
+            .padding(.horizontal, UIValues.bigButtonHPadding)
         }
             .onAppear {
             // this is necessary to make focus work

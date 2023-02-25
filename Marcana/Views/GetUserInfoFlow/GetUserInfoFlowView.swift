@@ -11,7 +11,7 @@ import SwiftUI
 struct GetUserInfoFlowView: View {
     //Transitions
     let transition: AnyTransition = .push(from: .trailing)
-    
+
     @State var getUserInfoStep: Int = 0
 
     var body: some View {
@@ -20,7 +20,8 @@ struct GetUserInfoFlowView: View {
             ImageBackgroundView(imageName: "skyBackground1", opacity: 0.5)
 
             ChevronBackButton(getUserInfoStep: $getUserInfoStep)
-            
+                .padding(.leading)
+
             ProgressStepperView(stepperColor: Color.white,
                                 progressStep: getUserInfoStep + 1)
                 .zIndex(2)
@@ -48,12 +49,11 @@ struct GetUserInfoFlowView: View {
                     }
                 }
             }
-            .padding(.horizontal, 16) // Equal lateral spacing is given to all views here.
                 .zIndex(1) // This is needed to enable transition out animations. It's a bug: https://sarunw.com/posts/how-to-fix-zstack-transition-animation-in-swiftui/
-                .accentColor(.text)
+            .accentColor(.text)
                 .preferredColorScheme(.dark)
         }
-        .navigationBarBackButtonHidden(true)
+            .navigationBarBackButtonHidden(true)
     }
 }
 
@@ -91,12 +91,11 @@ struct GetUserInfoContinueButton: View {
                 }
             }
         } label: {
-            Text(getUserInfoStep == 99 ? "Save" : getUserInfoStep == finalStep ?  "Finish" : "Continue")
+            Text(getUserInfoStep == 99 ? "Save" : getUserInfoStep == finalStep ? "Finish" : "Continue")
                 .modifier(GetUserInfoContinueButtonModifier(canContinue: canContinue))
-            
+
         }
             .disabled(!canContinue)
-
     }
 }
 
@@ -107,7 +106,7 @@ struct GetUserInfoContinueButtonModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
             .font(.customFontTitle3)
-            .padding(8)
+            .frame(height: 55)
             .frame(maxWidth: .infinity)
             .background(canContinue ? Color.marcanaBlue : .gray)
             .foregroundColor(canContinue ? .white : .text)
@@ -115,8 +114,8 @@ struct GetUserInfoContinueButtonModifier: ViewModifier {
             .saturation(canContinue ? 1 : 0)
             .padding(.bottom, 24)
             .animation(.easeIn(duration: 0.3), value: canContinue)
-            .padding(.horizontal, 24)
-            .shadow(radius: 8)
+//            .padding(.horizontal, UIValues.bigButtonHPadding)
+        .shadow(radius: 8)
     }
 }
 
@@ -132,8 +131,10 @@ struct ChevronBackButton: View {
                     }
                 } label: {
                     Image(systemName: "chevron.left")
+                        .font(.customFontTitle3)
                         .frame(width: 40, height: 40)
                         .tint(Color.text)
+//                        .padding(.horizontal, UIValues.bigButtonHPadding)
                 }
                 Spacer()
             }
