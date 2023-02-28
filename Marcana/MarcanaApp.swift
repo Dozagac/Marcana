@@ -15,6 +15,7 @@ struct MarcanaApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     @AppStorage(wrappedValue: true, DefaultKeys.doOnboarding) var doOnboarding
     @AppStorage(wrappedValue: true, DefaultKeys.doUserInfoFlow) var doUserInfoFlow
+    
 
     var userDataManager = UserDataManager()
 

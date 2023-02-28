@@ -118,7 +118,7 @@ struct SelectThreeCardsView: View {
                     )
                     fortuneRequester.waitingForAPIResponse = true
                 } label: {
-                    Text("Read Fortune")
+                    Text("Get Your Reading")
                         .modifier(GetUserInfoContinueButtonModifier(canContinue: canContinue))
                         .padding(.horizontal, UIValues.bigButtonHPadding)
                 }

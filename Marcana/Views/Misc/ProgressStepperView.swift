@@ -8,44 +8,25 @@
 import SwiftUI
 
 struct ProgressStepperView: View {
-    var stepperColor : Color
+    var stepperColor: Color
     var progressStep: Int
-    
+    var numberOfSteps: Int
+
     var body: some View {
         HStack(spacing: 4) {
-            
-            Rectangle()
-                .frame(width: 50, height: progressStep >= 1 ? 6 : 1.5)
-                .foregroundColor(stepperColor)
-                .cornerRadius(8)
-                .tag(0)
-
-            Rectangle()
-                .frame(width: 50, height: progressStep >= 2 ? 6 : 1.5)
-                .foregroundColor(stepperColor)
-                .cornerRadius(8)
-                .tag(1)
-            Rectangle()
-                .frame(width: 50, height: progressStep >= 3 ? 6 : 1.5)
-                .foregroundColor(stepperColor)
-                .cornerRadius(8)
-                .tag(2)
-            Rectangle()
-                .frame(width: 50, height: progressStep >= 4 ? 6 : 1.5)
-                .foregroundColor(stepperColor)
-                .cornerRadius(8)
-                .tag(3)
-            Rectangle()
-                .frame(width: 50, height: progressStep >= 5 ? 6 : 1.5)
-                .foregroundColor(stepperColor)
-                .cornerRadius(8)
-                .tag(4)
+            ForEach(0..<numberOfSteps) { index in
+                Rectangle()
+                    .frame(width: 50, height: progressStep >= index + 1 ? 6 : 1.5)
+                    .foregroundColor(stepperColor)
+                    .cornerRadius(8)
+                    .tag(index)
+            }
         }
     }
 }
 
 struct ProgressStepperViewView_Previews: PreviewProvider {
     static var previews: some View {
-        ProgressStepperView(stepperColor: Color.white, progressStep: 2)
+        ProgressStepperView(stepperColor: Color.white, progressStep: 2, numberOfSteps: 4)
     }
 }

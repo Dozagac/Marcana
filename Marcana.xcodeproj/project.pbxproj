@@ -39,7 +39,7 @@
 		763FDF7A299A6381007B7B77 /* PurchasesDelegateHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763FDF79299A6381007B7B77 /* PurchasesDelegateHandler.swift */; };
 		763FDF7C299A6472007B7B77 /* UserSubscriptionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763FDF7B299A6471007B7B77 /* UserSubscriptionManager.swift */; };
 		76410D3429A7E60C00E17990 /* ReminderSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76410D3329A7E60C00E17990 /* ReminderSettingsView.swift */; };
-		7641B3BE29A5802D000CFC30 /* OnboardingView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7641B3BD29A5802D000CFC30 /* OnboardingView2.swift */; };
+		7641B3BE29A5802D000CFC30 /* OnboardingUserTarotExperienceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7641B3BD29A5802D000CFC30 /* OnboardingUserTarotExperienceView.swift */; };
 		764FF8E32993BAD70062E221 /* AccountSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764FF8E22993BAD70062E221 /* AccountSettingsView.swift */; };
 		764FF8E52993BF760062E221 /* ToastManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764FF8E42993BF760062E221 /* ToastManager.swift */; };
 		764FF8E72993C9050062E221 /* UserDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764FF8E62993C9050062E221 /* UserDataManager.swift */; };
@@ -53,6 +53,7 @@
 		765313532985519900CF52A3 /* OFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7653134F2985519900CF52A3 /* OFL.txt */; };
 		765313542985519900CF52A3 /* NanumMyeongjo-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 765313502985519900CF52A3 /* NanumMyeongjo-ExtraBold.ttf */; };
 		765313582985587600CF52A3 /* FontsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765313572985587600CF52A3 /* FontsManager.swift */; };
+		7654889629ABF3C60007D62B /* TestingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7654889529ABF3C60007D62B /* TestingView.swift */; };
 		7654E7FE2933C67A00F9FDAB /* CardDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7654E7FD2933C67A00F9FDAB /* CardDetailView.swift */; };
 		76584B03299F61530021F50B /* FavoriteFortunesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76584B02299F61530021F50B /* FavoriteFortunesView.swift */; };
 		76584B05299F6D540021F50B /* Archive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76584B04299F6D540021F50B /* Archive.swift */; };
@@ -77,16 +78,16 @@
 		7689C3C229867551002A8314 /* BirthdayTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7689C3C129867551002A8314 /* BirthdayTestView.swift */; };
 		7689C3C42987CD9A002A8314 /* FortuneHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7689C3C32987CD9A002A8314 /* FortuneHistory.swift */; };
 		7689C3C62987D33A002A8314 /* FortuneHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7689C3C52987D33A002A8314 /* FortuneHistoryView.swift */; };
+		76ADDC1429ACF2290081EE1C /* PricingExplanationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76ADDC1329ACF2290081EE1C /* PricingExplanationView.swift */; };
 		76B2A8A829A64B4C00816DAC /* OnboardingEndTransitionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B2A8A729A64B4C00816DAC /* OnboardingEndTransitionView.swift */; };
 		76B2E12F29365BD4004BCF46 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B2E12E29365BD4004BCF46 /* Extensions.swift */; };
-		76BE817C29A58101007F1096 /* OnboardingView3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BE817B29A58101007F1096 /* OnboardingView3.swift */; };
-		76BE817E29A5811E007F1096 /* OnboardingView4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BE817D29A5811E007F1096 /* OnboardingView4.swift */; };
-		76BE818029A58126007F1096 /* OnboardingView5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BE817F29A58126007F1096 /* OnboardingView5.swift */; };
-		76BE818229A58183007F1096 /* OnboardingView1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BE818129A58183007F1096 /* OnboardingView1.swift */; };
+		76BE817C29A58101007F1096 /* OnboardingView3REMOVED.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BE817B29A58101007F1096 /* OnboardingView3REMOVED.swift */; };
+		76BE817E29A5811E007F1096 /* OnboardingTestimonialsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BE817D29A5811E007F1096 /* OnboardingTestimonialsView.swift */; };
+		76BE818029A58126007F1096 /* OnboardingSetRemindersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BE817F29A58126007F1096 /* OnboardingSetRemindersView.swift */; };
+		76BE818229A58183007F1096 /* OnboardingUserGoalsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BE818129A58183007F1096 /* OnboardingUserGoalsView.swift */; };
 		76D4E671299FB41600E333AD /* UserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D4E670299FB41600E333AD /* UserProfileView.swift */; };
 		76D4E673299FC38100E333AD /* PayWallOptionsTestingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D4E672299FC38100E333AD /* PayWallOptionsTestingView.swift */; };
 		76D4E67629A0345F00E333AD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 76D4E67529A0345F00E333AD /* Images.xcassets */; };
-		76D4F1F929964732003A6851 /* SwiftUIVisualEffects in Frameworks */ = {isa = PBXBuildFile; productRef = 76D4F1F829964732003A6851 /* SwiftUIVisualEffects */; };
 		76D5EF6029718BC300EF9C4A /* AnimatedCipherStroke.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D5EF5F29718BC300EF9C4A /* AnimatedCipherStroke.swift */; };
 		76D5EF6229718BF600EF9C4A /* CustomViewElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D5EF6129718BF600EF9C4A /* CustomViewElements.swift */; };
 		76D5EF64297191A400EF9C4A /* PersistentDataManagerEfeExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D5EF63297191A400EF9C4A /* PersistentDataManagerEfeExample.swift */; };
@@ -126,7 +127,7 @@
 		763FDF79299A6381007B7B77 /* PurchasesDelegateHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchasesDelegateHandler.swift; sourceTree = "<group>"; };
 		763FDF7B299A6471007B7B77 /* UserSubscriptionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSubscriptionManager.swift; sourceTree = "<group>"; };
 		76410D3329A7E60C00E17990 /* ReminderSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderSettingsView.swift; sourceTree = "<group>"; };
-		7641B3BD29A5802D000CFC30 /* OnboardingView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView2.swift; sourceTree = "<group>"; };
+		7641B3BD29A5802D000CFC30 /* OnboardingUserTarotExperienceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingUserTarotExperienceView.swift; sourceTree = "<group>"; };
 		764FF8E22993BAD70062E221 /* AccountSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingsView.swift; sourceTree = "<group>"; };
 		764FF8E42993BF760062E221 /* ToastManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastManager.swift; sourceTree = "<group>"; };
 		764FF8E62993C9050062E221 /* UserDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataManager.swift; sourceTree = "<group>"; };
@@ -141,6 +142,7 @@
 		765313502985519900CF52A3 /* NanumMyeongjo-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NanumMyeongjo-ExtraBold.ttf"; sourceTree = "<group>"; };
 		765313562985581400CF52A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		765313572985587600CF52A3 /* FontsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontsManager.swift; sourceTree = "<group>"; };
+		7654889529ABF3C60007D62B /* TestingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingView.swift; sourceTree = "<group>"; };
 		7654E7FD2933C67A00F9FDAB /* CardDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailView.swift; sourceTree = "<group>"; };
 		76584B02299F61530021F50B /* FavoriteFortunesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteFortunesView.swift; sourceTree = "<group>"; };
 		76584B04299F6D540021F50B /* Archive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Archive.swift; sourceTree = "<group>"; };
@@ -166,12 +168,13 @@
 		7689C3C129867551002A8314 /* BirthdayTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayTestView.swift; sourceTree = "<group>"; };
 		7689C3C32987CD9A002A8314 /* FortuneHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FortuneHistory.swift; sourceTree = "<group>"; };
 		7689C3C52987D33A002A8314 /* FortuneHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FortuneHistoryView.swift; sourceTree = "<group>"; };
+		76ADDC1329ACF2290081EE1C /* PricingExplanationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PricingExplanationView.swift; sourceTree = "<group>"; };
 		76B2A8A729A64B4C00816DAC /* OnboardingEndTransitionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingEndTransitionView.swift; sourceTree = "<group>"; };
 		76B2E12E29365BD4004BCF46 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		76BE817B29A58101007F1096 /* OnboardingView3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView3.swift; sourceTree = "<group>"; };
-		76BE817D29A5811E007F1096 /* OnboardingView4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView4.swift; sourceTree = "<group>"; };
-		76BE817F29A58126007F1096 /* OnboardingView5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView5.swift; sourceTree = "<group>"; };
-		76BE818129A58183007F1096 /* OnboardingView1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView1.swift; sourceTree = "<group>"; };
+		76BE817B29A58101007F1096 /* OnboardingView3REMOVED.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView3REMOVED.swift; sourceTree = "<group>"; };
+		76BE817D29A5811E007F1096 /* OnboardingTestimonialsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingTestimonialsView.swift; sourceTree = "<group>"; };
+		76BE817F29A58126007F1096 /* OnboardingSetRemindersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSetRemindersView.swift; sourceTree = "<group>"; };
+		76BE818129A58183007F1096 /* OnboardingUserGoalsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingUserGoalsView.swift; sourceTree = "<group>"; };
 		76D4E670299FB41600E333AD /* UserProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileView.swift; sourceTree = "<group>"; };
 		76D4E672299FC38100E333AD /* PayWallOptionsTestingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayWallOptionsTestingView.swift; sourceTree = "<group>"; };
 		76D4E67529A0345F00E333AD /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -202,7 +205,6 @@
 				763FDF6C29994C5D007B7B77 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */,
 				76D5EF6B2972B83800EF9C4A /* AnimateText in Frameworks */,
 				7612CE07298A77CC00838B3E /* SimpleToast in Frameworks */,
-				76D4F1F929964732003A6851 /* SwiftUIVisualEffects in Frameworks */,
 				763FDF6E29994C5D007B7B77 /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -231,6 +233,7 @@
 				7689C3BC2985B92E002A8314 /* Settings */,
 				76D4E674299FCA8600E333AD /* Profile */,
 				763D854B2987F7DE0040611F /* History */,
+				76ADDC1329ACF2290081EE1C /* PricingExplanationView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -421,11 +424,10 @@
 			isa = PBXGroup;
 			children = (
 				76588C2029902D89003E3530 /* OnboardingViewWelcome.swift */,
-				76BE818129A58183007F1096 /* OnboardingView1.swift */,
-				7641B3BD29A5802D000CFC30 /* OnboardingView2.swift */,
-				76BE817B29A58101007F1096 /* OnboardingView3.swift */,
-				76BE817D29A5811E007F1096 /* OnboardingView4.swift */,
-				76BE817F29A58126007F1096 /* OnboardingView5.swift */,
+				76BE818129A58183007F1096 /* OnboardingUserGoalsView.swift */,
+				7641B3BD29A5802D000CFC30 /* OnboardingUserTarotExperienceView.swift */,
+				76BE817D29A5811E007F1096 /* OnboardingTestimonialsView.swift */,
+				76BE817F29A58126007F1096 /* OnboardingSetRemindersView.swift */,
 				76B2A8A729A64B4C00816DAC /* OnboardingEndTransitionView.swift */,
 				76DB3FCF29903D740011FC06 /* PaywallView.swift */,
 			);
@@ -455,6 +457,8 @@
 				76584B04299F6D540021F50B /* Archive.swift */,
 				76D4E672299FC38100E333AD /* PayWallOptionsTestingView.swift */,
 				76760C75297A8E0B00D9C5D2 /* LoginView.swift */,
+				7654889529ABF3C60007D62B /* TestingView.swift */,
+				76BE817B29A58101007F1096 /* OnboardingView3REMOVED.swift */,
 			);
 			path = Development;
 			sourceTree = "<group>";
@@ -480,7 +484,6 @@
 				76F72BC5296DCD81009E7501 /* SwifterSwift */,
 				76D5EF6A2972B83800EF9C4A /* AnimateText */,
 				7612CE06298A77CC00838B3E /* SimpleToast */,
-				76D4F1F829964732003A6851 /* SwiftUIVisualEffects */,
 				763FDF6929994C5D007B7B77 /* FirebaseAnalytics */,
 				763FDF6B29994C5D007B7B77 /* FirebaseAnalyticsOnDeviceConversion */,
 				763FDF6D29994C5D007B7B77 /* FirebaseAuth */,
@@ -522,7 +525,6 @@
 				76F72BC4296DCD81009E7501 /* XCRemoteSwiftPackageReference "SwifterSwift" */,
 				76D5EF692972B83800EF9C4A /* XCRemoteSwiftPackageReference "AnimateText" */,
 				7612CE05298A77CC00838B3E /* XCRemoteSwiftPackageReference "SimpleToast" */,
-				76D4F1F729964732003A6851 /* XCRemoteSwiftPackageReference "swiftui-visual-effects" */,
 				763FDF6829994C5D007B7B77 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				763FDF74299A621D007B7B77 /* XCRemoteSwiftPackageReference "purchases-ios" */,
 				761DE0A9299CD58D00A542E5 /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */,
@@ -563,7 +565,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				76F72BC3296D9DF0009E7501 /* RevCatTestingView.swift in Sources */,
-				76BE817E29A5811E007F1096 /* OnboardingView4.swift in Sources */,
+				76BE817E29A5811E007F1096 /* OnboardingTestimonialsView.swift in Sources */,
 				76D5EF6029718BC300EF9C4A /* AnimatedCipherStroke.swift in Sources */,
 				763FDF652998F10E007B7B77 /* HeartLikePopAnimation.swift in Sources */,
 				7675E45929326EF500ED17D5 /* Deck.swift in Sources */,
@@ -588,14 +590,14 @@
 				76267D422955D60E00108612 /* GetUserOccupationView.swift in Sources */,
 				76584B05299F6D540021F50B /* Archive.swift in Sources */,
 				76588C1D298F243F003E3530 /* FortuneReading.swift in Sources */,
-				76BE818229A58183007F1096 /* OnboardingView1.swift in Sources */,
+				76BE818229A58183007F1096 /* OnboardingUserGoalsView.swift in Sources */,
 				76760C78297A8E1A00D9C5D2 /* LoginViewOO.swift in Sources */,
 				76DB3FD029903D740011FC06 /* PaywallView.swift in Sources */,
 				7689C3C42987CD9A002A8314 /* FortuneHistory.swift in Sources */,
-				76BE817C29A58101007F1096 /* OnboardingView3.swift in Sources */,
+				76BE817C29A58101007F1096 /* OnboardingView3REMOVED.swift in Sources */,
 				76D4E671299FB41600E333AD /* UserProfileView.swift in Sources */,
 				76EC8A2129830D7900F5CD89 /* TextToSpeechTest.swift in Sources */,
-				7641B3BE29A5802D000CFC30 /* OnboardingView2.swift in Sources */,
+				7641B3BE29A5802D000CFC30 /* OnboardingUserTarotExperienceView.swift in Sources */,
 				76588C2129902D89003E3530 /* OnboardingViewWelcome.swift in Sources */,
 				76760C76297A8E0B00D9C5D2 /* LoginView.swift in Sources */,
 				76F72ACD2967FC3E009E7501 /* LauncherView.swift in Sources */,
@@ -603,6 +605,7 @@
 				7612CE11298B235A00838B3E /* ProgressStepperView.swift in Sources */,
 				76410D3429A7E60C00E17990 /* ReminderSettingsView.swift in Sources */,
 				76584B03299F61530021F50B /* FavoriteFortunesView.swift in Sources */,
+				7654889629ABF3C60007D62B /* TestingView.swift in Sources */,
 				763FDF7C299A6472007B7B77 /* UserSubscriptionManager.swift in Sources */,
 				763D8554298851E80040611F /* SelectOneCardView.swift in Sources */,
 				764FF8F12995484F0062E221 /* MusicPlayerManager.swift in Sources */,
@@ -611,6 +614,7 @@
 				76D4E673299FC38100E333AD /* PayWallOptionsTestingView.swift in Sources */,
 				763FDF632998DCB4007B7B77 /* AlertManager.swift in Sources */,
 				7653134A298544F000CF52A3 /* FortuneRequester.swift in Sources */,
+				76ADDC1429ACF2290081EE1C /* PricingExplanationView.swift in Sources */,
 				7689C3C02986724D002A8314 /* GetUserBirthdayView.swift in Sources */,
 				7654E7FE2933C67A00F9FDAB /* CardDetailView.swift in Sources */,
 				7669FE8529886EC500DA06F8 /* LoadingPetalView.swift in Sources */,
@@ -627,7 +631,7 @@
 				7612CE0B298AB65600838B3E /* FortuneUserInfoView.swift in Sources */,
 				763FDF5F2998D952007B7B77 /* NotificationManager.swift in Sources */,
 				765313582985587600CF52A3 /* FontsManager.swift in Sources */,
-				76BE818029A58126007F1096 /* OnboardingView5.swift in Sources */,
+				76BE818029A58126007F1096 /* OnboardingSetRemindersView.swift in Sources */,
 				763D85512987FCD80040611F /* SelectThreeCardsView.swift in Sources */,
 				763FDF73299A5E47007B7B77 /* RevCatConstants.swift in Sources */,
 				76B2A8A829A64B4C00816DAC /* OnboardingEndTransitionView.swift in Sources */,
@@ -887,14 +891,6 @@
 				minimumVersion = 4.0.0;
 			};
 		};
-		76D4F1F729964732003A6851 /* XCRemoteSwiftPackageReference "swiftui-visual-effects" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/lucasbrown/swiftui-visual-effects";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
 		76D5EF692972B83800EF9C4A /* XCRemoteSwiftPackageReference "AnimateText" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/jasudev/AnimateText";
@@ -958,11 +954,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 763FDF74299A621D007B7B77 /* XCRemoteSwiftPackageReference "purchases-ios" */;
 			productName = RevenueCat;
-		};
-		76D4F1F829964732003A6851 /* SwiftUIVisualEffects */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 76D4F1F729964732003A6851 /* XCRemoteSwiftPackageReference "swiftui-visual-effects" */;
-			productName = SwiftUIVisualEffects;
 		};
 		76D5EF6A2972B83800EF9C4A /* AnimateText */ = {
 			isa = XCSwiftPackageProductDependency;

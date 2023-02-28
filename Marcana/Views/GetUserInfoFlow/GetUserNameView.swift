@@ -11,7 +11,7 @@ import SwiftUI
 struct GetUserNameView: View {
     @Binding var getUserInfoStep: Int
     @FocusState private var focusTextField
-    @AppStorage(wrappedValue: true, DefaultKeys.userNameIsNew) var userNameIsNew
+    @AppStorage(wrappedValue: 0, DefaultKeys.readingCountPerUserName) var readingCountPerUserName
     @AppStorage(wrappedValue: "", UserDataManager.UserKeys.userName.rawValue) var userName
     private var canContinue: Bool {
         userName.isNotEmpty
@@ -40,8 +40,7 @@ struct GetUserNameView: View {
                         .textFieldStyle(.plain)
                         .focused($focusTextField)
                         .onChange(of: userName) { _ in
-                            userNameIsNew = true
-                            print("Welcome back prompt active (name change): \(userNameIsNew)")
+                            readingCountPerUserName = 0
                         }
                         .onSubmit {
                         if userName.isNotEmpty {

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct OnboardingView2: View {
+struct OnboardingUserTarotExperienceView: View {
     @State var userTarotExperience: Experience? = nil
     var body: some View {
         ZStack(alignment: .top) {
@@ -17,7 +17,8 @@ struct OnboardingView2: View {
                 .padding(.leading)
 
             ProgressStepperView(stepperColor: Color.white,
-                                progressStep: 2)
+                                progressStep: 2,
+                                numberOfSteps:4)
                 .zIndex(2)
                 .padding(.top)
 
@@ -29,13 +30,13 @@ struct OnboardingView2: View {
                 Spacer()
 
                 NavigationLink {
-                    OnboardingView3()
+                    OnboardingTestimonialsView()
                 } label: {
                     Text("Continue")
                         .modifier(OnboardingContinueButtonModifier(canContinue: userTarotExperience != nil))
                 }
                 .disabled(userTarotExperience == nil)
-                    .padding(.bottom, 35)
+                    .padding(.bottom, UIValues.onboardingContinueButtonBottomPadding)
                     .simultaneousGesture(TapGesture().onEnded {
                     // Save the Goal selection to the userDefaults
                         if let userTarotExperience {
@@ -117,6 +118,6 @@ struct UserExperienceQuestionView: View {
 
 struct OnboardingView2_Previews: PreviewProvider {
     static var previews: some View {
-        OnboardingView2()
+        OnboardingUserTarotExperienceView()
     }
 }

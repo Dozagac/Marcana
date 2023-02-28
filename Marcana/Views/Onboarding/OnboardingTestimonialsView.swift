@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct OnboardingView4: View {
+struct OnboardingTestimonialsView: View {
     var body: some View {
         ZStack(alignment: .top) {
             BackgroundView()
@@ -16,7 +16,8 @@ struct OnboardingView4: View {
                 .padding(.leading)
 
             ProgressStepperView(stepperColor: Color.white,
-                                progressStep: 4)
+                                progressStep: 3,
+                                numberOfSteps: 4)
                 .zIndex(2)
                 .padding(.top)
 
@@ -24,35 +25,48 @@ struct OnboardingView4: View {
             VStack {
                 Spacer()
                     .frame(height: UIValues.onboardingScreenTopPadding)
+//                    .frame(height: UIScreen.main.bounds.height * 0.05)
 
-                VStack(spacing: 24) {
+                VStack(spacing: 16) {
                     VStack(alignment: .leading, spacing: 16) {
-                        Text("User Reviews")
+                        Text("From our Users")
                             .font(.customFontTitle3)
                             .foregroundColor(.white)
                             .fontWeight(.black)
                             .lineLimit(1)
 
-                        // testimonials
-                        TestimonialView(testimonialUser: TestimonialUser(imageName: "UserPortrait1", name: "Maria", testimonial: "I was one of the early testers and I kept on using Marcana for its sincere and actually personal tarot readings."))
-//                        TestimonialView(testimonialUser: TestimonialUser(imageName: "UserPortrait2", name: "Ana", testimonial: "I like how Marcana offers actual personalized fortune readings, not just generic stuff from a database.\nHappy to see something different :)"))
-                        TestimonialView(testimonialUser: TestimonialUser(imageName: "UserPortrait3", name: "Katya", testimonial: "This app has helped me find moments of self-reflection during my day.\nHighly recommend!"))
+                        ZStack(alignment: .bottom){
+                            ScrollView{
+                                VStack(spacing: 12) {
+                                    // testimonials
+                                    TestimonialView(testimonialUser: TestimonialUser(imageName: "UserPortrait1", name: "Maria", testimonial: "Great app for tarot beginners like me! Easy to use and understand.\nLove the personal touch to readings!"))
+                                    
+                                    TestimonialView(testimonialUser: TestimonialUser(imageName: "UserPortrait2", name: "Ana", testimonial: "As a tarot enthusiast, I've used many apps but this one stands out. The readings feel authentic and the app is user-friendly. Highly recommend!"))
+                                    
+                                    TestimonialView(testimonialUser: TestimonialUser(imageName: "UserPortrait3", name: "Katya", testimonial: "This app has helped me find moments of self-reflection during my day"))
+                                    
+                                    TestimonialView(testimonialUser: TestimonialUser(imageName: "UserPortrait4", name: "Kylie", testimonial: "I was one of the early testers, I still use it daily. It helps me practice my Tarot reading skills"))
+                                }
+                                Spacer()
+                                    .frame(height: 20)
+                            }
+                            ScrollerTextBottomGradientEffectView(effectColor: Color.marcanaBackground)
+                        }
                     }
-
-                    Spacer()
 
                     //MARK: - Olive branch icon
                     TestimonialProofCrownView()
+                        .padding(.vertical, 12)
 
-                    Spacer()
-
+                    // Turn on notification button
                     NavigationLink {
-                        OnboardingView5()
+                        OnboardingSetRemindersView()
+                        
                     } label: {
                         Text("Continue")
                             .modifier(OnboardingContinueButtonModifier(canContinue: true))
                     }
-                        .padding(.bottom, 35)
+                        .padding(.bottom, UIValues.onboardingContinueButtonBottomPadding)
                 }
                     .padding(.horizontal, UIValues.bigButtonHPadding)
             }
@@ -127,7 +141,7 @@ struct TestimonialProofCrownView: View {
 
 struct OnboardingView4_Previews: PreviewProvider {
     static var previews: some View {
-        OnboardingView4()
+        OnboardingTestimonialsView()
     }
 }
 

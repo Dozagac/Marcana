@@ -8,10 +8,15 @@
 import SwiftUI
 
 struct FortuneHistoryView: View {
+    @AppStorage(wrappedValue: 1, DefaultKeys.SingleReaderFreeTriesRemaning) var SingleReaderFreeTriesRemaning
+    @State var userSubscriptionManager = UserSubscriptionManager.shared
+    
     @StateObject var fortuneHistory = FortuneHistory.shared
     @State private var showingFortuneSheet = false // starts a fortune reading flow
 
     @State private var tappedFortuneHistoryItem: FortuneReading? = nil // to each history element
+    
+
 
     var body: some View {
         ZStack {
@@ -56,11 +61,12 @@ struct FortuneHistoryView: View {
                     Button {
                         showingFortuneSheet = true
                     } label: {
-                        Text("Read Fortune")
+                        Text("Get Your Reading")
                             .modifier(GetUserInfoContinueButtonModifier(canContinue: true))
                             .padding(.horizontal, UIValues.bigButtonHPadding)
+                            .saturation(SingleReaderFreeTriesRemaning <= 0 ? 0 : 1)
                     }
-
+                    .disabled(SingleReaderFreeTriesRemaning <= 0)
                 }
                     .fullScreenCover(isPresented: $showingFortuneSheet) {
                     // Default selection is the 1 card reader.

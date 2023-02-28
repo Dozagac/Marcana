@@ -28,12 +28,32 @@ struct SettingsView: View {
     @State private var showingAccountSettings = false
     @StateObject var userSubscriptionManager = UserSubscriptionManager.shared
 
+    @State private var isNotificationEnabled = false
+
     var body: some View {
         ZStack(alignment: .top) {
             ImageBackgroundView(imageName: "Vine3")
             List {
                 // MARK: - Reminder Notifications
                 Section(header: Text("Notifications").font(.customFontFootnote).foregroundColor(.secondary)) {
+
+                    if !isNotificationEnabled {
+                        Button {
+                            if let appSettings = URL(string: UIApplication.openSettingsURLString), UIApplication.shared.canOpenURL(appSettings) {
+                                UIApplication.shared.open(appSettings)
+                            }
+                        } label: {
+                            HStack {
+                                Image(systemName: "exclamationmark.circle.fill")
+                                    .modifier(SettingButtonIconModifier())
+
+                                Text("Need notification permissions")
+                            }
+                                .foregroundColor(.orange)
+                        }
+                            .padding(.vertical, UIValues.listElementVerticalPadding)
+                    }
+
                     HStack {
                         Image(systemName: "bubble.left.fill")
                             .modifier(SettingButtonIconModifier())
@@ -43,10 +63,16 @@ struct SettingsView: View {
                         Spacer()
                         ReminderTimePickerView()
                     }
-
                         .padding(.vertical, UIValues.listElementVerticalPadding)
                 }
                     .listRowBackground(UIValues.listRowBackroundColor)
+                    .onAppear {
+                    UNUserNotificationCenter.current().getNotificationSettings { settings in
+                        DispatchQueue.main.async {
+                            self.isNotificationEnabled = settings.authorizationStatus == .authorized
+                        }
+                    }
+                }
 
                 // MARK: - Contact
                 Section(header: Text("Contact Us").font(.customFontFootnote).foregroundColor(.secondary)) {
@@ -101,8 +127,6 @@ struct SettingsView: View {
                         // restore purchase action
                         userSubscriptionManager.restorePurchases()
                     } label: {
-
-
                         HStack {
                             Image(systemName: "gearshape.arrow.triangle.2.circlepath")
                                 .modifier(SettingButtonIconModifier())
@@ -114,12 +138,18 @@ struct SettingsView: View {
                             }
                         }
                     }
-                        .alert(isPresented: $userSubscriptionManager.showingError) {
+                    // Restore Confirmed
+                    .alert(isPresented: $userSubscriptionManager.showingConfirmation) {
+                        Alert(title: Text("Purcase Restored!"), message: Text("You continue your premium access."), dismissButton: .default(Text("OK")) {
+                            userSubscriptionManager.showingConfirmation = false
+                        })
+                    }
+                    // Restore Purchase Error
+                    .alert(isPresented: $userSubscriptionManager.showingError) {
                         Alert(title: Text(userSubscriptionManager.errorTitle), message: Text(userSubscriptionManager.errorMessage), dismissButton: .default(Text("OK")) {
                             userSubscriptionManager.showingError = false
                         })
                     }
-
 //
 //                        //MARK: - Account Settings
 //                        NavigationLink() {

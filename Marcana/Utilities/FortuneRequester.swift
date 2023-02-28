@@ -25,7 +25,6 @@ import OpenAISwift
         )
     }
 
-
 //    @StateObject var fortuneHistory = FortuneHistory.shared
     @Published var fortuneReading: FortuneReading
     @Published var waitingForAPIResponse = false {
@@ -45,13 +44,7 @@ Finally we come to the 7 of Cups which signifies your future path ahead. This ca
 
 
     func prepareAPIPrompt1Card() -> String {
-        var userReGreetingText = ""
-        let userNameIsNew = UserDefaults.standard.bool(forKey: DefaultKeys.userNameIsNew)
-        print("Welcome back prompt active: \(!userNameIsNew)")
-
-        if !userNameIsNew {
-            userReGreetingText = "Greet me as if we have already met before"
-        }
+        let userReGreetingText = getUserGreetingPromptExtra()
 
         let AIprompt = """
         Act as a spiritually attuned tarot reader named Marcana that tells highly personalized tarot readings.
@@ -93,20 +86,13 @@ Finally we come to the 7 of Cups which signifies your future path ahead. This ca
         Welcome!
         """
 
-        UserDefaults.standard.set(false, forKey: DefaultKeys.userNameIsNew)
-
         print("PROMPT SENT TO AI")
         return AIprompt
     }
 
-    func prepareAPIPrompt3Cards() -> String {
-        var userReGreetingText = ""
-        let userNameIsNew = UserDefaults.standard.bool(forKey: DefaultKeys.userNameIsNew)
-        print("Welcome back prompt active: \(!userNameIsNew)")
 
-        if !userNameIsNew {
-            userReGreetingText = "Greet me as if we have already met before"
-        }
+    func prepareAPIPrompt3Cards() -> String {
+        let userReGreetingText = getUserGreetingPromptExtra()
 
         let AIprompt = """
         Act as a spiritually attuned tarot reader named Marcana that tells highly personalized tarot readings.
@@ -157,8 +143,6 @@ Finally we come to the 7 of Cups which signifies your future path ahead. This ca
         Welcome!
         """
 
-        UserDefaults.standard.set(false, forKey: DefaultKeys.userNameIsNew)
-
         print("PROMPT SENT TO AI")
         return AIprompt
     }
@@ -170,8 +154,8 @@ Finally we come to the 7 of Cups which signifies your future path ahead. This ca
 
 
     func sendAPIRequest(AIPrompt: String) {
-        guard let openAIAPIKey = UserDefaults.standard.string(forKey: DefaultKeys.openAIAPIKey) else {return}
-        
+        guard let openAIAPIKey = UserDefaults.standard.string(forKey: DefaultKeys.openAIAPIKey) else { return }
+
         let openAPI = OpenAISwift(authToken: openAIAPIKey)
         // There are mode API parameters but this library doesnt accept them yet
         // https://beta.openai.com/docs/api-reference/completions/create
@@ -190,6 +174,12 @@ Finally we come to the 7 of Cups which signifies your future path ahead. This ca
                         self.fortuneReading
                     )
                     print("Fortune added to history")
+                    // Count how many request have succeeded for analytics and price tracking
+                    self.countUserReadings()
+
+                    // -1 to the respective type of tree trial count
+                    self.adjustFreeTriesLeft()
+
                     self.waitingForAPIResponse = false
                 }
                 //MARK: - Fail case
@@ -201,6 +191,61 @@ Finally we come to the 7 of Cups which signifies your future path ahead. This ca
                     self.waitingForAPIResponse = false
                     print("API ERROR: \(self.response)")
                 }
+            }
+        }
+    }
+
+    func getUserGreetingPromptExtra() -> String {
+        // Set the default values if these are found to be nil.
+        UserDefaults.standard.register(
+            defaults: [
+                "readingCountPerUserName": 0
+            ]
+        )
+
+        var userReGreetingText = ""
+        let readingCountPerUserName = UserDefaults.standard.integer(forKey: DefaultKeys.readingCountPerUserName)
+
+        if readingCountPerUserName > 0 {
+            print("Welcome back prompt active, reading count: \(readingCountPerUserName)")
+            userReGreetingText = "Greet me as if we have already met before"
+        }
+        return userReGreetingText
+    }
+
+
+    func countUserReadings() {
+        // Set the default values if these are found to be nil.
+        UserDefaults.standard.register(
+            defaults: [
+                "readingCountTotal": 0,
+                "readingCountPerUserName": 0
+            ]
+        )
+
+        // Increase the reading count of the app, used for analytics ad price tracking
+        var readingCountTotal = UserDefaults.standard.integer(forKey: DefaultKeys.readingCountTotal)
+        readingCountTotal += 1
+        UserDefaults.standard.set(readingCountTotal, forKey: DefaultKeys.readingCountTotal)
+        print("User successfully requested and received \(readingCountTotal) readings")
+
+        // Increase the reading count PerUserName, this is for welcome tracking per name
+        var readingCountPerUserName = UserDefaults.standard.integer(forKey: DefaultKeys.readingCountPerUserName)
+        readingCountPerUserName += 1
+        UserDefaults.standard.set(readingCountPerUserName, forKey: DefaultKeys.readingCountPerUserName)
+    }
+
+    func adjustFreeTriesLeft() {
+        @AppStorage(wrappedValue: 1, DefaultKeys.SingleReaderFreeTriesRemaning) var SingleReaderFreeTriesRemaning
+        @AppStorage(wrappedValue: 1, DefaultKeys.ThreeReaderFreeTriesRemaning) var ThreeReaderFreeTriesRemaning
+
+        if self.fortuneReading.fortuneType == .with1card {
+            if SingleReaderFreeTriesRemaning > 0 {
+                SingleReaderFreeTriesRemaning -= 1
+            }
+        } else if self.fortuneReading.fortuneType == .with3cards {
+            if ThreeReaderFreeTriesRemaning > 0 {
+                ThreeReaderFreeTriesRemaning -= 1
             }
         }
     }

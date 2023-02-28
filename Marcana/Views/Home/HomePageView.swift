@@ -9,7 +9,6 @@
 // https://gist.github.com/ajzeigert/32461d73c17cfd8fd475c0049db451f5
 
 import SwiftUI
-import SwiftUIVisualEffects
 
 
 struct HomePageView: View {
@@ -23,7 +22,9 @@ struct HomePageView: View {
     @StateObject var musicPlayer = MusicPlayerManager.shared
     @State var isPlaying = false // this is necessary, musicPlayer.player.isPlaying is not working for some reason
     @AppStorage(DefaultKeys.isMusicPlaying) var isMusicPlaying: Bool = false
-    
+
+    @State var userSubscriptionManager = UserSubscriptionManager.shared
+    @State var showingPricingExplanationSheet = false
 
     var body: some View {
         GeometryReader { geo in
@@ -40,41 +41,41 @@ struct HomePageView: View {
                             UserProfileView()
                                 .transition(.move(edge: .bottom))
                         } label: {
-                            VStack(spacing: 2) {
+                            HStack(spacing: 8) {
                                 Image(systemName: "person.fill")
                                     .frame(width: 44, height: 44)
                                     .background(
-                                    Color.clear
-                                        .blurEffect() // from SwiftUIVisualEffects, looks better than ultrathin
+                                        .ultraThinMaterial
                                 )
                                     .cornerRadius(50)
                                     .foregroundColor(.white)
                                     .foregroundColor(.text)
+
+                                // MARK: Greeting title and User Name
+                                VStack(alignment: .leading, spacing: -4) {
+                                    Text("Greetings")
+                                        .font(.custom("Palatino-Bold", size: 24)) // too custom?
+                                    .fontWeight(.black)
+                                    Text("\(userName)")
+                                        .font(.customFontBody)
+                                }
                             }
 
                         }
 
-                        VStack(alignment: .leading, spacing: -4) {
-                            Text("Greetings")
-                                .font(.custom("Palatino-Bold", size: 24)) // too custom?
-                            .fontWeight(.black)
-                            Text("\(userName)")
-                                .font(.customFontBody)
-                        }
                         Spacer()
 
                         //MARK: - Music control button
                         Button {
                             musicPlayer.togglePlayPause()
-                            
+
                         } label: {
                             VStack(spacing: 0) {
                                 Image(systemName: isMusicPlaying ? "speaker.wave.2.fill" : "speaker.slash.fill")
                                     .foregroundColor(isMusicPlaying ? .text : .gray)
                                     .frame(width: 44, height: 44)
                                     .background(
-                                    Color.clear
-                                        .blurEffect() // from SwiftUIVisualEffects, looks better than ultrathin
+                                        .ultraThinMaterial
                                 )
                                     .cornerRadius(12)
                                     .foregroundColor(.white)
@@ -90,8 +91,7 @@ struct HomePageView: View {
                                     .foregroundColor(.text)
                                     .frame(width: 44, height: 44)
                                     .background(
-                                    Color.clear
-                                        .blurEffect() // from SwiftUIVisualEffects, looks better than ultrathin
+                                        .ultraThinMaterial
                                 )
                                     .cornerRadius(12)
                                     .foregroundColor(.white)
@@ -105,7 +105,33 @@ struct HomePageView: View {
                         .padding(.top)
                         .padding(.horizontal, UIValues.HPadding)
 
-                    Spacer()
+
+
+                    if !userSubscriptionManager.subscriptionActive {
+                        HStack {
+                            Button {
+                                showingPricingExplanationSheet = true
+                            } label: {
+                                HStack {
+                                    Image(systemName: "info.circle")
+                                    Text("Why is it not free?").bold()
+                                }
+                                    .font(.customFontBody)
+                            }
+                                .padding(8)
+                                .background(.ultraThinMaterial)
+                                .cornerRadius(25)
+                                .foregroundColor(.orange)
+                                .padding(.vertical, -12)
+
+                            Spacer()
+                        }
+                            .padding(.horizontal, geo.size.width * 0.1)
+                            .sheet(isPresented: $showingPricingExplanationSheet) {
+                            PricingExplanationView()
+                                .presentationDetents([.height(450)])
+                        }
+                    }
 
                     // MARK: - Fortune Selection Buttons
                     ScrollView(.horizontal, showsIndicators: false) {
@@ -115,6 +141,7 @@ struct HomePageView: View {
                                 showingFortuneSheet: $showingFortuneSheet1CardFortune,
                                 geoProxy: geo
                             )
+
                                 .fullScreenCover(isPresented: $showingFortuneSheet1CardFortune) {
                                 GetFortuneQuestionView(
                                     fortuneType: .with1card,
@@ -134,10 +161,11 @@ struct HomePageView: View {
                                 )
                             }
                         }
-                            .padding(.vertical, 4)
-                            .padding(.horizontal, geo.size.width * 0.1)
+//                            .padding(.vertical, 4)
+                        .padding(.horizontal, geo.size.width * 0.1)
                     }
                     HStack(spacing: 24) {
+
                         // MARK: - Deck Button
                         NavigationLink {
                             DeckInfoView()
@@ -146,8 +174,7 @@ struct HomePageView: View {
                                 Image(systemName: "rectangle.portrait.on.rectangle.portrait.angled.fill")
                                     .frame(width: 44, height: 44)
                                     .background(
-                                    Color.clear
-                                        .blurEffect() // from SwiftUIVisualEffects, looks better than ultrathin
+                                        .ultraThinMaterial
                                 )
                                     .cornerRadius(12)
                                     .foregroundColor(.white)
@@ -165,8 +192,7 @@ struct HomePageView: View {
                                 Image(systemName: "book.fill")
                                     .frame(width: 44, height: 44)
                                     .background(
-                                    Color.clear
-                                        .blurEffect() // from SwiftUIVisualEffects, looks better than ultrathin
+                                        .ultraThinMaterial
                                 )
                                     .cornerRadius(12)
                                     .foregroundColor(.white)
@@ -190,23 +216,51 @@ struct HomePageView: View {
 
 
 struct FortuneTypeSelectionButton: View {
+    @AppStorage(wrappedValue: 1, DefaultKeys.SingleReaderFreeTriesRemaning) var SingleReaderFreeTriesRemaning
+    @AppStorage(wrappedValue: 1, DefaultKeys.ThreeReaderFreeTriesRemaning) var ThreeReaderFreeTriesRemaning
     var fortuneType: FortuneType
-//    var colors: [Color]
+
+    var freeTriesRemaning: Int {
+        switch fortuneType {
+        case .with1card:
+            return SingleReaderFreeTriesRemaning
+        case .with3cards:
+            return ThreeReaderFreeTriesRemaning
+        case .with5cards:
+            return ThreeReaderFreeTriesRemaning
+        }
+    }
+
+    @State var userSubscriptionManager = UserSubscriptionManager.shared
+    @State var showingPaywall = false
+
     @Binding var showingFortuneSheet: Bool
     var geoProxy: GeometryProxy
 
     var body: some View {
         Button {
-            showingFortuneSheet.toggle()
+            // Premium user with entitlement
+            if userSubscriptionManager.subscriptionActive {
+                showingFortuneSheet.toggle()
+            } else {
+                // User hasn't paid, may have trial chances
+                if freeTriesRemaning > 0 {
+                    showingFortuneSheet.toggle()
+                } else {
+                    // Launch the paywall
+                    showingPaywall = true
+                }
+            }
+
         } label: {
-            ZStack {
-                VStack(spacing: 12) {
+            ZStack(alignment: .bottom) {
+                VStack(spacing: 0) {
                     Spacer()
                     // MARK: CARD IMAGE
                     Image(fortuneType.imageName)
                         .resizable()
                         .scaledToFit()
-                        .frame(height: 250)
+                        .frame(height: geoProxy.size.height * 0.3)
                         .shadow(radius: 5)
 
                     VStack(alignment: .center, spacing: 0) {
@@ -230,10 +284,8 @@ struct FortuneTypeSelectionButton: View {
                                 .font(.customFontBody)
                             ForEach(1..<fortuneType.detailLevel) { _ in
                                 Image(systemName: "star.fill")
-
                             }
-                                .foregroundColor(.yellow)
-
+                                .foregroundColor(.orange)
                         }
                             .font(.customFontCallout)
                             .foregroundColor(.secondary)
@@ -248,18 +300,17 @@ struct FortuneTypeSelectionButton: View {
                         .font(.customFontBody.bold())
                         .padding()
                         .frame(width: 250)
-                        .background(.white)
+                        .background(userSubscriptionManager.subscriptionActive ? .white : freeTriesRemaning > 0 ? .white : .gray)
                         .foregroundColor(.black)
                         .cornerRadius(50)
                         .padding(.bottom, 24)
-
                 }
-
-
-                    .frame(width: geoProxy.size.width * 0.8, height: 500)
-                    .overlay(
+                    .frame(width: geoProxy.size.width * 0.8, height: geoProxy.size.height * 0.6)
+                    .background(
                     RoundedRectangle(cornerRadius: 24)
-                        .stroke(Color.text, lineWidth: 0.5)
+                        .tint(.gray.opacity(0.2))
+//                        .background(.red.opacity(0.7))
+//                        .stroke(Color.text, lineWidth: 0.5)
                 )
 
                 //MARK: - Fortune time indicator overlay
@@ -271,9 +322,39 @@ struct FortuneTypeSelectionButton: View {
                     }
                         .foregroundColor(.text)
                         .font(.customFontCaption2)
-                        .padding(2)
-                        .background(.black.opacity(0.2))
-                        .cornerRadius(4)
+                        .padding(6)
+                        .background(.black.opacity(0.5))
+                        .cornerRadius(12)
+                        .padding()
+                }
+
+//                .saturation(0)
+
+            }
+        }
+            .fullScreenCover(isPresented: $showingPaywall) {
+            PaywallView()
+        }
+        // saturated if user can go ahead. If not, 0
+        .saturation(userSubscriptionManager.subscriptionActive ? 1 : freeTriesRemaning > 0 ? 1 : 0)
+            .overlay(alignment: .topTrailing) {
+            if !userSubscriptionManager.subscriptionActive {
+                if freeTriesRemaning > 0 {
+                    HStack {
+                        Image(systemName: "lock.open.fill")
+                        Text("\(freeTriesRemaning) Free Try").bold()
+                    }
+                        .foregroundColor(.orange)
+                        .font(.customFontBody)
+                        .cornerRadius(12)
+                        .padding()
+                } else {
+                    HStack {
+                        Image(systemName: "lock.fill")
+                    }
+                        .foregroundColor(.orange)
+                        .font(.customFontlargeTitle)
+                        .cornerRadius(12)
                         .padding()
                 }
             }
@@ -350,7 +431,7 @@ enum FortuneType: String, Codable {
             return "5 MIN"
         }
     }
-    
+
     var questionSuggestionCategories: [QuestionSuggestion] {
         switch self {
         case .with1card:
@@ -361,7 +442,7 @@ enum FortuneType: String, Codable {
             return [.love, .career, .personal, .health]
         }
     }
-    
+
 }
 
 

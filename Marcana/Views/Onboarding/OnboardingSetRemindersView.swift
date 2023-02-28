@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct OnboardingView5: View {
+struct OnboardingSetRemindersView: View {
     @State private var reminderTime = Calendar.current.date(bySettingHour: 10, minute: 30, second: 0, of: Date()) ?? Date()
     @AppStorage(wrappedValue: 10, DefaultKeys.dailyReminderNotificationHour) var reminderHour
     @AppStorage(wrappedValue: 30, DefaultKeys.dailyReminderNotificationMinute) var reminderMinute
@@ -25,7 +25,8 @@ struct OnboardingView5: View {
                 .padding(.leading)
 
             ProgressStepperView(stepperColor: Color.white,
-                                progressStep: 5)
+                                progressStep: 4,
+                                numberOfSteps: 4)
                 .zIndex(2)
                 .padding(.top)
 
@@ -60,31 +61,43 @@ struct OnboardingView5: View {
                 Spacer()
 
                 // MARK: - ASK NOTIFICATION PERMISSION
-                Button {
-                    // Its named granted, but it always returns true. I use this to trigger transition to the next view.
-                    notificationManager.requestNotificationPermission { granted in
-                        DispatchQueue.main.async {
-                            notificationPermissionChoiceMade = granted
+                ZStack(alignment: .bottom)  {
+                    Button {
+                        // Its named granted, but it always returns true. I use this to trigger transition to the next view.
+                        notificationManager.requestNotificationPermission { granted in
+                            DispatchQueue.main.async {
+                                notificationPermissionChoiceMade = granted
+                            }
                         }
+
+                        // Save the notification hour and minute
+                        let calendar = Calendar.current
+                        reminderHour = calendar.component(.hour, from: reminderTime)
+                        reminderMinute = calendar.component(.minute, from: reminderTime)
+
+                        // Schedule the reminder
+                        notificationManager.scheduleDailyReminder(at: self.reminderTime)
+
+                    } label: {
+                        Text("Continue")
+                            .modifier(OnboardingContinueButtonModifier(canContinue: true))
                     }
-
-                    // Save the notification hour and minute
-                    let calendar = Calendar.current
-                    reminderHour = calendar.component(.hour, from: reminderTime)
-                    reminderMinute = calendar.component(.minute, from: reminderTime)
-
-                    // Schedule the reminder
-                    notificationManager.scheduleDailyReminder(at: self.reminderTime)
-
-                } label: {
-                    Text("Turn On Notifications")
-                        .modifier(OnboardingContinueButtonModifier(canContinue: true))
+                        .navigationDestination(isPresented: $notificationPermissionChoiceMade, destination: {
+                        OnboardingEndTransitionView()
+                    })
+                        .padding(.bottom, UIValues.onboardingContinueButtonBottomPadding)
+                    
+//                    //MARK: - Skip for now button
+//                    NavigationLink {
+//                        OnboardingEndTransitionView()
+//                    } label: {
+//                        Text("Skip for now")
+//                            .font(.customFontBody)
+//                            .fontWeight(.black)
+//                            .foregroundColor(.gray)
+//                    }
+//                    .padding(.bottom, 4)
                 }
-                    .navigationDestination(isPresented: $notificationPermissionChoiceMade, destination: {
-                    OnboardingEndTransitionView()
-                })
-                    .padding(.bottom, 35)
-
             }
                 .padding(.horizontal, UIValues.bigButtonHPadding)
         }
@@ -97,7 +110,7 @@ struct NotificationPreviewView: View {
         ZStack {
 
             HStack(spacing: 12) {
-                Image("AIFortuneTeller")
+                Image("AppIconInApp")
                     .resizable()
                     .frame(width: 44, height: 44)
                     .scaledToFit()
@@ -152,6 +165,6 @@ struct NotificationPreviewView: View {
 
 struct OnboardingView5_Previews: PreviewProvider {
     static var previews: some View {
-        OnboardingView5()
+        OnboardingSetRemindersView()
     }
 }

@@ -21,12 +21,13 @@ struct OnboardingViewWelcome: View {
 
                 Text("Welcome!")
                     .font(Font.custom("Palatino-Bold", size: 38))
-                
+
                 Spacer()
 
                 VStack {
-                    Text("Marcana provides deeply personal ") +
-                        Text("Tarot Readings").bold()
+                    Text("Marcana provides ")
+                    Text("deeply personal").bold()
+                    Text("Tarot Readings")
                 }
                     .font(.customFontTitle2)
                     .lineLimit(3)
@@ -36,12 +37,13 @@ struct OnboardingViewWelcome: View {
                 Spacer()
 
                 NavigationLink {
-                    OnboardingView1()
+                    OnboardingUserGoalsView()
                 } label: {
                     Text("Continue")
                         .modifier(OnboardingContinueButtonModifier(canContinue: true))
                 }
-                    .padding(.bottom, 35)
+                    .padding(.horizontal, UIValues.bigButtonHPadding)
+                    .padding(.bottom, UIValues.onboardingContinueButtonBottomPadding)
             }
         }
     }
@@ -56,7 +58,7 @@ struct OnboardingContinueButtonModifier: ViewModifier {
             .font(.customFontTitle3)
             .fontWeight(.semibold)
             .frame(height: 55) // so the button stays same size even if text in it changes/disappears
-            .frame(maxWidth: .infinity)
+        .frame(maxWidth: .infinity)
             .background(canContinue ? .white : .gray)
             .foregroundColor(.marcanaBackground)
             .cornerRadius(50)

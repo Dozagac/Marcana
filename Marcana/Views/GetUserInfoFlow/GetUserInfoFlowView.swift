@@ -23,7 +23,8 @@ struct GetUserInfoFlowView: View {
                 .padding(.leading)
 
             ProgressStepperView(stepperColor: Color.white,
-                                progressStep: getUserInfoStep + 1)
+                                progressStep: getUserInfoStep + 1,
+                                numberOfSteps: 5)
                 .zIndex(2)
                 .padding(.top)
 

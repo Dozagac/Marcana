@@ -17,23 +17,21 @@ struct UserProfileView: View {
     @AppStorage(wrappedValue: 0.0, UserDataManager.UserKeys.userBirthday.rawValue) var userBirthday
     @AppStorage(wrappedValue: "", UserDataManager.UserKeys.userOccupation.rawValue) var userOccupation
     @AppStorage(wrappedValue: "", UserDataManager.UserKeys.userRelationship.rawValue) var userRelationship
-    
+
+    @State var showingResetUserAlert = false
+
 //    @Environment(\.dismiss) var dismiss //
     @Environment(\.presentationMode) var presentationMode
-    
+
     var body: some View {
         ZStack(alignment: .top) {
             ImageBackgroundView(imageName: "Vine3")
             List {
                 Section(header: Text("User Info").font(.customFontFootnote).foregroundColor(.secondary)) {
-                    
+
                     //MARK: - Reset User Info
                     Button() {
-                        UserDefaults.standard.resetUser()
-//                        dismiss()
-                        doUserInfoFlow = true
-                        self.presentationMode.wrappedValue.dismiss()
-
+                        showingResetUserAlert.toggle()
                     } label: {
                         HStack {
                             Image(systemName: "arrow.counterclockwise.circle.fill")
@@ -47,6 +45,19 @@ struct UserProfileView: View {
                             .foregroundColor(.text)
                             .padding(.vertical, UIValues.listElementVerticalPadding)
                     }
+                        .alert(isPresented: $showingResetUserAlert) {
+                        Alert(title: Text("Are you sure?"), message: Text("You will be asked to enter user info again.\nYour reading history is safe."), primaryButton: .destructive(Text("Reset")) {
+
+                            // Reset User and start userInfoFLow
+                            UserDefaults.standard.resetUser()
+                            doUserInfoFlow = true
+                            self.presentationMode.wrappedValue.dismiss()
+                        }
+                              ,
+                              secondaryButton: .cancel()
+                        )
+                    }
+
 
                     //MARK: - Name
                     NavigationLink {
@@ -138,8 +149,8 @@ struct UserProfileView: View {
                 .listStyle(.insetGrouped)
         }
             .font(.customFontBody) // font for all the text in this view unless overwritten at child view
-            .modifier(customNavBackModifier())
-        .foregroundColor(.text)
+        .modifier(customNavBackModifier())
+            .foregroundColor(.text)
             .navigationTitle("Profile")
 //            .navigationBarTitleDisplayMode(.large)
     }
@@ -147,7 +158,7 @@ struct UserProfileView: View {
 
 struct UserProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationStack{
+        NavigationStack {
             UserProfileView()
         }
     }

@@ -1,5 +1,5 @@
 //
-//  OnboardingView1.swift
+//  OnboardingUserGoalsView.swift
 //  Marcana
 //
 //  Created by Deniz Ozagac on 21/02/2023.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct OnboardingView1: View {
+struct OnboardingUserGoalsView : View {
     @State var selectedGoals: Set<Goal> = []
     var body: some View {
         ZStack(alignment: .top) {
@@ -17,10 +17,10 @@ struct OnboardingView1: View {
                 .padding(.leading)
 
             ProgressStepperView(stepperColor: Color.white,
-                                progressStep: 1)
+                                progressStep: 1,
+                                numberOfSteps: 4)
                 .zIndex(2)
                 .padding(.top)
-
 
             //MARK: - Placing the continue button at the same spot at all screens
             VStack {
@@ -28,13 +28,13 @@ struct OnboardingView1: View {
                 UserGoalQuestionView(selectedGoals: $selectedGoals)
                 Spacer()
                 NavigationLink {
-                    OnboardingView2()
+                    OnboardingUserTarotExperienceView()
                 } label: {
                     Text("Continue")
                         .modifier(OnboardingContinueButtonModifier(canContinue: selectedGoals.isNotEmpty))
                 }
-                .disabled(selectedGoals.isEmpty)
-                .padding(.bottom, 35)
+                    .disabled(selectedGoals.isEmpty)
+                    .padding(.bottom, UIValues.onboardingContinueButtonBottomPadding)
                     .simultaneousGesture(TapGesture().onEnded {
                     // Save the Goal selection to the userDefaults
                     UserDefaults.standard.set(selectedGoals.map { $0.rawValue }, forKey: DefaultKeys.userGoals)
@@ -145,8 +145,8 @@ struct OnboardingCustomBackButton: View {
     }
 }
 
-struct OnboardingView1_Previews: PreviewProvider {
+struct OnboardingUserGoalsView_Previews: PreviewProvider {
     static var previews: some View {
-        OnboardingView1()
+        OnboardingUserGoalsView()
     }
 }

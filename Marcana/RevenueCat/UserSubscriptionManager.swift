@@ -31,12 +31,16 @@ class UserSubscriptionManager: ObservableObject {
     @Published var errorMessage: String = ""
     @Published var errorTitle: String = ""
     @Published var showingError: Bool = false
+    
+    @Published var showingConfirmation: Bool = false
 
     func restorePurchases() {
         Purchases.shared.restorePurchases { customerInfo, error in
             if let entitlement = customerInfo?.entitlements[RevCatConstants.entitlementID], entitlement.isActive {
                 // The entitlement is now active for the user
                 // TODO: show an alert
+                self.showingConfirmation = true
+                
             } else if let error = error {
                 // There was an error restoring purchases
                 self.errorMessage = error.localizedDescription
@@ -44,7 +48,7 @@ class UserSubscriptionManager: ObservableObject {
                 self.showingError = true
                 
                 // print the error for debugging purposes
-                print("Restore Purchase Error, descript ion: \(error.localizedDescription)")
+                print("Restore Purchase Error, description: \(error.localizedDescription)")
                 print("Restore Purchase Error, recovery suggestions: \(String(describing: error.localizedRecoverySuggestion))")
                 print("Restore Purchase Error, reason: \(String(describing: error.localizedFailureReason))")
             } else {

@@ -7,7 +7,6 @@
 
 import SwiftUI
 import RevenueCat
-import Shimmer
 
 struct PaywallView: View {
     @AppStorage(wrappedValue: true, DefaultKeys.doOnboarding) var doOnboarding
@@ -129,9 +128,9 @@ struct PaywallView: View {
                             .font(.customFontCaption)
                             .lineLimit(1)
                             .minimumScaleFactor(0.5)
-                        
+
                         PurchaseButton(selectedPackage: selectedPackage)
-                        
+
                         Text("By tapping above, you agree to the [Terms of Service](https://www.marcana.app/terms-of-use) and [Privacy Policy](https://www.marcana.app/privacy-policy)")
                             .foregroundColor(.secondary)
                             .font(.customFontCaption)
@@ -187,9 +186,11 @@ struct PackageCellView: View {
                     .fontWeight(.black)
                 VStack() {
                     Text("\(3) ").bold() +
-                        Text("days free ").bold() // +
-//                        Text("then")
-                    Text("\(package.storeProduct.localizedPriceString)").bold() +
+                        Text("days free ").bold() +
+                        Text("then")
+                    Text("\(package.storeProduct.localizedPriceString)")
+                        .font(.customFontSubheadline)
+                        .bold() +
                         Text(" / \(periodDenominator(for: package))")
                     Text("Cancel anytime")
                 }
@@ -286,10 +287,12 @@ struct PurchaseButton: View {
             Purchases.shared.purchase(package: selectedPackage) { (transaction, customerInfo, error, userCancelled) in
                 if UserSubscriptionManager.shared.customerInfo?.entitlements[RevCatConstants.entitlementID]?.isActive == true {
                     // Unlock that great "pro" content
+                    // so it can dismiss itself when called from anywhere
+                    dismissPaywall()
                 }
                 isWaiting = false
                 doOnboarding = false
-                //            dismiss() // so it can dismiss itself when called from anywhere
+
             }
         }
         label: {
@@ -300,7 +303,7 @@ struct PurchaseButton: View {
                         .tint(.black)
                 } else {
                     Group {
-                            Text(paywallButtonText)
+                        Text(paywallButtonText)
                     }
                         .font(.customFontTitle3)
                 }
@@ -309,7 +312,14 @@ struct PurchaseButton: View {
                 .padding(.horizontal, UIValues.bigButtonHPadding)
         }
     }
+
+    // copied here a 2nd time because i couldn't figure out how to get this to be shared
+    func dismissPaywall() {
+        doOnboarding = false
+        dismiss() // so it can dismiss itself when called from anywhere
+    }
 }
+
 
 struct PaywallView_Previews: PreviewProvider {
     static var previews: some View {

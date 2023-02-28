@@ -72,7 +72,7 @@ struct OnboardingEndTransitionView: View {
                 showingPaywall = true
             }
         }
-        .navigationDestination(isPresented: $showingPaywall){
+        .fullScreenCover(isPresented: $showingPaywall){
             PaywallView()
         }
     }

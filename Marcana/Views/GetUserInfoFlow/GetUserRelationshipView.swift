@@ -48,13 +48,13 @@ struct GetUserRelationshipView: View {
                                     self.presentationMode.wrappedValue.dismiss() // so the view can be dismissed when accessed from the settings
                                 }
                             } label: {
-                                RoundedRectangle(cornerRadius: 10)
+                                RoundedRectangle(cornerRadius: 25)
                                     .fill(userRelationship == status.rawValue ? Color.text : .clear)
                                     .frame(height: 50)
                                     .overlay(
                                     ZStack {
                                         // Stroke Border
-                                        RoundedRectangle(cornerRadius: 10).stroke(Color.text, lineWidth: 1).background(.clear)
+                                        RoundedRectangle(cornerRadius: 25).stroke(Color.text, lineWidth: 1).background(.clear)
                                         // Button Text
                                         HStack {
                                             Text(status.rawValue)

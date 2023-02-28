@@ -13,7 +13,8 @@ struct UIValues {
     static let bigButtonHPadding: CGFloat = 24
     static let listRowBackroundColor: Color = Color.marcanaLicorice.opacity(0.75)
     static let listElementVerticalPadding: CGFloat = 8
-    static let onboardingScreenTopPadding: CGFloat = 80
+    static let onboardingScreenTopPadding: CGFloat = 65
+    static let onboardingContinueButtonBottomPadding: CGFloat = 40
 }
 
 
@@ -26,7 +27,8 @@ struct Constants {
 
 // Shared keys for AppStorage and user Defaults
 struct DefaultKeys {
-    static let userNameIsNew = "userNameIsNew"
+    static let readingCountTotal = "readingCountTotal"
+    static let readingCountPerUserName = "readingCountPerUserName"
     static let doOnboarding = "doOnboarding"
     static let loginStatus = "loginStatus"
     static let doUserInfoFlow = "doUserInfoFlow"
@@ -38,6 +40,9 @@ struct DefaultKeys {
     static let userTarotExperience = "userTarotExperience"
     static let dailyReminderNotificationHour = "dailyReminderNotificationHour"
     static let dailyReminderNotificationMinute = "dailyReminderNotificationMinute"
+    
+    static let SingleReaderFreeTriesRemaning = "SingleReaderFreeTriesRemaning"
+    static let ThreeReaderFreeTriesRemaning = "ThreeReaderFreeTriesRemaning"
 }
 
 

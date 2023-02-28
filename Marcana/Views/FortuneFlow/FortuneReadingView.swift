@@ -163,7 +163,8 @@ struct FortuneReadingView: View {
                                     // this will let the user to like it. IDK what to do with this
                                     fortuneReading.ToggleFavorited()
                                     // Ask for a review when the user likes a reading
-                                    requestReview()
+                                    ReasonablyRequestAppReview(requestReview)
+                                    
                                     print("Favorited: \(fortuneReading.isFavorited)")
                                 } label: {
                                     Image(systemName: fortuneReading.isFavorited ? "heart.fill" : "heart")
@@ -244,7 +245,7 @@ struct FortuneReadingView: View {
                                 fortuneReading.ToggleFavorited()
                                 print("Favorited: \(fortuneReading.isFavorited)")
                                 // Ask for a review when the user likes a reading
-                                requestReview()
+                                ReasonablyRequestAppReview(requestReview)
                             } label: {
                                 Label("Like", systemImage: fortuneReading.isFavorited ? "heart.fill" : "heart")
                                     .padding()
@@ -256,9 +257,7 @@ struct FortuneReadingView: View {
                                     .animation(.easeOut(duration: 1).delay(animationDelay * 2),
                                                value: animatingViews)
                             }
-
                         }
-
                             .padding(.bottom, 24) // so the entire text is visible
 
                     }
