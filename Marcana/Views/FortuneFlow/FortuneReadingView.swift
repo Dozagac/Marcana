@@ -65,6 +65,11 @@ struct FortuneReadingView: View {
                         HStack(alignment: .top, spacing: 8) {
                             ForEach(Array(fortuneReading.fortuneCards.enumerated()), id: \.offset) { index, drawnCard in
                                 Button {
+                                    AnalyticsManager.shared.logEvent(
+                                        eventName: AnalyticsKeys.cardDetailPageview,
+                                        properties: [
+                                            AnalyticsAmplitudeEventPropertyKeys.cardDetailSource: CardDetailSource.readingView.rawValue
+                                        ])
                                     self.tappedCard = drawnCard.Card
                                 } label: {
                                     VStack(spacing: 0) {
@@ -125,7 +130,7 @@ struct FortuneReadingView: View {
                             Spacer()
                             // MARK: - Action Buttons
                             HStack {
-                                // MARK: - Share button
+                                // MARK: - TOP Share button
                                 if let renderedShareImage {
                                     // See end of the video for example
                                     // https://www.youtube.com/watch?v=rM_2i5YobF4
@@ -140,6 +145,14 @@ struct FortuneReadingView: View {
                                             .cornerRadius(12)
                                             .foregroundColor(Color.text)
                                     }
+                                        .simultaneousGesture(TapGesture().onEnded {
+                                        AnalyticsManager.shared.logEvent(
+                                            eventName: AnalyticsKeys.fortuneflowReadingShared,
+                                            properties: [
+                                                AnalyticsAmplitudeEventPropertyKeys.fortuneType: fortuneReading.fortuneType.rawValue,
+                                                AnalyticsAmplitudeEventPropertyKeys.buttonPosition: "top"
+                                            ])
+                                    })
 
                                 }
 
@@ -158,13 +171,20 @@ struct FortuneReadingView: View {
                                                value: animatingViews)
 
 
-                                // MARK: TODO - Favorite button
+                                // MARK: TODO - top Favorite button
                                 Button {
                                     // this will let the user to like it. IDK what to do with this
                                     fortuneReading.ToggleFavorited()
                                     // Ask for a review when the user likes a reading
                                     ReasonablyRequestAppReview(requestReview)
-                                    
+
+                                    AnalyticsManager.shared.logEvent(
+                                        eventName: AnalyticsKeys.fortuneflowReadingLiked,
+                                        properties: [
+                                            AnalyticsAmplitudeEventPropertyKeys.fortuneType: fortuneReading.fortuneType.rawValue,
+                                            AnalyticsAmplitudeEventPropertyKeys.buttonPosition: "top"
+                                        ])
+
                                     print("Favorited: \(fortuneReading.isFavorited)")
                                 } label: {
                                     Image(systemName: fortuneReading.isFavorited ? "heart.fill" : "heart")
@@ -236,16 +256,33 @@ struct FortuneReadingView: View {
                                     .background(.ultraThinMaterial)
                                     .cornerRadius(12)
                                     .foregroundColor(Color.text)
+                                    .simultaneousGesture(TapGesture().onEnded {
+                                    AnalyticsManager.shared.logEvent(
+                                        eventName: AnalyticsKeys.fortuneflowReadingShared,
+                                        properties: [
+                                            AnalyticsAmplitudeEventPropertyKeys.fortuneType: fortuneReading.fortuneType.rawValue,
+                                            AnalyticsAmplitudeEventPropertyKeys.buttonPosition: "bottom"
+                                        ])
+                                })
                             }
+
 
 
                             // MARK: BOTTOM Favorite button
                             Button {
                                 // this will let the user to like it
                                 fortuneReading.ToggleFavorited()
-                                print("Favorited: \(fortuneReading.isFavorited)")
                                 // Ask for a review when the user likes a reading
                                 ReasonablyRequestAppReview(requestReview)
+
+                                AnalyticsManager.shared.logEvent(
+                                    eventName: AnalyticsKeys.fortuneflowReadingLiked,
+                                    properties: [
+                                        AnalyticsAmplitudeEventPropertyKeys.fortuneType: fortuneReading.fortuneType.rawValue,
+                                        AnalyticsAmplitudeEventPropertyKeys.buttonPosition: "bottom"
+                                    ])
+
+                                print("Favorited: \(fortuneReading.isFavorited)")
                             } label: {
                                 Label("Like", systemImage: fortuneReading.isFavorited ? "heart.fill" : "heart")
                                     .padding()
@@ -278,6 +315,11 @@ struct FortuneReadingView: View {
                 if let image = renderer.cgImage {
                     renderedShareImage = Image(decorative: image, scale: 1)
                 }
+                AnalyticsManager.shared.logEvent(
+                    eventName: AnalyticsKeys.fortuneflowReadingPageview,
+                    properties: [
+                        AnalyticsAmplitudeEventPropertyKeys.fortuneType: fortuneReading.fortuneType.rawValue
+                    ])
             }
         }
             .edgesIgnoringSafeArea(.bottom)
@@ -287,7 +329,7 @@ struct FortuneReadingView: View {
         }
     }
 }
-    
+
 struct ShareCardsImageView: View {
     // See end of the video for example
     // https://www.youtube.com/watch?v=rM_2i5YobF4

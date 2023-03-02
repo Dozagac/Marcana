@@ -25,27 +25,30 @@ func saveDownloadVersion() {
 
 
 func ReasonablyRequestAppReview(_ requestReview: RequestReviewAction) {
-    @AppStorage("lastCallTime") var lastCallTime: TimeInterval?
-    guard var lastCallTime = lastCallTime else {
+    var lastReviewAskTime = UserDefaults.standard.object(forKey: DefaultKeys.lastReviewAskTime) as? Double // optional
+    guard var lastReviewAskTime = lastReviewAskTime else {
         // This is the first time the function has been called, save the current time and ask for the review, then return
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
             requestReview()
         }
-        lastCallTime = Date().timeIntervalSince1970
+        lastReviewAskTime = Date().timeIntervalSince1970
+        UserDefaults.standard.set(lastReviewAskTime, forKey: DefaultKeys.lastReviewAskTime)
         return
     }
-    
+
     // Calculate the time interval since the last call
-    let timeInterval = Date().timeIntervalSince1970 - lastCallTime
+    let timeInterval = Date().timeIntervalSince1970 - lastReviewAskTime
     let minutesSinceLastCall = Double(timeInterval / 60.0)
-    
+
     if minutesSinceLastCall >= 5.0 {
+        print("Minutes since last review request: \(minutesSinceLastCall)")
         // It's been more than 5 minutes since the last call, so ask the user for an app review
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
             requestReview()
         }
-        
+
         // Save the current time as the last call time
-        lastCallTime = Date().timeIntervalSince1970
+        lastReviewAskTime = Date().timeIntervalSince1970
+        UserDefaults.standard.set(lastReviewAskTime, forKey: DefaultKeys.lastReviewAskTime)
     }
 }

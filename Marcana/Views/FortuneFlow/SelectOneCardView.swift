@@ -65,7 +65,6 @@ struct SelectOneCardView: View {
                     .scaleEffect(cardOpen ? 1 : animateViews ? 1.05 : 1)
                     .shadow(color: cardOpen ? .gray : animateViews ? .white : .gray, radius: 15, x: 0, y: 0)
                     .animation(.easeInOut(duration: 1.5).repeatForever(autoreverses: true), value: animateViews)
-
                 
                 // MARK: Activation Prompt for user
                 HStack {

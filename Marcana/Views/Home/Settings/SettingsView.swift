@@ -15,12 +15,6 @@ struct SettingsView: View {
     @AppStorage(wrappedValue: false, DefaultKeys.loginStatus) var loginStatus
     @AppStorage(wrappedValue: true, DefaultKeys.doUserInfoFlow) var doUserInfoFlow
 
-    @AppStorage(wrappedValue: "", UserDataManager.UserKeys.userName.rawValue) var userName
-    @AppStorage(wrappedValue: "", UserDataManager.UserKeys.userGender.rawValue) var userGender
-    @AppStorage(wrappedValue: 0.0, UserDataManager.UserKeys.userBirthday.rawValue) var userBirthday
-    @AppStorage(wrappedValue: "", UserDataManager.UserKeys.userOccupation.rawValue) var userOccupation
-    @AppStorage(wrappedValue: "", UserDataManager.UserKeys.userRelationship.rawValue) var userRelationship
-
     @State private var mailSubject: String? = nil
     @State private var mailResult: Result<MFMailComposeResult, Error>? = nil
     @State private var isShowingMailView = false
@@ -198,6 +192,9 @@ struct SettingsView: View {
 
                 .scrollContentBackground(.hidden)
                 .listStyle(.insetGrouped)
+        }
+            .onAppear {
+            AnalyticsManager.shared.logEvent(eventName: AnalyticsKeys.settingsPageview)
         }
 
             .font(.customFontBody) // font for all the text in this view unless overwritten at child view

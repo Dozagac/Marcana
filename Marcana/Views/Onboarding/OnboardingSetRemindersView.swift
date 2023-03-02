@@ -61,7 +61,7 @@ struct OnboardingSetRemindersView: View {
                 Spacer()
 
                 // MARK: - ASK NOTIFICATION PERMISSION
-                ZStack(alignment: .bottom)  {
+                ZStack(alignment: .bottom) {
                     Button {
                         // Its named granted, but it always returns true. I use this to trigger transition to the next view.
                         notificationManager.requestNotificationPermission { granted in
@@ -78,6 +78,12 @@ struct OnboardingSetRemindersView: View {
                         // Schedule the reminder
                         notificationManager.scheduleDailyReminder(at: self.reminderTime)
 
+                        // Analytics
+                        AnalyticsManager.shared.setUserProperties(properties: [
+                            AnalyticsAmplitudeUserPropertyKeys.reminderTimeHour: reminderHour,
+                            AnalyticsAmplitudeUserPropertyKeys.reminderTimeMinute: reminderMinute
+                        ])
+
                     } label: {
                         Text("Continue")
                             .modifier(OnboardingContinueButtonModifier(canContinue: true))
@@ -86,7 +92,7 @@ struct OnboardingSetRemindersView: View {
                         OnboardingEndTransitionView()
                     })
                         .padding(.bottom, UIValues.onboardingContinueButtonBottomPadding)
-                    
+
 //                    //MARK: - Skip for now button
 //                    NavigationLink {
 //                        OnboardingEndTransitionView()
@@ -102,6 +108,9 @@ struct OnboardingSetRemindersView: View {
                 .padding(.horizontal, UIValues.bigButtonHPadding)
         }
             .navigationBarBackButtonHidden(true)
+            .onAppear {
+            AnalyticsManager.shared.logEvent(eventName: AnalyticsKeys.onboardingRemindersPageview)
+        }
     }
 }
 

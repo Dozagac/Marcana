@@ -63,6 +63,7 @@ struct GetFortuneQuestionView: View {
 
                             // MARK: - Suggest question button
                             Button {
+                                AnalyticsManager.shared.logEvent(eventName: AnalyticsKeys.fortuneflowQuestionHelperTapped, properties: [AnalyticsAmplitudeEventPropertyKeys.fortuneType: fortuneType.rawValue])
                                 showRecommendations = true
                             } label: {
                                 Text("Need ideas?")
@@ -113,6 +114,12 @@ struct GetFortuneQuestionView: View {
                                 .modifier(GetUserInfoContinueButtonModifier(canContinue: canContinue))
                         }
                             .disabled(question.isEmpty)
+                            .simultaneousGesture(TapGesture().onEnded {
+                                AnalyticsManager.shared.logEvent(eventName: AnalyticsKeys.fortuneflowQuestionPassed , properties: [
+                                    AnalyticsAmplitudeEventPropertyKeys.fortuneType : fortuneType.rawValue,
+                                    AnalyticsAmplitudeEventPropertyKeys.fortuneQuestion: question
+                                ])
+                        })
                     }
                 }
                     .padding(.horizontal, 16)
@@ -121,6 +128,7 @@ struct GetFortuneQuestionView: View {
                 // this is necessary to make focus work
                 DispatchQueue.main.async { focusTextField = true }
                 animateViews = true
+                    AnalyticsManager.shared.logEvent(eventName: AnalyticsKeys.fortuneflowQuestionPageview , properties: [AnalyticsAmplitudeEventPropertyKeys.fortuneType : fortuneType.rawValue])
             }
                 .modifier(customNavBackModifier())
         }

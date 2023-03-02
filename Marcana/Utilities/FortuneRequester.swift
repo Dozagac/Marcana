@@ -181,6 +181,15 @@ Finally we come to the 7 of Cups which signifies your future path ahead. This ca
                     self.adjustFreeTriesLeft()
 
                     self.waitingForAPIResponse = false
+
+                    // ANALYTICS
+                    AnalyticsManager.shared.logEvent(
+                        eventName: AnalyticsKeys.fortuneflowRequestSuccess,
+                        properties: [
+                            AnalyticsAmplitudeEventPropertyKeys.fortuneType: self.fortuneReading.fortuneType.rawValue,
+                            AnalyticsAmplitudeEventPropertyKeys.apiResultSuccess: true
+                        ])
+
                 }
                 //MARK: - Fail case
             case .failure(let error):
@@ -190,6 +199,14 @@ Finally we come to the 7 of Cups which signifies your future path ahead. This ca
                     self.fortuneReading.fortuneText = "Oops!\n\nIt looks like our servers are taking a break right now... \nPlease try again in a bit. \nIn the meantime, why not grab a cup of coffee ☕️ and give a call to a loved one? \n\n🤍\n\nThank you for your patience 🙏"
                     self.waitingForAPIResponse = false
                     print("API ERROR: \(self.response)")
+
+                    // ANALYTICS
+                    AnalyticsManager.shared.logEvent(
+                        eventName: AnalyticsKeys.fortuneflowRequestSuccess,
+                        properties: [
+                            AnalyticsAmplitudeEventPropertyKeys.fortuneType: self.fortuneReading.fortuneType.rawValue,
+                            AnalyticsAmplitudeEventPropertyKeys.apiResultSuccess: false
+                        ])
                 }
             }
         }

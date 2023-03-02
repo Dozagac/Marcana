@@ -13,14 +13,14 @@ Good question!
 
 Our app provides personalized tarot readings that require effort and resources to create.
 
-As a result, we cannot offer it for free. 😔
+As a result, unfortunately we cannot offer Witch for free...
 
 To make the app accessible to everyone, we offer a range of pricing options, including an affordable weekly option.
     
 Thank you for your support!
 
 Best regards,
-Marcana Team
+Witch Team
 """
     
     var body: some View {
@@ -30,7 +30,7 @@ Marcana Team
                 ZStack(alignment: .bottomTrailing){
         //            BackgroundView()
                     
-                    Image("ConfusedOwl2")
+                    Image("CuteOwl")
                         .resizable()
                         .scaledToFit()
                         .frame(height: UIScreen.main.bounds.height * 0.18)

@@ -56,6 +56,9 @@ struct GetUserGenderView: View {
                             ForEach(GenderPronoun.allCases, id: \.self) { gender in
                                 Button{
                                     userGender = gender.rawValue
+                                    
+                                    AnalyticsManager.shared.setUserProperties(properties: [AnalyticsAmplitudeUserPropertyKeys.userGender: gender.rawValue])
+                                
 
                                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
                                         withAnimation(.spring()) {
@@ -94,6 +97,11 @@ struct GetUserGenderView: View {
                 }
             .padding(.horizontal, UIValues.bigButtonHPadding)
             }
+        .onAppear{
+            AnalyticsManager.shared.logEvent(
+                eventName: AnalyticsKeys.userInfoFlowGenderPageview
+            )
+        }
         }
     }
 

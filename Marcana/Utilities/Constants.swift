@@ -22,6 +22,7 @@ struct Constants {
     // which image to use for card backs
     // TODO when this is usedfor card selection in the future, init this from user defaults
     static let cardBackImage = "facedownCard3"
+    static let isInDevelopmentMode = true
 }
 
 
@@ -43,6 +44,8 @@ struct DefaultKeys {
     
     static let SingleReaderFreeTriesRemaning = "SingleReaderFreeTriesRemaning"
     static let ThreeReaderFreeTriesRemaning = "ThreeReaderFreeTriesRemaning"
+    
+    static let lastReviewAskTime = "lastReviewAskTime"
 }
 
 

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct OnboardingUserGoalsView : View {
+struct OnboardingUserGoalsView: View {
     @State var selectedGoals: Set<Goal> = []
     var body: some View {
         ZStack(alignment: .top) {
@@ -44,6 +44,9 @@ struct OnboardingUserGoalsView : View {
                 .padding(.horizontal, UIValues.bigButtonHPadding)
         }
             .navigationBarBackButtonHidden(true)
+            .onAppear {
+            AnalyticsManager.shared.logEvent(eventName: AnalyticsKeys.onboardingGoalsPageview)
+        }
     }
 }
 

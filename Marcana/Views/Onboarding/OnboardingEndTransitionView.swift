@@ -69,8 +69,10 @@ struct OnboardingEndTransitionView: View {
             animatingViews = true
             // Transition to paywall after animations complete
             DispatchQueue.main.asyncAfter(deadline: .now() + 10.5) {
+                AnalyticsManager.shared.logEvent(eventName: AnalyticsKeys.paywallPageview, properties: [AnalyticsAmplitudeEventPropertyKeys.paywallSource : PaywallSource.onboardingView.rawValue])
                 showingPaywall = true
             }
+            AnalyticsManager.shared.logEvent(eventName: AnalyticsKeys.onboardingTransitionPageview)
         }
         .fullScreenCover(isPresented: $showingPaywall){
             PaywallView()

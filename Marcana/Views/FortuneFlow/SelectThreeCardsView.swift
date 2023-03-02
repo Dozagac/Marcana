@@ -47,15 +47,15 @@ struct SelectThreeCardsView: View {
     private var allCardsClosed: Bool {
         card1Open || card2Open || card3Open
     }
-    
+
     @State private var animateViews = false
     let openingAnimationDelay = 0.5
     let openingAnimationDuration = 1.0
 
     var body: some View {
         ZStack {
-            ImageBackgroundView(imageName: "skyBackground2", opacity: 0.4 )
-            
+            ImageBackgroundView(imageName: "skyBackground2", opacity: 0.4)
+
 
             VStack(spacing: 24) {
                 Spacer()
@@ -67,9 +67,9 @@ struct SelectThreeCardsView: View {
                         isCardOpen: $card1Open,
                         shownCard: fortuneCards[0],
                         positionText: "Past")
-                    .offset(y: animateViews ? 0 : -100)
-                    .opacity(animateViews ? 1 : 0)
-                    .animation(.easeOut(duration: openingAnimationDuration).delay(openingAnimationDelay), value: animateViews)
+                        .offset(y: animateViews ? 0 : -100)
+                        .opacity(animateViews ? 1 : 0)
+                        .animation(.easeOut(duration: openingAnimationDuration).delay(openingAnimationDelay), value: animateViews)
                         .scaleEffect(allCardsClosed ? 1 : animateViews ? 1.05 : 1)
                         .shadow(color: allCardsClosed ? .gray : animateViews ? .white : .gray, radius: 10, x: 0, y: 0)
                         .animation(.easeInOut(duration: 1.5).repeatForever(autoreverses: true), value: animateViews)
@@ -82,7 +82,7 @@ struct SelectThreeCardsView: View {
                         .shadow(color: Color.gray, radius: 8, x: 0, y: 0)
                         .offset(y: animateViews ? 0 : -100)
                         .opacity(animateViews ? 1 : 0)
-                        .animation(.easeOut(duration: openingAnimationDuration).delay(openingAnimationDelay*2), value: animateViews)
+                        .animation(.easeOut(duration: openingAnimationDuration).delay(openingAnimationDelay * 2), value: animateViews)
 
                     FlippingCardView(
                         isCardOpen: $card3Open,
@@ -91,7 +91,7 @@ struct SelectThreeCardsView: View {
                         .shadow(color: Color.gray, radius: 8, x: 0, y: 0)
                         .offset(y: animateViews ? 0 : -100)
                         .opacity(animateViews ? 1 : 0)
-                        .animation(.easeOut(duration: openingAnimationDuration).delay(openingAnimationDelay*3), value: animateViews)
+                        .animation(.easeOut(duration: openingAnimationDuration).delay(openingAnimationDelay * 3), value: animateViews)
                 }
                     .padding(.horizontal, 24)
 
@@ -108,7 +108,7 @@ struct SelectThreeCardsView: View {
                     .offset(x: 0, y: allCardsClosed ? 100 : animateViews ? 0 : 150)
 
                 Spacer()
-                
+
                 //MARK: - Continue Button
                 Button {
                     continueIsPushed.toggle()
@@ -127,7 +127,7 @@ struct SelectThreeCardsView: View {
                 }
                     .opacity(canContinue && !fortuneRequester.waitingForAPIResponse ? 1 : 0)
                     .animation(.easeIn(duration: 0.5), value: canContinue)
-                
+
                 Spacer()
                 Spacer()
             }
@@ -155,20 +155,20 @@ struct FlippingCardView: View {
     var shownCard: DrawnCard
     @State private var showingSheet = false
     let positionText: String
-    
+
     func flipCard(isCardOpen: Bool) {
         if isCardOpen {
             withAnimation(.linear(duration: durationAndDelay)) {
                 backDegree = 90
             }
-            withAnimation(.linear(duration: durationAndDelay).delay(durationAndDelay)){
+            withAnimation(.linear(duration: durationAndDelay).delay(durationAndDelay)) {
                 frontDegree = 0
             }
         } else {
             withAnimation(.linear(duration: durationAndDelay)) {
                 frontDegree = -90
             }
-            withAnimation(.linear(duration: durationAndDelay).delay(durationAndDelay)){
+            withAnimation(.linear(duration: durationAndDelay).delay(durationAndDelay)) {
                 backDegree = 0
             }
         }
@@ -182,20 +182,22 @@ struct FlippingCardView: View {
                 .frame(width: 98, height: 24)
                 .foregroundColor(isCardOpen ? Color.gray : Color.text)
                 .padding(.vertical, 0) // to narrow down the default spacing for Text, if needed
-            
+
             //MARK: Flipping Card
-            ZStack{
+            ZStack {
                 CardFront(shownCard: shownCard, width: width, height: height, degree: $frontDegree)
                 CardBack(width: width, height: height, degree: $backDegree)
             }
-                
-            .onTapGesture {
+
+                .onTapGesture {
                 withAnimation(.easeIn(duration: 1.0)) {
                     // Haptic feedback
                     UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
                     // show card explanation on tap if card is open
                     if isCardOpen {
                         self.showingSheet.toggle()
+
+                        AnalyticsManager.shared.logEvent(eventName: AnalyticsKeys.cardDetailPageview, properties: [AnalyticsAmplitudeEventPropertyKeys.cardDetailSource: CardDetailSource.cardSelectView.rawValue])
                     } else {
                         // open the card if the card was not open
                         self.isCardOpen = true
@@ -206,7 +208,7 @@ struct FlippingCardView: View {
                 .sheet(isPresented: $showingSheet) {
                 CardDetailView(card: shownCard.Card)
             }
-            
+
             //MARK: - Revealed Card Text
             if isCardOpen {
                 withAnimation(.linear(duration: 1.0)) {
@@ -219,7 +221,7 @@ struct FlippingCardView: View {
                             .frame(width: 98, height: 24)
                             .minimumScaleFactor(0.2)
                             .lineLimit(2)
-                        
+
                         // MARK: Card Orientation Text
                         Text(shownCard.Orientation.rawValue)
                             .foregroundColor(.text)
@@ -229,38 +231,38 @@ struct FlippingCardView: View {
             }
         }
     }
-    
-    struct CardFront : View {
+
+    struct CardFront: View {
         var shownCard: DrawnCard
         let width: CGFloat
         let height: CGFloat
-        @Binding var degree :Double
-        
+        @Binding var degree: Double
+
         var body: some View {
-            ZStack{
+            ZStack {
                 Image(shownCard.Card.image)
                     .resizable()
                     .rotationEffect(shownCard.Orientation == Orientation.upright ? .degrees(0) : .degrees(180))
                     .frame(width: width, height: height)
                     .clipShape(RoundedRectangle(cornerRadius: 8)) // this may need to change for the big card?
             }
-            .rotation3DEffect(.degrees(degree), axis: (x: 0, y: 1, z: 0))
+                .rotation3DEffect(.degrees(degree), axis: (x: 0, y: 1, z: 0))
         }
     }
 
-    struct CardBack : View {
+    struct CardBack: View {
         let width: CGFloat
         let height: CGFloat
-        @Binding var degree :Double
-        
+        @Binding var degree: Double
+
         var body: some View {
-            ZStack{
+            ZStack {
                 Image(Constants.cardBackImage)
                     .resizable()
                     .frame(width: width, height: height)
                     .clipShape(RoundedRectangle(cornerRadius: 8))
             }
-            .rotation3DEffect(.degrees(degree), axis: (x: 0, y: 1, z: 0))
+                .rotation3DEffect(.degrees(degree), axis: (x: 0, y: 1, z: 0))
         }
     }
 }

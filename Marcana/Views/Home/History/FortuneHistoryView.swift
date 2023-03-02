@@ -10,13 +10,11 @@ import SwiftUI
 struct FortuneHistoryView: View {
     @AppStorage(wrappedValue: 1, DefaultKeys.SingleReaderFreeTriesRemaning) var SingleReaderFreeTriesRemaning
     @State var userSubscriptionManager = UserSubscriptionManager.shared
-    
+
     @StateObject var fortuneHistory = FortuneHistory.shared
     @State private var showingFortuneSheet = false // starts a fortune reading flow
 
     @State private var tappedFortuneHistoryItem: FortuneReading? = nil // to each history element
-    
-
 
     var body: some View {
         ZStack {
@@ -33,7 +31,7 @@ struct FortuneHistoryView: View {
                             FortuneHistoryListRowItems(fortune: $fortune)
                         }
                             .onDelete { indexSet in
-                                fortuneHistory.deleteFromFortuneArrays(indexSet)
+                            fortuneHistory.deleteFromFortuneArrays(indexSet)
                         }
                     } header: {
                         Text("Past Readings")
@@ -66,7 +64,7 @@ struct FortuneHistoryView: View {
                             .padding(.horizontal, UIValues.bigButtonHPadding)
                             .saturation(SingleReaderFreeTriesRemaning <= 0 ? 0 : 1)
                     }
-                    .disabled(SingleReaderFreeTriesRemaning <= 0)
+                        .disabled(SingleReaderFreeTriesRemaning <= 0)
                 }
                     .fullScreenCover(isPresented: $showingFortuneSheet) {
                     // Default selection is the 1 card reader.
@@ -75,9 +73,12 @@ struct FortuneHistoryView: View {
                 }
             }
         }
-        .navigationTitle("History")
-        .modifier(customNavBackModifier())
+            .navigationTitle("History")
+            .modifier(customNavBackModifier())
 //        .navigationBarTitleDisplayMode(.large)
+        .onAppear {
+            AnalyticsManager.shared.logEvent(eventName: AnalyticsKeys.historyPageview)
+        }
     }
 }
 

@@ -40,8 +40,8 @@ struct GetUserNameView: View {
                         .textFieldStyle(.plain)
                         .focused($focusTextField)
                         .onChange(of: userName) { _ in
-                            readingCountPerUserName = 0
-                        }
+                        readingCountPerUserName = 0
+                    }
                         .onSubmit {
                         if userName.isNotEmpty {
                             getUserInfoStep += 1
@@ -54,10 +54,10 @@ struct GetUserNameView: View {
                     .padding(24)
                     .background(.ultraThinMaterial)
                     .cornerRadius(48)
-                
+
                 Spacer()
             }
-            .padding(.horizontal, UIValues.bigButtonHPadding)
+                .padding(.horizontal, UIValues.bigButtonHPadding)
 
             //MARK: Continue Button
             VStack {
@@ -65,13 +65,18 @@ struct GetUserNameView: View {
                 GetUserInfoContinueButton(getUserInfoStep: $getUserInfoStep, canContinue: canContinue)
                     .simultaneousGesture(TapGesture().onEnded {
                     focusTextField = false
+                    AnalyticsManager.shared.setUserProperties(properties: [AnalyticsAmplitudeUserPropertyKeys.userName: userName])
                 })
             }
-            .padding(.horizontal, UIValues.bigButtonHPadding)
+                .padding(.horizontal, UIValues.bigButtonHPadding)
         }
             .onAppear {
             // this is necessary to make focus work
             DispatchQueue.main.async { focusTextField = true }
+
+            AnalyticsManager.shared.logEvent(
+                eventName: AnalyticsKeys.userInfoFlowNamePageview
+            )
         }
     }
 }

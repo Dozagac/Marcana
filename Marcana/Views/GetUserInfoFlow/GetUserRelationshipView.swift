@@ -40,16 +40,19 @@ struct GetUserRelationshipView: View {
                             .padding(.bottom, 12)
                         
                             
-                        ForEach(Relationship.allCases, id: \.self) { status in
+                        ForEach(Relationship.allCases, id: \.self) { relationshipStatus in
                             Button {
-                                userRelationship = status.rawValue
+                                userRelationship = relationshipStatus.rawValue
+                                
+                                AnalyticsManager.shared.setUserProperties(properties: [AnalyticsAmplitudeUserPropertyKeys.userRelationship: relationshipStatus.rawValue])
+                                
                                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
                                     doUserInfoFlow = false // this dismisses the userInfoFlow sheet
                                     self.presentationMode.wrappedValue.dismiss() // so the view can be dismissed when accessed from the settings
                                 }
                             } label: {
                                 RoundedRectangle(cornerRadius: 25)
-                                    .fill(userRelationship == status.rawValue ? Color.text : .clear)
+                                    .fill(userRelationship == relationshipStatus.rawValue ? Color.text : .clear)
                                     .frame(height: 50)
                                     .overlay(
                                     ZStack {
@@ -57,11 +60,11 @@ struct GetUserRelationshipView: View {
                                         RoundedRectangle(cornerRadius: 25).stroke(Color.text, lineWidth: 1).background(.clear)
                                         // Button Text
                                         HStack {
-                                            Text(status.rawValue)
+                                            Text(relationshipStatus.rawValue)
                                                 .padding(.leading, 16)
                                             Spacer()
                                         }
-                                        .foregroundColor(userRelationship == status.rawValue ? Color.black : .text)
+                                        .foregroundColor(userRelationship == relationshipStatus.rawValue ? Color.black : .text)
                                     }
                                 )
                             }
@@ -79,6 +82,11 @@ struct GetUserRelationshipView: View {
                 Spacer()
             }
             .padding(.horizontal, UIValues.bigButtonHPadding)
+        }
+        .onAppear{
+            AnalyticsManager.shared.logEvent(
+                eventName: AnalyticsKeys.userInfoFlowRelationshipPageview
+            )
         }
     }
 }

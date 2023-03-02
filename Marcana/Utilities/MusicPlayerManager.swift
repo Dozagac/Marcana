@@ -65,8 +65,10 @@ class MusicPlayerManager: ObservableObject {
     func togglePlayPause() {
         if player.isPlaying {
             self.pause()
+            AnalyticsManager.shared.logEvent(eventName: AnalyticsKeys.homepageMusicTapped , properties: [AnalyticsAmplitudeEventPropertyKeys.musicPlaying : false])
         } else {
             self.play()
+            AnalyticsManager.shared.logEvent(eventName: AnalyticsKeys.homepageMusicTapped , properties: [AnalyticsAmplitudeEventPropertyKeys.musicPlaying : true])
         }
     }
 }

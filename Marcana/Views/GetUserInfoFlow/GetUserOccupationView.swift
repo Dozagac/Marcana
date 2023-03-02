@@ -59,6 +59,7 @@ struct GetUserOccupationView: View {
                 GetUserInfoContinueButton(getUserInfoStep: $getUserInfoStep, canContinue: canContinue)
                     .simultaneousGesture(TapGesture().onEnded {
                     focusTextField = false
+                    AnalyticsManager.shared.setUserProperties(properties: [AnalyticsAmplitudeUserPropertyKeys.userOccupation: userOccupation])
                 })
             }
             .padding(.horizontal, UIValues.bigButtonHPadding)
@@ -66,6 +67,9 @@ struct GetUserOccupationView: View {
             .onAppear {
             // this is necessary to make focus work
             DispatchQueue.main.async { focusTextField = true }
+            AnalyticsManager.shared.logEvent(
+                eventName: AnalyticsKeys.userInfoFlowOccupationPageview
+            )
         }
     }
 }

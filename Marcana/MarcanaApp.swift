@@ -8,6 +8,7 @@
 import SwiftUI
 import Firebase
 import RevenueCat
+import Amplitude
 
 @main
 struct MarcanaApp: App {
@@ -40,7 +41,7 @@ struct MarcanaApp: App {
             ZStack {
                 if doOnboarding {
 //                if true {
-//                    PaywallView()
+//                    TestingView()
                     NavigationStack {
                         OnboardingViewWelcome()
                     }
@@ -72,7 +73,7 @@ struct MarcanaApp: App {
                 .task { // get Packages info from RevenueCat
                 do {
                     UserSubscriptionManager.shared.offerings = try await Purchases.shared.offerings()
-                    print("Got the offerings \(String(describing: UserSubscriptionManager.shared.offerings?.debugDescription))")
+//                    print("Got the offerings \(String(describing: UserSubscriptionManager.shared.offerings?.debugDescription))")
                 } catch {
                     print("Error fetching the offerings \(error)")
                 }
@@ -87,6 +88,11 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
         FirebaseApp.configure()
 
+        // Amplitude
+//        var analyticsManager = AnalyticsManager.shared
+        AnalyticsManager.shared.logEvent(eventName: AnalyticsKeys.appLaunch)
+        
+        // Save downloaded version of the app
         saveDownloadVersion()
 
         // Set the api key from remote config
@@ -96,6 +102,9 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 
         // initialize this so the private init triggers
         let _ = MusicPlayerManager.shared
+
+        
+        
 
         return true
     }

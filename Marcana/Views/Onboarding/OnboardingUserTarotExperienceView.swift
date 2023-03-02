@@ -47,6 +47,9 @@ struct OnboardingUserTarotExperienceView: View {
             .padding(.horizontal, UIValues.bigButtonHPadding)
         }
             .navigationBarBackButtonHidden(true)
+            .onAppear{
+                AnalyticsManager.shared.logEvent(eventName: AnalyticsKeys.onboardingExperiencePageview)
+            }
     }
 }
 

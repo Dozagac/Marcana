@@ -45,6 +45,8 @@ struct OnboardingViewWelcome: View {
                     .padding(.horizontal, UIValues.bigButtonHPadding)
                     .padding(.bottom, UIValues.onboardingContinueButtonBottomPadding)
             }
+        }.onFirstAppear {
+            AnalyticsManager.shared.logEvent(eventName: AnalyticsKeys.onboardingWelcomePageview)
         }
     }
 }

@@ -21,7 +21,7 @@ struct DeckInfoView: View {
         GridItem(.flexible(), spacing: 24),
         GridItem(.flexible(), spacing: 24)
     ]
-    
+
     private static let topId = "topIdHere"
 
     var body: some View {
@@ -45,6 +45,11 @@ struct DeckInfoView: View {
                                         CardItemView(card: card)
                                             .onTapGesture {
                                             self.sheetCard = card
+                                                AnalyticsManager.shared.logEvent(
+                                                    eventName: AnalyticsKeys.cardDetailPageview ,
+                                                    properties: [
+                                                        AnalyticsAmplitudeEventPropertyKeys.cardDetailSource : CardDetailSource.deckView.rawValue
+                                                    ])
                                         }
                                     }
                                         .sheet(item: $sheetCard) { card in
@@ -53,7 +58,7 @@ struct DeckInfoView: View {
                                 }
                             }
                         }
-                        .onChange(of: shouldScrollToTop) { _ in
+                            .onChange(of: shouldScrollToTop) { _ in
                             withAnimation { // add animation for scroll to top
                                 reader.scrollTo(Self.topId, anchor: .top) // scroll
                             }
@@ -63,11 +68,14 @@ struct DeckInfoView: View {
                     .frame(maxWidth: .infinity)
                     .padding(.horizontal, 24)
             }
-            .navigationTitle("All Cards")
+                .navigationTitle("All Cards")
 //            .navigationBarTitleDisplayMode(.large)
             .modifier(customNavBackModifier())
         }
-        
+            .onAppear {
+            AnalyticsManager.shared.logEvent(eventName: AnalyticsKeys.deckPageview)
+        }
+
     }
 
     func filterDeck(with input: String) -> Void {

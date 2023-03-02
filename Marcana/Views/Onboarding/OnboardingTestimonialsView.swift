@@ -72,6 +72,9 @@ struct OnboardingTestimonialsView: View {
             }
         }
             .navigationBarBackButtonHidden(true)
+            .onAppear{
+                AnalyticsManager.shared.logEvent(eventName: AnalyticsKeys.onboardingTestimonialsPageview)
+            }
     }
 }
 

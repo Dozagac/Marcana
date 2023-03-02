@@ -152,6 +152,9 @@ struct UserProfileView: View {
         .modifier(customNavBackModifier())
             .foregroundColor(.text)
             .navigationTitle("Profile")
+            .onAppear {
+            AnalyticsManager.shared.logEvent(eventName: AnalyticsKeys.profilePageview)
+        }
 //            .navigationBarTitleDisplayMode(.large)
     }
 }

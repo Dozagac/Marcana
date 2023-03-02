@@ -76,9 +76,31 @@ struct GetUserBirthdayView: View {
                 Spacer()
                 GetUserInfoContinueButton(getUserInfoStep: $getUserInfoStep, canContinue: canContinue)
                     .simultaneousGesture(TapGesture().onEnded {
+
+                        // Analytics for birthday string
+                        let formatter = DateFormatter()
+                        formatter.dateStyle = .short
+                        formatter.timeStyle = .none
+                        let dateString = formatter.string(from: birthday.wrappedValue)
+                        AnalyticsManager.shared.setUserProperties(
+                            properties: [AnalyticsAmplitudeUserPropertyKeys.userBirthday: dateString]
+                        )
+                        // Analytics for age integer
+                        let now = Date()
+                        let calendar = Calendar.current
+                        let ageComponents = calendar.dateComponents([.year], from: birthday.wrappedValue, to: now)
+                        let userAge = ageComponents.year ?? 0
+                        AnalyticsManager.shared.setUserProperties(
+                            properties: [AnalyticsAmplitudeUserPropertyKeys.userAge: userAge]
+                        )
                 })
             }
             .padding(.horizontal, UIValues.bigButtonHPadding)
+        }
+        .onAppear{
+            AnalyticsManager.shared.logEvent(
+                eventName: AnalyticsKeys.userInfoFlowBirthdayPageview
+            )
         }
     }
 }

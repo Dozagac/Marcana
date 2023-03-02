@@ -110,6 +110,7 @@ struct HomePageView: View {
                     if !userSubscriptionManager.subscriptionActive {
                         HStack {
                             Button {
+                                AnalyticsManager.shared.logEvent(eventName: AnalyticsKeys.homepageWhyIsNotFreeTapped )
                                 showingPricingExplanationSheet = true
                             } label: {
                                 HStack {
@@ -239,6 +240,7 @@ struct FortuneTypeSelectionButton: View {
 
     var body: some View {
         Button {
+            AnalyticsManager.shared.logEvent(eventName: AnalyticsKeys.homepageReaderTapped , properties: [AnalyticsAmplitudeEventPropertyKeys.fortuneType : fortuneType.rawValue])
             // Premium user with entitlement
             if userSubscriptionManager.subscriptionActive {
                 showingFortuneSheet.toggle()
@@ -248,6 +250,7 @@ struct FortuneTypeSelectionButton: View {
                     showingFortuneSheet.toggle()
                 } else {
                     // Launch the paywall
+                    AnalyticsManager.shared.logEvent(eventName: AnalyticsKeys.paywallPageview, properties: [AnalyticsAmplitudeEventPropertyKeys.paywallSource : PaywallSource.homepageView.rawValue])
                     showingPaywall = true
                 }
             }

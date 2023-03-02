@@ -25,6 +25,7 @@ struct PaywallView: View {
                 // MARK: - X button
                 HStack {
                     Button {
+                        AnalyticsManager.shared.logEvent(eventName: AnalyticsKeys.paywallXTapped)
                         dismissPaywall()
                     } label: {
                         Image(systemName: "xmark")
@@ -161,9 +162,9 @@ struct PaywallView: View {
             }
         }
             .navigationBarBackButtonHidden(true)
-            .onAppear {
-            animatingViews = true
-        }
+            .onAppear{
+                animatingViews = true
+            }
     }
 
     func dismissPaywall() {
@@ -179,6 +180,13 @@ struct PackageCellView: View {
     var body: some View {
         Button {
             selectedPackage = package
+            print("\(String(describing: selectedPackage?.storeProduct.productIdentifier))") // marcana_0299_mo
+
+            AnalyticsManager.shared.logEvent(
+                eventName: AnalyticsKeys.paywallPricingTapped,
+                properties: [AnalyticsAmplitudeEventPropertyKeys.subscriptionType: selectedPackage?.storeProduct.productIdentifier ?? "unknown_pricing_type"]
+            )
+
         } label: {
             VStack(spacing: 8) {
                 Text(periodName(for: package))
@@ -281,6 +289,9 @@ struct PurchaseButton: View {
     var body: some View {
         Button {
             guard let selectedPackage = selectedPackage else { return }
+            AnalyticsManager.shared.logEvent(
+                eventName: AnalyticsKeys.paywallPurchaseTapped
+            )
             // Set the waiting state to true
             isWaiting = true
             // purchase action completion handler
@@ -289,10 +300,14 @@ struct PurchaseButton: View {
                     // Unlock that great "pro" content
                     // so it can dismiss itself when called from anywhere
                     dismissPaywall()
+                    
+                    AnalyticsManager.shared.logEvent(
+                        eventName: AnalyticsKeys.paywallPurchaseCompleted
+                    )
+                    
                 }
                 isWaiting = false
                 doOnboarding = false
-
             }
         }
         label: {

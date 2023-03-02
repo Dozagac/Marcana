@@ -78,9 +78,11 @@ class NotificationManager: NSObject, UNUserNotificationCenterDelegate {
             } else {
                 if granted {
                     print("Notification permission granted!")
+                    AnalyticsManager.shared.setUserProperties(properties: [AnalyticsAmplitudeUserPropertyKeys.consentedNotifications : true])
                     completion(true) // these are both true because I use these to check if the user interacted with the notification permission alert at all
                 } else {
                     print("Notification permission denied.")
+                    AnalyticsManager.shared.setUserProperties(properties: [AnalyticsAmplitudeUserPropertyKeys.consentedNotifications : false])
                     completion(true) // these are both true because I use these to check if the user interacted with the notification permission alert at all
                     // even  if they say no, they transition into the next onboarding screen
                 }
