@@ -1,6 +1,6 @@
 //
 //  ReminderSettingsView.swift
-//  Marcana
+//  Witch
 //
 //  Created by Deniz Ozagac on 23/02/2023.
 //
