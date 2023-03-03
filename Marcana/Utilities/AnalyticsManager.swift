@@ -7,6 +7,47 @@
 
 import Foundation
 import Amplitude
+import FirebaseAnalytics
+
+class AnalyticsManager {
+    static let shared = AnalyticsManager()
+    let amplitudeAPIKey = "b1f138e2bea8c35aed408656af792985"
+
+    private init() {
+        Amplitude.instance().initializeApiKey(amplitudeAPIKey)
+    }
+
+    func logEvent(eventName: String, properties: [String: Any]? = nil) {
+        // Amplitude
+        Amplitude.instance().logEvent(eventName, withEventProperties: properties)
+        // FireBase
+        Analytics.logEvent(eventName, parameters: properties)
+    }
+
+    func setUserId(userId: String) {
+        // Amplitude
+        Amplitude.instance().setUserId(userId)
+        // FireBase
+        Analytics.setUserID(userId)
+    }
+
+    func setUserProperties(properties: [String: Any]) {
+        // Amplitude
+        Amplitude.instance().setUserProperties(properties)
+        // FireBase
+        for (key, value) in properties {
+            Analytics.setUserProperty("\(value)", forName: key)
+            print("FIREBASE USER PROPERTY UPLOAD: \(key) : \(value)")
+        }
+    }
+
+//    func clearUserProperties() {
+//        // Amplitude
+//        Amplitude.instance().clearUserProperties()
+//        // FireBase
+//
+//    }
+}
 
 struct AnalyticsKeys {
     static let appLaunch = "app_launch"
@@ -86,30 +127,4 @@ struct AnalyticsAmplitudeUserPropertyKeys {
     static let userAge = "user_age" // int
     static let userOccupation = "user_occupation" // string
     static let userRelationship = "user_relationship" // string
-}
-
-class AnalyticsManager {
-
-    static let shared = AnalyticsManager()
-    let apiKey = "b1f138e2bea8c35aed408656af792985"
-
-    private init() {
-        Amplitude.instance().initializeApiKey(apiKey)
-    }
-
-    func logEvent(eventName: String, properties: [AnyHashable: Any]? = nil) {
-        Amplitude.instance().logEvent(eventName, withEventProperties: properties)
-    }
-
-    func setUserId(userId: String) {
-        Amplitude.instance().setUserId(userId)
-    }
-
-    func setUserProperties(properties: [AnyHashable: Any]) {
-        Amplitude.instance().setUserProperties(properties)
-    }
-
-    func clearUserProperties() {
-        Amplitude.instance().clearUserProperties()
-    }
 }
